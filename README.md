@@ -58,7 +58,8 @@ Game mechanics:
 - Real-time top-down combat with simple controls.
 - Each character has unique attacks and abilities.
 
-Game inspiration from three of these games:
+Game inspiration from three of these games
+
 Map layout:
 - The game uses a top-down perspective, similar to Brawl Stars.
 - There are two roles: one Hunter and one Survivor.（The Hunter can be controlled by a second player or by AI.）
@@ -73,6 +74,7 @@ Game mechanics:
 Game rule:
 - Keys spawn randomly on the map. The Survivor must collect three keys to open the exit door and win the game.
 - If the Survivor is caught by the Hunter, the Survivor loses immediately.
+
 (Post by Marty)
 
 ### Introduction
