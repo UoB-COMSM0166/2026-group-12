@@ -37,19 +37,19 @@ GROUP PHOTO. Add a group photo here.
 
 ## Project Report
 （Post by Marty)
-## Little Nightmares II
+Game 1: Little Nightmares II
 Genre: horror 
 Game mechanics:
 - Enemies stop moving when exposed to the player's flashlight.
 - Players must keep the light focused on enemies while navigating the environment.
-## Identity V
+Game 2: Identity V
 Genre: horror
 Game mechanics:
 - One player takes the role of the Hunter, while four players act as Survivors with different abilities.
 - Survivors must decode cipher machines while avoiding or escaping the Hunter.
 - Each character has unique skills that affect movement, detection, or chase outcomes.
 - Survivors can place obstacles to slow down or block the Hunter, creating strategic opportunities to escape.
-## Brawl Stars
+Game 3: Brawl Stars
 Genre: Top-down shooter 
 Game mechanics:
 - Real-time top-down combat with simple controls.
@@ -62,10 +62,8 @@ Map layout:
 - The environment features a dark visual style with horror-themed background music.
 Game mechanics:
 - Flashlights spawn randomly on the map.
-- When a Survivor picks up a flashlight, it can be used for 2 seconds.
-- If the Hunter is exposed to the flashlight, the Hunter will be stunned for 5 seconds.
-- Souls spawn randomly on the map.
-- When picked up by the Hunter, they increase movement speed temporarily.
+- When a Survivor picks up a flashlight, it can be used for 2 seconds. If the Hunter is exposed to the flashlight, the Hunter will be stunned for 5 seconds.
+- Souls spawn randomly on the map. When picked up by the Hunter, they increase movement speed temporarily.
 Game rule:
 - Keys spawn randomly on the map. The Survivor must collect three keys to open the exit door and win the game.
 - If the Survivor is caught by the Hunter, the Survivor loses immediately.
