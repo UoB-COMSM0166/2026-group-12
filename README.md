@@ -58,7 +58,7 @@ Game mechanics:
 - Real-time top-down combat with simple controls.
 - Each character has unique attacks and abilities.
 
-Game inspiration from three of these games
+Game inspiration from three of these games:
 
 Map layout:
 - The game uses a top-down perspective, similar to Brawl Stars.
