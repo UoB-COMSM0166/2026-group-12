@@ -26,7 +26,7 @@ VIDEO. Include a demo video of your game here (you don't have to wait until the 
 
 ## Your Group
 
-![Photo of Group 12 members](group photo.jpeg)
+![Photo of Group 12 members](GroupPhoto.jpeg)
 
 - Group member 1, Ming Wei, ri25947@bristol.ac.uk, wming18082721229-design
 - Group member 2, Ming-Yen Tsai, az25406@bristol.ac.uk, marty12211
