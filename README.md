@@ -77,6 +77,29 @@ Game rule:
 
 (Post by Marty)
 
+(Post by Jess)
+
+Type 1: Restaurant Management
+- Reference Games: Cafeteria Nipponica, Overcooked!, PlateUp!
+- Mechanics: Core management loop, resource allocation, and time management.
+- Pros: The core mechanics are intuitive and easy to implement; highly extensible for adding new content (e.g., recipes or upgrades).
+- Cons: Requires precise control over gameplay pacing; handling complex object interactions can be tedious.
+
+Type 2: Card Games
+- Reference Games: Hearthstone, Balatro
+- Mechanics: Randomness, strategic decision-making, resource management, and rule-based logic.
+- Pros: Focuses on system architecture and data-driven design; UI-centric development with minimal reliance on complex physics; highly scalable.
+- Cons: High complexity in backend logic; difficult to achieve perfect numerical balance.
+
+Type 3: Survival Games
+- Reference Games: Don’t Starve
+- Mechanics: Survival systems, gathering & crafting, environmental pressure, and spatial awareness.
+- Pros: Demonstrates strong system integration skills; offers significant technical depth.
+- Cons: High development challenge; managing complex UI.
+
+(Post by Jess)
+
+
 ### Introduction
 
 - 5% ~250 words 
