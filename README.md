@@ -99,6 +99,36 @@ Type 3: Survival Games
 
 (Post by Jess)
 
+(Post by Kelly)
+
+Game 1: Find the Invisible Cow
+
+Description: A minimalist, audio-based hide-and-seek game. The player moves the cursor across a blank screen to find a hidden animal. The closer the cursor is to the target, the louder and faster the "Cow" sound becomes.
+
+Key Mechanics:
+- Proximity-based Audio: Audio volume and frequency scale dynamically based on the Euclidean distance between the cursor and the target.
+- Audio-Visual Reveal: The hidden object is only revealed upon a successful click within the target radius.
+
+Why it’s a great inspiration:
+- Low Barrier to Entry: The game requires no keyboard inputs or complex controls, making it accessible to everyone.
+- High Immersion: By replacing visual cues with auditory feedback, it creates a unique "hot or cold" exploration experience.
+- Development Efficiency: The core logic focuses on coordinate math and audio manipulation rather than complex physics or high-end assets.
+
+Game 2: Desktop Destroyer (Web Version Concept)
+
+Description: A stress-relief game where players can use various tools (hammer, machine gun, chainsaw, etc.) to destroy their screen or a specific background image.
+
+Key Mechanics:
+- Dynamic Layering: Real-time rendering of "damage" sprites (cracks, bullet holes) over a background image.
+- Tool Switching (Modular System): Different tools trigger unique visual effects and sound profiles.
+
+Why it’s a great inspiration:
+- Instant Gratification: Every click provides immediate visual and haptic feedback, making it highly satisfying for the user.
+- Extensibility: We can easily swap backgrounds (e.g., a "Stressful Office" or "Final Exam" background) to create different themes without changing the core engine.
+- Technical Value: It demonstrates our ability to handle Mouse Events, Layered Rendering (Canvas), and State Management (keeping track of all damage locations).
+
+(Post by Kelly)
+
 
 ### Introduction
 
