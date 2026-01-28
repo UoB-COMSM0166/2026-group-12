@@ -1,3 +1,4 @@
+
 # 2026-group-12
 2026 COMSM0166 group 12
 
@@ -35,6 +36,40 @@ GROUP PHOTO. Add a group photo here.
 - Group member 6, name, email, role
 
 ## Project Report
+（Post by Marty)
+## Little Nightmares II
+Genre: horror 
+Game mechanics:
+- Enemies stop moving when exposed to the player's flashlight.
+- Players must keep the light focused on enemies while navigating the environment.
+## Identity V
+Genre: horror
+Game mechanics:
+- One player takes the role of the Hunter, while four players act as Survivors with different abilities.
+- Survivors must decode cipher machines while avoiding or escaping the Hunter.
+- Each character has unique skills that affect movement, detection, or chase outcomes.
+- Survivors can place obstacles to slow down or block the Hunter, creating strategic opportunities to escape.
+## Brawl Stars
+Genre: Top-down shooter 
+Game mechanics:
+- Real-time top-down combat with simple controls.
+- Each character has unique attacks and abilities.Game inspiration:
+Game inspiration from three of these games:
+Map layout:
+- The game uses a top-down perspective, similar to Brawl Stars.
+- There are two roles: one Hunter and one Survivor.（The Hunter can be controlled by a second player or by AI.）
+- The map contains many walls and obstacles.（Placing or removing an obstacle requires a 1-second delay.）
+- The environment features a dark visual style with horror-themed background music.
+Game mechanics:
+- Flashlights spawn randomly on the map.
+- When a Survivor picks up a flashlight, it can be used for 2 seconds.
+- If the Hunter is exposed to the flashlight, the Hunter will be stunned for 5 seconds.
+- Souls spawn randomly on the map.
+- When picked up by the Hunter, they increase movement speed temporarily.
+Game rule:
+- Keys spawn randomly on the map. The Survivor must collect three keys to open the exit door and win the game.
+- If the Survivor is caught by the Hunter, the Survivor loses immediately.
+(Post by Marty)
 
 ### Introduction
 
