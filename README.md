@@ -130,6 +130,7 @@ Why it’s a great inspiration:
 (Post by Kelly)
 
 (Post by Chuck)
+
 Game 1: Go Downstairs
 •	Game Introduction: Control the character to move left or right to descend. The game features trampolines, spikes, and flipping stairs. This game supports two players to compete by pushing or blocking each other; the last one standing wins (or continues to break floor records).
 •	TWIST Part: Add traps like timed-pause stone steps (where you must jump to move) or skills to attack opponents in the two-player mode (e.g., picking up or throwing the opponent) to increase game richness.
