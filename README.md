@@ -129,6 +129,26 @@ Why it’s a great inspiration:
 
 (Post by Kelly)
 
+(Post by Chuck)
+Game 1: Go Downstairs
+•	Game Introduction: Control the character to move left or right to descend. The game features trampolines, spikes, and flipping stairs. This game supports two players to compete by pushing or blocking each other; the last one standing wins (or continues to break floor records).
+•	TWIST Part: Add traps like timed-pause stone steps (where you must jump to move) or skills to attack opponents in the two-player mode (e.g., picking up or throwing the opponent) to increase game richness.
+•	Design Pros:
+1.	Simple character control with only left and right keys.
+2.	Intuitive gameplay; the last survivor wins.
+Game 2: Animals Run
+•	Game Introduction: Inspired by people checking out in social media reels; players choose different animals to dash to the finish line. The loser pays the bill. Every animal should have the same winning probability; it's all about picking which animal wins.
+•	TWIST Part:
+1.	Design various racing scenes like Sky (climbing ropes for non-flying animals), Land, Ocean, etc., which appear randomly. (e.g., a dog's speed is multiplied by 1 on land, 0.6 on sky ropes, and 0.75 in the ocean. If every animal's base speed is the same, the random selection won't be affected, but variables in different scenes can add variety and fun. For instance, a seahorse might lose on land but beat a rhino in the ocean).
+2.	Or a "Fast & Furious" style nitro setting: each player has one 5-second speed boost per game.
+•	Design Pros:
+1.	Simple gameplay: pick an animal and you are set. At most, add one button requirement for the "TWIST" feature.
+2.	Simple logic: rank determines the winner.
+3.	Multiplayer support (up to 4 players).
+4.	Offers more character choices than the original game.
+5.	Simple game logic.
+
+(Post by Chuck)
 
 ### Introduction
 
