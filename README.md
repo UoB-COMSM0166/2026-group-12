@@ -32,7 +32,7 @@ VIDEO. Include a demo video of your game here (you don't have to wait until the 
 - Group member 2, Ming-Yen Tsai, az25406@bristol.ac.uk, marty12211
 - Group member 3, Jay-Sin Chiu, ob25847@bristol.ac.uk, jess1115
 - Group member 4, Yu-Cheng Cheng, ej25196@bristol.ac.uk, chuckyu1012
-- Group member 5, Hsun-Han Huang, hsunhanhuang@gmail.com, bill1122y
+- Group member 5, Hsun-Han Huang, sf25156@bristol.ac.uk,, bill1122y
 - Group member 6, name, email, role
 
 ## Project Report
