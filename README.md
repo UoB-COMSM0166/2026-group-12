@@ -87,17 +87,19 @@ Game rule:
 - 15% ~750 words
 - Early stages design. Ideation process. How did you decide as a team what to develop? Use case diagrams, user stories.
 
-Paper Prototypes
+1.Ideation process
+
+2.Paper Prototypes
 
 To better understand the game mechanics in depth and to evaluate how well the two games align with our game philosophy, we created two paper prototypes during the third workshop.
 
-First game - Survival Nightmare
+First game - Survival Nightmare:
 
 This game is a top-down 1v1 chase-and-escape game, similar to Brawl Stars, set in a dark horror-themed environment with eerie background music. One player takes the role of the Hunter (controlled either by a second player or AI), while the other plays the Survivor. The map is filled with walls and obstacles, and placing or removing an obstacle requires a one-second delay. Throughout the match, items spawn randomly: Survivors can pick up flashlights and use them for two seconds to stun the Hunter for five seconds if exposed, while Hunters can collect souls to gain a temporary movement speed boost. The Survivor wins by collecting three randomly spawned keys to unlock the exit door and escape, but loses immediately if caught by the Hunter.
 
 
 https://github.com/user-attachments/assets/5ee5a315-3f47-4811-a6de-c31d1ba30ffb
-
+Full video: https://youtu.be/oWBqbGIQUwQ
 
 
 
