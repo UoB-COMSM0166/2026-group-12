@@ -31,8 +31,8 @@ VIDEO. Include a demo video of your game here (you don't have to wait until the 
 - Group member 1, Ming Wei, ri25947@bristol.ac.uk, wming18082721229-design
 - Group member 2, Ming-Yen Tsai, az25406@bristol.ac.uk, marty12211
 - Group member 3, Jay-Sin Chiu, ob25847@bristol.ac.uk, jess1115
-- Group member 4, name, email, role
-- Group member 5, name, email, role
+- Group member 4, Yu-Cheng Cheng, ej25196@bristol.ac.uk, chuckyu1012
+- Group member 5, Hsun-Han Huang, sf25156@bristol.ac.uk,, bill1122y
 - Group member 6, name, email, role
 
 ## Project Report
@@ -99,6 +99,57 @@ Type 3: Survival Games
 
 (Post by Jess)
 
+(Post by Kelly)
+
+Game 1: Find the Invisible Cow
+
+Description: A minimalist, audio-based hide-and-seek game. The player moves the cursor across a blank screen to find a hidden animal. The closer the cursor is to the target, the louder and faster the "Cow" sound becomes.
+
+Key Mechanics:
+- Proximity-based Audio: Audio volume and frequency scale dynamically based on the Euclidean distance between the cursor and the target.
+- Audio-Visual Reveal: The hidden object is only revealed upon a successful click within the target radius.
+
+Why it’s a great inspiration:
+- Low Barrier to Entry: The game requires no keyboard inputs or complex controls, making it accessible to everyone.
+- High Immersion: By replacing visual cues with auditory feedback, it creates a unique "hot or cold" exploration experience.
+- Development Efficiency: The core logic focuses on coordinate math and audio manipulation rather than complex physics or high-end assets.
+
+Game 2: Desktop Destroyer (Web Version Concept)
+
+Description: A stress-relief game where players can use various tools (hammer, machine gun, chainsaw, etc.) to destroy their screen or a specific background image.
+
+Key Mechanics:
+- Dynamic Layering: Real-time rendering of "damage" sprites (cracks, bullet holes) over a background image.
+- Tool Switching (Modular System): Different tools trigger unique visual effects and sound profiles.
+
+Why it’s a great inspiration:
+- Instant Gratification: Every click provides immediate visual and haptic feedback, making it highly satisfying for the user.
+- Extensibility: We can easily swap backgrounds (e.g., a "Stressful Office" or "Final Exam" background) to create different themes without changing the core engine.
+- Technical Value: It demonstrates our ability to handle Mouse Events, Layered Rendering (Canvas), and State Management (keeping track of all damage locations).
+
+(Post by Kelly)
+
+(Post by Chuck)
+
+Game 1: Go Downstairs
+•	Game Introduction: Control the character to move left or right to descend. The game features trampolines, spikes, and flipping stairs. This game supports two players to compete by pushing or blocking each other; the last one standing wins (or continues to break floor records).
+•	TWIST Part: Add traps like timed-pause stone steps (where you must jump to move) or skills to attack opponents in the two-player mode (e.g., picking up or throwing the opponent) to increase game richness.
+•	Design Pros:
+1.	Simple character control with only left and right keys.
+2.	Intuitive gameplay; the last survivor wins.
+Game 2: Animals Run
+•	Game Introduction: Inspired by people checking out in social media reels; players choose different animals to dash to the finish line. The loser pays the bill. Every animal should have the same winning probability; it's all about picking which animal wins.
+•	TWIST Part:
+1.	Design various racing scenes like Sky (climbing ropes for non-flying animals), Land, Ocean, etc., which appear randomly. (e.g., a dog's speed is multiplied by 1 on land, 0.6 on sky ropes, and 0.75 in the ocean. If every animal's base speed is the same, the random selection won't be affected, but variables in different scenes can add variety and fun. For instance, a seahorse might lose on land but beat a rhino in the ocean).
+2.	Or a "Fast & Furious" style nitro setting: each player has one 5-second speed boost per game.
+•	Design Pros:
+1.	Simple gameplay: pick an animal and you are set. At most, add one button requirement for the "TWIST" feature.
+2.	Simple logic: rank determines the winner.
+3.	Multiplayer support (up to 4 players).
+4.	Offers more character choices than the original game.
+5.	Simple game logic.
+
+(Post by Chuck)
 
 ### Introduction
 
@@ -108,7 +159,24 @@ Type 3: Survival Games
 ### Requirements 
 
 - 15% ~750 words
-- Early stages design. Ideation process. How did you decide as a team what to develop? Use case diagrams, user stories. 
+- Early stages design. Ideation process. How did you decide as a team what to develop? Use case diagrams, user stories.
+
+1.Ideation process
+
+2.Paper Prototypes
+
+To better understand the game mechanics in depth and to evaluate how well the two games align with our game philosophy, we created two paper prototypes during the third workshop.
+
+First game - Survival Nightmare:
+
+This game is a top-down 1v1 chase-and-escape game, similar to Brawl Stars, set in a dark horror-themed environment with eerie background music. One player takes the role of the Hunter (controlled either by a second player or AI), while the other plays the Survivor. The map is filled with walls and obstacles, and placing or removing an obstacle requires a one-second delay. Throughout the match, items spawn randomly: Survivors can pick up flashlights and use them for two seconds to stun the Hunter for five seconds if exposed, while Hunters can collect souls to gain a temporary movement speed boost. The Survivor wins by collecting three randomly spawned keys to unlock the exit door and escape, but loses immediately if caught by the Hunter.
+
+
+https://github.com/user-attachments/assets/5ee5a315-3f47-4811-a6de-c31d1ba30ffb
+
+Full video: https://youtu.be/oWBqbGIQUwQ
+
+
 
 ### Design
 
