@@ -26,78 +26,16 @@ VIDEO. Include a demo video of your game here (you don't have to wait until the 
 
 ## Your Group
 
-![Photo of Group 12 members](GroupPhoto.jpeg)
+![Photo of Group 12 members](image/GroupPhoto.jpeg)
 
-- Group member 1, Ming Wei, ri25947@bristol.ac.uk, wming18082721229-design
+- Group member 1, Ming Wei, ri25947@bristol.ac.uk, wming18082721229 - design
 - Group member 2, Ming-Yen Tsai, az25406@bristol.ac.uk, marty12211
 - Group member 3, Jay-Sin Chiu, ob25847@bristol.ac.uk, jess1115
 - Group member 4, Yu-Cheng Cheng, ej25196@bristol.ac.uk, chuckyu1012
-- Group member 5, Hsun-Han Huang, sf25156@bristol.ac.uk,, bill1122y
+- Group member 5, Hsun-Han Huang, sf25156@bristol.ac.uk, bill1122y
 - Group member 6, name, email, role
 
 ## Project Report
-（Post by Marty)
-
-Game 1: Little Nightmares II
-Genre: horror 
-Game mechanics:
-- Enemies stop moving when exposed to the player's flashlight.
-- Players must keep the light focused on enemies while navigating the environment.
-
-Game 2: Identity V
-Genre: horror
-Game mechanics:
-- One player takes the role of the Hunter, while four players act as Survivors with different abilities.
-- Survivors must decode cipher machines while avoiding or escaping the Hunter.
-- Each character has unique skills that affect movement, detection, or chase outcomes.
-- Survivors can place obstacles to slow down or block the Hunter, creating strategic opportunities to escape.
-
-Game 3: Brawl Stars
-Genre: Top-down shooter 
-Game mechanics:
-- Real-time top-down combat with simple controls.
-- Each character has unique attacks and abilities.
-
-Game inspiration from three of these games:
-
-Map layout:
-- The game uses a top-down perspective, similar to Brawl Stars.
-- There are two roles: one Hunter and one Survivor.（The Hunter can be controlled by a second player or by AI.）
-- The map contains many walls and obstacles.（Placing or removing an obstacle requires a 1-second delay.）
-- The environment features a dark visual style with horror-themed background music.
-
-Game mechanics:
-- Flashlights spawn randomly on the map.
-- When a Survivor picks up a flashlight, it can be used for 2 seconds. If the Hunter is exposed to the flashlight, the Hunter will be stunned for 5 seconds.
-- Souls spawn randomly on the map. When picked up by the Hunter, they increase movement speed temporarily.
-
-Game rule:
-- Keys spawn randomly on the map. The Survivor must collect three keys to open the exit door and win the game.
-- If the Survivor is caught by the Hunter, the Survivor loses immediately.
-
-(Post by Marty)
-
-(Post by Jess)
-
-Type 1: Restaurant Management
-- Reference Games: Cafeteria Nipponica, Overcooked!, PlateUp!
-- Mechanics: Core management loop, resource allocation, and time management.
-- Pros: The core mechanics are intuitive and easy to implement; highly extensible for adding new content (e.g., recipes or upgrades).
-- Cons: Requires precise control over gameplay pacing; handling complex object interactions can be tedious.
-
-Type 2: Card Games
-- Reference Games: Hearthstone, Balatro
-- Mechanics: Randomness, strategic decision-making, resource management, and rule-based logic.
-- Pros: Focuses on system architecture and data-driven design; UI-centric development with minimal reliance on complex physics; highly scalable.
-- Cons: High complexity in backend logic; difficult to achieve perfect numerical balance.
-
-Type 3: Survival Games
-- Reference Games: Don’t Starve
-- Mechanics: Survival systems, gathering & crafting, environmental pressure, and spatial awareness.
-- Pros: Demonstrates strong system integration skills; offers significant technical depth.
-- Cons: High development challenge; managing complex UI.
-
-(Post by Jess)
 
 (Post by Kelly)
 
@@ -129,28 +67,6 @@ Why it’s a great inspiration:
 
 (Post by Kelly)
 
-(Post by Chuck)
-
-Game 1: Go Downstairs
-•	Game Introduction: Control the character to move left or right to descend. The game features trampolines, spikes, and flipping stairs. This game supports two players to compete by pushing or blocking each other; the last one standing wins (or continues to break floor records).
-•	TWIST Part: Add traps like timed-pause stone steps (where you must jump to move) or skills to attack opponents in the two-player mode (e.g., picking up or throwing the opponent) to increase game richness.
-•	Design Pros:
-1.	Simple character control with only left and right keys.
-2.	Intuitive gameplay; the last survivor wins.
-Game 2: Animals Run
-•	Game Introduction: Inspired by people checking out in social media reels; players choose different animals to dash to the finish line. The loser pays the bill. Every animal should have the same winning probability; it's all about picking which animal wins.
-•	TWIST Part:
-1.	Design various racing scenes like Sky (climbing ropes for non-flying animals), Land, Ocean, etc., which appear randomly. (e.g., a dog's speed is multiplied by 1 on land, 0.6 on sky ropes, and 0.75 in the ocean. If every animal's base speed is the same, the random selection won't be affected, but variables in different scenes can add variety and fun. For instance, a seahorse might lose on land but beat a rhino in the ocean).
-2.	Or a "Fast & Furious" style nitro setting: each player has one 5-second speed boost per game.
-•	Design Pros:
-1.	Simple gameplay: pick an animal and you are set. At most, add one button requirement for the "TWIST" feature.
-2.	Simple logic: rank determines the winner.
-3.	Multiplayer support (up to 4 players).
-4.	Offers more character choices than the original game.
-5.	Simple game logic.
-
-(Post by Chuck)
-
 ### Introduction
 
 - 5% ~250 words 
@@ -162,6 +78,10 @@ Game 2: Animals Run
 - Early stages design. Ideation process. How did you decide as a team what to develop? Use case diagrams, user stories.
 
 1.Ideation process
+At the beginning, our team compiled the game references each of us was interested in into a presentation [link here](https://www.canva.com/design/DAHAFBXVeBs/qvce7yU9iheiYdaTl-wrqg/view?utm_content=DAHAFBXVeBs&utm_campaign=designshare&utm_medium=link2&utm_source=uniquelinks&utlId=hc3e06d4f69). During the meeting, we shared and discussed the genre, mechanics, and ideas behind each game. In the end, we selected two games that we were most interested in developing: Identity V and Grapple Dog.
+
+![Voting for two games](image/Voting1.png)
+![Voting for two games](image/Voting2.png)
 
 2.Paper Prototypes
 
@@ -175,6 +95,22 @@ This game is a top-down 1v1 chase-and-escape game, similar to Brawl Stars, set i
 https://github.com/user-attachments/assets/5ee5a315-3f47-4811-a6de-c31d1ba30ffb
 
 Full video: https://youtu.be/oWBqbGIQUwQ
+
+Second game - Grapple Dog:
+
+
+
+
+Feedback from other classmates:
+1. The interface of game is very clear and comprehensive.
+2. It is suggested that the number of maps should be more than one. Additionally, adding different types of terrain is a good idea to increase variety. 
+3.The win conditions still can be further expanded.
+4. The map could be extended, but the boundary still needs to be considered.
+5. After a character wins, the monster can gain new skills (e.g., breaking through walls or an increasing movement speed.)
+6. The tongue-flicking mechanic is an impressive idea, because it’s more special than typical 2D games which only can run and jump.
+
+Conclusion:
+We decided to choose Grapple Dog as the game we would ultimately develop. The reason was that although Identity V had interesting and diverse mechanics, it would likely be more difficult to develop. Grapple Dog, in comparison, was relatively simpler and offered more room for development.
 
 
 
