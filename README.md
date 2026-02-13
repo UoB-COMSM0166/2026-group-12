@@ -26,7 +26,7 @@ VIDEO. Include a demo video of your game here (you don't have to wait until the 
 
 ## Your Group
 
-![Photo of Group 12 members](image/GroupPhoto.jpeg)
+<img src="image/GroupPhoto.jpeg" height="500">
 
 - Group member 1, Ming Wei, ri25947@bristol.ac.uk, wming18082721229 - design
 - Group member 2, Ming-Yen Tsai, az25406@bristol.ac.uk, marty12211
@@ -81,8 +81,8 @@ Why it’s a great inspiration:
 
 At the beginning, our team compiled the game references each of us was interested in into a [presentation](https://www.canva.com/design/DAHAFBXVeBs/qvce7yU9iheiYdaTl-wrqg/view?utm_content=DAHAFBXVeBs&utm_campaign=designshare&utm_medium=link2&utm_source=uniquelinks&utlId=hc3e06d4f69). During the meeting, we shared and discussed the genre, mechanics, and ideas behind each game. In the end, we selected two games that we were most interested in developing: Identity V and Grapple Dog.
 
-![Voting for two games](image/Voting1.png)
-![Voting for two games](image/Voting2.png)
+<img src="image/Voting1.png" height="500">
+<img src="image/Voting2.png" height="500">
 
 ### Paper Prototypes
 
