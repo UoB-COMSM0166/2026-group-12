@@ -77,13 +77,13 @@ Why it’s a great inspiration:
 - 15% ~750 words
 - Early stages design. Ideation process. How did you decide as a team what to develop? Use case diagrams, user stories.
 
-1.Ideation process
-At the beginning, our team compiled the game references each of us was interested in into a presentation [link here](https://www.canva.com/design/DAHAFBXVeBs/qvce7yU9iheiYdaTl-wrqg/view?utm_content=DAHAFBXVeBs&utm_campaign=designshare&utm_medium=link2&utm_source=uniquelinks&utlId=hc3e06d4f69). During the meeting, we shared and discussed the genre, mechanics, and ideas behind each game. In the end, we selected two games that we were most interested in developing: Identity V and Grapple Dog.
+1. Ideation process
+At the beginning, our team compiled the game references each of us was interested in into a [presentation](https://www.canva.com/design/DAHAFBXVeBs/qvce7yU9iheiYdaTl-wrqg/view?utm_content=DAHAFBXVeBs&utm_campaign=designshare&utm_medium=link2&utm_source=uniquelinks&utlId=hc3e06d4f69). During the meeting, we shared and discussed the genre, mechanics, and ideas behind each game. In the end, we selected two games that we were most interested in developing: Identity V and Grapple Dog.
 
 ![Voting for two games](image/Voting1.png)
 ![Voting for two games](image/Voting2.png)
 
-2.Paper Prototypes
+2. Paper Prototypes
 
 To better understand the game mechanics in depth and to evaluate how well the two games align with our game philosophy, we created two paper prototypes during the third workshop.
 
@@ -103,8 +103,8 @@ Second game - Grapple Dog:
 
 Feedback from other classmates:
 1. The interface of game is very clear and comprehensive.
-2. It is suggested that the number of maps should be more than one. Additionally, adding different types of terrain is a good idea to increase variety. 
-3.The win conditions still can be further expanded.
+2. It is suggested that the number of maps should be more than one. Additionally, adding different types of terrain is a good idea to increase variety.
+3. The win conditions still can be further expanded.
 4. The map could be extended, but the boundary still needs to be considered.
 5. After a character wins, the monster can gain new skills (e.g., breaking through walls or an increasing movement speed.)
 6. The tongue-flicking mechanic is an impressive idea, because it’s more special than typical 2D games which only can run and jump.
