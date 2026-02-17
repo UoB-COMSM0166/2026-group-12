@@ -35,39 +35,9 @@ VIDEO. Include a demo video of your game here (you don't have to wait until the 
 - Group member 3, Jay-Sin Chiu, ob25847@bristol.ac.uk, jess1115
 - Group member 4, Yu-Cheng Cheng, ej25196@bristol.ac.uk, chuckyu1012
 - Group member 5, Hsun-Han Huang, sf25156@bristol.ac.uk, bill1122y
-- Group member 6, name, email, role
+- Group member 6, Yi-Hsin Peng, dq25826@bristol.ac.uk, pphsin
 
 ## Project Report
-
-(Post by Kelly)
-
-Game 1: Find the Invisible Cow
-
-Description: A minimalist, audio-based hide-and-seek game. The player moves the cursor across a blank screen to find a hidden animal. The closer the cursor is to the target, the louder and faster the "Cow" sound becomes.
-
-Key Mechanics:
-- Proximity-based Audio: Audio volume and frequency scale dynamically based on the Euclidean distance between the cursor and the target.
-- Audio-Visual Reveal: The hidden object is only revealed upon a successful click within the target radius.
-
-Why it’s a great inspiration:
-- Low Barrier to Entry: The game requires no keyboard inputs or complex controls, making it accessible to everyone.
-- High Immersion: By replacing visual cues with auditory feedback, it creates a unique "hot or cold" exploration experience.
-- Development Efficiency: The core logic focuses on coordinate math and audio manipulation rather than complex physics or high-end assets.
-
-Game 2: Desktop Destroyer (Web Version Concept)
-
-Description: A stress-relief game where players can use various tools (hammer, machine gun, chainsaw, etc.) to destroy their screen or a specific background image.
-
-Key Mechanics:
-- Dynamic Layering: Real-time rendering of "damage" sprites (cracks, bullet holes) over a background image.
-- Tool Switching (Modular System): Different tools trigger unique visual effects and sound profiles.
-
-Why it’s a great inspiration:
-- Instant Gratification: Every click provides immediate visual and haptic feedback, making it highly satisfying for the user.
-- Extensibility: We can easily swap backgrounds (e.g., a "Stressful Office" or "Final Exam" background) to create different themes without changing the core engine.
-- Technical Value: It demonstrates our ability to handle Mouse Events, Layered Rendering (Canvas), and State Management (keeping track of all damage locations).
-
-(Post by Kelly)
 
 ## Introduction
 
@@ -102,9 +72,21 @@ https://github.com/user-attachments/assets/5ee5a315-3f47-4811-a6de-c31d1ba30ffb
 
 Full video: https://youtu.be/oWBqbGIQUwQ
 
-**Second game - Grapple Dog:**
+**Second game - Skaarl:**
 
+Swing, glide, and flow through a fast-paced 2D platformer built around momentum.
+Use a lizard’s sticky tongue to grab walls, ceilings, or objects and swing across environments, also you can utilize natural membranes to glide through the air.
+Chain movement smoothly, discover multiple routes, avoid your enemies and master speed through fluid, expressive traversal.
 
+ **Stakeholders**
+
+<p align="center">
+  <img src="image/Stakeholders.png" height="400">
+</p>
+Drawing an Onion Diagram helps us clarify our stakeholders. We have separated them into three groups based on the degree and direction of their impact.
+The First Tier is the development team, including all members of group 12. During the development process, all members' schedules in TB2 will be significantly affected; however, the project provides us with invaluable experience in game development and teamwork.
+The Second Tier consists of the target customers; this means our game is developed specifically to meet their needs. These stacker holders include teacher, TA, testers and players. Of course they will get gameplay experience, and the feedback provided by them will help us improve our game.
+The Third Tier is the external environment, including anyone indirectly affected by the game, such as competitors in the same domain, other developers searching for inspiration, or viewers watching gameplay streams. Although they may not experience this game in person, they will still be affected by the game's content to varying degrees.
 
 
 **Feedback from other classmates:**
@@ -118,7 +100,7 @@ Full video: https://youtu.be/oWBqbGIQUwQ
 
 **Conclusion:**
 
-We decided to choose Grapple Dog as the game we would ultimately develop. The reason was that although Identity V had interesting and diverse mechanics, it would likely be more difficult to develop. Grapple Dog, in comparison, was relatively simpler and offered more room for development.
+We decided to choose second game as the game we would ultimately develop. The reason was that although first game had interesting and diverse mechanics, it would likely be more difficult to develop. Second game, in comparison, was relatively simpler and offered more room for development.
 
 
 
