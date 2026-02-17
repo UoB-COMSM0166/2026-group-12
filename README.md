@@ -74,8 +74,12 @@ Full video: https://youtu.be/oWBqbGIQUwQ
 
 **Second game - Skaarl:**
 
+Swing, glide, and flow through a fast-paced 2D platformer built around momentum.
+Use a lizard’s sticky tongue to grab walls, ceilings, or objects and swing across environments, also you can utilize natural membranes to glide through the air.
+Chain movement smoothly, discover multiple routes, avoid your enemies and master speed through fluid, expressive traversal.
 
-## Stakeholders
+ **Stakeholders**
+
 <p align="center">
   <img src="image/Stakeholders.png" height="400">
 </p>
@@ -83,13 +87,6 @@ Drawing an Onion Diagram helps us clarify our stakeholders. We have separated th
 The First Tier is the development team, including all members of group 12. During the development process, all members' schedules in TB2 will be significantly affected; however, the project provides us with invaluable experience in game development and teamwork.
 The Second Tier consists of the target customers; this means our game is developed specifically to meet their needs. These stacker holders include teacher, TA, testers and players. Of course they will get gameplay experience, and the feedback provided by them will help us improve our game.
 The Third Tier is the external environment, including anyone indirectly affected by the game, such as competitors in the same domain, other developers searching for inspiration, or viewers watching gameplay streams. Although they may not experience this game in person, they will still be affected by the game's content to varying degrees.
-(post by Bill)
-## Game Overview
-Swing, glide, and flow through a fast-paced 2D platformer built around momentum.
-Use a lizard’s sticky tongue to grab walls, ceilings, or objects and swing across environments, also you can utilize natural membranes to glide through the air.
-Chain movement smoothly, discover multiple routes, avoid your enemies and master speed through fluid, expressive traversal.
-
-
 
 **Feedback from other classmates:**
 
