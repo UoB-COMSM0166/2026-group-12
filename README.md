@@ -39,25 +39,6 @@ VIDEO. Include a demo video of your game here (you don't have to wait until the 
 
 ## Project Report
 
-(Post by Kelly)
-
-Game 1: Find the Invisible Cow
-
-Description: A minimalist, audio-based hide-and-seek game. The player moves the cursor across a blank screen to find a hidden animal. The closer the cursor is to the target, the louder and faster the "Cow" sound becomes.
-
-Key Mechanics:
-- Proximity-based Audio: Audio volume and frequency scale dynamically based on the Euclidean distance between the cursor and the target.
-- Audio-Visual Reveal: The hidden object is only revealed upon a successful click within the target radius.
-
-Why it’s a great inspiration:
-- Low Barrier to Entry: The game requires no keyboard inputs or complex controls, making it accessible to everyone.
-- High Immersion: By replacing visual cues with auditory feedback, it creates a unique "hot or cold" exploration experience.
-- Development Efficiency: The core logic focuses on coordinate math and audio manipulation rather than complex physics or high-end assets.
-
-Game 2: Desktop Destroyer (Web Version Concept)
-
-Description: A stress-relief game where players can use various tools (hammer, machine gun, chainsaw, etc.) to destroy their screen or a specific background image.
-
 ## Introduction
 
 - 5% ~250 words 
