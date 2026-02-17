@@ -73,6 +73,7 @@ https://github.com/user-attachments/assets/5ee5a315-3f47-4811-a6de-c31d1ba30ffb
 Full video: https://youtu.be/oWBqbGIQUwQ
 
 **Second game - Skaarl:**
+
 Swing, glide, and flow through a fast-paced 2D platformer built around momentum.
 Use a lizard’s sticky tongue to grab walls, ceilings, or objects and swing across environments, also you can utilize natural membranes to glide through the air.
 Chain movement smoothly, discover multiple routes, avoid your enemies and master speed through fluid, expressive traversal.
