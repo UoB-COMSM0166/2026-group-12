@@ -40,7 +40,7 @@ VIDEO. Include a demo video of your game here (you don't have to wait until the 
   <tr>
     <td>Ming Wei</td>
     <td>ri25947@bristol.ac.uk</td>
-    <td>wming18082721229</td>
+    <td>wming18082721229-design</td>
     <td>TBD</td>
   </tr>
   <tr>
