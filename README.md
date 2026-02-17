@@ -88,6 +88,7 @@ The First Tier is the development team, including all members of group 12. Durin
 The Second Tier consists of the target customers; this means our game is developed specifically to meet their needs. These stacker holders include teacher, TA, testers and players. Of course they will get gameplay experience, and the feedback provided by them will help us improve our game.
 The Third Tier is the external environment, including anyone indirectly affected by the game, such as competitors in the same domain, other developers searching for inspiration, or viewers watching gameplay streams. Although they may not experience this game in person, they will still be affected by the game's content to varying degrees.
 
+
 **Feedback from other classmates:**
 
 1. The interface of game is very clear and comprehensive.
