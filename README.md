@@ -35,7 +35,7 @@ VIDEO. Include a demo video of your game here (you don't have to wait until the 
 - Group member 3, Jay-Sin Chiu, ob25847@bristol.ac.uk, jess1115
 - Group member 4, Yu-Cheng Cheng, ej25196@bristol.ac.uk, chuckyu1012
 - Group member 5, Hsun-Han Huang, sf25156@bristol.ac.uk, bill1122y
-- Group member 6, name, email, role
+- Group member 6, Yi-Hsin Peng, dq25826@bristol.ac.uk, pphsin
 
 ## Project Report
 
@@ -57,17 +57,6 @@ Why it’s a great inspiration:
 Game 2: Desktop Destroyer (Web Version Concept)
 
 Description: A stress-relief game where players can use various tools (hammer, machine gun, chainsaw, etc.) to destroy their screen or a specific background image.
-
-Key Mechanics:
-- Dynamic Layering: Real-time rendering of "damage" sprites (cracks, bullet holes) over a background image.
-- Tool Switching (Modular System): Different tools trigger unique visual effects and sound profiles.
-
-Why it’s a great inspiration:
-- Instant Gratification: Every click provides immediate visual and haptic feedback, making it highly satisfying for the user.
-- Extensibility: We can easily swap backgrounds (e.g., a "Stressful Office" or "Final Exam" background) to create different themes without changing the core engine.
-- Technical Value: It demonstrates our ability to handle Mouse Events, Layered Rendering (Canvas), and State Management (keeping track of all damage locations).
-
-(Post by Kelly)
 
 ## Introduction
 
