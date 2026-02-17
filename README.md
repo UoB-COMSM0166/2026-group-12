@@ -30,12 +30,51 @@ VIDEO. Include a demo video of your game here (you don't have to wait until the 
   <img src="image/GroupPhoto.jpeg" width="600">
 </p>
 
-- Group member 1, Ming Wei, ri25947@bristol.ac.uk, wming18082721229 - design
-- Group member 2, Ming-Yen Tsai, az25406@bristol.ac.uk, marty12211
-- Group member 3, Jay-Sin Chiu, ob25847@bristol.ac.uk, jess1115
-- Group member 4, Yu-Cheng Cheng, ej25196@bristol.ac.uk, chuckyu1012
-- Group member 5, Hsun-Han Huang, sf25156@bristol.ac.uk, bill1122y
-- Group member 6, Yi-Hsin Peng, dq25826@bristol.ac.uk, pphsin
+<table align="center">
+  <tr>
+    <th>Group member</th>
+    <th>Email</th>
+    <th>Github Id</th>
+    <th>Role</th>
+  </tr>
+  <tr>
+    <td>Ming Wei</td>
+    <td>ri25947@bristol.ac.uk</td>
+    <td>wming18082721229</td>
+    <td>TBD</td>
+  </tr>
+  <tr>
+    <td>Ming-Yen Tsai</td>
+    <td>az25406@bristol.ac.uk</td>
+    <td>marty12211</td>
+    <td>TBD</td>
+  </tr>
+  <tr>
+    <td>Jay-Sin Chiu</td>
+    <td>ob25847@bristol.ac.uk</td>
+    <td>jess1115</td>
+    <td>TBD</td>
+  </tr>
+  <tr>
+    <td>Yu-Cheng Cheng</td>
+    <td>ej25196@bristol.ac.uk</td>
+    <td>chuckyu1012</td>
+    <td>TBD</td>
+  </tr>
+  <tr>
+    <td>Hsun-Han Huang</td>
+    <td>sf25156@bristol.ac.uk</td>
+    <td>bill1122y</td>
+    <td>TBD</td>
+  </tr>
+  <tr>
+    <td>Yi-Hsin Peng</td>
+    <td>dq25826@bristol.ac.uk</td>
+    <td>pphsin</td>
+    <td>TBD</td>
+  </tr>
+</table>
+
 
 ## Project Report
 
@@ -78,18 +117,7 @@ Swing, glide, and flow through a fast-paced 2D platformer built around momentum.
 Use a lizard’s sticky tongue to grab walls, ceilings, or objects and swing across environments, also you can utilize natural membranes to glide through the air.
 Chain movement smoothly, discover multiple routes, avoid your enemies and master speed through fluid, expressive traversal.
 
- **Stakeholders**
-
-<p align="center">
-  <img src="image/Stakeholders.png" height="400">
-</p>
-Drawing an Onion Diagram helps us clarify our stakeholders. We have separated them into three groups based on the degree and direction of their impact.
-The First Tier is the development team, including all members of group 12. During the development process, all members' schedules in TB2 will be significantly affected; however, the project provides us with invaluable experience in game development and teamwork.
-The Second Tier consists of the target customers; this means our game is developed specifically to meet their needs. These stacker holders include teacher, TA, testers and players. Of course they will get gameplay experience, and the feedback provided by them will help us improve our game.
-The Third Tier is the external environment, including anyone indirectly affected by the game, such as competitors in the same domain, other developers searching for inspiration, or viewers watching gameplay streams. Although they may not experience this game in person, they will still be affected by the game's content to varying degrees.
-
-
-**Feedback from other classmates:**
+**Feedback:**
 
 1. The interface of game is very clear and comprehensive.
 2. It is suggested that the number of maps should be more than one. Additionally, adding different types of terrain is a good idea to increase variety.
@@ -102,6 +130,16 @@ The Third Tier is the external environment, including anyone indirectly affected
 
 We decided to choose second game as the game we would ultimately develop. The reason was that although first game had interesting and diverse mechanics, it would likely be more difficult to develop. Second game, in comparison, was relatively simpler and offered more room for development.
 
+### Stakeholders
+
+<p align="center">
+  <img src="image/Stakeholders.png" height="400">
+</p>
+
+Drawing an Onion Diagram helps us clarify our stakeholders. We have separated them into three groups based on the degree and direction of their impact.
+The First Tier is the development team, including all members of group 12. During the development process, all members' schedules in TB2 will be significantly affected; however, the project provides us with invaluable experience in game development and teamwork.
+The Second Tier consists of the target customers; this means our game is developed specifically to meet their needs. These stacker holders include teacher, TA, testers and players. Of course they will get gameplay experience, and the feedback provided by them will help us improve our game.
+The Third Tier is the external environment, including anyone indirectly affected by the game, such as competitors in the same domain, other developers searching for inspiration, or viewers watching gameplay streams. Although they may not experience this game in person, they will still be affected by the game's content to varying degrees.
 
 
 ## Design
