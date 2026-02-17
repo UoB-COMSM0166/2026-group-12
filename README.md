@@ -30,6 +30,44 @@ VIDEO. Include a demo video of your game here (you don't have to wait until the 
   <img src="image/GroupPhoto.jpeg" width="600">
 </p>
 
+<table>
+  <tr>
+    <th>Group member</th>
+    <th>Email</th>
+    <th>Github Id</th>
+    <th>Role</th>
+  </tr>
+  <tr>
+    <td>Ming Wei</td>
+    <td>ri25947@bristol.ac.uk</td>
+    <td>wming18082721229</td>
+  </tr>
+  <tr>
+    <td>Ming-Yen Tsai</td>
+    <td>az25406@bristol.ac.uk</td>
+    <td>marty12211</td>
+  </tr>
+  <tr>
+    <td>Jay-Sin Chiu</td>
+    <td>ob25847@bristol.ac.uk</td>
+    <td>jess1115</td>
+  </tr>
+  <tr>
+    <td>Yu-Cheng Cheng</td>
+    <td>ej25196@bristol.ac.uk</td>
+    <td>chuckyu1012</td>
+  </tr>
+  <tr>
+    <td>Hsun-Han Huang</td>
+    <td>sf25156@bristol.ac.uk</td>
+    <td>bill1122y</td>
+  </tr>
+  <tr>
+    <td>Yi-Hsin Peng</td>
+    <td>dq25826@bristol.ac.uk</td>
+    <td>pphsin</td>
+  </tr>
+</table>
 - Group member 1, Ming Wei, ri25947@bristol.ac.uk, wming18082721229 - design
 - Group member 2, Ming-Yen Tsai, az25406@bristol.ac.uk, marty12211
 - Group member 3, Jay-Sin Chiu, ob25847@bristol.ac.uk, jess1115
@@ -86,7 +124,7 @@ Chain movement smoothly, discover multiple routes, avoid your enemies and master
 Drawing an Onion Diagram helps us clarify our stakeholders. We have separated them into three groups based on the degree and direction of their impact.
 The First Tier is the development team, including all members of group 12. During the development process, all members' schedules in TB2 will be significantly affected; however, the project provides us with invaluable experience in game development and teamwork.
 The Second Tier consists of the target customers; this means our game is developed specifically to meet their needs. These stacker holders include teacher, TA, testers and players. Of course they will get gameplay experience, and the feedback provided by them will help us improve our game.
-The Third Tier is the external environment, including anyone indirectly affected by the game, such as competitors in the same domain, other developers searching for inspiration, or viewers watching gameplay streams. Although they may not experience this game in person, they will still be affected by the game's content to varying degrees.
+The Third Tier is the external environment, including anyone indirectly affected by the game, such as competitors in the same domain, other developers searching for inspiration, or viewers watching gameplay streams. Although they may not experience this game in person, they will still be affected by the game's content to varying degrees.</br>
 
 
 **Feedback from other classmates:**
