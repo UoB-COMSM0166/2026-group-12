@@ -181,7 +181,7 @@ The Third Tier is the external environment, including anyone indirectly affected
 
 Peng：
 
-As a developer, I want to handle all collision logic through a common interface, so that the system can efficiently process interactions between diverse objects (like the player, enemies, and grapple points) without writing redundant code.
+- As a developer, I want to handle all collision logic through a common interface, so that the system can efficiently process interactions between diverse objects (like the player, enemies, and grapple points) without writing redundant code.
 
 Chiu:
 
@@ -200,21 +200,17 @@ Huang:
 
 Cheng:
 
-As a game designer, I aim to significantly enhance the game's depth by introducing diversified combat modes against bosses and monsters. This includes mechanics such as tongue-based strikes to hit enemies and the use of special environmental triggers to deal damage.Furthermore, I plan to implement complex level environments with dynamic effects: for instance, arctic conditions that cause gradual health drain for the lizard, and tropical rainforests where environmental factors trigger the rapid spawning of minor enemies. These elements will create a more challenging and immersive gameplay experience.
+- As a game designer, I aim to significantly enhance the game's depth by introducing diversified combat modes against bosses and monsters. This includes mechanics such as tongue-based strikes to hit enemies and the use of special environmental triggers to deal damage.Furthermore, I plan to implement complex level environments with dynamic effects: for instance, arctic conditions that cause gradual health drain for the lizard, and tropical rainforests where environmental factors trigger the rapid spawning of minor enemies. These elements will create a more challenging and immersive gameplay experience.
 
 Wei:
 
-- As a player, I want to use the lizard’s tongue to latch onto surfaces and swing across gaps, so that I can move through levels quickly and maintain momentum.
-Implements:
-The player can aim and shoot the tongue at valid surfaces.
+- As a player, I want to use the lizard’s tongue to latch onto surfaces and swing across gaps, so that I can move through levels quickly and maintain momentum. Implements: The player can aim and shoot the tongue at valid surfaces.
 The tongue attaches only to designated or logical surfaces.
 The player can swing with physics-based motion.
 Releasing at the right time preserves forward momentum.
 The system feels responsive with minimal input delay.
 
-- As a player, I want to glide while airborne, so that I can extend jumps, adjust my landing, and smoothly chain movement actions together.
-Implements:
-The player can activate glide while in the air.
+- As a player, I want to glide while airborne, so that I can extend jumps, adjust my landing, and smoothly chain movement actions together. Implements:The player can activate glide while in the air.
 Glide reduces falling speed.
 The player can slightly control horizontal direction during glide.
 Glide can transition smoothly from a jump or swing.
