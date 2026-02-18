@@ -119,11 +119,13 @@ Chain movement smoothly, discover multiple routes, avoid your enemies and master
 <p>
   Click the image below to jump to the video.
 </p>
+
 <p align="left">
   <a href="https://youtu.be/wsnlXCv3-HA">
-    <img src="https://github.com/wming18082721229-design/SofEng-project/blob/main/image.png" width="600" alt="Demo Video">
+    <img src="https://img.youtube.com/vi/wsnlXCv3-HA/0.jpg" width="600" alt="Demo Video">
   </a>
 </p>
+
 
 
 **Feedback:**
