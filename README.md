@@ -34,7 +34,7 @@ VIDEO. Include a demo video of your game here (you don't have to wait until the 
   <tr>
     <th>Member</th>
     <th>Email</th>
-    <th>Github Id</th>
+    <th>Github</th>
     <th>Role</th>
   </tr>
   <tr>
