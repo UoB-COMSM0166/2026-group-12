@@ -118,7 +118,7 @@ Use a lizard’s sticky tongue to grab walls, ceilings, or objects and swing acr
 Chain movement smoothly, discover multiple routes, avoid your enemies and master speed through fluid, expressive traversal.
 <p align="center">
   <a href="https://youtu.be/wsnlXCv3-HA">
-    <img src="https://github.com/wming18082721229-design/SofEng-project/blob/main/image.png" width="600" alt="Demo Video">
+    <img src="https://github.com/wming18082721229-design/SofEng-project/blob/main/image.png" width="400" alt="Demo Video">
   </a>
 </p>
 
