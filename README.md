@@ -77,7 +77,7 @@ VIDEO. Include a demo video of your game here (you don't have to wait until the 
 
 
 ## Project Report
-
+[Kanban link](https://trello.com/invite/b/698ac34dda403c044906233f/ATTI4db26394399c57af543af31092c66765564157A4/my-trello-board)
 ## Introduction
 
 - 5% ~250 words 
