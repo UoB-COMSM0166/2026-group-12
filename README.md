@@ -116,6 +116,17 @@ Full video: https://youtu.be/oWBqbGIQUwQ
 Swing, glide, and flow through a fast-paced 2D platformer built around momentum.
 Use a lizard’s sticky tongue to grab walls, ceilings, or objects and swing across environments, also you can utilize natural membranes to glide through the air.
 Chain movement smoothly, discover multiple routes, avoid your enemies and master speed through fluid, expressive traversal.
+<p>
+  Click the image below to jump to the video.
+</p>
+
+<p align="left">
+  <a href="https://youtu.be/wsnlXCv3-HA">
+    <img src="https://img.youtube.com/vi/wsnlXCv3-HA/0.jpg" width="600" alt="Demo Video">
+  </a>
+</p>
+
+
 
 **Feedback:**
 
