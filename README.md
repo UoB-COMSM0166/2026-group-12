@@ -41,37 +41,37 @@ VIDEO. Include a demo video of your game here (you don't have to wait until the 
     <td>Ming Wei</td>
     <td>ri25947@bristol.ac.uk</td>
     <td>wming18082721229</td>
-    <td>Project Manager/Frontend Engineer/Developer</td>
-  </tr>
-  <tr>
-    <td>Ming-Yen Tsai</td>
-    <td>az25406@bristol.ac.uk</td>
-    <td>marty12211</td>
-    <td>QA & Optimization Engineer/Developer</td>
+    <td>Project Manager / Frontend Engineer / Developer</td>
   </tr>
   <tr>
     <td>Jay-Sin Chiu</td>
     <td>ob25847@bristol.ac.uk</td>
     <td>jess1115</td>
-    <td>Project Manager/Frontend Engineer/Developer</td>
-  </tr>
-  <tr>
-    <td>Yu-Cheng Cheng</td>
-    <td>ej25196@bristol.ac.uk</td>
-    <td>chuckyu1012</td>
-    <td>Game Systems Architect/Developer</td>
-  </tr>
-  <tr>
-    <td>Hsun-Han Huang</td>
-    <td>sf25156@bristol.ac.uk</td>
-    <td>bill1122y</td>
-    <td>Game Systems Architect/Developer</td>
+    <td>Project Manager / Frontend Engineer / Developer</td>
   </tr>
   <tr>
     <td>Yi-Hsin Peng</td>
     <td>dq25826@bristol.ac.uk</td>
     <td>pphsin</td>
-    <td>Game Systems Architect/Developer</td>
+    <td>Game Systems Architect / Developer</td>
+  </tr>
+  <tr>
+    <td>Hsun-Han Huang</td>
+    <td>sf25156@bristol.ac.uk</td>
+    <td>bill1122y</td>
+    <td>Game Systems Architect / Developer</td>
+  </tr>
+  <tr>
+    <td>Yu-Cheng Cheng</td>
+    <td>ej25196@bristol.ac.uk</td>
+    <td>chuckyu1012</td>
+    <td>Game Systems Architect / Developer</td>
+  </tr>
+  <tr>
+    <td>Ming-Yen Tsai</td>
+    <td>az25406@bristol.ac.uk</td>
+    <td>marty12211</td>
+    <td>QA & Optimization Engineer / Developer</td>
   </tr>
 </table>
 
