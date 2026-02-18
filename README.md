@@ -141,7 +141,7 @@ Chain movement smoothly, discover multiple routes, avoid your enemies and master
 
 We decided to choose second game as the game we would ultimately develop. The reason was that although first game had interesting and diverse mechanics, it would likely be more difficult to develop. Second game, in comparison, was relatively simpler and offered more room for development.
 
-**Twist ideas from members:**
+### Twist ideas from members:
 
 1. Core Transformation and Ability System
 Create a diverse action system by combining the "consuming insects or elements" mechanic with "item-based transformations."
@@ -177,7 +177,7 @@ The First Tier is the development team, including all members of group 12. Durin
 The Second Tier consists of the target customers; this means our game is developed specifically to meet their needs. These stacker holders include teacher, TA, testers and players. Of course they will get gameplay experience, and the feedback provided by them will help us improve our game.
 The Third Tier is the external environment, including anyone indirectly affected by the game, such as competitors in the same domain, other developers searching for inspiration, or viewers watching gameplay streams. Although they may not experience this game in person, they will still be affected by the game's content to varying degrees.
 
-**User Stiry:**
+### User Story
 
 Peng：
 
