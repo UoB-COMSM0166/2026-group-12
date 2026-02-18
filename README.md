@@ -141,6 +141,31 @@ Chain movement smoothly, discover multiple routes, avoid your enemies and master
 
 We decided to choose second game as the game we would ultimately develop. The reason was that although first game had interesting and diverse mechanics, it would likely be more difficult to develop. Second game, in comparison, was relatively simpler and offered more room for development.
 
+**Twist ideas from members:**
+
+1. Core Transformation and Ability System
+Create a diverse action system by combining the "consuming insects or elements" mechanic with "item-based transformations."
+- Transformation Mechanism: Inspired by Kirby or Super Mario Odyssey, the protagonist can switch between different lizard forms by consuming specific insects or using special items.
+
+- Form Functionalities:
+Draco (Flying Lizard): Extends gliding distance, allowing the player to cross large terrain gaps.
+Chameleon: Blends into the environment to become invisible, useful for evading powerful enemies.
+Frilled-neck Lizard: Scares off predators or utilizes its frill for specialized gliding.
+- Elemental Infusion: By using its tongue to consume fire or ice elements, the lizard can imbue its standard attacks with additional elemental damage.
+- Biological Survival and Escape Skills
+Enhance combat depth by utilizing the unique physiological traits of real-world lizards.
+Autotomy (Tail Shedding): An active skill that can be triggered when health is critically low. The shed tail remains on the ground to distract monsters, granting the player a brief window of invincibility and a speed boost to escape.
+- Resource Cost: This skill consumes a portion of energy, and there is a cooldown period while the tail regenerates before it can be used again.
+
+2. Environmental Interaction and Secret Paths
+Emphasize the lizard's agility and map exploration.Multi-dimensional Exploration: Level design includes not only flat ground but also vertical wall-climbing and underground digging.
+Hidden Passageways: Secret paths—such as underground burrows or shortcuts inside tree trunks—that can only be discovered or accessed by specific forms (e.g., the Chameleon or a miniature lizard form).
+
+3. Narrative Goals and Arch-Nemesis
+Establish concrete motivation and a final challenge for the player.
+Story Background: Define the lizard's motivation for the journey (e.g., protecting the forest or rescuing companions).
+Nemesis Design: Introduce the lizard's natural predator—the Snake—as the final boss. The final battle will require the player to master all previously learned transformation and camouflage skills to defeat this powerful predator.
+
 ### Stakeholders
 
 <p align="center">
@@ -152,6 +177,38 @@ The First Tier is the development team, including all members of group 12. Durin
 The Second Tier consists of the target customers; this means our game is developed specifically to meet their needs. These stacker holders include teacher, TA, testers and players. Of course they will get gameplay experience, and the feedback provided by them will help us improve our game.
 The Third Tier is the external environment, including anyone indirectly affected by the game, such as competitors in the same domain, other developers searching for inspiration, or viewers watching gameplay streams. Although they may not experience this game in person, they will still be affected by the game's content to varying degrees.
 
+**User Stiry:**
+Peng：
+As a developer, I want to handle all collision logic through a common interface, so that the system can efficiently process interactions between diverse objects (like the player, enemies, and grapple points) without writing redundant code.
+Chiu:
+- As a player, I want my personal information protected and my game data securely backed up.
+- As a developer, I want the data to be properly stored and structured for easy analysis.
+Tsai:
+- As a gamer, I want the game to have a reward system, so that when I complete a small level, I can earn a skill. This gives me the motivation to keep improving.
+- As a developer, I want players to become engaged with my game and share it with others, so I need to provide rewards that keep them playing.
+Huang:
+- As a player,  I want to play a game  which don't need to spend too much time to understand  the game mechanism criteria: tutorial can't not more than 100 words.
+- As a player,  I want to play a game  which have fluence gameplay criteria: check fps of each movement
+
+Cheng:
+As a game designer, I aim to significantly enhance the game's depth by introducing diversified combat modes against bosses and monsters. This includes mechanics such as tongue-based strikes to hit enemies and the use of special environmental triggers to deal damage.Furthermore, I plan to implement complex level environments with dynamic effects: for instance, arctic conditions that cause gradual health drain for the lizard, and tropical rainforests where environmental factors trigger the rapid spawning of minor enemies. These elements will create a more challenging and immersive gameplay experience.
+
+Wei:
+- As a player, I want to use the lizard’s tongue to latch onto surfaces and swing across gaps, so that I can move through levels quickly and maintain momentum.
+Implements:
+The player can aim and shoot the tongue at valid surfaces.
+The tongue attaches only to designated or logical surfaces.
+The player can swing with physics-based motion.
+Releasing at the right time preserves forward momentum.
+The system feels responsive with minimal input delay.
+
+- As a player, I want to glide while airborne, so that I can extend jumps, adjust my landing, and smoothly chain movement actions together.
+Implements:
+The player can activate glide while in the air.
+Glide reduces falling speed.
+The player can slightly control horizontal direction during glide.
+Glide can transition smoothly from a jump or swing.
+Glide ends when landing or stamina (if used) runs out.
 
 ## Design
 
