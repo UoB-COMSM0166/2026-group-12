@@ -178,22 +178,29 @@ The Second Tier consists of the target customers; this means our game is develop
 The Third Tier is the external environment, including anyone indirectly affected by the game, such as competitors in the same domain, other developers searching for inspiration, or viewers watching gameplay streams. Although they may not experience this game in person, they will still be affected by the game's content to varying degrees.
 
 **User Stiry:**
+
 Peng：
+
 As a developer, I want to handle all collision logic through a common interface, so that the system can efficiently process interactions between diverse objects (like the player, enemies, and grapple points) without writing redundant code.
 Chiu:
+
 - As a player, I want my personal information protected and my game data securely backed up.
 - As a developer, I want the data to be properly stored and structured for easy analysis.
 Tsai:
+
 - As a gamer, I want the game to have a reward system, so that when I complete a small level, I can earn a skill. This gives me the motivation to keep improving.
 - As a developer, I want players to become engaged with my game and share it with others, so I need to provide rewards that keep them playing.
 Huang:
+
 - As a player,  I want to play a game  which don't need to spend too much time to understand  the game mechanism criteria: tutorial can't not more than 100 words.
 - As a player,  I want to play a game  which have fluence gameplay criteria: check fps of each movement
 
 Cheng:
+
 As a game designer, I aim to significantly enhance the game's depth by introducing diversified combat modes against bosses and monsters. This includes mechanics such as tongue-based strikes to hit enemies and the use of special environmental triggers to deal damage.Furthermore, I plan to implement complex level environments with dynamic effects: for instance, arctic conditions that cause gradual health drain for the lizard, and tropical rainforests where environmental factors trigger the rapid spawning of minor enemies. These elements will create a more challenging and immersive gameplay experience.
 
 Wei:
+
 - As a player, I want to use the lizard’s tongue to latch onto surfaces and swing across gaps, so that I can move through levels quickly and maintain momentum.
 Implements:
 The player can aim and shoot the tongue at valid surfaces.
