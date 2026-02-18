@@ -32,7 +32,7 @@ VIDEO. Include a demo video of your game here (you don't have to wait until the 
 
 <table align="center">
   <tr>
-    <th>Group member</th>
+    <th>Member</th>
     <th>Email</th>
     <th>Github Id</th>
     <th>Role</th>
