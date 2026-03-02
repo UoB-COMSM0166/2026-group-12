@@ -6,7 +6,7 @@ class Player extends GameObject {
     this.height = 60;
     this.state = 'IDLE'; // IDLE, RUN, JUMP, FALL
     this.speed = 5;
-    this.jumpForce = -12;
+    this.jumpForce = -25;
     this.facing = 1; //1 -> left, -1 -> right
     this.isDead = false;
   }
@@ -24,8 +24,10 @@ class Player extends GameObject {
   Physics.resolveCollision(this, mapManager);
     
   // 限制 X 軸：不讓玩家走出左右邊界
-  this.pos.x = constrain(this.pos.x, 0, width - this.width);
+  //this.pos.x = constrain(this.pos.x, 0, width - this.width);
 
+  // Player.js update 函式中
+this.pos.x = constrain(this.pos.x, 0, mapManager.gridWidth - this.width);
   // 限制 Y 軸：不讓玩家跳出天花板
   if (this.pos.y < 0) {
       this.pos.y = 0;
@@ -39,18 +41,22 @@ class Player extends GameObject {
 }
 
   handleInput() {
-    if (keyIsDown(LEFT_ARROW)) 
-    {
+    // 支援方向鍵與 WASD (A: 65, D: 68, W: 87)
+    if (keyIsDown(LEFT_ARROW) || keyIsDown(65)) {
       this.vel.x = -this.speed;
       this.facing = 1;
-    }
-    else if (keyIsDown(RIGHT_ARROW)) 
-    {
+    } else if (keyIsDown(RIGHT_ARROW) || keyIsDown(68)) {
       this.vel.x = this.speed;
       this.facing = -1;
-                                      
+    } else {
+      this.vel.x = 0;
     }
-    else this.vel.x = 0;
+
+    // 跳躍判斷：使用 canJump 而非 vel.y === 0
+    if ((keyIsDown(UP_ARROW) || keyIsDown(87)) && this.canJump) {
+      this.vel.y = this.jumpForce;
+      this.canJump = false; // 跳躍瞬間將標記設為 false，防止二段跳
+    }
   }
 
   display() {
