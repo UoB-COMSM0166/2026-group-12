@@ -1,30 +1,87 @@
 let player;
 let mapManager;
 let mapData;
-let coin;
+let gameStats = { score: 0 }; // 新增：初始化計分系統
+let tilesetImg;
+let enemyImg;
 let entities = [];
 
 function preload() {
   mapData = loadJSON('assets/map/level_1.json');
-  playerImg = loadImage('assets/img/player_idle.png'); 
+  playerImg = loadImage('assets/img/player_idle.png');
+  tilesetImg = loadImage('assets/img/cut_grass.png'); 
+  enemyImg = loadImage('assets/img/snake.png'); 
 }
 
 function setup() {
-  createCanvas(1000, 600);
+  
+  let canvas = createCanvas(1000, 600);
+  // 阻斷右鍵選單，以便使用右鍵攻擊
+  canvas.elt.oncontextmenu = () => false;
+
+  // 重啟遊戲時清空陣列，避免物件重疊
+  entities = [];
+  
+  //玩家定義區
   mapManager = new MapManager(mapData);
-  player = new Player(100,50, playerImg);
+  player = new Player(100, 50, 90, 60, playerImg);
   entities.push(player);
-  coin = new Coin(980,480);
+
+  // 怪物定義區(x, y, 寬, 高, 影像)
+  // 敵人 1
+  entities.push(new Enemy(600, 400, 70, 70, enemyImg));
+  
+  // 敵人 2
+  entities.push(new Enemy(1200, 400, 70, 70, enemyImg)); 
+  
+  // 敵人 3
+  entities.push(new Enemy(1800, 300, 100, 100, enemyImg));
+
+
+
+  
+
+  // 建立金幣
+  let coin = new Coin(980, 480);
   entities.push(coin);
 }
 
 function draw() {
   background(173, 228, 249);
 
+  //角色死亡
+  if (player.isDead) {
+    // 方案 A：直接重啟遊戲
+    setup(); 
+    
+    // 方案 B：顯示死亡畫面
+    /*
+    fill(255, 0, 0);
+    textSize(50);
+    textAlign(CENTER);
+    text("GAME OVER", width/2, height/2);
+    noLoop(); // 停止遊戲迴圈
+    */
+    return; // 結束這一幀，不執行後面的 update 和 display
+  }
+
   // 1. Update 階段 (維持不變)
   for (let e of entities) {
-    e.update(mapManager);
+    // 修改：傳入 entities 給玩家進行主動攻擊判定
+    if (e === player) {
+      e.update(mapManager, entities); 
+    } else {
+      e.update(mapManager);
+    }
+    
+    // 碰撞檢查 (處理身體接觸)
+    if (e !== player && typeof e.checkPlayerCollision === 'function') {
+      e.checkPlayerCollision(player);
+    }
   }
+
+  // 移除已經「死亡」的物件（例如被吃掉的金幣）
+  entities = entities.filter(e => !e.isDead);
 
   // --- 相機邏輯開始 ---
   push(); 
@@ -39,14 +96,18 @@ function draw() {
   translate(camX, 0); 
 
   // 2. Display 階段 (這些東西會隨著相機移動)
-  mapManager.display();
+  mapManager.display(tilesetImg);
   for (let e of entities) {
     e.display();
   }
+  
 
   pop(); 
   // --- 相機邏輯結束 ---
 
   // 3. UI 階段 (放在 pop 之後，才會固定在螢幕上)
-  // UIManager.display(); 
+  //UIManager.display(); 
+  fill(0);
+  textSize(20);
+  text("Score: " + gameStats.score, 20, 30);
 }
