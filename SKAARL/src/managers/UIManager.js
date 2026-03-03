@@ -1,18 +1,30 @@
 class UIManager {
-  static display(player, score) {
-    // 繪製愛心
-    fill(255, 0, 0);
-    textSize(30);
-    textAlign(LEFT, TOP);
-    let hearts = "";
-    for (let i = 0; i < player.hearts; i++) {
-      hearts += "❤️ ";
-    }
-    text(hearts, 20, 20);
-
-    // 繪製分數
-    fill(0);
-    textSize(20);
-    text("Score: " + score, 20, 65);
+  
+  constructor(){
+    this.maxHearts = 3;
+    this.currentHearts = this.maxHearts;
+    this.heartsSize = 30;
+    this.x = 40;
+    this.y = 40;
+    this.gap = 35;
   }
+
+  loseHeart() {
+    if (this.currentHearts > 0) this.currentHearts--;
+  }
+
+  display(heartImg){
+    for (let i = 0; i < this.maxHearts; i++){
+      if (i < this.currentHearts){
+        tint(255, 255); 
+      } else{
+        tint(255, 50);
+      }
+
+      let xPos = this.x + (i * this.gap);
+      image(heartImg, xPos, this.y, this.heartsSize, this.heartsSize);
+    }
+    noTint();
+  }
+
 }

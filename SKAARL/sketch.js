@@ -5,12 +5,14 @@ let gameStats = { score: 0 }; // 新增：初始化計分系統
 let tilesetImg;
 let enemyImg;
 let entities = [];
+let heartImg;
 
 function preload() {
   mapData = loadJSON('assets/map/level_1.json');
   playerImg = loadImage('assets/img/player_idle.png');
   tilesetImg = loadImage('assets/img/cut_grass.png'); 
   enemyImg = loadImage('assets/img/snake.png'); 
+  heartImg = loadImage('assets/img/heart.png')
 }
 
 function setup() {
@@ -24,22 +26,20 @@ function setup() {
   
   //玩家定義區
   mapManager = new MapManager(mapData);
-  player = new Player(100, 50, 90, 60, playerImg);
+  uiManager = new UIManager;
+  player = new Player(100, 50, 72, 48, playerImg);
   entities.push(player);
 
   // 怪物定義區(x, y, 寬, 高, 影像)
   // 敵人 1
-  entities.push(new Enemy(600, 400, 70, 70, enemyImg));
+  entities.push(new Enemy(600, 400, 50, 50, enemyImg));
   
   // 敵人 2
-  entities.push(new Enemy(1200, 400, 70, 70, enemyImg)); 
+  entities.push(new Enemy(1200, 400, 50, 50, enemyImg)); 
   
   // 敵人 3
   entities.push(new Enemy(1800, 300, 100, 100, enemyImg));
 
-
-
-  
 
   // 建立金幣
   let coin = new Coin(980, 480);
@@ -106,8 +106,6 @@ function draw() {
   // --- 相機邏輯結束 ---
 
   // 3. UI 階段 (放在 pop 之後，才會固定在螢幕上)
-  //UIManager.display(); 
-  fill(0);
-  textSize(20);
-  text("Score: " + gameStats.score, 20, 30);
+  uiManager.display(heartImg); 
+
 }

@@ -56,12 +56,12 @@ getTileAt(worldX, worldY) {
       
       // 計算該 ID 在圖片中的位置 (gid = id - 1)
       let gid = id - 1; 
-    let sx = (gid % tilesPerRow) * sourceTileSize; // 從圖片 31 像素的地方開始切
-    let sy = Math.floor(gid / tilesPerRow) * sourceTileSize;
+      let sx = (gid % tilesPerRow) * sourceTileSize; // 從圖片 31 像素的地方開始切
+      let sy = Math.floor(gid / tilesPerRow) * sourceTileSize;
 
-    // image(圖片, x, y, 顯示寬, 顯示高, 裁切x, 裁切y, 裁切寬, 裁切高)
-    // 這裡會把 31x31 的圖片拉伸成 60x60 顯示
-    image(tilesetImg, x, y, this.tileSize, this.tileSize, sx, sy, sourceTileSize, sourceTileSize);
+      // image(圖片, x, y, 顯示寬, 顯示高, 裁切x, 裁切y, 裁切寬, 裁切高)
+      // 這裡會把 31x31 的圖片拉伸成 60x60 顯示
+      image(tilesetImg, x, y, this.tileSize, this.tileSize, sx, sy, sourceTileSize, sourceTileSize);
     }
   }
 }
