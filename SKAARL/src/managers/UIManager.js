@@ -13,6 +13,10 @@ class UIManager {
     if (this.currentHearts > 0) this.currentHearts--;
   }
 
+  addHeart() {
+    if (this.currentHearts < 3) this.currentHearts++;
+  }
+
   display(heartImg){
     for (let i = 0; i < this.maxHearts; i++){
       if (i < this.currentHearts){
