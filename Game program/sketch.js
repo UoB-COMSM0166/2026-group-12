@@ -17,7 +17,7 @@ function preload() {
 
 function setup() {
   
-  let canvas = createCanvas(1000, 600);
+  let canvas = createCanvas(1000, 840);
   // 阻斷右鍵選單，以便使用右鍵攻擊
   canvas.elt.oncontextmenu = () => false;
 
@@ -88,6 +88,7 @@ function draw() {
 
   // 主角出現在畫面水平中心
   let targetCamX = -player.pos.x + width / 2;
+  console.log(mapManager.gridWidth);
 
   // 限制相機邊界：不讓相機拍到地圖左側(0)以外或右側(地圖寬度)以外
   let camX = constrain(targetCamX, -(mapManager.gridWidth - width), 0);
