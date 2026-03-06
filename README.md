@@ -30,15 +30,54 @@ VIDEO. Include a demo video of your game here (you don't have to wait until the 
   <img src="image/GroupPhoto.jpeg" width="600">
 </p>
 
-- Group member 1, Ming Wei, ri25947@bristol.ac.uk, wming18082721229 - design
-- Group member 2, Ming-Yen Tsai, az25406@bristol.ac.uk, marty12211
-- Group member 3, Jay-Sin Chiu, ob25847@bristol.ac.uk, jess1115
-- Group member 4, Yu-Cheng Cheng, ej25196@bristol.ac.uk, chuckyu1012
-- Group member 5, Hsun-Han Huang, sf25156@bristol.ac.uk, bill1122y
-- Group member 6, Yi-Hsin Peng, dq25826@bristol.ac.uk, pphsin
+<table align="center">
+  <tr>
+    <th>Member</th>
+    <th>Email</th>
+    <th>Github</th>
+    <th>Role</th>
+  </tr>
+  <tr>
+    <td>Ming Wei</td>
+    <td>ri25947@bristol.ac.uk</td>
+    <td>wming18082721229</td>
+    <td>Project Manager / Frontend Engineer / Developer</td>
+  </tr>
+  <tr>
+    <td>Jay-Sin Chiu</td>
+    <td>ob25847@bristol.ac.uk</td>
+    <td>jess1115</td>
+    <td>Project Manager / Frontend Engineer / Developer</td>
+  </tr>
+  <tr>
+    <td>Yi-Hsin Peng</td>
+    <td>dq25826@bristol.ac.uk</td>
+    <td>pphsin</td>
+    <td>Game Systems Architect / Developer</td>
+  </tr>
+  <tr>
+    <td>Hsun-Han Huang</td>
+    <td>sf25156@bristol.ac.uk</td>
+    <td>bill1122y</td>
+    <td>Game Systems Architect / Developer</td>
+  </tr>
+  <tr>
+    <td>Yu-Cheng Cheng</td>
+    <td>ej25196@bristol.ac.uk</td>
+    <td>chuckyu1012</td>
+    <td>Game Systems Architect / Developer</td>
+  </tr>
+  <tr>
+    <td>Ming-Yen Tsai</td>
+    <td>az25406@bristol.ac.uk</td>
+    <td>marty12211</td>
+    <td>QA & Optimization Engineer / Developer</td>
+  </tr>
+</table>
+
 
 ## Project Report
-
+[Kanban link](https://trello.com/invite/b/698ac34dda403c044906233f/ATTI4db26394399c57af543af31092c66765564157A4/my-trello-board)
 ## Introduction
 
 - 5% ~250 words 
@@ -73,13 +112,23 @@ https://github.com/user-attachments/assets/5ee5a315-3f47-4811-a6de-c31d1ba30ffb
 Full video: https://youtu.be/oWBqbGIQUwQ
 
 **Second game - Skaarl:**
+
 Swing, glide, and flow through a fast-paced 2D platformer built around momentum.
 Use a lizard’s sticky tongue to grab walls, ceilings, or objects and swing across environments, also you can utilize natural membranes to glide through the air.
 Chain movement smoothly, discover multiple routes, avoid your enemies and master speed through fluid, expressive traversal.
+<p>
+  Click the image below to jump to the video.
+</p>
+
+<p align="left">
+  <a href="https://youtu.be/wsnlXCv3-HA">
+    <img src="https://img.youtube.com/vi/wsnlXCv3-HA/0.jpg" width="600" alt="Demo Video">
+  </a>
+</p>
 
 
 
-**Feedback from other classmates:**
+**Feedback:**
 
 1. The interface of game is very clear and comprehensive.
 2. It is suggested that the number of maps should be more than one. Additionally, adding different types of terrain is a good idea to increase variety.
@@ -90,9 +139,82 @@ Chain movement smoothly, discover multiple routes, avoid your enemies and master
 
 **Conclusion:**
 
-We decided to choose Grapple Dog as the game we would ultimately develop. The reason was that although Identity V had interesting and diverse mechanics, it would likely be more difficult to develop. Grapple Dog, in comparison, was relatively simpler and offered more room for development.
+We decided to choose second game as the game we would ultimately develop. The reason was that although first game had interesting and diverse mechanics, it would likely be more difficult to develop. Second game, in comparison, was relatively simpler and offered more room for development.
 
+### Twist ideas from members:
 
+1. Core Transformation and Ability System
+Create a diverse action system by combining the "consuming insects or elements" mechanic with "item-based transformations."
+> - Transformation Mechanism: Inspired by Kirby or Super Mario Odyssey, the protagonist can switch between different lizard forms by consuming specific insects or using special items.
+
+> - Form Functionalities:
+Draco (Flying Lizard): Extends gliding distance, allowing the player to cross large terrain gaps.
+Chameleon: Blends into the environment to become invisible, useful for evading powerful enemies.
+Frilled-neck Lizard: Scares off predators or utilizes its frill for specialized gliding.
+> - Elemental Infusion: By using its tongue to consume fire or ice elements, the lizard can imbue its standard attacks with additional elemental damage.
+> - Biological Survival and Escape Skills
+Enhance combat depth by utilizing the unique physiological traits of real-world lizards.
+Autotomy (Tail Shedding): An active skill that can be triggered when health is critically low. The shed tail remains on the ground to distract monsters, granting the player a brief window of invincibility and a speed boost to escape.
+> - Resource Cost: This skill consumes a portion of energy, and there is a cooldown period while the tail regenerates before it can be used again.
+
+2. Environmental Interaction and Secret Paths
+Emphasize the lizard's agility and map exploration.Multi-dimensional Exploration: Level design includes not only flat ground but also vertical wall-climbing and underground digging.
+Hidden Passageways: Secret paths—such as underground burrows or shortcuts inside tree trunks—that can only be discovered or accessed by specific forms (e.g., the Chameleon or a miniature lizard form).
+
+3. Narrative Goals and Arch-Nemesis
+Establish concrete motivation and a final challenge for the player.
+Story Background: Define the lizard's motivation for the journey (e.g., protecting the forest or rescuing companions).
+Nemesis Design: Introduce the lizard's natural predator—the Snake—as the final boss. The final battle will require the player to master all previously learned transformation and camouflage skills to defeat this powerful predator.
+
+### Stakeholders
+
+<p align="center">
+  <img src="image/Stakeholders.png" height="400">
+</p>
+
+Drawing an Onion Diagram helps us clarify our stakeholders. We have separated them into three groups based on the degree and direction of their impact.
+The First Tier is the development team, including all members of group 12. During the development process, all members' schedules in TB2 will be significantly affected; however, the project provides us with invaluable experience in game development and teamwork.
+The Second Tier consists of the target customers; this means our game is developed specifically to meet their needs. These stacker holders include teacher, TA, testers and players. Of course they will get gameplay experience, and the feedback provided by them will help us improve our game.
+The Third Tier is the external environment, including anyone indirectly affected by the game, such as competitors in the same domain, other developers searching for inspiration, or viewers watching gameplay streams. Although they may not experience this game in person, they will still be affected by the game's content to varying degrees.
+
+### User Story
+
+Peng：
+
+- As a developer, I want to handle all collision logic through a common interface, so that the system can efficiently process interactions between diverse objects (like the player, enemies, and grapple points) without writing redundant code.
+
+Chiu:
+
+- As a player, I want my personal information protected and my game data securely backed up.
+- As a developer, I want the data to be properly stored and structured for easy analysis.
+
+Tsai:
+
+- As a gamer, I want the game to have a reward system, so that when I complete a small level, I can earn a skill. This gives me the motivation to keep improving.
+- As a developer, I want players to become engaged with my game and share it with others, so I need to provide rewards that keep them playing.
+
+Huang:
+
+- As a player,  I want to play a game  which don't need to spend too much time to understand  the game mechanism criteria: tutorial can't not more than 100 words.
+- As a player,  I want to play a game  which have fluence gameplay criteria: check fps of each movement
+
+Cheng:
+
+- As a game designer, I aim to significantly enhance the game's depth by introducing diversified combat modes against bosses and monsters. This includes mechanics such as tongue-based strikes to hit enemies and the use of special environmental triggers to deal damage.Furthermore, I plan to implement complex level environments with dynamic effects: for instance, arctic conditions that cause gradual health drain for the lizard, and tropical rainforests where environmental factors trigger the rapid spawning of minor enemies. These elements will create a more challenging and immersive gameplay experience.
+
+Wei:
+
+- As a player, I want to use the lizard’s tongue to latch onto surfaces and swing across gaps, so that I can move through levels quickly and maintain momentum. Implements: The player can aim and shoot the tongue at valid surfaces.
+The tongue attaches only to designated or logical surfaces.
+The player can swing with physics-based motion.
+Releasing at the right time preserves forward momentum.
+The system feels responsive with minimal input delay.
+
+- As a player, I want to glide while airborne, so that I can extend jumps, adjust my landing, and smoothly chain movement actions together. Implements:The player can activate glide while in the air.
+Glide reduces falling speed.
+The player can slightly control horizontal direction during glide.
+Glide can transition smoothly from a jump or swing.
+Glide ends when landing or stamina (if used) runs out.
 
 ## Design
 
