@@ -10,9 +10,10 @@ let heartImg;
 function preload() {
   mapData = loadJSON('assets/map/level_1.json');
   playerImg = loadImage('assets/img/player_idle.png');
-  tilesetImg = loadImage('assets/img/cut_grass.png'); 
+  tilesetImg = loadImage('assets/img/Tiles/grass.png'); 
   enemyImg = loadImage('assets/img/snake.png'); 
-  heartImg = loadImage('assets/img/heart.png')
+  heartImg = loadImage('assets/img/heart.png');
+  stoneImg = loadImage('assets/img/Tiles/stone.png');
 }
 
 function setup() {
@@ -97,7 +98,7 @@ function draw() {
   translate(camX, 0); 
 
   // 2. Display 階段 (這些東西會隨著相機移動)
-  mapManager.display(tilesetImg);
+  mapManager.display(tilesetImg, stoneImg);
   for (let e of entities) {
     e.display();
   }
