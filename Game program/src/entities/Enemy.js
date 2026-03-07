@@ -1,4 +1,4 @@
-class Enemy extends Entity {
+class Enemy extends Figure {
   constructor(x, y, w, h, img) {
     super(x, y, 'ENEMY');
     this.img = img;
@@ -12,16 +12,25 @@ class Enemy extends Entity {
   }
 
   update(mapManager) {
-    if (this.hearts <= 0) { this.isDead = true; return; }
-    let checkX = this.vel.x > 0 ? this.pos.x + this.width + 5 : this.pos.x - 5;
+    // check alive
+    if (this.hearts <= 0) {
+      this.isDead = true;
+      return;
+    }
+
+    // Detect whether there is a tile on the ground ahead
+    let checkX = this.vel.x > 0
+        ? this.pos.x + this.width + 5
+        : this.pos.x - 5;
     let tileAhead = mapManager.getTileAt(checkX, this.pos.y + this.height + 5);
-    if (tileAhead === 0 || Math.abs(this.pos.x - this.startX) > this.patrolRange) {
+
+    // turn around when: no ground ahead, collision with wall, or patrol range exceeded
+    if (tileAhead === 0 || this.onWallLeft || this.onWallRight ||
+        Math.abs(this.pos.x - this.startX) > this.patrolRange) {
       this.vel.x *= -1;
     }
-    this.pos.x += this.vel.x;
-    this.vel.y += 0.8;
-    this.pos.y += this.vel.y;
-    Physics.resolveCollision(this, mapManager);
+
+    physics.update(this);
   }
 
   onCollide(player) {

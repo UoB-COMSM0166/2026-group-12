@@ -14,7 +14,20 @@ class MapManager {
     this.tileMap = data.layers[0].data;
     this.walls = []; // 存儲牆壁物件供物理引擎查詢
   }
+  /*
+  //TO BE IMPLEMENTED
+  isSolid(tx, ty){
+    if (tx < 0 || ty < 0 || tx >= this.cols || ty >= this.rows) {
+      return true   // 视为墙
+    }
 
+    return this.tiles[ty][tx] === 1
+  }
+
+  isGrapplePoint(targetX, targetY){
+
+  }
+   */
 
   getWalls() {
     let walls = [];
@@ -28,17 +41,18 @@ class MapManager {
     }
     return walls;
   }
+
   // 在 MapManager.js 類別內新增
-getTileAt(worldX, worldY) {
-  let col = Math.floor(worldX / this.tileSize);
-  let row = Math.floor(worldY / this.tileSize);
+  getTileAt(worldX, worldY) {
+    let col = Math.floor(worldX / this.tileSize);
+    let row = Math.floor(worldY / this.tileSize);
 
-  // 檢查索引是否超出地圖邊界
-  if (col < 0 || col >= this.cols || row < 0) return 0;
+    // 檢查索引是否超出地圖邊界
+    if (col < 0 || col >= this.cols || row < 0) return 0;
 
-  let index = col + row * this.cols;
-  return this.tileMap[index] || 0; // 回傳該位置的 Tile ID
-}
+    let index = col + row * this.cols;
+    return this.tileMap[index] || 0; // 回傳該位置的 Tile ID
+  }
 
  // 修改：將 display 放入類別內，並動態計算圖片偏移
   display(tilesetImg) {
@@ -65,5 +79,3 @@ getTileAt(worldX, worldY) {
     }
   }
 }
-
-

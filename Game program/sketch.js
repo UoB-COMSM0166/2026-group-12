@@ -32,6 +32,7 @@ function setup() {
 
   // 怪物定義區(x, y, 寬, 高, 影像)
   // 敵人 1
+  // ===TO BE ALTERED===
   entities.push(new Enemy(600, 400, 50, 50, enemyImg));
   
   // 敵人 2
