@@ -9,6 +9,9 @@ class MapManager {
     
     // 計算世界總寬度，給 Camera 使用
     this.gridWidth = this.cols * this.tileSize;
+
+    this.gridWidth = this.cols * this.tileSize;
+    this.gridHeight = data.height * this.tileSize;
     
     // 取得第一層地圖數據 (Tiled 的 data 是一維陣列)
     this.tileMap = data.layers[0].data;
