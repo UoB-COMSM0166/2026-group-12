@@ -8,8 +8,8 @@ const PlayerState = {
 
 
 class Player extends Figure {
-  constructor(x, y, w, h, type, img) {
-    super(x, y, w, h, type);
+  constructor(x, y, w, h, img) {
+    super(x, y, w, h);
     this.img = img;
     this.scoreValue = 0;
 
@@ -20,12 +20,12 @@ class Player extends Figure {
     this.grapplePressed = false
 
     // ground move
-    this.maxRunSpeed = 6
+    this.maxRunSpeed = 8
     this.acceleration = 0.8;
     this.friction = 0.7
 
     // jump
-    this.jumpForce = -10;
+    this.jumpForce = -16;
     this.jumpCut = 0.5
 
     // jump system
@@ -44,7 +44,7 @@ class Player extends Figure {
     this.maxFallSpeed = 12
 
     // grapple
-    this.grapple = new GrappleSystem(this)
+    //this.grapple = new GrappleSystem(this)
 
     /* glide
     this.isGliding = false
@@ -91,13 +91,13 @@ class Player extends Figure {
     if (this.hearts <= 0) this.isDead = true;
   }
 
-  update(mapManager) {
+  update(mapManager, physics) {
   //--生存狀態更新--
   // A. 低於地面即死，擺盪期間不算
   // === TO BE UPDATED
   // === MOVE TO STATE MACHINE
   if (this.pos.y > height && !this.isHooked) {
-    this.isDead = true; 
+    this.isDead = true;
   }
     
   // B. 硬直與狀態更新
@@ -122,7 +122,7 @@ class Player extends Figure {
 
   this.updateState();
 
-  this.applyMovement()
+  this.applyMovement();
 
   physics.update(this)
   // Map boundary constraints
@@ -240,9 +240,11 @@ class Player extends Figure {
       return
     }
 
+    /*
     if (this.grapplePressed) {
       this.startGrapple()
     }
+
 
   }
 
@@ -251,7 +253,7 @@ class Player extends Figure {
       this.releaseGrapple()
       this.state = PlayerState.FALL
       return
-    }
+    }*/
 
   }
 

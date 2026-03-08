@@ -1,6 +1,6 @@
 class Figure extends Entity {
-    constructor(x, y, w, h, type) {
-        super(x, y, w, h, type);
+    constructor(x, y, w, h) {
+        super(x, y, w, h);
         this.vel = createVector(0, 0);
 
         this.isDead = false;

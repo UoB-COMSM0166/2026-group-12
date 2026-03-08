@@ -3,9 +3,8 @@ class MapManager {
     this.data = data;
     this.tileSize = data.tilewidth;
     this.cols = data.width;
-    //this.rows = data.height;
+    this.rows = data.height;
     this.tileMap = data.layers[0].data;
-    this.gridWidth = this.cols * this.tileSize;
     
     // 計算世界總寬度，給 Camera 使用
     this.gridWidth = this.cols * this.tileSize;
@@ -14,20 +13,18 @@ class MapManager {
     this.tileMap = data.layers[0].data;
     this.walls = []; // 存儲牆壁物件供物理引擎查詢
   }
-  /*
-  //TO BE IMPLEMENTED
-  isSolid(tx, ty){
-    if (tx < 0 || ty < 0 || tx >= this.cols || ty >= this.rows) {
-      return true   // 视为墙
-    }
 
-    return this.tiles[ty][tx] === 1
+
+  isSolid(tileX, tileY) {
+    if (tileX < 0 || tileX >= this.cols || tileY < 0 || tileY >= this.rows) return false;
+    let index = tileX + tileY * this.cols;
+    return (this.tileMap[index] || 0) !== 0;
   }
 
   isGrapplePoint(targetX, targetY){
 
   }
-   */
+
 
   getWalls() {
     let walls = [];
@@ -48,7 +45,7 @@ class MapManager {
     let row = Math.floor(worldY / this.tileSize);
 
     // 檢查索引是否超出地圖邊界
-    if (col < 0 || col >= this.cols || row < 0) return 0;
+    if (col < 0 || col >= this.cols || row < 0 || row >= this.rows) return 0;
 
     let index = col + row * this.cols;
     return this.tileMap[index] || 0; // 回傳該位置的 Tile ID

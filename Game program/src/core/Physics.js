@@ -3,7 +3,7 @@ class Physics {
     this.MapManager = MapManager
     this.tileSize = MapManager.tileSize
 
-    this.gravity = 0.8
+    this.gravity = 0.9
     this.maxFallSpeed = 16
   }
 
@@ -70,7 +70,7 @@ class Physics {
       // falling
       for (let tx = leftTile; tx <= rightTile; tx++) {
         if (this.MapManager.isSolid(tx, bottomTile)) {
-          e.pos.y = bottomTile * this.tileSize - e.hight
+          e.pos.y = bottomTile * this.tileSize - e.height
           e.vel.y = 0
           e.onGround = true
           break

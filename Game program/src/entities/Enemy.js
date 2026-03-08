@@ -1,9 +1,7 @@
 class Enemy extends Figure {
   constructor(x, y, w, h, img) {
-    super(x, y, 'ENEMY');
+    super(x, y, w, h);
     this.img = img;
-    this.width = w;
-    this.height = h;
     this.hearts = 1;
     this.speed = 2;
     this.vel.x = this.speed;
@@ -19,14 +17,11 @@ class Enemy extends Figure {
     }
 
     // Detect whether there is a tile on the ground ahead
-    let checkX = this.vel.x > 0
-        ? this.pos.x + this.width + 5
-        : this.pos.x - 5;
+    let checkX = this.vel.x > 0 ? this.pos.x + this.width + 5 : this.pos.x - 5;
     let tileAhead = mapManager.getTileAt(checkX, this.pos.y + this.height + 5);
 
     // turn around when: no ground ahead, collision with wall, or patrol range exceeded
-    if (tileAhead === 0 || this.onWallLeft || this.onWallRight ||
-        Math.abs(this.pos.x - this.startX) > this.patrolRange) {
+    if (tileAhead === 0 || this.onWallLeft || this.onWallRight || Math.abs(this.pos.x - this.startX) > this.patrolRange) {
       this.vel.x *= -1;
     }
 
@@ -34,13 +29,7 @@ class Enemy extends Figure {
   }
 
   onCollide(player) {
-    // 1. 擺盪攻擊 (身體具備攻擊力)
-    if (player.isHooked) {
-      this.hearts--;
-      return; 
-    }
-
-    // 2. 被踩踏判定 
+    // Stomping detection
     let isStomping = player.vel.y > 0 && (player.pos.y + player.height) < (this.pos.y + this.height * 0.25);
     if (isStomping) {
       this.hearts--;

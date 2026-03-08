@@ -6,6 +6,7 @@ let tilesetImg;
 let enemyImg;
 let entities = [];
 let heartImg;
+let physics;
 
 function preload() {
   mapData = loadJSON('assets/map/level_1.json');
@@ -23,10 +24,12 @@ function setup() {
 
   // 重啟遊戲時清空陣列，避免物件重疊
   entities = [];
-  
+
   //玩家定義區
   mapManager = new MapManager(mapData);
   uiManager = new UIManager;
+  physics = new Physics(mapManager);
+
   player = new Player(100, 50, 72, 48, playerImg);
   entities.push(player);
 
@@ -43,7 +46,7 @@ function setup() {
 
 
   // 建立金幣
-  let coin = new Coin(980, 480);
+  let coin = new Coin(980, 480, 30, 30);
   entities.push(coin);
 }
 
@@ -70,14 +73,15 @@ function draw() {
   for (let e of entities) {
     // 修改：傳入 entities 給玩家進行主動攻擊判定
     if (e === player) {
-      e.update(mapManager, entities); 
+      e.update(mapManager, physics);
     } else {
       e.update(mapManager);
     }
-    
-    // 碰撞檢查 (處理身體接觸)
-    if (e !== player && typeof e.checkPlayerCollision === 'function') {
-      e.checkPlayerCollision(player);
+
+    if (e !== player) {
+      if (overlaps(player, e)) {
+        e.onCollide(player)
+      }
     }
   }
 
@@ -109,4 +113,11 @@ function draw() {
   // 3. UI 階段 (放在 pop 之後，才會固定在螢幕上)
   uiManager.display(heartImg); 
 
+}
+
+function overlaps(a, b) {
+  return a.left   < b.right  &&
+      a.right  > b.left   &&
+      a.top    < b.bottom &&
+      a.bottom > b.top
 }

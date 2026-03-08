@@ -1,9 +1,8 @@
 class Entity {
-  constructor(x, y, w, h, type) {
+  constructor(x, y, w, h) {
     this.pos = createVector(x, y);
     this.width = w;
     this.height = h;
-    this.type = type; // 'PLAYER', ENEMY', 'COIN', 'HEAL'
 
     this.active = true
   }
