@@ -8,6 +8,7 @@ class MapManager {
     
     // 計算世界總寬度，給 Camera 使用
     this.gridWidth = this.cols * this.tileSize;
+    this.gridHeight = this.rows * this.tileSize;
     
     // 取得第一層地圖數據 (Tiled 的 data 是一維陣列)
     this.tileMap = data.layers[0].data;
@@ -52,23 +53,21 @@ class MapManager {
   }
 
  // 修改：將 display 放入類別內，並動態計算圖片偏移
-  display(grassImg, stoneImg) {
-  let sourceTileSize = 60;
+  display(grassImg, stoneImg){
+    let sourceTileSize = 60;
 
-  for (let i = 0; i < this.tileMap.length; i++) {
-    let id = this.tileMap[i];
-    if (id === 0) continue;
+    for (let i = 0; i < this.tileMap.length; i++) {
+      let id = this.tileMap[i];
+      if (id === 0) continue;
 
-    let x = (i % this.cols) * this.tileSize;
-    let y = Math.floor(i / this.cols) * this.tileSize;
+      let x = (i % this.cols) * this.tileSize;
+      let y = Math.floor(i / this.cols) * this.tileSize;
 
-    if (id === 1) {
-      image(grassImg, x, y, this.tileSize, this.tileSize, 0, 0, sourceTileSize, sourceTileSize);
-    } else if (id === 2) {
-      image(stoneImg, x, y, this.tileSize, this.tileSize, 0, 0, sourceTileSize, sourceTileSize);
+      if (id === 1) {
+        image(grassImg, x, y, this.tileSize, this.tileSize, 0, 0, sourceTileSize, sourceTileSize);
+      } else if (id === 2) {
+        image(stoneImg, x, y, this.tileSize, this.tileSize, 0, 0, sourceTileSize, sourceTileSize);
+      }
     }
   }
 }
-}
-
-
