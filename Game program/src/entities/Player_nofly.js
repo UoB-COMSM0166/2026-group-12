@@ -71,6 +71,16 @@ class Player extends Figure {
     this.attackTimer = 0;
     this.attackRange = 200; // 舌頭攻擊距離
      */
+
+    // 扇形擺盪定義區 ---
+    this.isHooked = false;
+    this.hookPoint = null;
+    this.tongueLen = 0;
+    this.startAngle = 0;      // 勾住瞬間的角度
+    this.angleTurned = 0;     // 已經旋轉了多少弧度 (0 ~ PI)
+    this.swingDir = 0;        // 旋轉方向 (1 或 -1)
+    this.swingSpeed = 0.04;   // 擺盪速度 (數值越小越慢)
+    this.maxGrabDist = 700;   // 最大射程
   }
 
   //人物受傷定義---
