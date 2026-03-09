@@ -1,0 +1,73 @@
+class MapManager {
+  constructor(data) {
+    this.data = data;
+    this.tileSize = data.tilewidth;
+    this.cols = data.width;
+    this.rows = data.height;
+    this.tileMap = data.layers[0].data;
+    
+    // 計算世界總寬度，給 Camera 使用
+    this.gridWidth = this.cols * this.tileSize;
+    this.gridHeight = this.rows * this.tileSize;
+    
+    // 取得第一層地圖數據 (Tiled 的 data 是一維陣列)
+    this.tileMap = data.layers[0].data;
+    this.walls = []; // 存儲牆壁物件供物理引擎查詢
+  }
+
+
+  isSolid(tileX, tileY) {
+    if (tileX < 0 || tileX >= this.cols || tileY < 0 || tileY >= this.rows) return false;
+    let index = tileX + tileY * this.cols;
+    return (this.tileMap[index] || 0) !== 0;
+  }
+
+  isGrapplePoint(targetX, targetY){
+
+  }
+
+
+  getWalls() {
+    let walls = [];
+    for (let i = 0; i < this.tileMap.length; i++) {
+      let id = this.tileMap[i];
+      if (id !== 0) { // 假設 ID 不等於 0 的都是地板
+        let x = (i % this.cols) * this.tileSize;
+        let y = Math.floor(i / this.cols) * this.tileSize;
+        walls.push({ x: x, y: y, w: this.tileSize, h: this.tileSize });
+      }
+    }
+    return walls;
+  }
+
+  // 在 MapManager.js 類別內新增
+  getTileAt(worldX, worldY) {
+    let col = Math.floor(worldX / this.tileSize);
+    let row = Math.floor(worldY / this.tileSize);
+
+    // 檢查索引是否超出地圖邊界
+    if (col < 0 || col >= this.cols || row < 0 || row >= this.rows) return 0;
+
+    let index = col + row * this.cols;
+    return this.tileMap[index] || 0; // 回傳該位置的 Tile ID
+  }
+
+ // 修改：將 display 放入類別內，並動態計算圖片偏移
+  display(grassImg, stoneImg){
+    let sourceTileSize = 60;
+
+    for (let i = 0; i < this.tileMap.length; i++) {
+      let id = this.tileMap[i];
+      if (id === 0) continue;
+
+      let x = (i % this.cols) * this.tileSize;
+      let y = Math.floor(i / this.cols) * this.tileSize;
+
+      if (id === 1) {
+        image(grassImg, x, y, this.tileSize, this.tileSize, 0, 0, sourceTileSize, sourceTileSize);
+      } else if (id === 2) {
+        image(stoneImg, x, y, this.tileSize, this.tileSize, 0, 0, sourceTileSize, sourceTileSize);
+      }
+    }
+  }
+}
