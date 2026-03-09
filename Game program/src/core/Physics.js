@@ -1,29 +1,95 @@
 class Physics {
-  static resolveCollision(player, mapManager) {
-    let walls = mapManager.getWalls(); // 取得地圖中所有的方塊
-    
-    // 這裡我們假設玩家只有「向下掉」的地面碰撞
-    for (let wall of walls) {
-      if (this.isRectOverlap(player, wall)) {
-        
-        // 檢查玩家是否正從上方落下 (Player 的底部在 Wall 的頂部附近)
-        if (player.vel.y > 0 && (player.pos.y + player.height - player.vel.y) <= wall.y) {
-          player.pos.y = wall.y - player.height; // 強制把玩家推回方塊上方
-          player.vel.y = 0;                      // 停止向下掉的速度
-          player.state = 'IDLE';                 // 回到站立狀態
-          player.canJump = true;                 // 允許再次跳躍
-        }
-       
-      }
-    }
+  constructor(MapManager) {
+    this.MapManager = MapManager
+    this.tileSize = MapManager.tileSize
+
+    this.gravity = 0.9
+    this.maxFallSpeed = 16
   }
 
-  static isRectOverlap(r1, r2) {
-  // r1 是 Player (有 pos.x, pos.y, width, height)
-  // r2 是 Wall (Tiled 傳回的物件，有 x, y, w, h)
-  return r1.pos.x < r2.x + r2.w &&
-         r1.pos.x + r1.width > r2.x &&
-         r1.pos.y < r2.y + r2.h &&
-         r1.pos.y + r1.height > r2.y;
-}
+
+  update(figure) {
+    figure.resetCollisionState()
+
+    // === gravity ===
+    figure.vel.y += this.gravity
+
+    figure.vel.y = min(figure.vel.y, this.maxFallSpeed)
+
+    // === movement ===
+    this.moveX(figure)
+    this.moveY(figure)
+
+  }
+
+
+  moveX(e) {
+    e.pos.x += e.vel.x
+
+    let leftTile = floor((e.left+1) / this.tileSize)
+    let rightTile = floor((e.right-1) / this.tileSize)
+    let topTile = floor((e.top+1) / this.tileSize)
+    let bottomTile = floor((e.bottom-1) / this.tileSize)
+
+    if (e.vel.x > 0) {
+      // moving right
+      for (let ty = topTile; ty <= bottomTile; ty++) {
+        if (this.MapManager.isSolid(rightTile, ty)) {
+          e.pos.x = rightTile * this.tileSize - e.width
+          e.vel.x = 0
+          e.onWallRight = true
+          break
+        }
+      }
+    }
+
+    else if (e.vel.x < 0) {
+      // moving left
+      for (let ty = topTile; ty <= bottomTile; ty++) {
+        if (this.MapManager.isSolid(leftTile, ty)) {
+          e.pos.x = (leftTile + 1) * this.tileSize
+          e.vel.x = 0
+          e.onWallLeft = true
+          break
+        }
+      }
+    }
+
+  }
+
+
+  moveY(e) {
+    e.pos.y += e.vel.y
+
+    let leftTile = floor((e.left+1) / this.tileSize)
+    let rightTile = floor((e.right-1) / this.tileSize)
+    let topTile = floor((e.top+1) / this.tileSize)
+    let bottomTile = floor((e.bottom-1) / this.tileSize)
+
+    if (e.vel.y > 0) {
+      // falling
+      for (let tx = leftTile; tx <= rightTile; tx++) {
+        if (this.MapManager.isSolid(tx, bottomTile)) {
+          e.pos.y = bottomTile * this.tileSize - e.height
+          e.vel.y = 0
+          e.onGround = true
+          break
+        }
+      }
+    }
+
+    else if (e.vel.y < 0) {
+      // hitting ceiling
+      for (let tx = leftTile; tx <= rightTile; tx++) {
+        if (this.MapManager.isSolid(tx, topTile)) {
+          e.pos.y = (topTile + 1) * this.tileSize
+          e.vel.y = 0
+          e.hitCeiling = true
+          break
+        }
+      }
+    }
+
+  }
+
 }

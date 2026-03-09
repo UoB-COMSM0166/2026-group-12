@@ -1,7 +1,9 @@
 class Coin extends Entity {
-  constructor(x, y) {
-    super(x, y, 'COIN');
+  constructor(x, y, w, h) {
+    super(x, y, w, h);
     this.scoreValue = 100;
+
+    this.isDead = false;
   }
 
   update() {

@@ -6,6 +6,7 @@ let tilesetImg;
 let enemyImg;
 let entities = [];
 let heartImg;
+let physics;
 let uiManager;
 
 function preload() {
@@ -22,18 +23,26 @@ function setup() {
   canvas.elt.oncontextmenu = () => false;
 
   entities = [];
-  
+
+  //玩家定義區
   mapManager = new MapManager(mapData);
-  uiManager = new UIManager(); // 初始化 UIManager
+  uiManager = new UIManager;
+  physics = new Physics(mapManager);
+
   player = new Player(100, 50, 72, 48, playerImg);
   entities.push(player);
 
-  // --- 怪物與物品定義 ---
+  // 怪物定義區(x, y, 寬, 高, 影像)
+  // 敵人 1
   entities.push(new Enemy(600, 400, 50, 50, enemyImg));
   entities.push(new Enemy(1200, 400, 50, 50, enemyImg));
   entities.push(new Enemy(1800, 300, 100, 100, enemyImg));
   entities.push(new Coin(980, 480));
 
+
+  // 建立金幣
+  let coin = new Coin(980, 480, 30, 30);
+  entities.push(coin);
   // 新增：在遊戲後方放置目標「蛋」
   // 這裡設定在 (2200, 400)，並帶入當前關卡編號
   entities.push(new Goal(2200, 400, uiManager.currentLevel)); 
@@ -47,6 +56,18 @@ function draw() {
     return; 
   }
 
+  // 1. Update 階段 (維持不變)
+  for (let e of entities) {
+    // 修改：傳入 entities 給玩家進行主動攻擊判定
+    if (e === player) {
+      e.update(mapManager, physics);
+    } else {
+      e.update(mapManager);
+    }
+
+    if (e !== player) {
+      if (overlaps(player, e)) {
+        e.onCollide(player)
   // 1. Update 階段
   // 只有在 PLAYING 狀態下才執行更新邏輯
   if (uiManager.gameState === "PLAYING") {
@@ -88,6 +109,11 @@ function mousePressed() {
   uiManager.handleMousePressed();
 }
 
+function overlaps(a, b) {
+  return a.left   < b.right  &&
+      a.right  > b.left   &&
+      a.top    < b.bottom &&
+      a.bottom > b.top
 // ==========================================
 // 新增：目標蛋類別 (帶有飄浮動畫)
 // ==========================================

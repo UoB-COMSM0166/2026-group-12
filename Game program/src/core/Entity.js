@@ -1,20 +1,24 @@
-class Entity extends GameObject {
-  constructor(x, y, type) {
-    super(x, y);
-    this.type = type; // 'ENEMY', 'COIN', 'HEAL'
-    this.scoreValue = 0;
+class Entity {
+  constructor(x, y, w, h) {
+    this.pos = createVector(x, y);
+    this.width = w;
+    this.height = h;
+
+    this.active = true
   }
 
-  // 這裡寫所有動態物件通用的邏輯
-  checkPlayerCollision(player) {
-    let d = dist(this.pos.x, this.pos.y, player.pos.x, player.pos.y);
-    if (d < (this.width + player.width) / 2) {
-      this.onCollide(player);
-    }
+  // 每個子類別必須實作這兩個方法
+  update() {
+    throw new Error("Missing update() implementation");
   }
 
-  onCollide(player) {
-    // 抽象方法，交給子類別實作
+  display() {
+    throw new Error("Missing display() implementation");
   }
+
+  get left()   { return this.pos.x }
+  get right()  { return this.pos.x + this.width }
+  get top()    { return this.pos.y }
+  get bottom() { return this.pos.y + this.height }
+
 }
-
