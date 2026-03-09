@@ -58,7 +58,7 @@ class Player extends Figure {
     this.state = PlayerState.IDLE; 
 
     this.facing = -1; // 1: Right, -1: Left
-    this.isDead = false;//Dead flag
+    this.isDead = false; //Dead flag
     this.hearts = 3;      // 3 Heart (chance)
   }
   //get hurt operation
@@ -81,7 +81,7 @@ class Player extends Figure {
   }
 
   update(mapManager, physics) {
-    if(this.pos.y > height){
+    if(this.pos.y > mapManager.gridHeight){
       this.isDead = true;
     }
     this.handleInput();
@@ -187,6 +187,7 @@ class Player extends Figure {
       return
     }
   }
+
   updateStunState() {
     if(this.stunTimer<=0){
       if (this.onGround) {
