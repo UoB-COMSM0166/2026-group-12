@@ -8,6 +8,7 @@ class MapManager {
     
     // 計算世界總寬度，給 Camera 使用
     this.gridWidth = this.cols * this.tileSize;
+    this.gridHeight = this.rows * this.tileSize;
     
     // 取得第一層地圖數據 (Tiled 的 data 是一維陣列)
     this.tileMap = data.layers[0].data;
@@ -52,27 +53,21 @@ class MapManager {
   }
 
  // 修改：將 display 放入類別內，並動態計算圖片偏移
-  display(tilesetImg) {
-    // 新增一個變數定義「圖片裡」的圖塊大小
-    let sourceTileSize = 31;
-    // 動態計算你的圖片一列有幾個圖塊
-    let tilesPerRow = Math.floor(tilesetImg.width / this.tileSize);
+  display(grassImg, stoneImg){
+    let sourceTileSize = 60;
 
     for (let i = 0; i < this.tileMap.length; i++) {
       let id = this.tileMap[i];
-      if (id === 0) continue; 
+      if (id === 0) continue;
 
       let x = (i % this.cols) * this.tileSize;
       let y = Math.floor(i / this.cols) * this.tileSize;
-      
-      // 計算該 ID 在圖片中的位置 (gid = id - 1)
-      let gid = id - 1; 
-      let sx = (gid % tilesPerRow) * sourceTileSize; // 從圖片 31 像素的地方開始切
-      let sy = Math.floor(gid / tilesPerRow) * sourceTileSize;
 
-      // image(圖片, x, y, 顯示寬, 顯示高, 裁切x, 裁切y, 裁切寬, 裁切高)
-      // 這裡會把 31x31 的圖片拉伸成 60x60 顯示
-      image(tilesetImg, x, y, this.tileSize, this.tileSize, sx, sy, sourceTileSize, sourceTileSize);
+      if (id === 1) {
+        image(grassImg, x, y, this.tileSize, this.tileSize, 0, 0, sourceTileSize, sourceTileSize);
+      } else if (id === 2) {
+        image(stoneImg, x, y, this.tileSize, this.tileSize, 0, 0, sourceTileSize, sourceTileSize);
+      }
     }
   }
 }

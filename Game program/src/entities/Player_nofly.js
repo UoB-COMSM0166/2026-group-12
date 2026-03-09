@@ -96,9 +96,10 @@ class Player extends Figure {
   // A. 低於地面即死，擺盪期間不算
   // === TO BE UPDATED
   // === MOVE TO STATE MACHINE
-  if (this.pos.y > height && !this.isHooked) {
+  if (this.pos.y > mapManager.gridHeight && !this.isHooked){
     this.isDead = true;
   }
+
     
   // B. 硬直與狀態更新
   if (this.invincibilityTimer > 0) this.invincibilityTimer--;
