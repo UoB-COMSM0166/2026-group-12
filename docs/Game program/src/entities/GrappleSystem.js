@@ -88,10 +88,8 @@ class GrappleSystem {
         let error = dist - this.ropeLength
         let dir = delta.copy().normalize()
 
-        // rope constraint
         player.pos.sub(p5.Vector.mult(dir, error))
 
-        // remove radial velocity
         let velDot = p5.Vector.dot(player.vel, dir)
         player.vel.sub(p5.Vector.mult(dir, velDot))
     }
@@ -108,4 +106,5 @@ class GrappleSystem {
         line(px, py, this.anchor.x, this.anchor.y)
         noStroke()
     }
+
 }
