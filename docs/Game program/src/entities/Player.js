@@ -27,7 +27,7 @@ class Player extends Figure {
     // ground move
     this.maxRunSpeed = 8
     this.acceleration = 0.8;
-    this.friction = 0.7
+    this.friction = 0.6
 
     // jump
     this.jumpForce = -16;
