@@ -4,7 +4,7 @@ class GrappleSystem {
         this.active = false
         this.anchor = createVector(0,0)
         this.ropeLength = 0
-        this.maxLength = 700
+        this.maxLength = 400
         // Speed
         this.retractSpeed = 4
         this.extendSpeed = 4
@@ -21,6 +21,8 @@ class GrappleSystem {
 
         if (d > this.maxLength) return
         // if (!tileMap.isGrapplePoint(targetX, targetY)) return
+
+        if (!mapManager.isGrapplePoint(targetX, targetY)) return;
 
         this.anchor.set(targetX, targetY)
         this.ropeLength = d
@@ -98,8 +100,15 @@ class GrappleSystem {
         if (!this.active) return
 
         let p = this.player.pos
-        let px = p.x + this.player.width / 2
-        let py = p.y + this.player.height / 2
+        let px
+        if (this.player.facing === -1) {
+            px = p.x + this.player.width * 0.85   // 右邊嘴巴
+        } else {
+            px = p.x + this.player.width * 0.15   // 左邊嘴巴
+        }
+
+        let py = p.y + this.player.height * 0.35
+
 
         stroke(255, 130, 130)
         strokeWeight(4)
