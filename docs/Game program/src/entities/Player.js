@@ -86,7 +86,7 @@ class Player extends Figure {
   }
 
   update(mapManager, physics) {
-    if(this.pos.y > height){
+    if(this.pos.y > mapManager.gridHeight){
       this.isDead = true;
     }
     this.handleInput();
