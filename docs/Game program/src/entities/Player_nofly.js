@@ -103,9 +103,10 @@ class Player extends Figure {
 
   if (this.grapple) {
     if (this.grapplePressed && !this.grapple.active) {
-        if (this.pos) { // 防呆
-            this.grapple.shoot(mouseX, mouseY);
-        }
+            let worldX = mouseX - camX;
+            let worldY = mouseY - camY;
+
+            this.grapple.shoot(worldX, worldY);
     }
     this.grapple.update();
 }
@@ -203,10 +204,14 @@ class Player extends Figure {
   }
 
   startGrapple() {
-    if (this.grapple) {       // 防呆
-        this.grapple.shoot(mouseX, mouseY);
-        this.state = PlayerState.GRAPPLE;
-    }
+    if (this.grapple) {
+
+      let worldX = mouseX - camX;
+      let worldY = mouseY - camY;
+
+      this.grapple.shoot(worldX, worldY);
+      this.state = PlayerState.GRAPPLE;
+  }
   }
 
   updateStunState() {

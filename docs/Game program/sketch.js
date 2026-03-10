@@ -14,6 +14,9 @@ let gameState = 'START'; // 'START', 'MODE', 'TUTORIAL' ,'PLAYING', 'GAMEOVER', 
 let mode = 'NORMAL';
 let antImgs = [];
 
+let camX = 0;
+let camY = 0;
+
 
 function preload() {
   map1Data = loadJSON("assets/map/level_1.json");
@@ -82,8 +85,8 @@ function draw() {
 
     let targetCamX = - player.pos.x + width / 2;
     let targetCamY = levelManager.currentLevel === 1 ? 0 : -player.pos.y + height * 0.8;
-    let camX = constrain(targetCamX, -(mapManager.gridWidth - width), 0);
-    let camY = levelManager.currentLevel === 1 ? 0 : constrain(targetCamY, - mapManager.gridHeight, 0);
+    camX = constrain(targetCamX, -(mapManager.gridWidth - width), 0);
+    camY = levelManager.currentLevel === 1 ? 0 : constrain(targetCamY, - mapManager.gridHeight, 0);
 
     for (let e of entities) {
       e.update(mapManager, physics);
