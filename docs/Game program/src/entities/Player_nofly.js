@@ -11,6 +11,11 @@ class Player extends Figure {
   constructor(x, y, w, h, img) {
     super(x, y, w, h);
     this.img = img;
+
+    this.width = w;
+    this.height = h;
+    this.pos = createVector(x, y)
+    this.vel = createVector(0, 0)
     this.scoreValue = 0;
 
     // input intent
@@ -44,7 +49,7 @@ class Player extends Figure {
     this.maxFallSpeed = 12
 
     // grapple
-    //this.grapple = new GrappleSystem(this)
+    this.grapple = new GrappleSystem(this)
 
     /* glide
     this.isGliding = false
@@ -96,6 +101,15 @@ class Player extends Figure {
   // Map boundary constraints
   this.pos.x = constrain(this.pos.x, 0, mapManager.gridWidth - this.width);
 
+  if (this.grapple) {
+    if (this.grapplePressed && !this.grapple.active) {
+        if (this.pos) { // 防呆
+            this.grapple.shoot(mouseX, mouseY);
+        }
+    }
+    this.grapple.update();
+}
+  
   }
 
   handleInput() {
@@ -187,6 +201,14 @@ class Player extends Figure {
       return
     }
   }
+
+  startGrapple() {
+    if (this.grapple) {       // 防呆
+        this.grapple.shoot(mouseX, mouseY);
+        this.state = PlayerState.GRAPPLE;
+    }
+  }
+
   updateStunState() {
     if(this.stunTimer<=0){
       if (this.onGround) {
@@ -195,8 +217,8 @@ class Player extends Figure {
         this.state = PlayerState.FALL
       }
     }
-  }
-    /*
+  
+    
     if (this.grapplePressed) {
       this.startGrapple()
     }
@@ -205,12 +227,11 @@ class Player extends Figure {
 
   updateGrappleState() {
     if (!this.grapplePressed) {
-      this.releaseGrapple()
+      this.grapple.release()
       this.state = PlayerState.FALL
       return
-    }*/
-
-  
+    }
+  }
 
   applyMovement() {
 
@@ -296,6 +317,7 @@ class Player extends Figure {
     }
 
   }
+  
   display() {
     // === TO BE UPDATED
     
@@ -308,7 +330,7 @@ class Player extends Figure {
       image(this.img, this.pos.x, this.pos.y, this.width, this.height);
     }
     pop();
+
+    this.grapple.display();
   }
 }
-
-

@@ -13,10 +13,7 @@ class GrappleSystem {
     }
 
     shoot(targetX, targetY) {
-        let p = this.player.pos.copy()
-        p.x += this.player.width / 2
-        p.y += this.player.height / 2
-
+        let p = this.player.pos
         let d = dist(p.x, p.y, targetX, targetY)
 
         if (d > this.maxLength) return
@@ -54,15 +51,16 @@ class GrappleSystem {
         let tangent = createVector(-delta.y, delta.x)
         tangent.normalize()
 
+        // swing force scales with rope length: 繩短 → 擺快
         let swingFactor = map(this.ropeLength, 40, this.maxLength, 1.5, 0.5)
         let swingForce = this.baseSwingForce * swingFactor
 
         if (keyIsDown(65)) { // A
-            player.vel.add(p5.Vector.mult(tangent, swingForce))
+            player.vel.add(p5.Vector.mult(tangent, -swingForce))
         }
 
         if (keyIsDown(68)) { // D
-            player.vel.add(p5.Vector.mult(tangent, -swingForce))
+            player.vel.add(p5.Vector.mult(tangent, swingForce))
         }
     }
 
@@ -80,6 +78,7 @@ class GrappleSystem {
 
         let player = this.player
 
+        // 先 swing，再拉回繩子
         this.adjust()
         this.swing()
 
