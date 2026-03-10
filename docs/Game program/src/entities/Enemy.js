@@ -11,7 +11,7 @@ class Enemy extends Figure {
     this.vel.x = this.speed;
   }
 
-  update(mapManager) {
+  update(mapManager, physics) {
     if (this.hearts <= 0) {
       this.isDead = true;
       return;

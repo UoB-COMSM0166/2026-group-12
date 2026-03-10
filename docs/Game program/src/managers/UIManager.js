@@ -1,6 +1,5 @@
 class UIManager {
   constructor() {
-    // 1. 原有的生命屬性
     this.maxHearts = 3;
     this.currentHearts = this.maxHearts;
     this.heartsSize = 30;
@@ -9,15 +8,15 @@ class UIManager {
     this.gap = 35;
 
     this.titleY = 0;
-    this.titleTargetY = 180;
+    this.titleTargetY = 300;
     this.btnScale = 1;
     this.keyButtons = {};
 
     // // 2. 環境管理屬性
     // this.gameState = "PLAYING"; 
-    // this.currentLevel = 1;      
-    // this.maxLevels = 3;         
-    // this.alpha = 0;             
+    // this.currentLevel = 1;
+    // this.maxLevels = 3;
+    // this.alpha = 0;
   }
 
   getScaledHeight(img, targetW) {
@@ -33,7 +32,7 @@ class UIManager {
     image(titleImg, width / 2 - titleW / 2, this.titleY, titleW, titleH);
 
     this.btnX = width / 2;
-    this.btnY = height / 2 + 150;
+    this.btnY = height / 2 + 200;
     this.btnW = 500;
     this.btnH = this.getScaledHeight(startBtnImg, this.btnW);
     this.btnScale = 1 + sin(frameCount * 0.05) * 0.05;
@@ -58,11 +57,11 @@ class UIManager {
 
     let textW = 1000;
     let textH = this.getScaledHeight(modeTextImg, textW);
-    image(modeTextImg, width / 2 - textW / 2, 120, textW, textH);
+    image(modeTextImg, width / 2 - textW / 2, 300, textW, textH);
 
     this.modeBtnW = 250;
     this.modeBtnH = this.getScaledHeight(normalBtnImg, this.modeBtnW);
-    this.modeBtnY = 350;
+    this.modeBtnY = 500;
     this.normalBtnX = (width / 2 - this.modeBtnW / 2) / 2;
     this.hardBtnX = (width / 2 - this.modeBtnW / 2) * 1.5;
 
@@ -83,26 +82,40 @@ class UIManager {
   displayTutorial(tutorialTextImg, startBtnImg) {
     background(173, 228, 249);
 
-    let tutorialtextW = 800;
+    let tutorialtextW = 1000;
     let tutorialtextH = this.getScaledHeight(tutorialTextImg, tutorialtextW);
-    image(tutorialTextImg, width / 2 - tutorialtextW / 2, 0, tutorialtextW, tutorialtextH);
+    image(tutorialTextImg, width / 2 - tutorialtextW / 2, 50, tutorialtextW, tutorialtextH);
 
-    this.btnW = 400;
+    this.btnW = 500;
     this.btnH = this.getScaledHeight(startBtnImg, this.btnW);
-    image(startBtnImg,  width / 2 - this.btnW / 2, 420, this.btnW, this.btnH);
+    image(startBtnImg,  width / 2 - this.btnW / 2, 550, this.btnW, this.btnH);
   }
 
   displayGameOver(gameOverTextImg, restartBtnImg) {
     background(173, 228, 249);
 
-    let gameOverTextW = 1000;
+    let gameOverTextW = 1200;
     let gameOverTextH = this.getScaledHeight(gameOverTextImg, gameOverTextW);
-    image(gameOverTextImg, width / 2 - gameOverTextW / 2, 200, gameOverTextW, gameOverTextH);
+    image(gameOverTextImg, width / 2 - gameOverTextW / 2, 300, gameOverTextW, gameOverTextH);
 
-    this.btnW = 500;
+    this.btnW = 600;
     this.btnH = this.getScaledHeight(restartBtnImg, this.btnW);
     this.btnX = width / 2 - this.btnW / 2;
-    this.btnY = height / 2;
+    this.btnY = height / 2 + 30;
+    image(restartBtnImg,  this.btnX, this.btnY, this.btnW, this.btnH);
+  }
+
+  displayGameWin(gameWinTextImg, restartBtnImg) {
+    background(173, 228, 249);
+
+    let gameWinTextW = 1200;
+    let gameWinTextH = this.getScaledHeight(gameWinTextImg, gameWinTextW);
+    image(gameWinTextImg, width / 2 - gameWinTextW / 2, 300, gameWinTextW, gameWinTextH);
+
+    this.btnW = 600;
+    this.btnH = this.getScaledHeight(restartBtnImg, this.btnW);
+    this.btnX = width / 2 - this.btnW / 2;
+    this.btnY = height / 2 + 30;
     image(restartBtnImg,  this.btnX, this.btnY, this.btnW, this.btnH);
   }
 
@@ -134,19 +147,6 @@ class UIManager {
   }
 
 
-
-
-
-
-
-  // // --- 生命值管理 ---
-  // loseHeart() {
-  //   if (this.currentHearts > 0) this.currentHearts--;
-  // }
-
-  // addHeart() {
-  //   if (this.currentHearts < 3) this.currentHearts++;
-  // }
 
   // // --- 場景控制 ---
   // levelComplete(level) {

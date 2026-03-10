@@ -6,13 +6,13 @@ class MapManager {
     this.rows = data.height;
     this.tileMap = data.layers[0].data;
     
-    // 計算世界總寬度，給 Camera 使用
+    // Calculate the total width of the world and use it for the Camera.
     this.gridWidth = this.cols * this.tileSize;
     this.gridHeight = this.rows * this.tileSize;
     
-    // 取得第一層地圖數據 (Tiled 的 data 是一維陣列)
+    // Obtain the first layer of map data
     this.tileMap = data.layers[0].data;
-    this.walls = []; // 存儲牆壁物件供物理引擎查詢
+    this.walls = [];
   }
 
 
@@ -31,7 +31,7 @@ class MapManager {
     let walls = [];
     for (let i = 0; i < this.tileMap.length; i++) {
       let id = this.tileMap[i];
-      if (id !== 0) { // 假設 ID 不等於 0 的都是地板
+      if (id !== 0) {
         let x = (i % this.cols) * this.tileSize;
         let y = Math.floor(i / this.cols) * this.tileSize;
         walls.push({ x: x, y: y, w: this.tileSize, h: this.tileSize });
@@ -40,19 +40,17 @@ class MapManager {
     return walls;
   }
 
-  // 在 MapManager.js 類別內新增
   getTileAt(worldX, worldY) {
     let col = Math.floor(worldX / this.tileSize);
     let row = Math.floor(worldY / this.tileSize);
 
-    // 檢查索引是否超出地圖邊界
+    // Check if the index exceeds the map boundary.
     if (col < 0 || col >= this.cols || row < 0 || row >= this.rows) return 0;
 
     let index = col + row * this.cols;
-    return this.tileMap[index] || 0; // 回傳該位置的 Tile ID
+    return this.tileMap[index] || 0;
   }
 
- // 修改：將 display 放入類別內，並動態計算圖片偏移
   display(grassImg, stoneImg){
     let sourceTileSize = 60;
 

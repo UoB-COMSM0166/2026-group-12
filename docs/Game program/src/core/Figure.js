@@ -6,7 +6,7 @@ class Figure extends Entity {
         this.isDead = false;
 
         // in order to determine whether an operation is possible, and change the animation
-        this.onGround = false
+        this.onGround = false;
 
         /*
         this.onWallLeft = false
@@ -18,10 +18,10 @@ class Figure extends Entity {
 
 
     resetCollisionState() {
-        this.onGround = false
-        this.onWallLeft = false
-        this.onWallRight = false
-        this.hitCeiling = false
+        this.onGround = false;
+        this.onWallLeft = false;
+        this.onWallRight = false;
+        this.hitCeiling = false;
     }
 
 }
