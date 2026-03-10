@@ -172,9 +172,9 @@ function initGame() {
   physics = new Physics(mapManager);
   levelManager.spawnEnemies(levelManager.currentLevel, mode, entities);
   if (levelManager.currentLevel === 1){
-    player = new Player(4000, 200, 72, 48, playerImg);
+    player = new Player(150, 200, 72, 48, playerImg);
   } else if (levelManager.currentLevel === 2){
-    player = new Player(4000, 200, 72, 48, playerImg);
+    player = new Player(150, 1300, 72, 48, playerImg);
   }
 
   entities.push(player);
