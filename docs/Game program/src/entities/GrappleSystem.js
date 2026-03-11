@@ -63,27 +63,38 @@ class GrappleSystem {
         if (this.player.state === PlayerState.GRAPPLE) this.player.state = PlayerState.FALL
     }
 
-    update() {
-        if (this.tongueFlying) {
-            this.tongueTimer--
-            if (this.tongueTimer <= 0) {
-                this.tongueFlying = false
-            }
-        }
-
-        if (this.active) {
-            let player = this.player
-            this.adjust()
-            this.swing()
-            let delta = p5.Vector.sub(player.pos, this.anchor)
-            let distance = delta.mag()
-            let error = distance - this.ropeLength
-            let dir = delta.copy().normalize()
-            player.pos.sub(p5.Vector.mult(dir, error))
-            let velDot = p5.Vector.dot(player.vel, dir)
-            player.vel.sub(p5.Vector.mult(dir, velDot))
-        }
+update() {
+    // tongue flying countdown
+    if (this.tongueFlying) {
+        this.tongueTimer--
+        if (this.tongueTimer <= 0) this.tongueFlying = false
     }
+
+    if (!this.active) return
+
+    let player = this.player
+
+    // WS 調整繩長
+    this.adjust()
+
+    // A/D 控制擺動
+    this.swing()
+
+    // 繩子限制距離：只在角色超出繩長時做非常小的拉回
+    let delta = p5.Vector.sub(player.pos, this.anchor)
+    let distance = delta.mag()
+    if (distance > this.ropeLength) {
+        let excess = distance - this.ropeLength
+        let dir = delta.copy().normalize()
+        // 這裡比例非常小，讓 WS 有效，角色自己不會亂動
+        player.pos.sub(p5.Vector.mult(dir, excess * 0.02))
+    }
+
+    // 去掉沿繩子方向的速度分量
+    let dir = p5.Vector.sub(player.pos, this.anchor).normalize()
+    let velDot = p5.Vector.dot(player.vel, dir)
+    player.vel.sub(p5.Vector.mult(dir, velDot))
+}
 
     display() {
         let p = this.player.pos
@@ -105,4 +116,4 @@ class GrappleSystem {
             noStroke()
         }
     }
-}
+} 
