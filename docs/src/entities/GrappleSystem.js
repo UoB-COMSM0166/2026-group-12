@@ -6,10 +6,10 @@ class GrappleSystem {
         this.ropeLength = 0
         this.maxLength = 400
         // Speed
-        this.retractSpeed = 2
-        this.extendSpeed = 2
+        this.retractSpeed = 4
+        this.extendSpeed = 4
         // Force
-        this.baseSwingForce = 0.25
+        this.baseSwingForce = 0.2
     }
 
     shoot(targetX, targetY) {
