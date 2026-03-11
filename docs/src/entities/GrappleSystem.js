@@ -18,29 +18,30 @@ class GrappleSystem {
         this.tongueDuration = 5 
     }
 
-shoot(targetX, targetY) {
+    shoot(targetX, targetY) {
+        if (this.active) return false; // 已经抓住，不重复发射
 
-    let p = this.player.pos.copy()
-    p.x += this.player.width / 2
-    p.y += this.player.height / 2
+        let p = this.player.pos.copy()
+        p.x += this.player.width / 2
+        p.y += this.player.height / 2
 
-    let d = dist(p.x, p.y, targetX, targetY)
-    if (d > this.maxLength) return false
+        let d = dist(p.x, p.y, targetX, targetY)
+        if (d > this.maxLength) return false
 
-    this.tongueFlying = true
-    this.tonguePos.set(targetX, targetY)
-    this.tongueTimer = this.tongueDuration 
+        this.tongueFlying = true
+        this.tonguePos.set(targetX, targetY)
+        this.tongueTimer = this.tongueDuration 
 
-    if (mapManager.isGrapplePoint(targetX, targetY)) {
-        this.anchor.set(targetX, targetY)
-        this.ropeLength = d
-        this.active = true
-        this.tongueFlying = false
-        return true
+        if (mapManager.isGrapplePoint(targetX, targetY)) {
+            this.anchor.set(targetX, targetY)
+            this.ropeLength = d
+            this.active = true
+            this.tongueFlying = false
+            return true
+        }
+
+        return false
     }
-
-    return false
-}
 
     adjust() {
         if (!this.active) return
@@ -66,34 +67,37 @@ shoot(targetX, targetY) {
         if (this.player.state === PlayerState.GRAPPLE) this.player.state = PlayerState.FALL
     }
 
-update() {
-    if (this.tongueFlying) {
-        this.tongueTimer--
-        if (this.tongueTimer <= 0) this.tongueFlying = false
+    update() {
+        // tongue flying countdown
+        if (this.tongueFlying) {
+            this.tongueTimer--
+            if (this.tongueTimer <= 0) this.tongueFlying = false
+        }
+
+        if (!this.active) return
+
+        let player = this.player
+
+        // WS 调整绳长
+        this.adjust()
+
+        // A/D 控制摆动
+        this.swing()
+
+        // 绳子约束
+        let delta = p5.Vector.sub(player.pos, this.anchor)
+        let distance = delta.mag()
+        if (distance > this.ropeLength) {
+            let excess = distance - this.ropeLength
+            let dir = delta.copy().normalize()
+            player.pos.sub(p5.Vector.mult(dir, excess * 0.02))
+        }
+
+        // 去掉沿绳子方向速度分量
+        let dir = p5.Vector.sub(player.pos, this.anchor).normalize()
+        let velDot = p5.Vector.dot(player.vel, dir)
+        player.vel.sub(p5.Vector.mult(dir, velDot))
     }
-
-    if (!this.active) return
-
-    let player = this.player
-
-    // WS 調整繩長
-    this.adjust()
-
-    // A/D 控制擺動
-    this.swing()
-
-    let delta = p5.Vector.sub(player.pos, this.anchor)
-    let distance = delta.mag()
-    if (distance > this.ropeLength) {
-        let excess = distance - this.ropeLength
-        let dir = delta.copy().normalize()
-        player.pos.sub(p5.Vector.mult(dir, excess * 0.02))
-    }
-
-    let dir = p5.Vector.sub(player.pos, this.anchor).normalize()
-    let velDot = p5.Vector.dot(player.vel, dir)
-    player.vel.sub(p5.Vector.mult(dir, velDot))
-}
 
     display() {
         let p = this.player.pos
@@ -107,7 +111,6 @@ update() {
             noStroke()
         }
 
-        // hooked tongue
         if (this.active) {
             stroke(255,130,130)
             strokeWeight(4)
@@ -115,4 +118,4 @@ update() {
             noStroke()
         }
     }
-} 
+}
