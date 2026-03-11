@@ -18,26 +18,29 @@ class GrappleSystem {
         this.tongueDuration = 5 
     }
 
-    shoot(targetX, targetY) {
-        let p = this.player.pos.copy()
-        p.x += this.player.width / 2
-        p.y += this.player.height / 2
+shoot(targetX, targetY) {
 
-        let d = dist(p.x, p.y, targetX, targetY)
-        if (d > this.maxLength) return
+    let p = this.player.pos.copy()
+    p.x += this.player.width / 2
+    p.y += this.player.height / 2
 
-        this.tongueFlying = true
-        this.tonguePos.set(targetX, targetY)
-        this.tongueTimer = this.tongueDuration 
+    let d = dist(p.x, p.y, targetX, targetY)
+    if (d > this.maxLength) return false
 
-        if (mapManager.isGrapplePoint(targetX, targetY)) {
-            this.anchor.set(targetX, targetY)
-            this.ropeLength = d
-            this.active = true
-            this.player.state = PlayerState.GRAPPLE
-            this.tongueFlying = false
-        }
+    this.tongueFlying = true
+    this.tonguePos.set(targetX, targetY)
+    this.tongueTimer = this.tongueDuration 
+
+    if (mapManager.isGrapplePoint(targetX, targetY)) {
+        this.anchor.set(targetX, targetY)
+        this.ropeLength = d
+        this.active = true
+        this.tongueFlying = false
+        return true
     }
+
+    return false
+}
 
     adjust() {
         if (!this.active) return
@@ -64,7 +67,6 @@ class GrappleSystem {
     }
 
 update() {
-    // tongue flying countdown
     if (this.tongueFlying) {
         this.tongueTimer--
         if (this.tongueTimer <= 0) this.tongueFlying = false
@@ -80,17 +82,14 @@ update() {
     // A/D 控制擺動
     this.swing()
 
-    // 繩子限制距離：只在角色超出繩長時做非常小的拉回
     let delta = p5.Vector.sub(player.pos, this.anchor)
     let distance = delta.mag()
     if (distance > this.ropeLength) {
         let excess = distance - this.ropeLength
         let dir = delta.copy().normalize()
-        // 這裡比例非常小，讓 WS 有效，角色自己不會亂動
         player.pos.sub(p5.Vector.mult(dir, excess * 0.02))
     }
 
-    // 去掉沿繩子方向的速度分量
     let dir = p5.Vector.sub(player.pos, this.anchor).normalize()
     let velDot = p5.Vector.dot(player.vel, dir)
     player.vel.sub(p5.Vector.mult(dir, velDot))
