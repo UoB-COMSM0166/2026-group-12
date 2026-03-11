@@ -40,7 +40,8 @@ class Enemy extends Figure {
       player.bottom < this.pos.y + this.height * 0.5;
     if (isStomping) {
       this.takeDamage();
-      player.vel.y = -18;
+      player.vel.y = -16;
+      player.vel.x = 0;
       return;
     }
 
