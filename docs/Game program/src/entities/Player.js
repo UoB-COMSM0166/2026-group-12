@@ -25,7 +25,7 @@ class Player extends Figure {
     this.grapplePressed = false
 
     // ground move
-    this.maxRunSpeed = 8
+    this.maxRunSpeed = 10
     this.acceleration = 0.8;
     this.friction = 0.6
 
@@ -56,7 +56,7 @@ class Player extends Figure {
     this.glideFallSpeed = 3
     */
     // stun system
-    this.stunMax = 10
+    this.stunMax = 30
     this.stunTimer = 0
 
     // State Machine
@@ -76,13 +76,17 @@ class Player extends Figure {
     this.hearts--; 
     uiManager.currentHearts = this.hearts;
     //life check
-    if (this.hearts <= 0) this.isDead = true;
+    if (this.hearts <= 0) {
+      this.isDead = true
+      this.vel.x = 0
+      this.vel.y = -10
+    }
     this.state = PlayerState.STUN
     this.stunTimer = this.stunMax
 
     // beak back
-    this.vel.x = this.facing * 5
-    this.vel.y = -3
+    this.vel.x = this.facing * 12
+    this.vel.y = -10
   }
 
   update(mapManager, physics) {
@@ -97,19 +101,19 @@ class Player extends Figure {
 
     this.applyMovement();
 
-  physics.update(this)
-  // Map boundary constraints
-  this.pos.x = constrain(this.pos.x, 0, mapManager.gridWidth - this.width);
+    physics.update(this)
+    // Map boundary constraints
+    this.pos.x = constrain(this.pos.x, 0, mapManager.gridWidth - this.width);
 
-  if (this.grapple) {
-    if (this.grapplePressed && !this.grapple.active) {
-            let worldX = mouseX - camX;
-            let worldY = mouseY - camY;
+    if (this.grapple) {
+      if (this.grapplePressed && !this.grapple.active) {
+              let worldX = mouseX - camX;
+              let worldY = mouseY - camY;
 
-            this.grapple.shoot(worldX, worldY);
+              this.grapple.shoot(worldX, worldY);
+      }
+      this.grapple.update();
     }
-    this.grapple.update();
-}
   
   }
 
