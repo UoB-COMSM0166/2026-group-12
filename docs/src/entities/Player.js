@@ -6,17 +6,22 @@ const PlayerState = {
   GRAPPLE: "grapple",
   STUN: "stun",
 }
+const Transform = {
+  No: "no",
+  Fire: "fire",
+  Frozen: "frozen",
+}
 
 class Player extends Figure {
-  constructor(x, y, w, h, img) {
-    super(x, y, w, h);
-    this.img = img;
+  constructor(x, y, w, h, img){
+    super(x, y, w, h)
+    this.img = img
 
-    this.width = w;
-    this.height = h;
+    this.width = w
+    this.height = h
     this.pos = createVector(x, y)
     this.vel = createVector(0, 0)
-    this.scoreValue = 0;
+    this.scoreValue = 0
 
     // input intent
     this.inputX = 0
@@ -26,11 +31,11 @@ class Player extends Figure {
 
     // ground move
     this.maxRunSpeed = 10
-    this.acceleration = 0.8;
+    this.acceleration = 0.8
     this.friction = 0.6
 
     // jump
-    this.jumpForce = -16;
+    this.jumpForce = -16
     this.jumpCut = 0.5
 
     // jump system
@@ -60,23 +65,28 @@ class Player extends Figure {
     this.stunTimer = 0
 
     // State Machine
-    this.state = PlayerState.IDLE; 
+    this.state = PlayerState.IDLE
+    // Player Transform
+    this.trans = Transform.Frozen
+    this.transTime = 60000
+    this.transTimer = 60000
+    this.attackCooldown = 0
 
-    this.facing = -1; // 1: Right, -1: Left
-    this.isDead = false;//Dead flag
-    this.hearts = 3;      // 3 Heart (chance)
+    this.facing = -1 // 1: Right, -1: Left
+    this.isDead = false//Dead flag
+    this.hearts = 3    // 3 Heart (chance)
   }
   //get hurt operation
-  takeDamage(enemyX) {
+  takeDamage(enemyX){
     // when player hurt, not get hurt in short time
-    if (this.state === PlayerState.STUN) return;
+    if (this.state === PlayerState.STUN) return
 
     //statement update
     //-heart
-    this.hearts--; 
-    uiManager.currentHearts = this.hearts;
+    this.hearts--
+    uiManager.currentHearts = this.hearts
     //life check
-    if (this.hearts <= 0) {
+    if (this.hearts <= 0){
       this.isDead = true
       this.vel.x = 0
       this.vel.y = -10
@@ -88,59 +98,90 @@ class Player extends Figure {
     this.vel.x = this.facing * 12
     this.vel.y = -10
   }
-
-  update(mapManager, physics) {
-    if(this.pos.y > mapManager.gridHeight){
-      this.isDead = true;
+  //transform apply
+  applyTrans(formChange){
+    this.trans = formChange
+    this.transTimer = this.transTime
+  }
+  //apply attack
+  applyAttack(){
+    if (this.attackCooldown > 0) return
+    this.attackCooldown = 15
+    let shootX = this.facing === 1 
+    if (this.facing === 1){
+      shootX = this.pos.x + this.width
     }
-    this.handleInput();
+    else {
+      shootX = this.pos.x - 20
+    }
+    let shootY = this.pos.y + (this.height / 2) - 30
+    let newBall = new Ball(shootX, shootY, this.facing, this.trans, null)
+    ball.push(newBall)
 
-    this.updateTimers();
+    
+  }
 
-    this.updateState();
 
-    this.applyMovement();
+  update(mapManager, physics){
+    if (this.pos.y > mapManager.gridHeight){
+      this.isDead = true
+    }
+    this.handleInput()
+
+    this.updateTimers()
+
+    this.updateState()
+
+    this.applyMovement()
+
+    if (this.attackCooldown > 0){
+      this.attackCooldown--
+    }
+    if (this.attackPressed && (this.trans === Transform.Fire || this.trans === Transform.Frozen)){
+       this.applyAttack()
+    }
 
     physics.update(this)
     // Map boundary constraints
-    this.pos.x = constrain(this.pos.x, 0, mapManager.gridWidth - this.width);
+    this.pos.x = constrain(this.pos.x, 0, mapManager.gridWidth - this.width)
 
-    if (this.grapple) {
-      if (this.grapplePressed && !this.grapple.active) {
-              let worldX = mouseX - camX;
-              let worldY = mouseY - camY;
+    if (this.grapple){
+      if (this.grapplePressed && !this.grapple.active){
+              let worldX = mouseX - camX
+              let worldY = mouseY - camY
 
-              this.grapple.shoot(worldX, worldY);
+              this.grapple.shoot(worldX, worldY)
       }
-      this.grapple.update();
+      this.grapple.update()
     }
-  
   }
 
-  handleInput() {
+  handleInput(){
     this.inputX = 0
 
     // TO BE IMPLEMENTED
     // A
-    if (keyIsDown(65)) {
+    if (keyIsDown(65)){
       this.inputX -= 1
       this.facing = 1
     }
 
     // D
-    if (keyIsDown(68)) {
+    if (keyIsDown(68)){
       this.inputX += 1
       this.facing = -1
     }
 
     this.jumpPressed = keyIsDown(87) // W
     this.grapplePressed = mouseIsPressed // LEFT_PRESSED
+    //Frozen & Fire Attack
+    this.attackPressed = keyIsDown(70)
 
   }
 
   // STATE MACHINE
-  updateState() {
-    switch (this.state) {
+  updateState(){
+    switch (this.state){
 
       case PlayerState.IDLE:
 
@@ -166,85 +207,86 @@ class Player extends Figure {
     }
   }
 
-  updateGroundState() {
+  updateGroundState(){
     this.tryJump()
 
-    if (!this.onGround) {
+    if (!this.onGround){
       this.state = PlayerState.FALL
       return
     }
 
-    if (this.inputX === 0) {
+    if (this.inputX === 0){
       this.state = PlayerState.IDLE
     }
-    else {
+    else{
       this.state = PlayerState.RUN
     }
 
-    if (this.grapplePressed) {
+    if (this.grapplePressed){
       this.startGrapple()
     }
 
   }
 
-  updateJumpState() {
-    if (this.vel.y > 0) {
+  updateJumpState(){
+    if (this.vel.y > 0){
       this.state = PlayerState.FALL
     }
 
-    if (this.grapplePressed) {
+    if (this.grapplePressed){
       this.startGrapple()
     }
 
   }
 
-  updateFallState() {
+  updateFallState(){
     this.tryJump()
 
-    if (this.onGround) {
+    if (this.onGround){
       this.state = PlayerState.RUN
       return
     }
   }
 
-  startGrapple() {
-    if (this.grapple) {
+  startGrapple(){
+    if (this.grapple){
 
-      let worldX = mouseX - camX;
-      let worldY = mouseY - camY;
+      let worldX = mouseX - camX
+      let worldY = mouseY - camY
 
-      this.grapple.shoot(worldX, worldY);
-      this.state = PlayerState.GRAPPLE;
+      this.grapple.shoot(worldX, worldY)
+      this.state = PlayerState.GRAPPLE
   }
   }
 
-  updateStunState() {
-    if(this.stunTimer<=0){
-      if (this.onGround) {
+  updateStunState(){
+    if (this.stunTimer<=0){
+      if (this.onGround){
         this.state = PlayerState.IDLE
-      } else {
+      } 
+      else{
         this.state = PlayerState.FALL
       }
     }
   
     
-    if (this.grapplePressed) {
+    if(this.grapplePressed){
       this.startGrapple()
     }
 
   }
 
-  updateGrappleState() {
-    if (!this.grapplePressed) {
+  updateGrappleState(){
+    if (!this.grapplePressed){
       this.grapple.release()
       this.state = PlayerState.FALL
       return
     }
   }
 
-  applyMovement() {
+  applyMovement(){
 
-    switch (this.state) {
+    switch (this.state){
 
       case PlayerState.IDLE:
 
@@ -259,24 +301,24 @@ class Player extends Figure {
         break
 
       case PlayerState.STUN:
-        this.applyStunMovement(); 
-        break;
+        this.applyStunMovement()
+        break
     }
 
   }
 
-  applyGroundMovement() {
+  applyGroundMovement(){
     this.vel.x += this.inputX * this.acceleration
 
     this.vel.x = constrain(this.vel.x, -this.maxRunSpeed, this.maxRunSpeed)
 
-    if (this.inputX === 0) {
+    if (this.inputX === 0){
       this.vel.x *= this.friction
     }
 
   }
 
-  applyAirMovement() {
+  applyAirMovement(){
     this.vel.x += this.inputX * this.airAcceleration
 
     this.vel.x *= this.airDrag
@@ -285,13 +327,14 @@ class Player extends Figure {
   applyStunMovement(){
     if(this.onGround){
       this.vel.x *= this.friction
-    } else {
+    } 
+    else{
       this.vel.x *= this.airDrag
     }
   }
 
-  tryJump() {
-    if (this.jumpBufferTimer > 0 && this.coyoteTimer > 0) {
+  tryJump(){
+    if (this.jumpBufferTimer > 0 && this.coyoteTimer > 0){
       this.vel.y = this.jumpForce
 
       this.jumpBufferTimer = 0
@@ -303,43 +346,64 @@ class Player extends Figure {
   }
 
   // Allow Player to jump for several frames after leaving the platform.
-  updateTimers() {
+  updateTimers(){
     // coyote time
-    if (this.onGround) {
+    if (this.onGround){
       this.coyoteTimer = this.coyoteTime
     }
-    else if (this.coyoteTimer > 0) {
+    else if (this.coyoteTimer > 0){
       this.coyoteTimer--
     }
 
     // jump buffer
-    if (this.jumpPressed) {
+    if (this.jumpPressed){
       this.jumpBufferTimer = this.jumpBufferTime
     }
-    else if (this.jumpBufferTimer > 0) {
+    else if (this.jumpBufferTimer > 0){
       this.jumpBufferTimer--
     }
 
     // stun timer
-    if (this.stunTimer > 0) {
+    if (this.stunTimer > 0){
       this.stunTimer--
     }
 
+    // transform timer
+    if (this.trans !== Transform.No){
+      if (this.transTimer > 0){
+        this.transTimer--
+      }
+      else{
+        this.trans = Transform.No
+      }
+    }
   }
   
-  display() {
+  display(){
     // === TO BE UPDATED
     
-    push();
-    if (this.facing === -1) {
-      translate(this.pos.x + this.width, this.pos.y);
-      scale(-1, 1);
-      image(this.img, 0, 0, this.width, this.height);
-    } else {
-      image(this.img, this.pos.x, this.pos.y, this.width, this.height);
+    push()
+    // transform
+    if (this.trans === Transform.Fire){
+      tint(255, 100, 100)
+    } 
+    else if (this.trans === Transform.Frozen){
+      tint(100, 200, 255)
     }
-    pop();
+    else{
+      noTint()
+    }
 
-    this.grapple.display();
+    if (this.facing === -1){
+      translate(this.pos.x + this.width, this.pos.y)
+      scale(-1, 1)
+      image(this.img, 0, 0, this.width, this.height)
+    } 
+    else{
+      image(this.img, this.pos.x, this.pos.y, this.width, this.height)
+    }
+    pop()
+
+    this.grapple.display()
   }
 }
