@@ -14,6 +14,9 @@ let gameState = 'START'; // 'START', 'MODE', 'TUTORIAL' ,'PLAYING', 'GAMEOVER', 
 let mode = 'NORMAL';
 let antImgs = [];
 let ball = [];
+let fireballImg;
+let iceballImg;
+let blueButterfly, redButterfly;
 
 let camX = 0;
 let camY = 0;
@@ -28,6 +31,10 @@ function preload() {
   stoneImg = loadImage("assets/img/Tiles/stone.png");
   heartImg = loadImage('assets/img/uiManager/heart.png');
   goalImg = loadImage("assets/img/goal.png");
+  fireballImg = loadImage("assets/img/fireball.png");
+  iceballImg = loadImage("assets/img/iceball.png");
+  blueButterfly = loadImage('assets/img/item/blueButterfly.png');
+  redButterfly = loadImage('assets/img/item/redButterfly.png');
 
   titleTextImg = loadImage('assets/img/uiManager/text/title.png');
   modeTextImg = loadImage('assets/img/uiManager/text/mode_text.png');
@@ -104,11 +111,11 @@ function draw() {
         let b = ball[i];
         b.update(physics);
         for (let e of entities){
-          if (e !== player && !e.isDead && overlaps(b, e)){
+          if (e instanceof Enemy && !e.isDead && overlaps(b, e)){
           e.takeDamage(1, b.element);
           b.isDead = true;
           break;
-         }
+          }
         }
         //dead ball
         if (b.isDead){
