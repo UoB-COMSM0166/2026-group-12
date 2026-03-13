@@ -1,0 +1,101 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="78194936-bcf7-4766-b9a6-8a4f43ece619" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/Game program/src/core/Figure.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Game program/src/entities/GrappleSystem.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Game program/sketch.js" beforeDir="false" afterPath="$PROJECT_DIR$/Game program/sketch.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Game program/src/core/Entity.js" beforeDir="false" afterPath="$PROJECT_DIR$/Game program/src/core/Entity.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Game program/src/core/GameObject.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Game program/src/core/Physics.js" beforeDir="false" afterPath="$PROJECT_DIR$/Game program/src/core/PhysicsSystem.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Game program/src/entities/Enemy.js" beforeDir="false" afterPath="$PROJECT_DIR$/Game program/src/entities/Enemy.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Game program/src/entities/Player_nofly.js" beforeDir="false" afterPath="$PROJECT_DIR$/Game program/src/entities/Player_nofly.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Game program/src/managers/MapManager.js" beforeDir="false" afterPath="$PROJECT_DIR$/Game program/src/managers/MapManager.js" afterDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_BRANCH_BY_REPOSITORY">
+      <map>
+        <entry key="$PROJECT_DIR$" value="Joe" />
+      </map>
+    </option>
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="ProjectColorInfo">{
+  &quot;customColor&quot;: &quot;&quot;,
+  &quot;associatedIndex&quot;: 6
+}</component>
+  <component name="ProjectId" id="3AWQ3RZHIW127bowABDObGJNVuC" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "ModuleVcsDetector.initialDetectionPerformed": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "RunOnceActivity.git.unshallow": "true",
+    "RunOnceActivity.typescript.service.memoryLimit.init": "true",
+    "git-widget-placeholder": "Demo",
+    "kotlin-language-version-configured": "true",
+    "last_opened_file_path": "C:/Users/Pig洋/Desktop/Software DP/2026-group-12",
+    "node.js.detected.package.eslint": "true",
+    "node.js.detected.package.tslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.tslint": "(autodetect)",
+    "nodejs_package_manager_path": "npm",
+    "settings.editor.selected.configurable": "vcs.Subversion.SSH",
+    "vue.rearranger.settings.migration": "true"
+  }
+}]]></component>
+  <component name="RunManager">
+    <configuration default="true" type="JetRunConfigurationType">
+      <module name="2026-group-12" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration default="true" type="KotlinStandaloneScriptRunConfigurationType">
+      <module name="2026-group-12" />
+      <option name="filePath" />
+      <method v="2" />
+    </configuration>
+  </component>
+  <component name="SharedIndexes">
+    <attachedChunks>
+      <set>
+        <option value="bundled-jdk-30f59d01ecdd-26cb7f24e5b0-intellij.indexing.shared.core-IU-253.29346.240" />
+        <option value="bundled-js-predefined-d6986cc7102b-9b0f141eb926-JavaScript-IU-253.29346.240" />
+      </set>
+    </attachedChunks>
+  </component>
+  <component name="SvnConfiguration">
+    <configuration>C:\Users\Pig洋\AppData\Roaming\Subversion</configuration>
+  </component>
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="78194936-bcf7-4766-b9a6-8a4f43ece619" name="Changes" comment="" />
+      <created>1772705648544</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1772705648544</updated>
+      <workItem from="1772705650354" duration="2501000" />
+      <workItem from="1772730635670" duration="5307000" />
+      <workItem from="1772749664047" duration="1781000" />
+      <workItem from="1772805151388" duration="12642000" />
+      <workItem from="1772833299739" duration="4232000" />
+      <workItem from="1772888360863" duration="13347000" />
+    </task>
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="3" />
+  </component>
+</project>
