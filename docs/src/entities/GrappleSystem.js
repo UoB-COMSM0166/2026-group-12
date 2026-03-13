@@ -5,115 +5,117 @@ class GrappleSystem {
         this.anchor = createVector(0,0)
         this.ropeLength = 0
         this.maxLength = 400
+
         // Speed
-        this.retractSpeed = 4
-        this.extendSpeed = 4
-        // Force
-        this.baseSwingForce = 0.2
+        this.retractSpeed = 2
+        this.extendSpeed = 2
+        this.baseSwingForce = 0.25
+
+        // tongue appear
+        this.tongueFlying = false
+        this.tonguePos = createVector(0,0)
+        this.tongueTimer = 0 
+        this.tongueDuration = 5 
     }
 
     shoot(targetX, targetY) {
+        if (this.active) return false; // 已经抓住，不重复发射
+
         let p = this.player.pos.copy()
         p.x += this.player.width / 2
         p.y += this.player.height / 2
 
         let d = dist(p.x, p.y, targetX, targetY)
+        if (d > this.maxLength) return false
 
-        if (d > this.maxLength) return
-        // if (!tileMap.isGrapplePoint(targetX, targetY)) return
+        this.tongueFlying = true
+        this.tonguePos.set(targetX, targetY)
+        this.tongueTimer = this.tongueDuration 
 
-        if (!mapManager.isGrapplePoint(targetX, targetY)) return;
+        if (mapManager.isGrapplePoint(targetX, targetY)) {
+            this.anchor.set(targetX, targetY)
+            this.ropeLength = d
+            this.active = true
+            this.tongueFlying = false
+            return true
+        }
 
-        this.anchor.set(targetX, targetY)
-        this.ropeLength = d
-        this.active = true
-        this.player.state = PlayerState.GRAPPLE
+        return false
     }
 
-    adjust(){
+    adjust() {
         if (!this.active) return
-
-        if (keyIsDown(87)) { // W
-            this.ropeLength -= this.retractSpeed
-        }
-
-        if (keyIsDown(83)) { // S
-            this.ropeLength += this.extendSpeed
-        }
-
+        if (keyIsDown(87)) this.ropeLength -= this.retractSpeed
+        if (keyIsDown(83)) this.ropeLength += this.extendSpeed
         this.ropeLength = constrain(this.ropeLength, 40, this.maxLength)
     }
 
-    swing(){
+    swing() {
         if (!this.active) return
-
         let player = this.player
         let delta = p5.Vector.sub(player.pos, this.anchor)
-
         if (delta.mag() === 0) return
-
-        // tangent vector (perpendicular to rope)
-        let tangent = createVector(-delta.y, delta.x)
-        tangent.normalize()
-
-        let swingFactor = map(this.ropeLength, 40, this.maxLength, 1.5, 0.5)
-        let swingForce = this.baseSwingForce * swingFactor
-
-        if (keyIsDown(65)) { // A
-            player.vel.add(p5.Vector.mult(tangent, swingForce))
-        }
-
-        if (keyIsDown(68)) { // D
-            player.vel.add(p5.Vector.mult(tangent, -swingForce))
-        }
+        let tangent = createVector(-delta.y, delta.x).normalize()
+        let swingForce = this.baseSwingForce * map(this.ropeLength, 40, this.maxLength, 1.5, 0.5)
+        if (keyIsDown(65)) player.vel.add(p5.Vector.mult(tangent, swingForce))
+        if (keyIsDown(68)) player.vel.add(p5.Vector.mult(tangent, -swingForce))
     }
 
     release() {
         if (!this.active) return
-
         this.active = false
-        if (this.player.state === PlayerState.GRAPPLE){
-            this.player.state = PlayerState.FALL
-        }
+        if (this.player.state === PlayerState.GRAPPLE) this.player.state = PlayerState.FALL
     }
 
     update() {
+        // tongue flying countdown
+        if (this.tongueFlying) {
+            this.tongueTimer--
+            if (this.tongueTimer <= 0) this.tongueFlying = false
+        }
+
         if (!this.active) return
 
         let player = this.player
 
+        // WS 调整绳长
         this.adjust()
+
+        // A/D 控制摆动
         this.swing()
 
+        // 绳子约束
         let delta = p5.Vector.sub(player.pos, this.anchor)
-        let dist = delta.mag()
-        let error = dist - this.ropeLength
-        let dir = delta.copy().normalize()
+        let distance = delta.mag()
+        if (distance > this.ropeLength) {
+            let excess = distance - this.ropeLength
+            let dir = delta.copy().normalize()
+            player.pos.sub(p5.Vector.mult(dir, excess * 0.02))
+        }
 
-        player.pos.sub(p5.Vector.mult(dir, error))
-
+        // 去掉沿绳子方向速度分量
+        let dir = p5.Vector.sub(player.pos, this.anchor).normalize()
         let velDot = p5.Vector.dot(player.vel, dir)
         player.vel.sub(p5.Vector.mult(dir, velDot))
     }
 
     display() {
-        if (!this.active) return
-
         let p = this.player.pos
-        let px
-        if (this.player.facing === -1) {
-            px = p.x + this.player.width * 0.85   // 右邊嘴巴
-        } else {
-            px = p.x + this.player.width * 0.15   // 左邊嘴巴
-        }
-
+        let px = (this.player.facing === -1) ? p.x + this.player.width * 0.85 : p.x + this.player.width * 0.15
         let py = p.y + this.player.height * 0.35
 
+        if (this.tongueFlying) {
+            stroke(255,130,130)
+            strokeWeight(4)
+            line(px, py, this.tonguePos.x, this.tonguePos.y)
+            noStroke()
+        }
 
-        stroke(255, 130, 130)
-        strokeWeight(4)
-        line(px, py, this.anchor.x, this.anchor.y)
-        noStroke()
+        if (this.active) {
+            stroke(255,130,130)
+            strokeWeight(4)
+            line(px, py, this.anchor.x, this.anchor.y)
+            noStroke()
+        }
     }
-
 }

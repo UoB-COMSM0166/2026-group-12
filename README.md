@@ -219,7 +219,12 @@ Glide ends when landing or stamina (if used) runs out.
 ## Design
 
 - 15% ~750 words 
-- System architecture. Class diagrams, behavioural diagrams. 
+- System architecture. Class diagrams, behavioural diagrams.
+
+Sequence diagram (behavioural diagram)
+<p>
+  <img src="image/sequence_diagram.png" width="1000">
+</p>
 
 ## Implementation
 
@@ -262,3 +267,8 @@ You can delete this section in your own repo, it's just here for information. in
 - **Documentation** of code (5% of report grade)
   - Organise your code so that it could easily be picked up by another team in the future and developed further.
   - Is your repo clearly organised? Is code well commented throughout?
+
+
+
+
+
