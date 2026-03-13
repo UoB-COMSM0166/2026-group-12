@@ -27,14 +27,13 @@ class Ball extends Entity{
       }
       display(){
          push();
-         if (this.element === Transform.Fire){
-           fill(255, 100, 100)
-         } 
-         else if (this.element === Transform.Frozen){
-            fill(100, 200, 255)
-         }
-         ellipse(this.pos.x + this.width / 2, this.pos.y + this.height / 2, this.width, this.height);
-         pop()
+         
+         translate(this.pos.x + this.width/2, this.pos.y + this.height/2);
+         scale(this.facing, 1);
 
-   }	
+         let imgToDraw = (this.element === Transform.Fire) ? fireballImg : iceballImg;
+         image(imgToDraw, -this.width/2, -this.height/2, this.width * 1.3, this.height * 1.3);
+
+         pop();
+      }
 }

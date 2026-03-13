@@ -82,13 +82,18 @@ class LevelManager {
   }
 
   spawnItems(level, entities) {
-    let data = this.getLevelData(level);
+      let data = this.getLevelData(level);
+      let items = data.items || [];
 
-    let items = data.items || [];
-    
-    for (let i of items) {
-      entities.push(new Items(i.x, i.y, i.size, i.size, null, i.element));
-    }
+      for (let i of items) {
+          let img = null;
+          if (i.element === Transform.Fire) {
+              img = redButterfly;  
+          } else if (i.element === Transform.Frozen) {
+              img = blueButterfly; 
+          }
+          entities.push(new Items(i.x, i.y, i.size * 1.5, i.size, img, i.element));
+      }
   }
 
     getGoalPos() {

@@ -19,7 +19,7 @@ class GrappleSystem {
     }
 
     shoot(targetX, targetY) {
-        if (this.active) return false; // 已经抓住，不重复发射
+        if (this.active) return false; 
 
         let p = this.player.pos.copy()
         p.x += this.player.width / 2
@@ -78,13 +78,12 @@ class GrappleSystem {
 
         let player = this.player
 
-        // WS 调整绳长
+        // W/S 
         this.adjust()
 
-        // A/D 控制摆动
+        // A/D 
         this.swing()
 
-        // 绳子约束
         let delta = p5.Vector.sub(player.pos, this.anchor)
         let distance = delta.mag()
         if (distance > this.ropeLength) {
@@ -92,8 +91,7 @@ class GrappleSystem {
             let dir = delta.copy().normalize()
             player.pos.sub(p5.Vector.mult(dir, excess * 0.02))
         }
-
-        // 去掉沿绳子方向速度分量
+ 
         let dir = p5.Vector.sub(player.pos, this.anchor).normalize()
         let velDot = p5.Vector.dot(player.vel, dir)
         player.vel.sub(p5.Vector.mult(dir, velDot))
