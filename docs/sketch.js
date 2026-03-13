@@ -189,7 +189,11 @@ function initGame() {
   let data = levelManager.getLevelData(levelManager.currentLevel, mode);
   mapManager = new MapManager(data.mapData);
   physics = new Physics(mapManager);
+  //enemy
   levelManager.spawnEnemies(levelManager.currentLevel, mode, entities);
+  //items
+  levelManager.spawnItems(levelManager.currentLevel, entities);
+  
   if (levelManager.currentLevel === 1){
     player = new Player(150, 200, 72, 48, playerImg);
   } else if (levelManager.currentLevel === 2){
