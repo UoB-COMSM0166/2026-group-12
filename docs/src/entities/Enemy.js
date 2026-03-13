@@ -24,8 +24,17 @@ class Enemy extends Figure {
     this.patrol(mapManager);
   }
   
-  takeDamage(amount = 1) {
-    this.hearts -= amount;
+  takeDamage(amount = 1, attackElement) {
+    if (attackElement === Transform.Fire){
+      this.hearts -= amount;
+    }
+    else if (attackElement === Transform.Frozen){
+      this.vel.x = 0;
+      this.speed = 0
+    }
+    else {
+       this.hearts -= amount;
+    }
   }
 
   onCollide(player) {
