@@ -91,10 +91,11 @@ class Player extends Figure {
       this.vel.x = 0
       this.vel.y = -10
     }
+
     this.state = PlayerState.STUN
     this.stunTimer = this.stunMax
 
-    // beak back
+    // knock back
     this.vel.x = this.facing * 12
     this.vel.y = -10
   }
@@ -142,16 +143,24 @@ class Player extends Figure {
     }
 
     physics.update(this)
+
     // Map boundary constraints
     this.pos.x = constrain(this.pos.x, 0, mapManager.gridWidth - this.width)
 
-    if (this.grapple){
-      if (this.grapplePressed && !this.grapple.active){
-              let worldX = mouseX - camX
-              let worldY = mouseY - camY
+    if (this.grapple) {
+      if (this.grapplePressed && !this.grapple.active) {
+        let worldX = mouseX - camX;
+        let worldY = mouseY - camY;
 
-              this.grapple.shoot(worldX, worldY)
+        let success = this.grapple.shoot(worldX, worldY)
+        if (success) this.state = PlayerState.GRAPPLE
       }
+
+      if (!this.grapplePressed && this.grapple.active) {
+        this.grapple.release()
+        if (this.state === PlayerState.GRAPPLE) this.state = PlayerState.FALL
+      }
+
       this.grapple.update()
     }
   }
@@ -159,7 +168,6 @@ class Player extends Figure {
   handleInput(){
     this.inputX = 0
 
-    // TO BE IMPLEMENTED
     // A
     if (keyIsDown(65)){
       this.inputX -= 1
@@ -184,7 +192,6 @@ class Player extends Figure {
     switch (this.state){
 
       case PlayerState.IDLE:
-
       case PlayerState.RUN:
         this.updateGroundState()
         break
@@ -225,7 +232,6 @@ class Player extends Figure {
     if (this.grapplePressed){
       this.startGrapple()
     }
-
   }
 
   updateJumpState(){
@@ -236,7 +242,6 @@ class Player extends Figure {
     if (this.grapplePressed){
       this.startGrapple()
     }
-
   }
 
   updateFallState(){
@@ -248,20 +253,19 @@ class Player extends Figure {
     }
   }
 
-  startGrapple(){
-    if (this.grapple){
+  startGrapple() {
+    if (!this.grapple) return;
 
-      let worldX = mouseX - camX
-      let worldY = mouseY - camY
+    let worldX = mouseX - camX;
+    let worldY = mouseY - camY;
 
-      this.grapple.shoot(worldX, worldY)
-      this.state = PlayerState.GRAPPLE
+    let success = this.grapple.shoot(worldX, worldY)
+    if (success) this.state = PlayerState.GRAPPLE
   }
-  }
 
-  updateStunState(){
-    if (this.stunTimer<=0){
-      if (this.onGround){
+  updateStunState() {
+    if(this.stunTimer <= 0){
+      if (this.onGround) {
         this.state = PlayerState.IDLE
       } 
       else{
@@ -273,7 +277,6 @@ class Player extends Figure {
     if(this.grapplePressed){
       this.startGrapple()
     }
-
   }
 
   updateGrappleState(){
@@ -289,13 +292,11 @@ class Player extends Figure {
     switch (this.state){
 
       case PlayerState.IDLE:
-
       case PlayerState.RUN:
         this.applyGroundMovement()
         break
 
       case PlayerState.JUMP:
-
       case PlayerState.FALL:
         this.applyAirMovement()
         break
@@ -304,26 +305,22 @@ class Player extends Figure {
         this.applyStunMovement()
         break
     }
-
   }
 
   applyGroundMovement(){
     this.vel.x += this.inputX * this.acceleration
-
     this.vel.x = constrain(this.vel.x, -this.maxRunSpeed, this.maxRunSpeed)
 
     if (this.inputX === 0){
       this.vel.x *= this.friction
     }
-
   }
 
   applyAirMovement(){
     this.vel.x += this.inputX * this.airAcceleration
-
     this.vel.x *= this.airDrag
-
   }
+
   applyStunMovement(){
     if(this.onGround){
       this.vel.x *= this.friction
@@ -336,13 +333,10 @@ class Player extends Figure {
   tryJump(){
     if (this.jumpBufferTimer > 0 && this.coyoteTimer > 0){
       this.vel.y = this.jumpForce
-
       this.jumpBufferTimer = 0
       this.coyoteTimer = 0
-
       this.state = PlayerState.JUMP
     }
-
   }
 
   // Allow Player to jump for several frames after leaving the platform.
