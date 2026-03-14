@@ -11,7 +11,7 @@ class LevelManager {
         2: {x: 5830, y: 355}
     }
     this.goalW = 150;
-    this.goalH = doorLockedImg.height * (this.goalW / doorLockedImg.width);
+    this.goalH = this.doorLockedImg.height * (this.goalW / this.doorLockedImg.width);
   }
 
 
@@ -115,7 +115,7 @@ class LevelManager {
 
   displayGoal() {
     let goal = this.getGoalPos();
-    let img = uiManager.currentKeys >= 3 ? doorOpenImg : doorLockedImg;
+    let img = uiManager.currentKeys >= 3 ? this.doorOpenImg : this.doorLockedImg;
     image(img, goal.x, goal.y, this.goalW, this.goalH);
   }
 

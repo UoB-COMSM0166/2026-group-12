@@ -14,7 +14,6 @@ class UIManager {
     this.titleTargetY = 300;
     this.btnScale = 1;
     this.keyButtons = {};
-
     // // 2. 環境管理屬性
     // this.gameState = "PLAYING"; 
     // this.currentLevel = 1;
