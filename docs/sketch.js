@@ -208,6 +208,7 @@ function mousePressed() {
       gameState = 'PLAYING';
     }
   } else if (gameState === 'GAMEOVER'){
+
     if (uiManager.isRestartButtonClicked(mouseX, mouseY)) {
       resetGame();
     } else if(uiManager.isHomeButtonClicked(mouseX, mouseY)){
@@ -242,14 +243,16 @@ function initGame() {
   } else if (levelManager.currentLevel === 1){
     player = new Player(150, 200, 72, 48, playerImg);
   } else if (levelManager.currentLevel === 2){
-    player = new Player(150, 400, 72, 48, playerImg);
+    player = new Player(150, 1300, 72, 48, playerImg);
+  } else {
+    player = new Player(150, 200, 72, 48, playerImg);
   }
   entities.push(player);
 }
 
 function resetGame() {
-  initGame();
   player.isDead = false;
+  initGame();
   gameState = 'PLAYING';
 }
 
