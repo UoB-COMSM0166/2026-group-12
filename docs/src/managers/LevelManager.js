@@ -1,28 +1,42 @@
 class LevelManager {
-  constructor(map1Data, map2Data, goalImg) {
+  constructor(map0Data, map1Data, map2Data, doorLockedImg, doorOpenImg) {
     this.currentLevel = 1;
     this.maxLevel = 2;
-    this.mapsData = {1: map1Data, 2: map2Data};
-    this.goalImg = goalImg;
+    this.mapsData = {0: map0Data, 1: map1Data, 2: map2Data};
+    this.doorLockedImg = doorLockedImg;
+    this.doorOpenImg = doorOpenImg;
     this.goalPos = {
-        1: {x: 5880, y: 600},
-        2: {x: 5860, y: 840}
+        0: {x: 2500, y: 475},
+        1: {x: 5830, y: 535},
+        2: {x: 5830, y: 355}
     }
-    this.goalW = 100;
-    this.goalH = goalImg.height * (this.goalW / goalImg.width);
+    this.goalW = 150;
+    this.goalH = doorLockedImg.height * (this.goalW / doorLockedImg.width);
   }
-
 
 
   getLevelData(level) {
     const levels = {
+      0: {
+        mapData: this.mapsData[0],
+        enemies: [
+            {type: 'Ant', x: 300, y: 400, size: 50},
+            {type: 'Ant', x: 1000, y: 400, size: 50},
+            {type: 'Ant', x: 2200, y: 400, size: 50},
+          ],
+        //items
+        items: [
+          {element: Transform.Fire, x: 700, y: 450, size: 80},
+          {element: Transform.Frozen, x: 1940, y: 550, size: 80}
+        ]
+      },
       1: {
         mapData: this.mapsData[1],
         enemies: [
-            {type: 'Ant', x: 400, y: 400, size: 50},
             {type: 'Ant', x: 1400, y: 400, size: 50},
-            {type: 'Ant', x: 2600, y: 400, size: 50},
-            {type: 'Ant', x: 4000, y: 400, size: 50},
+            {type: 'Ant', x: 1750, y: 300, size: 50},
+            {type: 'Ant', x: 2350, y: 200, size: 50},
+            {type: 'Ant', x: 4550, y: 200, size: 50},
             {type: 'Ant', x: 5500, y: 20, size: 50},
           ],
         //items
@@ -50,6 +64,16 @@ class LevelManager {
     return levels[level];
   }
 
+  getTutorialTexts(tutorialTextImg) {
+    return [
+      { img: tutorialTextImg[0], triggerX: 0, endX: 400 }, 
+      { img: tutorialTextImg[1], triggerX: 500, endX: 800 },
+      { img: tutorialTextImg[2], triggerX: 1100, endX: 1500 },
+      { img: tutorialTextImg[3], triggerX: 2000, endX: 2300 },
+      { img: tutorialTextImg[4], triggerX: 2300, endX: 2800 },
+    ];
+  }
+
 
   spawnEnemies(level, entities) {
     let data = this.getLevelData(level);
@@ -75,11 +99,13 @@ class LevelManager {
       }
   }
 
-    getGoalPos() {
+  getGoalPos() {
     return this.goalPos[this.currentLevel];
   }
 
-  isReachedGoal(player) {
+  isReachedGoal(player, uiManager) {
+    if (uiManager.currentKeys < 3) return false;
+
     let goal = this.getGoalPos();
     return player.left < goal.x + this.goalW &&
            player.right > goal.x &&
@@ -89,7 +115,8 @@ class LevelManager {
 
   displayGoal() {
     let goal = this.getGoalPos();
-    image(this.goalImg, goal.x, goal.y, this.goalW, this.goalH);
+    let img = uiManager.currentKeys >= 3 ? doorOpenImg : doorLockedImg;
+    image(img, goal.x, goal.y, this.goalW, this.goalH);
   }
 
   nextLevel() {

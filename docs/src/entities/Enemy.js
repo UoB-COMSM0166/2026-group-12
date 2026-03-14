@@ -53,6 +53,19 @@ update(mapManager, physics) {
     else {
        this.hearts -= amount;
     }
+
+    if (this.hearts <= 0) {
+    let enemies = entities.filter(e => e instanceof Enemy && !e.isDead);
+    let keysNeeded = 3 - uiManager.currentKeys;
+    
+    if (enemies.length <= keysNeeded) {
+      uiManager.currentKeys = min(uiManager.currentKeys + 1, uiManager.maxKeys);
+    } else {
+      if (random() < 0.5) {
+        uiManager.currentKeys = min(uiManager.currentKeys + 1, uiManager.maxKeys);
+      }
+    }
+  }
   }
 
   onCollide(player) {
