@@ -1,16 +1,17 @@
 let mapManager;
-let map1Data, map2Data;
+let map0Data, map1Data, map2Data;
 let tileSetImg, stoneImg;
 let levelManager;
-let goalImg;
+let doorLockedImg, doorOpenImg;
 let player;
 let physics;
 let entities = [];
 let uiManager;
-let titleTextImg, tutorialTextImg, gameOverTextImg, gameWinTextImg;
+let titleTextImg, gameOverTextImg, gameWinTextImg;
+let tutorialTextImg = [];
 let startBtnImg, restartBtnImg, tutorialBtnImg, homeBtnImg;
-let heartImg;
-let gameState = 'START'; // 'START', 'LEVEL_SELECT', 'TUTORIAL' ,'PLAYING', 'GAMEOVER', 'GAMECLEAR'
+let heartImg, keyImg;
+let gameState = 'START'; // 'START', 'LEVEL_SELECT','PLAYING', 'GAMEOVER', 'GAMECLEAR'
 let antImgs = [];
 let ball = [];
 let fireballImg;
@@ -25,6 +26,7 @@ let camY = 0;
 
 
 function preload() {
+  map0Data = loadJSON("assets/map/level_0.json");
   map1Data = loadJSON("assets/map/level_1.json");
   map2Data = loadJSON("assets/map/level_2.json");
 
@@ -32,14 +34,20 @@ function preload() {
   tileSetImg = loadImage("assets/img/Tiles/grass.png");
   stoneImg = loadImage("assets/img/Tiles/stone.png");
   heartImg = loadImage('assets/img/uiManager/heart.png');
-  goalImg = loadImage("assets/img/goal.png");
+  keyImg = loadImage('assets/img/uiManager/key.png');
+  doorLockedImg = loadImage("assets/img/uiManager/door/doorLocked.png");
+  doorOpenImg = loadImage("assets/img/uiManager/door/doorOpen.png");
   fireballImg = loadImage("assets/img/fireball.png");
   iceballImg = loadImage("assets/img/iceball.png");
   blueButterfly = loadImage('assets/img/item/blueButterfly.png');
   redButterfly = loadImage('assets/img/item/redButterfly.png');
 
   titleTextImg = loadImage('assets/img/uiManager/text/title.png');
-  tutorialTextImg = loadImage('assets/img/uiManager/text/tutorialText.png');
+  tutorialTextImg.push(loadImage('assets/img/uiManager/text/tutorial_1_text.png'));
+  tutorialTextImg.push(loadImage('assets/img/uiManager/text/tutorial_2_text.png'));
+  tutorialTextImg.push(loadImage('assets/img/uiManager/text/tutorial_3_text.png'));
+  tutorialTextImg.push(loadImage('assets/img/uiManager/text/tutorial_4_text.png'));
+  tutorialTextImg.push(loadImage('assets/img/uiManager/text/tutorial_5_text.png'));
   gameOverTextImg = loadImage('assets/img/uiManager/text/game_over_text.png');
   gameWinTextImg = loadImage('assets/img/uiManager/text/game_win_text.png');
   levelTextImg = loadImage('assets/img/uiManager/text/level_text.png');
@@ -63,7 +71,7 @@ function setup() {
 
   entities = [];
   uiManager = new UIManager();
-  levelManager = new LevelManager(map1Data, map2Data, goalImg);
+  levelManager = new LevelManager(map0Data, map1Data, map2Data, doorLockedImg, doorOpenImg);
   saveManager = new SaveManager();
   initGame();
 }
@@ -72,7 +80,7 @@ function draw() {
   background(173, 228, 249);
 
   if (gameState === 'START'){
-    uiManager.displayStart(titleTextImg, startBtnImg);
+    uiManager.displayStart(titleTextImg, startBtnImg, tutorialBtnImg);
   } else if (gameState === 'LEVEL_SELECT'){
     uiManager.displayLevel(levelTextImg, levelEggImgs, saveManager);
   } else if (gameState === 'GAMEOVER'){
@@ -80,13 +88,32 @@ function draw() {
   } else if (gameState === 'GAMECLEAR'){
     uiManager.displayGameWin(gameWinTextImg, homeBtnImg);
   } else if (gameState === 'PLAYING'){
+    if (levelManager.currentLevel === 0){
+      let tutorialTexts = levelManager.getTutorialTexts(tutorialTextImg);
+      for (let text of tutorialTexts){
+        if ( player.pos.x >= text.triggerX && player.pos.x < text.endX){
+          let imgW = 800;
+          let imgH = uiManager.getScaledHeight(text.img, imgW);
+          image(text.img, width / 2 - imgW / 2, 200, imgW, imgH);
+        }
+      }
+      if (player.isDead) {
+        player.isDead = false;
+        initGame();
+        return;
+      }
+      if (levelManager.isReachedGoal(player, uiManager)) {
+        gameState = 'GAMECLEAR';
+        return;
+      }
+    }
 
     if (player.isDead) {
       gameState = 'GAMEOVER';
       return;
     }
 
-    if (levelManager.isReachedGoal(player)) {
+    if (levelManager.isReachedGoal(player, uiManager)) {
       saveManager.completeLevel(levelManager.currentLevel);
       if (levelManager.nextLevel()) {
         initGame();
@@ -132,10 +159,10 @@ function draw() {
     push();
     translate(camX, camY);
 
-    if(levelManager.currentLevel === 1){
-      mapManager.display(tileSetImg, stoneImg);
-    } else{
+    if(levelManager.currentLevel === 2){
       mapManager.display(stoneImg, tileSetImg);
+    } else{
+      mapManager.display(tileSetImg, stoneImg);
     }
     levelManager.displayGoal();
   
@@ -148,7 +175,7 @@ function draw() {
 
     pop();
 
-    uiManager.display(heartImg);
+    uiManager.display(heartImg, keyImg);
   }
 }
 
@@ -166,8 +193,12 @@ function mousePressed() {
    if (!uiManager) return;
 
   if (gameState === 'START') {
-    if (uiManager.isButtonClicked(mouseX, mouseY)) {
+    if (uiManager.isStartButtonClicked(mouseX, mouseY)) {
       gameState = 'LEVEL_SELECT';
+    } else if(uiManager.isTutorialButtonClicked(mouseX, mouseY)){
+      levelManager.currentLevel = 0;
+      initGame();
+      gameState = 'PLAYING';
     }
   } else if (gameState === 'LEVEL_SELECT') {
     let level = uiManager.getLevelClicked(mouseX, mouseY);
@@ -197,6 +228,7 @@ function mousePressed() {
 function initGame() {
   entities = [];
   uiManager.currentHearts = uiManager.maxHearts;
+  uiManager.currentKeys = 0;
   let data = levelManager.getLevelData(levelManager.currentLevel);
   mapManager = new MapManager(data.mapData);
   physics = new Physics(mapManager);
@@ -205,12 +237,13 @@ function initGame() {
   //items
   levelManager.spawnItems(levelManager.currentLevel, entities);
   
-  if (levelManager.currentLevel === 1){
+  if (levelManager.currentLevel === 0){
+    player = new Player(50, 200, 72, 48, playerImg);
+  } else if (levelManager.currentLevel === 1){
     player = new Player(150, 200, 72, 48, playerImg);
   } else if (levelManager.currentLevel === 2){
-    player = new Player(150, 1300, 72, 48, playerImg);
+    player = new Player(150, 400, 72, 48, playerImg);
   }
-
   entities.push(player);
 }
 
@@ -222,7 +255,11 @@ function resetGame() {
 
 // for testing
 function keyPressed(){
-   if (key === 'l' || key === 'L') {
+  if (key === 'p' || key === 'P') {
+    console.log('player pos:', player.pos.x, player.pos.y);
+  }
+  
+  if (key === 'l' || key === 'L') {
     saveManager.completeLevel(levelManager.currentLevel);
     if (levelManager.nextLevel()) {
       initGame();

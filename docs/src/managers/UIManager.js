@@ -2,10 +2,13 @@ class UIManager {
   constructor() {
     this.maxHearts = 3;
     this.currentHearts = this.maxHearts;
-    this.heartsSize = 30;
+    this.heartsSize = 40;
+    this.maxKeys = 3;
+    this.currentKeys = 0;
+    this.keySize = 40;
     this.x = 40;
     this.y = 40;
-    this.gap = 35;
+    this.gap = 45;
 
     this.titleY = 0;
     this.titleTargetY = 300;
@@ -23,7 +26,7 @@ class UIManager {
     return img.height * (targetW / img.width);
   }
 
-  displayStart(titleImg, startBtnImg) {
+  displayStart(titleImg, startBtnImg, tutorialBtnImg) {
 
     background(173, 228, 249);
     this.titleY = lerp(this.titleY, this.titleTargetY, 0.05);
@@ -31,24 +34,31 @@ class UIManager {
     let titleH = this.getScaledHeight(titleImg, titleW);
     image(titleImg, width / 2 - titleW / 2, this.titleY, titleW, titleH);
 
-    this.btnX = width / 2;
-    this.btnY = height / 2 + 200;
-    this.btnW = 400;
-    this.btnH = this.getScaledHeight(startBtnImg, this.btnW);
-    this.btnScale = 1 + sin(frameCount * 0.05) * 0.05;
+    let btnW = 300;
+    let gap = 80;
 
-    push();
-    translate(this.btnX, this.btnY);
-    scale(this.btnScale);
-    imageMode(CENTER);
-    image(startBtnImg, 0, 0, this.btnW, this.btnH);
-    pop();
+    this.startBtnW = btnW;
+    this.startBtnH = this.getScaledHeight(startBtnImg, btnW);
+    this.startBtnX = width / 2 - btnW - gap / 2;
+    this.startBtnY = height / 2 + 100;
+    image(startBtnImg, this.startBtnX, this.startBtnY, this.startBtnW, this.startBtnH);
+
+
+    this.tutorialBtnW = btnW;
+    this.tutorialBtnH = this.getScaledHeight(tutorialBtnImg, btnW);
+    this.tutorialBtnX = width / 2 + gap / 2;
+    this.tutorialBtnY = height / 2 + 100;
+    image(tutorialBtnImg, this.tutorialBtnX, this.tutorialBtnY, this.tutorialBtnW, this.tutorialBtnH);
   }
 
+  isStartButtonClicked(mx, my) {
+    return mx > this.startBtnX && mx < this.startBtnX + this.startBtnW &&
+          my > this.startBtnY && my < this.startBtnY + this.startBtnH;
+  }
 
-  isButtonClicked(mx, my) {
-    return mx > this.btnX - this.btnW / 2 && mx < this.btnX + this.btnW / 2 &&
-          my > this.btnY - this.btnH / 2 && my < this.btnY + this.btnH / 2;
+  isTutorialButtonClicked(mx, my) {
+    return mx > this.tutorialBtnX && mx < this.tutorialBtnX + this.tutorialBtnW &&
+          my > this.tutorialBtnY && my < this.tutorialBtnY + this.tutorialBtnH;
   }
 
   displayLevel(levelTextImg, levelBtnImgs, saveManager){
@@ -98,18 +108,6 @@ class UIManager {
       }
     }
     return -1;
-  }
-
-  displayTutorial(tutorialTextImg, startBtnImg) {
-    background(173, 228, 249);
-
-    let tutorialtextW = 1000;
-    let tutorialtextH = this.getScaledHeight(tutorialTextImg, tutorialtextW);
-    image(tutorialTextImg, width / 2 - tutorialtextW / 2, 50, tutorialtextW, tutorialtextH);
-
-    this.btnW = 500;
-    this.btnH = this.getScaledHeight(startBtnImg, this.btnW);
-    image(startBtnImg,  width / 2 - this.btnW / 2, 550, this.btnW, this.btnH);
   }
 
   displayGameOver(gameOverTextImg, restartBtnImg, homeBtnImg) {
@@ -166,16 +164,29 @@ class UIManager {
     if (this.currentHearts < 3) this.currentHearts++;
   }
 
-  display(heartImg){
+  addKey() {
+    if (this.currentKeys < 3) this.currentKeys++;
+  }
+
+  display(heartImg, keyImg){
     for (let i = 0; i < this.maxHearts; i++){
       if (i < this.currentHearts){
         tint(255, 255); 
       } else{
         tint(255, 50);
       }
-
       let xPos = this.x + (i * this.gap);
       image(heartImg, xPos, this.y, this.heartsSize, this.heartsSize);
+    }
+
+    for (let i = 0; i < this.maxKeys; i++) {
+      if (i < this.currentKeys) {
+        tint(255, 255);
+      } else {
+        tint(255, 50);
+      }
+      let keyX = width - this.x - (i + 1) * this.gap;
+      image(keyImg, keyX, this.y, this.keySize, this.keySize);
     }
     noTint();
   }
