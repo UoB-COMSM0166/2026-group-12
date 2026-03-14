@@ -13,6 +13,13 @@ let heartImg;
 let gameState = 'START'; // 'START', 'MODE', 'TUTORIAL' ,'PLAYING', 'GAMEOVER', 'GAMECLEAR'
 let mode = 'NORMAL';
 let antImgs = [];
+let ball = [];
+let fireballImg;
+let iceballImg;
+let blueButterfly, redButterfly;
+
+let camX = 0;
+let camY = 0;
 
 
 function preload() {
@@ -24,6 +31,10 @@ function preload() {
   stoneImg = loadImage("assets/img/Tiles/stone.png");
   heartImg = loadImage('assets/img/uiManager/heart.png');
   goalImg = loadImage("assets/img/goal.png");
+  fireballImg = loadImage("assets/img/fireball.png");
+  iceballImg = loadImage("assets/img/iceball.png");
+  blueButterfly = loadImage('assets/img/item/blueButterfly.png');
+  redButterfly = loadImage('assets/img/item/redButterfly.png');
 
   titleTextImg = loadImage('assets/img/uiManager/text/title.png');
   modeTextImg = loadImage('assets/img/uiManager/text/mode_text.png');
@@ -82,20 +93,36 @@ function draw() {
 
     let targetCamX = - player.pos.x + width / 2;
     let targetCamY = levelManager.currentLevel === 1 ? 0 : -player.pos.y + height * 0.8;
-    let camX = constrain(targetCamX, -(mapManager.gridWidth - width), 0);
-    let camY = levelManager.currentLevel === 1 ? 0 : constrain(targetCamY, - mapManager.gridHeight, 0);
+    camX = constrain(targetCamX, -(mapManager.gridWidth - width), 0);
+    camY = levelManager.currentLevel === 1 ? 0 : constrain(targetCamY, - mapManager.gridHeight, 0);
 
     for (let e of entities) {
       e.update(mapManager, physics);
 
       if (e !== player) {
         if (overlaps(player, e)) {
-          e.onCollide(player)
+          e.onCollide(player);
         }
       }
     }
     entities = entities.filter(e => !e.isDead);
-  
+  //ball move update
+    for (let i = ball.length - 1; i >= 0; i--) {
+        let b = ball[i];
+        b.update(physics);
+        for (let e of entities){
+          if (e instanceof Enemy && !e.isDead && overlaps(b, e)){
+          e.takeDamage(1, b.element);
+          b.isDead = true;
+          break;
+          }
+        }
+        //dead ball
+        if (b.isDead){
+          ball.splice(i, 1);
+        }
+    }
+    
     // Camera logic 
     push();
     translate(camX, camY);
@@ -104,12 +131,14 @@ function draw() {
       mapManager.display(tileSetImg, stoneImg);
     } else{
       mapManager.display(stoneImg, tileSetImg);
-
     }
     levelManager.displayGoal();
-
+  
     for (let e of entities) {
       e.display();
+    }
+    for (let b of ball) {
+        b.display();
     }
 
     pop();
@@ -167,7 +196,11 @@ function initGame() {
   let data = levelManager.getLevelData(levelManager.currentLevel, mode);
   mapManager = new MapManager(data.mapData);
   physics = new Physics(mapManager);
+  //enemy
   levelManager.spawnEnemies(levelManager.currentLevel, mode, entities);
+  //items
+  levelManager.spawnItems(levelManager.currentLevel, entities);
+  
   if (levelManager.currentLevel === 1){
     player = new Player(150, 200, 72, 48, playerImg);
   } else if (levelManager.currentLevel === 2){

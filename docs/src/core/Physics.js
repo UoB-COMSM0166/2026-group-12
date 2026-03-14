@@ -26,8 +26,8 @@ class Physics {
   moveX(e) {
     e.pos.x += e.vel.x
 
-    let leftTile = floor((e.left+1) / this.tileSize)
-    let rightTile = floor((e.right-1) / this.tileSize)
+    let leftTile = floor((e.left) / this.tileSize)
+    let rightTile = floor((e.right) / this.tileSize)
     let topTile = floor((e.top+1) / this.tileSize)
     let bottomTile = floor((e.bottom-1) / this.tileSize)
 
@@ -63,8 +63,8 @@ class Physics {
 
     let leftTile = floor((e.left+1) / this.tileSize)
     let rightTile = floor((e.right-1) / this.tileSize)
-    let topTile = floor((e.top+1) / this.tileSize)
-    let bottomTile = floor((e.bottom-1) / this.tileSize)
+    let topTile = floor((e.top) / this.tileSize)
+    let bottomTile = floor((e.bottom) / this.tileSize)
 
     if (e.vel.y > 0) {
       // falling

@@ -34,7 +34,12 @@ class LevelManager {
             {type: 'Ant', x: 4500, y: 400, size: 80},
             {type: 'Ant', x: 5500, y: 400, size: 100},
           ]
-        }
+        },
+        //items
+        items: [
+          {element: Transform.Fire, x: 700, y: 400, size: 80},
+          {element: Transform.Frozen, x: 900, y: 400, size: 80}
+        ]
       },
       2: {
         mapData: this.mapsData[2],
@@ -56,7 +61,11 @@ class LevelManager {
             {type: 'Ant', x: 4530, y: 100, size: 100},
             {type: 'Ant', x: 5100, y: 300, size: 100},
           ]
-        }
+        },
+        items: [
+          {element: Transform.Fire, x: 300, y: 200, size: 80},
+          {element: Transform.Frozen, x: 400, y: 200, size: 80}
+        ]
       }
     };
     return levels[level];
@@ -70,6 +79,21 @@ class LevelManager {
     for (let e of enemies) {
       if (e.type === 'Ant') entities.push(new Ant(e.x, e.y, e.size));
     }
+  }
+
+  spawnItems(level, entities) {
+      let data = this.getLevelData(level);
+      let items = data.items || [];
+
+      for (let i of items) {
+          let img = null;
+          if (i.element === Transform.Fire) {
+              img = redButterfly;  
+          } else if (i.element === Transform.Frozen) {
+              img = blueButterfly; 
+          }
+          entities.push(new Items(i.x, i.y, i.size * 1.5, i.size, img, i.element));
+      }
   }
 
     getGoalPos() {

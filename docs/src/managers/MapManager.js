@@ -22,9 +22,9 @@ class MapManager {
     return (this.tileMap[index] || 0) !== 0;
   }
 
-  isGrapplePoint(targetX, targetY){
-
-  }
+  isGrapplePoint(x, y){
+    return this.getTileAt(x, y) !== 0;
+  } 
 
 
   getWalls() {
