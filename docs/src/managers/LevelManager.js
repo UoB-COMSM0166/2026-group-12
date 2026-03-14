@@ -18,23 +18,13 @@ class LevelManager {
     const levels = {
       1: {
         mapData: this.mapsData[1],
-        enemies: {
-          NORMAL: [
-            {type: 'Ant', x: 600, y: 400, size: 50},
+        enemies: [
+            {type: 'Ant', x: 400, y: 400, size: 50},
             {type: 'Ant', x: 1400, y: 400, size: 50},
-            {type: 'Ant', x: 2600, y: 400, size: 80},
-            {type: 'Ant', x: 4000, y: 400, size: 80},
-            {type: 'Ant', x: 5500, y: 400, size: 50},
+            {type: 'Ant', x: 2600, y: 400, size: 50},
+            {type: 'Ant', x: 4000, y: 400, size: 50},
+            {type: 'Ant', x: 5500, y: 20, size: 50},
           ],
-          HARD: [
-            {type: 'Ant', x: 700, y: 400, size: 50},
-            {type: 'Ant', x: 1800, y: 400, size: 50},
-            {type: 'Ant', x: 2700, y: 400, size: 80},
-            {type: 'Ant', x: 3800, y: 400, size: 80},
-            {type: 'Ant', x: 4500, y: 400, size: 80},
-            {type: 'Ant', x: 5500, y: 400, size: 100},
-          ]
-        },
         //items
         items: [
           {element: Transform.Fire, x: 700, y: 400, size: 80},
@@ -43,25 +33,14 @@ class LevelManager {
       },
       2: {
         mapData: this.mapsData[2],
-        enemies: {
-          NORMAL: [
+        enemies: [
             {type: 'Ant', x: 900, y: 800, size: 50},
             {type: 'Ant', x: 1800, y: 500, size: 50},
-            {type: 'Ant', x: 2100, y: 500, size: 80},
+            {type: 'Ant', x: 2100, y: 500, size: 50},
             {type: 'Ant', x: 3600, y: 400, size: 50},
-            {type: 'Ant', x: 4530, y: 200, size: 80},
-            {type: 'Ant', x: 5100, y: 300, size: 80},
-          ],
-          HARD: [
-            {type: 'Ant', x: 470, y: 1300, size: 50},
-            {type: 'Ant', x: 810, y: 800, size: 50},
-            {type: 'Ant', x: 1200, y: 200, size: 80},
-            {type: 'Ant', x: 2100, y: 500, size: 80},
-            {type: 'Ant', x: 3600, y: 400, size: 80},
-            {type: 'Ant', x: 4530, y: 100, size: 100},
-            {type: 'Ant', x: 5100, y: 300, size: 100},
-          ]
-        },
+            {type: 'Ant', x: 4530, y: 200, size: 50},
+            {type: 'Ant', x: 5100, y: 300, size: 50},
+        ],
         items: [
           {element: Transform.Fire, x: 300, y: 200, size: 80},
           {element: Transform.Frozen, x: 400, y: 200, size: 80}
@@ -72,9 +51,9 @@ class LevelManager {
   }
 
 
-  spawnEnemies(level, mode, entities) {
-    let data = this.getLevelData(level, mode);
-    let enemies = data.enemies[mode] || data.enemies['NORMAL'];
+  spawnEnemies(level, entities) {
+    let data = this.getLevelData(level);
+    let enemies = data.enemies;
     
     for (let e of enemies) {
       if (e.type === 'Ant') entities.push(new Ant(e.x, e.y, e.size));

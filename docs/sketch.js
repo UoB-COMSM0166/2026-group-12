@@ -7,16 +7,18 @@ let player;
 let physics;
 let entities = [];
 let uiManager;
-let titleTextImg, modeTextImg, tutorialTextImg, gameOverTextImg, gameWinTextImg;
-let startBtnImg, normalBtnImg, hardBtnImg, restartBtnImg;
+let titleTextImg, tutorialTextImg, gameOverTextImg, gameWinTextImg;
+let startBtnImg, restartBtnImg, tutorialBtnImg, homeBtnImg;
 let heartImg;
-let gameState = 'START'; // 'START', 'MODE', 'TUTORIAL' ,'PLAYING', 'GAMEOVER', 'GAMECLEAR'
-let mode = 'NORMAL';
+let gameState = 'START'; // 'START', 'LEVEL_SELECT', 'TUTORIAL' ,'PLAYING', 'GAMEOVER', 'GAMECLEAR'
 let antImgs = [];
 let ball = [];
 let fireballImg;
 let iceballImg;
 let blueButterfly, redButterfly;
+let levelEggImgs = [];
+let levelTextImg;
+let saveManager;
 
 let camX = 0;
 let camY = 0;
@@ -37,15 +39,18 @@ function preload() {
   redButterfly = loadImage('assets/img/item/redButterfly.png');
 
   titleTextImg = loadImage('assets/img/uiManager/text/title.png');
-  modeTextImg = loadImage('assets/img/uiManager/text/mode_text.png');
   tutorialTextImg = loadImage('assets/img/uiManager/text/tutorialText.png');
   gameOverTextImg = loadImage('assets/img/uiManager/text/game_over_text.png');
   gameWinTextImg = loadImage('assets/img/uiManager/text/game_win_text.png');
+  levelTextImg = loadImage('assets/img/uiManager/text/level_text.png');
 
   startBtnImg = loadImage('assets/img/uiManager/button/startBtn.png');
-  normalBtnImg = loadImage('assets/img/uiManager/button/normalBtn.png');
-  hardBtnImg = loadImage('assets/img/uiManager/button/hardBtn.png');
   restartBtnImg = loadImage('assets/img/uiManager/button/restartBtn.png');
+  tutorialBtnImg = loadImage('assets/img/uiManager/button/tutorialBtn.png');
+  homeBtnImg = loadImage('assets/img/uiManager/button/homeBtn.png')
+  levelEggImgs.push(loadImage('assets/img/uiManager/egg/level1_egg.png'));
+  levelEggImgs.push(loadImage('assets/img/uiManager/egg/level2_egg.png'));
+  levelEggImgs.push(loadImage('assets/img/uiManager/egg/level3_egg.png'));
 
   for (let i = 1; i <= 8; i++) {
     antImgs.push(loadImage(`assets/img/enemy/ant/ant-${i}.png`));
@@ -59,6 +64,7 @@ function setup() {
   entities = [];
   uiManager = new UIManager();
   levelManager = new LevelManager(map1Data, map2Data, goalImg);
+  saveManager = new SaveManager();
   initGame();
 }
 
@@ -67,14 +73,12 @@ function draw() {
 
   if (gameState === 'START'){
     uiManager.displayStart(titleTextImg, startBtnImg);
-  } else if (gameState === 'MODE'){
-    uiManager.displayMode(modeTextImg, normalBtnImg, hardBtnImg);
-  } else if (gameState === 'TUTORIAL'){
-    uiManager.displayTutorial(tutorialTextImg, startBtnImg);
+  } else if (gameState === 'LEVEL_SELECT'){
+    uiManager.displayLevel(levelTextImg, levelEggImgs, saveManager);
   } else if (gameState === 'GAMEOVER'){
-    uiManager.displayGameOver(gameOverTextImg, restartBtnImg);
+    uiManager.displayGameOver(gameOverTextImg, restartBtnImg, homeBtnImg);
   } else if (gameState === 'GAMECLEAR'){
-    uiManager.displayGameWin(gameWinTextImg, restartBtnImg);
+    uiManager.displayGameWin(gameWinTextImg, homeBtnImg);
   } else if (gameState === 'PLAYING'){
 
     if (player.isDead) {
@@ -83,6 +87,7 @@ function draw() {
     }
 
     if (levelManager.isReachedGoal(player)) {
+      saveManager.completeLevel(levelManager.currentLevel);
       if (levelManager.nextLevel()) {
         initGame();
       } else {
@@ -162,28 +167,26 @@ function mousePressed() {
 
   if (gameState === 'START') {
     if (uiManager.isButtonClicked(mouseX, mouseY)) {
-      gameState = 'MODE';
+      gameState = 'LEVEL_SELECT';
     }
-  } else if (gameState ==='MODE'){
-    if (uiManager.isNormalButtonClicked(mouseX, mouseY)) {
-      mode = 'NORMAL';
+  } else if (gameState === 'LEVEL_SELECT') {
+    let level = uiManager.getLevelClicked(mouseX, mouseY);
+    if (level !== -1) {
+      levelManager.currentLevel = level;
       initGame();
-      gameState = 'TUTORIAL';
-    } else if (uiManager.isHardButtonClicked(mouseX, mouseY)){
-      mode = 'HARD'
-      initGame();
-      gameState = 'TUTORIAL';
-    }
-  } else if (gameState === 'TUTORIAL'){
-    if (uiManager.isButtonClicked(mouseX, mouseY)) {
       gameState = 'PLAYING';
     }
   } else if (gameState === 'GAMEOVER'){
     if (uiManager.isRestartButtonClicked(mouseX, mouseY)) {
       resetGame();
+    } else if(uiManager.isHomeButtonClicked(mouseX, mouseY)){
+      levelManager.currentLevel = 1;
+      resetGame();
+      gameState = 'START';
     }
   } else if (gameState === 'GAMECLEAR'){
-    if (uiManager.isRestartButtonClicked(mouseX, mouseY)) {
+    if (uiManager.isHomeButtonClicked(mouseX, mouseY)) {
+      levelManager.currentLevel = 1;
       resetGame();
       gameState = 'START';
     }
@@ -193,11 +196,12 @@ function mousePressed() {
 
 function initGame() {
   entities = [];
-  let data = levelManager.getLevelData(levelManager.currentLevel, mode);
+  uiManager.currentHearts = uiManager.maxHearts;
+  let data = levelManager.getLevelData(levelManager.currentLevel);
   mapManager = new MapManager(data.mapData);
   physics = new Physics(mapManager);
   //enemy
-  levelManager.spawnEnemies(levelManager.currentLevel, mode, entities);
+  levelManager.spawnEnemies(levelManager.currentLevel, entities);
   //items
   levelManager.spawnItems(levelManager.currentLevel, entities);
   
@@ -211,37 +215,23 @@ function initGame() {
 }
 
 function resetGame() {
-  levelManager.currentLevel = 1;
   initGame();
   player.isDead = false;
-  uiManager.currentHearts = uiManager.maxHearts;
   gameState = 'PLAYING';
 }
 
+// for testing
+function keyPressed(){
+   if (key === 'l' || key === 'L') {
+    saveManager.completeLevel(levelManager.currentLevel);
+    if (levelManager.nextLevel()) {
+      initGame();
+    } else {
+      gameState = 'GAMECLEAR';
+    }
+  }
 
-// class Goal {
-//   constructor(x, y, level) {
-//     this.baseX = x;
-//     this.baseY = y;
-//     this.y = y;
-//     this.level = level;
-//     this.size = 60;
-//     this.isDead = false;
-//     this.floatOffset = 0;
-//   }
-
-//   update() {
-//     this.floatOffset = sin(frameCount * 0.05) * 10;
-//     this.y = this.baseY + this.floatOffset;
-
-//     let d = dist(player.pos.x, player.pos.y, this.baseX, this.y);
-//     if (d < this.size) {
-//       this.isDead = true;
-//       uiManager.levelComplete(this.level);
-//     }
-//   }
-
-//   display() {
-//     uiManager.drawPixelEgg(this.baseX, this.y, this.size, this.level);
-//   }
-// }
+  if (key === 'c' || key === 'C') {
+    saveManager.clear();
+  }
+}

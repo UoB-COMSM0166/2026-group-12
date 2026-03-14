@@ -33,7 +33,7 @@ class UIManager {
 
     this.btnX = width / 2;
     this.btnY = height / 2 + 200;
-    this.btnW = 500;
+    this.btnW = 400;
     this.btnH = this.getScaledHeight(startBtnImg, this.btnW);
     this.btnScale = 1 + sin(frameCount * 0.05) * 0.05;
 
@@ -51,32 +51,53 @@ class UIManager {
           my > this.btnY - this.btnH / 2 && my < this.btnY + this.btnH / 2;
   }
 
- 
-  displayMode(modeTextImg, normalBtnImg, hardBtnImg) {
+  displayLevel(levelTextImg, levelBtnImgs, saveManager){
     background(173, 228, 249);
 
     let textW = 1000;
-    let textH = this.getScaledHeight(modeTextImg, textW);
-    image(modeTextImg, width / 2 - textW / 2, 300, textW, textH);
+    let textH = this.getScaledHeight(levelTextImg, textW);
+    image(levelTextImg, width / 2 - textW / 2, 300, textW, textH);
 
-    this.modeBtnW = 250;
-    this.modeBtnH = this.getScaledHeight(normalBtnImg, this.modeBtnW);
-    this.modeBtnY = 500;
-    this.normalBtnX = (width / 2 - this.modeBtnW / 2) / 2;
-    this.hardBtnX = (width / 2 - this.modeBtnW / 2) * 1.5;
+    let levelBtnW = 180;
+    let levelBtnH = this.getScaledHeight(levelBtnImgs[0], levelBtnW);
+    let gap = 100;
+    let totalW = levelBtnImgs.length * (levelBtnW + gap) - gap;
+    let startX = width / 2 - totalW / 2;
+    let levelBtnY = 500;
 
-    image(normalBtnImg, this.normalBtnX, this.modeBtnY, this.modeBtnW, this.modeBtnH);
-    image(hardBtnImg, this.hardBtnX, this.modeBtnY, this.modeBtnW, this.modeBtnH);
+    // store level button positions
+    this.levelBtns = [];
+
+    for (let i = 0; i < levelBtnImgs.length; i++) {
+      let x = startX + i * (levelBtnW + gap);
+      let unlocked = saveManager.isUnlocked(i + 1);
+
+      if (unlocked) {
+        tint(255, 255);
+      } else {
+        tint(100, 100);
+      }
+
+      image(levelBtnImgs[i], x, levelBtnY, levelBtnW, levelBtnH);
+
+      this.levelBtns.push({ x, y: levelBtnY, w: levelBtnW, h: levelBtnH, unlocked });
+    }
+
+    noTint();
+
   }
 
-  isNormalButtonClicked(mx, my) {
-    return mx > this.normalBtnX && mx < this.normalBtnX + this.modeBtnW &&
-          my > this.modeBtnY   && my < this.modeBtnY   + this.modeBtnH;
-  }
-
-  isHardButtonClicked(mx, my) {
-    return mx > this.hardBtnX && mx < this.hardBtnX + this.modeBtnW &&
-          my > this.modeBtnY  && my < this.modeBtnY  + this.modeBtnH;
+  getLevelClicked(mx, my) {
+    if (!this.levelBtns) return -1;
+    for (let i = 0; i < this.levelBtns.length; i++) {
+      let b = this.levelBtns[i];
+      if (b.unlocked &&
+          mx > b.x && mx < b.x + b.w &&
+          my > b.y && my < b.y + b.h) {
+        return i + 1; 
+      }
+    }
+    return -1;
   }
 
   displayTutorial(tutorialTextImg, startBtnImg) {
@@ -91,38 +112,51 @@ class UIManager {
     image(startBtnImg,  width / 2 - this.btnW / 2, 550, this.btnW, this.btnH);
   }
 
-  displayGameOver(gameOverTextImg, restartBtnImg) {
+  displayGameOver(gameOverTextImg, restartBtnImg, homeBtnImg) {
     background(173, 228, 249);
-
     let gameOverTextW = 1200;
     let gameOverTextH = this.getScaledHeight(gameOverTextImg, gameOverTextW);
     image(gameOverTextImg, width / 2 - gameOverTextW / 2, 300, gameOverTextW, gameOverTextH);
 
-    this.btnW = 600;
-    this.btnH = this.getScaledHeight(restartBtnImg, this.btnW);
-    this.btnX = width / 2 - this.btnW / 2;
-    this.btnY = height / 2 + 30;
-    image(restartBtnImg,  this.btnX, this.btnY, this.btnW, this.btnH);
+    let btnW = 300;
+    let gap = 80;
+
+    this.restartBtnW = btnW;
+    this.restartBtnH = this.getScaledHeight(restartBtnImg, btnW);
+    this.restartBtnX = width / 2 - btnW - gap / 2;
+    this.restartBtnY = height / 2 + 30;
+    image(restartBtnImg, this.restartBtnX, this.restartBtnY, this.restartBtnW, this.restartBtnH);
+
+    this.homeBtnW = btnW;
+    this.homeBtnH = this.getScaledHeight(homeBtnImg, btnW);
+    this.homeBtnX = width / 2 + gap / 2;
+    this.homeBtnY = height / 2 + 30;
+    image(homeBtnImg, this.homeBtnX, this.homeBtnY, this.homeBtnW, this.homeBtnH);
   }
 
-  displayGameWin(gameWinTextImg, restartBtnImg) {
-    background(173, 228, 249);
+  isRestartButtonClicked(mx, my) {
+    return mx > this.restartBtnX && mx < this.restartBtnX + this.restartBtnW &&
+          my > this.restartBtnY && my < this.restartBtnY + this.restartBtnH;
+  }
 
+  isHomeButtonClicked(mx, my) {
+    return mx > this.homeBtnX && mx < this.homeBtnX + this.homeBtnW &&
+          my > this.homeBtnY && my < this.homeBtnY + this.homeBtnH;
+  }
+
+  displayGameWin(gameWinTextImg, homeBtnImg) {
+    background(173, 228, 249);
     let gameWinTextW = 1200;
     let gameWinTextH = this.getScaledHeight(gameWinTextImg, gameWinTextW);
     image(gameWinTextImg, width / 2 - gameWinTextW / 2, 300, gameWinTextW, gameWinTextH);
 
-    this.btnW = 600;
-    this.btnH = this.getScaledHeight(restartBtnImg, this.btnW);
-    this.btnX = width / 2 - this.btnW / 2;
-    this.btnY = height / 2 + 30;
-    image(restartBtnImg,  this.btnX, this.btnY, this.btnW, this.btnH);
+    this.homeBtnW = 400;
+    this.homeBtnH = this.getScaledHeight(homeBtnImg, this.homeBtnW);
+    this.homeBtnX = width / 2 - this.homeBtnW / 2;
+    this.homeBtnY = height / 2 + 30;
+    image(homeBtnImg, this.homeBtnX, this.homeBtnY, this.homeBtnW, this.homeBtnH);
   }
 
-  isRestartButtonClicked(mx, my) {
-    return mx > this.btnX && mx < this.btnX + this.btnW &&
-          my > this.btnY && my < this.btnY + this.btnH;
-  }
 
   loseHeart() {
     if (this.currentHearts > 0) this.currentHearts--;
