@@ -9,16 +9,32 @@ class Enemy extends Figure {
     this.startX = x;
 
     this.vel.x = this.speed;
+
+    this.isFrozen = false;
+    this.frozenTimer = 0;
   }
 
-  update(mapManager, physics) {
+update(mapManager, physics) {
     if (this.hearts <= 0) {
-      this.isDead = true;
-      return;
+        this.isDead = true;
+        return;
     }
-    this.behavior(mapManager);
+
+    if (this.isFrozen) {
+        this.frozenTimer--;
+        if (this.frozenTimer <= 0) {
+            this.isFrozen = false;
+            this.vel.x = this.speed * this.frozenDirection;
+        } else {
+            this.vel.x = 0; 
+        }
+    } else {
+        this.behavior(mapManager);
+    }
+
     physics.update(this);
-  }
+}
+
 
   behavior(mapManager) {
     this.patrol(mapManager);
@@ -29,12 +45,27 @@ class Enemy extends Figure {
       this.hearts -= amount;
     }
     else if (attackElement === Transform.Frozen){
+      this.isFrozen = true;
+      this.frozenTimer = 60 * 3;
       this.vel.x = 0;
-      this.speed = 0
+      this.frozenDirection = Math.sign(this.vel.x) || 1;
     }
     else {
        this.hearts -= amount;
     }
+
+    if (this.hearts <= 0) {
+    let enemies = entities.filter(e => e instanceof Enemy && !e.isDead);
+    let keysNeeded = 3 - uiManager.currentKeys;
+    
+    if (enemies.length <= keysNeeded) {
+      uiManager.currentKeys = min(uiManager.currentKeys + 1, uiManager.maxKeys);
+    } else {
+      if (random() < 0.5) {
+        uiManager.currentKeys = min(uiManager.currentKeys + 1, uiManager.maxKeys);
+      }
+    }
+  }
   }
 
   onCollide(player) {
