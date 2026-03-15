@@ -6,7 +6,7 @@ class GoalEgg extends Entity {
     this.isDead = false;
   }
   update() {
-    this.pos.y += sin(frameCount * 0.05) * 0.3; // 輕微漂浮效果
+    this.pos.y += sin(frameCount * 0.05) * 0.3; // floating effects
      
   }
   onCollide(player){
@@ -18,7 +18,7 @@ class GoalEgg extends Entity {
   }
   display() {
     if (this.img) image(this.img, this.pos.x, this.pos.y, this.width, this.height);
-    // 蛋中間標註關卡編號
+    // The number label on the egg
     push();
     fill(55);
     textAlign(CENTER, CENTER);
