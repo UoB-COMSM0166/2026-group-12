@@ -20,9 +20,10 @@ class GoalEgg extends Entity {
     if (this.img) image(this.img, this.pos.x, this.pos.y, this.width, this.height);
     // 蛋中間標註關卡編號
     push();
-    fill(255);
+    fill(55);
     textAlign(CENTER, CENTER);
-    textSize(24);
+    textSize(30);
+    textStyle(BOLD);
     text(this.level, this.pos.x + this.width/2, this.pos.y + this.height/2);
     pop();
   }
