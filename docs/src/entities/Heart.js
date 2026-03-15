@@ -11,6 +11,9 @@ class Heart extends Entity {
     // 只有在血量小於 3 時才補血
     if (uiManager.currentHearts < 3) {
       uiManager.addHeart();
+      if(player.hearts !== undefined && player.hearts <3){
+        player.hearts++;
+      }
       this.isDead = true;
     }
   }

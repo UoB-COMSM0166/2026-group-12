@@ -240,6 +240,7 @@ function initGame() {
   entities = [];
   uiManager.currentHearts = uiManager.maxHearts;
   uiManager.currentKeys = 0;
+  uiManager.hasEgg = false;
   let data = levelManager.getLevelData(levelManager.currentLevel);
   mapManager = new MapManager(data.mapData);
   physics = new Physics(mapManager);

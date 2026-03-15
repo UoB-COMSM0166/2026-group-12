@@ -3,10 +3,18 @@ class GoalEgg extends Entity {
     super(x, y, w, h);
     this.img = img;
     this.level = level;
+    this.isDead = false;
   }
   update() {
     this.pos.y += sin(frameCount * 0.05) * 0.3; // 輕微漂浮效果
      
+  }
+  onCollide(player){
+    if(typeof uiManager !=='undefined'){
+    uiManager.hasegg = true;
+    this.isDead = true;
+    console.log("Got the egg");
+    }
   }
   display() {
     if (this.img) image(this.img, this.pos.x, this.pos.y, this.width, this.height);
