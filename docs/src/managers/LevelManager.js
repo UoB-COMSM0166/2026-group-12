@@ -82,31 +82,70 @@ class LevelManager {
     for (let e of enemies) {
       if (e.type === 'Ant') entities.push(new Ant(e.x, e.y, e.size));
     }
+
+    //Bees are coming~
+    if (level >= 2){
+      entities.push(new Bees(2000, 350, 60, beeImgs));
+      entities.push(new Bees(4000, 350, 60, beeImgs));
+    }
   }
 
   spawnItems(level, entities) {
       let data = this.getLevelData(level);
+      if(!data) return;
       let items = data.items || [];
 
       for (let i of items) {
           let img = null;
+          if(typeof Transform !== 'undefined'){
           if (i.element === Transform.Fire) {
               img = redButterfly;  
           } else if (i.element === Transform.Frozen) {
               img = blueButterfly; 
           }
+          if(img){
           entities.push(new Items(i.x, i.y, i.size * 1.5, i.size, img, i.element));
+          }
+        }
       }
+      //Hearts appeared
+      if(typeof heartImg !== 'undefined' && heartImg){
+      let heartCount = floor(random(1,4));
+      for(let i = 0; i < heartCount; i++){
+      entities.push(new Heart(random(1500, 5000), random(300,600), 40, 40, heartImg));
+      }
+    }
+
+      //Egg for Win the stages
+      let door = this.goalPos[level];
+      if (door) {
+        let eggIndex = max(0, level - 1);
+        let eggImg = (levelEggImgs && levelEggImgs[eggIndex]) ? levelEggImgs[eggIndex] : null;
+
+        if(eggImg){
+          entities.push(new GoalEgg(400, 650, 60, 60, eggImg, level));
+          console.log("Goal Egg generated successfully!");
+        }
+        
+      }
+    
   }
+  
 
   getGoalPos() {
     return this.goalPos[this.currentLevel];
   }
 
   isReachedGoal(player, uiManager) {
-    if (uiManager.currentKeys < 3) return false;
+    if (uiManager.currentKeys < 3){ 
+      return false;
+    }
 
     let goal = this.getGoalPos();
+    if(!goal){
+      return false;
+    }
+  
     return player.left < goal.x + this.goalW &&
            player.right > goal.x &&
            player.top < goal.y + this.goalH &&
