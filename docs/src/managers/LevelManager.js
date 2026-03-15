@@ -123,7 +123,7 @@ class LevelManager {
         let eggImg = (levelEggImgs && levelEggImgs[eggIndex]) ? levelEggImgs[eggIndex] : null;
 
         if(eggImg){
-          entities.push(new GoalEgg(door.x-300, door.y+150, 60, 60, eggImg, level));
+          entities.push(new GoalEgg(400, 650, 60, 60, eggImg, level));
           console.log("Goal Egg generated successfully!");
         }
         
