@@ -1,0 +1,21 @@
+class GoalEgg extends Entity {
+  constructor(x, y, w, h, img, level) {
+    super(x, y, w, h);
+    this.img = img;
+    this.level = level;
+  }
+  update() {
+    this.pos.y += sin(frameCount * 0.05) * 0.3; // 輕微漂浮效果
+     
+  }
+  display() {
+    if (this.img) image(this.img, this.pos.x, this.pos.y, this.width, this.height);
+    // 蛋中間標註關卡編號
+    push();
+    fill(255);
+    textAlign(CENTER, CENTER);
+    textSize(24);
+    text(this.level, this.pos.x + this.width/2, this.pos.y + this.height/2);
+    pop();
+  }
+}
