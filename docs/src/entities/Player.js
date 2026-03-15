@@ -67,7 +67,7 @@ class Player extends Figure {
     // State Machine
     this.state = PlayerState.IDLE
     // Player Transform
-    this.trans = Transform.Frozen
+    this.trans = Transform.Fire
     this.transTime = 60000
     this.transTimer = 60000
     this.attackCooldown = 0
@@ -107,19 +107,31 @@ class Player extends Figure {
   //apply attack
   applyAttack(){
     if (this.attackCooldown > 0) return
+
     this.attackCooldown = 15
-    let shootX = this.facing === 1 
+
+    let shootX
     if (this.facing === 1){
       shootX = this.pos.x + this.width
     }
-    else {
+    else{
       shootX = this.pos.x - 20
     }
-    let shootY = this.pos.y + (this.height / 2) - 30
-    let newBall = new Ball(shootX, shootY, this.facing, this.trans, null)
-    ball.push(newBall)
 
-    
+    let shootY = this.pos.y + (this.height / 2) - 30
+
+    let img
+
+    if (this.trans === Transform.Fire){
+      img = fireballImg
+    }
+    else if (this.trans === Transform.Frozen){
+      img = iceballImg
+    }
+
+    let newBall = new Ball(shootX, shootY, this.facing, this.trans, img)
+
+    ball.push(newBall)
   }
 
 

@@ -18,14 +18,13 @@ class  Items extends Entity {
    }
 
    display(){
-      push()
-      if (this.element === Transform.Fire){
-         fill(255, 100, 100)
+      push();
+
+      if (this.img){
+         image(this.img, this.pos.x, this.pos.y, this.width, this.height);
       }
-      else if (this.element === Transform.Frozen){
-         fill(100, 200, 255)
-      }
-      ellipse(this.pos.x + this.width / 2, this.pos.y + this.height / 2, this.width, this.height)
-      pop()
+
+      pop();
    }
+
 }
