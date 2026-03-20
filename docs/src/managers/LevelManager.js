@@ -75,19 +75,19 @@ class LevelManager {
   }
 
   spawnEnemies(level, entities) {
-    let data = this.getLevelData(level);
-    let enemies = data.enemies;
+  //   let data = this.getLevelData(level);
+  //   let enemies = data.enemies;
 
-    for (let e of enemies) {
-      if (e.type === "Ant") entities.push(new Ant(e.x, e.y, e.size));
-    }
+  //   for (let e of enemies) {
+  //     if (e.type === "Ant") entities.push(new Ant(e.x, e.y, e.size));
+  //   }
 
-    //Bees are coming~
-    if (level >= 2) {
-      entities.push(new Bees(2000, 350, 60, beeImgs));
-      entities.push(new Bees(4000, 350, 60, beeImgs));
-    }
-  }
+  //   //Bees are coming~
+  //   if (level >= 2) {
+  //     entities.push(new Bees(2000, 350, 60, beeImgs));
+  //     entities.push(new Bees(4000, 350, 60, beeImgs));
+  //   }
+   }
 
   spawnItems(level, entities) {
     let data = this.getLevelData(level);

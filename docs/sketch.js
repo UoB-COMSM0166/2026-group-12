@@ -1,6 +1,8 @@
 let mapManager;
+let bgImg;
 let map0Data, map1Data, map2Data;
-let tileSetImg, stoneImg;
+let tileSetImg;
+let bushImg, pointerImg, fenceImg, treeImg, willowImg, ridgeImg, grassDecoImg;
 let levelManager;
 let doorLockedImg, doorOpenImg;
 let player;
@@ -20,9 +22,7 @@ let blueButterfly, redButterfly;
 let levelEggImgs = [];
 let levelTextImg;
 let saveManager;
-
 let beeImgs = [];
-
 let camX = 0;
 let camY = 0;
 
@@ -31,9 +31,18 @@ function preload() {
   map1Data = loadJSON("assets/map/level_1.json");
   map2Data = loadJSON("assets/map/level_2.json");
 
+  bgImg = loadImage("assets/img/Tiles/2 Background/Background.png");
+
   playerImg = loadImage("assets/img/player_idle.png");
-  tileSetImg = loadImage("assets/img/Tiles/grass.png");
-  stoneImg = loadImage("assets/img/Tiles/stone.png");
+  tileSetImg = loadImage("assets/img/Tiles/1 Tiles/Tileset.png");
+  bushImg = loadImage("assets/img/Tiles/1 Tiles/bush.png");
+  pointerImg = loadImage("assets/img/Tiles/1 Tiles/pointer.png");
+  fenceImg = loadImage("assets/img/Tiles/1 Tiles/fence.png");
+  treeImg = loadImage("assets/img/Tiles/1 Tiles/tree.png");
+  willowImg = loadImage("assets/img/Tiles/1 Tiles/willow.png");
+  ridgeImg = loadImage("assets/img/Tiles/1 Tiles/ridge.png");
+  grassDecoImg = loadImage("assets/img/Tiles/1 Tiles/grass_deco.png");
+
   heartImg = loadImage("assets/img/uiManager/heart.png");
   keyImg = loadImage("assets/img/uiManager/key.png");
   doorLockedImg = loadImage("assets/img/uiManager/door/doorLocked.png");
@@ -102,6 +111,8 @@ function setup() {
 
 function draw() {
   background(173, 228, 249);
+  let bgX = camX * 0.05; // 視差效果
+  image(bgImg, bgX, 0, width - bgX, height);
 
   if (gameState === "START") {
     uiManager.displayStart(titleTextImg, startBtnImg, tutorialBtnImg);
@@ -148,13 +159,12 @@ function draw() {
     }
 
     let targetCamX = -player.pos.x + width / 2;
-    let targetCamY =
-      levelManager.currentLevel === 1 ? 0 : -player.pos.y + height * 0.8;
+    let targetCamY = (levelManager.currentLevel === 0 || levelManager.currentLevel === 1) ? 0 : -player.pos.y + height * 0.8;
     camX = constrain(targetCamX, -(mapManager.gridWidth - width), 0);
     camY =
       levelManager.currentLevel === 1
         ? 0
-        : constrain(targetCamY, -mapManager.gridHeight, 0);
+        : constrain(targetCamY, -(mapManager.gridHeight - height), 0);
 
     for (let e of entities) {
       e.update(mapManager, physics);
@@ -186,12 +196,9 @@ function draw() {
     // Camera logic
     push();
     translate(camX, camY);
+    
 
-    if (levelManager.currentLevel === 2) {
-      mapManager.display(stoneImg, tileSetImg);
-    } else {
-      mapManager.display(tileSetImg, stoneImg);
-    }
+    mapManager.display(tileSetImg, bushImg, pointerImg, fenceImg, treeImg, willowImg, ridgeImg, grassDecoImg);
     levelManager.displayGoal();
 
     for (let e of entities) {
@@ -264,9 +271,9 @@ function initGame() {
   if (levelManager.currentLevel === 0) {
     player = new Player(50, 200, 72, 48, playerImg);
   } else if (levelManager.currentLevel === 1) {
-    player = new Player(150, 500, 72, 48, playerImg);
+    player = new Player(150, 200, 72, 48, playerImg);
   } else if (levelManager.currentLevel === 2) {
-    player = new Player(150, 1300, 72, 48, playerImg);
+    player = new Player(150, 200, 72, 48, playerImg);
   } else {
     player = new Player(150, 200, 72, 48, playerImg);
   }
