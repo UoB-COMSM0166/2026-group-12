@@ -30,6 +30,7 @@ function preload() {
   map0Data = loadJSON("assets/map/level_0.json");
   map1Data = loadJSON("assets/map/level_1.json");
   map2Data = loadJSON("assets/map/level_2.json");
+  map3Data = loadJSON("assets/map/level_3.json");
 
   bgImg = loadImage("assets/img/Tiles/2 Background/Background.png");
 
@@ -102,6 +103,7 @@ function setup() {
     map0Data,
     map1Data,
     map2Data,
+    map3Data,
     doorLockedImg,
     doorOpenImg,
   );
@@ -159,12 +161,9 @@ function draw() {
     }
 
     let targetCamX = -player.pos.x + width / 2;
-    let targetCamY = (levelManager.currentLevel === 0 || levelManager.currentLevel === 1) ? 0 : -player.pos.y + height * 0.8;
+    let targetCamY = levelManager.currentLevel === 3 ? -player.pos.y + height * 0.8 : 0;
     camX = constrain(targetCamX, -(mapManager.gridWidth - width), 0);
-    camY =
-      levelManager.currentLevel === 1
-        ? 0
-        : constrain(targetCamY, -(mapManager.gridHeight - height), 0);
+    camY = levelManager.currentLevel === 3 ? constrain(targetCamY, -(mapManager.gridHeight - height), 0) : 0;
 
     for (let e of entities) {
       e.update(mapManager, physics);

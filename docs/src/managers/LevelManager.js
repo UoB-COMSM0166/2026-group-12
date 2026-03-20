@@ -1,8 +1,15 @@
 class LevelManager {
-  constructor(map0Data, map1Data, map2Data, doorLockedImg, doorOpenImg) {
+  constructor(
+    map0Data,
+    map1Data,
+    map2Data,
+    map3Data,
+    doorLockedImg,
+    doorOpenImg,
+  ) {
     this.currentLevel = 1;
-    this.maxLevel = 2;
-    this.mapsData = { 0: map0Data, 1: map1Data, 2: map2Data };
+    this.maxLevel = 3;
+    this.mapsData = { 0: map0Data, 1: map1Data, 2: map2Data, 3: map3Data };
     this.doorLockedImg = doorLockedImg;
     this.doorOpenImg = doorOpenImg;
     this.goalPos = {
@@ -75,19 +82,19 @@ class LevelManager {
   }
 
   spawnEnemies(level, entities) {
-  //   let data = this.getLevelData(level);
-  //   let enemies = data.enemies;
+    let data = this.getLevelData(level);
+    let enemies = data.enemies;
 
-  //   for (let e of enemies) {
-  //     if (e.type === "Ant") entities.push(new Ant(e.x, e.y, e.size));
-  //   }
+    for (let e of enemies) {
+      if (e.type === "Ant") entities.push(new Ant(e.x, e.y, e.size));
+    }
 
-  //   //Bees are coming~
-  //   if (level >= 2) {
-  //     entities.push(new Bees(2000, 350, 60, beeImgs));
-  //     entities.push(new Bees(4000, 350, 60, beeImgs));
-  //   }
-   }
+    //Bees are coming~
+    if (level >= 2) {
+      entities.push(new Bees(2000, 350, 60, beeImgs));
+      entities.push(new Bees(4000, 350, 60, beeImgs));
+    }
+  }
 
   spawnItems(level, entities) {
     let data = this.getLevelData(level);
