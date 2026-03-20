@@ -110,13 +110,13 @@ class Player extends Figure {
 
     this.attackCooldown = 15
 
-    let shootX
-    if (this.facing === 1){
-      shootX = this.pos.x + this.width
-    }
-    else{
-      shootX = this.pos.x - 20
-    }
+let shootX
+if (this.facing === 1){
+  shootX = this.pos.x + this.width - 65 
+}
+else{
+  shootX = this.pos.x + 65 
+}
 
     let shootY = this.pos.y + (this.height / 2) - 30
 
@@ -195,7 +195,7 @@ class Player extends Figure {
     this.jumpPressed = keyIsDown(87) // W
     this.grapplePressed = mouseIsPressed // LEFT_PRESSED
     //Frozen & Fire Attack
-    this.attackPressed = keyIsDown(70)
+    this.attackPressed = keyIsDown(32) // Space
 
   }
 
