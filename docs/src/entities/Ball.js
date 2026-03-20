@@ -7,9 +7,11 @@ class Ball extends Entity{
       this.isDead = false
       this.ballTimer = 60
 
-      //
       this.ballSpeed = 8
       this.vel = createVector(this.ballSpeed * -facing, 0) 
+
+      this.mouthOffsetX = 20 
+      this.mouthOffsetY = 18  
    }
 
       update(physics){

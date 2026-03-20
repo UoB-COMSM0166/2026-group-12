@@ -173,7 +173,7 @@ class GrappleSystem {
                 // Pull player back toward radius
                 player.pos.sub(p5.Vector.mult(dir, excess * 0.02))
             }
-r
+
             // Ensures circular swinging motion instead of drifting
             let dir = p5.Vector.sub(player.pos, this.anchor).normalize()
             let velDot = p5.Vector.dot(player.vel, dir)
