@@ -162,8 +162,10 @@ function draw() {
 
     let targetCamX = -player.pos.x + width / 2;
     let targetCamY = levelManager.currentLevel === 3 ? -player.pos.y + height * 0.8 : 0;
+    let smoothCamY = levelManager.currentLevel === 3 ? constrain(targetCamY, -(mapManager.gridHeight - height), 0) : 0;
     camX = constrain(targetCamX, -(mapManager.gridWidth - width), 0);
-    camY = levelManager.currentLevel === 3 ? constrain(targetCamY, -(mapManager.gridHeight - height), 0) : 0;
+    // camY = levelManager.currentLevel === 3 ? constrain(targetCamY, -(mapManager.gridHeight - height), 0) : 0;
+    camY = lerp(camY, smoothCamY, 0.1); // 0.1 讓鏡頭平滑跟隨
 
     for (let e of entities) {
       e.update(mapManager, physics);
