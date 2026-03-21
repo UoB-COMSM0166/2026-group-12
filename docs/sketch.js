@@ -55,20 +55,15 @@ function preload() {
 
   titleTextImg = loadImage("assets/img/uiManager/text/title.png");
   tutorialTextImg.push(
-    loadImage("assets/img/uiManager/text/tutorial_1_text.png"),
+    loadImage("assets/img/uiManager/text/tutorial_use_text.png"),
+    loadImage("assets/img/uiManager/text/tutorial_key_text.png"),
+    loadImage("assets/img/uiManager/text/tutorial_fire_text.png"),
+    loadImage("assets/img/uiManager/text/tutorial_ice_text.png"),
+    loadImage("assets/img/uiManager/text/tutorial_grapple_1_text.png"),
+    loadImage("assets/img/uiManager/text/tutorial_grapple_2_text.png"),
+    loadImage("assets/img/uiManager/text/tutorial_goal_text.png")
   );
-  tutorialTextImg.push(
-    loadImage("assets/img/uiManager/text/tutorial_2_text.png"),
-  );
-  tutorialTextImg.push(
-    loadImage("assets/img/uiManager/text/tutorial_3_text.png"),
-  );
-  tutorialTextImg.push(
-    loadImage("assets/img/uiManager/text/tutorial_4_text.png"),
-  );
-  tutorialTextImg.push(
-    loadImage("assets/img/uiManager/text/tutorial_5_text.png"),
-  );
+
   gameOverTextImg = loadImage("assets/img/uiManager/text/game_over_text.png");
   gameWinTextImg = loadImage("assets/img/uiManager/text/game_win_text.png");
   levelTextImg = loadImage("assets/img/uiManager/text/level_text.png");
@@ -112,9 +107,14 @@ function setup() {
 }
 
 function draw() {
-  background(173, 228, 249);
-  let bgX = camX * 0.05; // 視差效果
-  image(bgImg, bgX, 0, width - bgX, height);
+
+  let bgX = floor(camX * 0.05);
+  image(bgImg, bgX, 0, width, height);
+  image(bgImg, bgX - width, 0, width, height);
+  image(bgImg, bgX + width, 0, width, height);
+  fill(255, 255, 255, 30);
+  noStroke();
+  rect(0, 0, width, height);
 
   if (gameState === "START") {
     uiManager.displayStart(titleTextImg, startBtnImg, tutorialBtnImg);
@@ -129,7 +129,7 @@ function draw() {
       let tutorialTexts = levelManager.getTutorialTexts(tutorialTextImg);
       for (let text of tutorialTexts) {
         if (player.pos.x >= text.triggerX && player.pos.x < text.endX) {
-          let imgW = 800;
+          let imgW = 1000;
           let imgH = uiManager.getScaledHeight(text.img, imgW);
           image(text.img, width / 2 - imgW / 2, 200, imgW, imgH);
         }
@@ -169,7 +169,7 @@ function draw() {
       e.update(mapManager, physics);
 
       if (e !== player) {
-        if (overlaps(player, e)) {
+        if (!e.isDead && overlaps(player, e)) {
           e.onCollide(player);
         }
       }
@@ -179,13 +179,16 @@ function draw() {
     for (let i = ball.length - 1; i >= 0; i--) {
       let b = ball[i];
       b.update(physics);
-      for (let e of entities) {
-        if (e instanceof Enemy && !e.isDead && overlaps(b, e)) {
-          e.takeDamage(1, b.element);
-          b.isDead = true;
-          break;
+      if (!b.isDead) { 
+        for (let e of entities) {
+          if (e instanceof Enemy && !e.isDead && overlaps(b, e)) {
+            e.takeDamage(1, b.element);
+            b.isDead = true;
+            break;
+          }
         }
       }
+
       //dead ball
       if (b.isDead) {
         ball.splice(i, 1);
@@ -269,10 +272,8 @@ function initGame() {
 
   if (levelManager.currentLevel === 0) {
     player = new Player(50, 200, 72, 48, playerImg);
-  } else if (levelManager.currentLevel === 1) {
-    player = new Player(150, 200, 72, 48, playerImg);
-  } else if (levelManager.currentLevel === 2) {
-    player = new Player(150, 200, 72, 48, playerImg);
+  } else if (levelManager.currentLevel === 3) {
+    player = new Player(150, 1300, 72, 48, playerImg);
   } else {
     player = new Player(150, 200, 72, 48, playerImg);
   }
