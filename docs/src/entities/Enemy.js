@@ -12,9 +12,10 @@ class Enemy extends Figure {
 
     this.isFrozen = false;
     this.frozenTimer = 0;
+    this.keyDropped = false;
   }
 
-update(mapManager, physics) {
+  update(mapManager, physics) {
     if (this.hearts <= 0) {
         this.isDead = true;
         return;
@@ -33,7 +34,7 @@ update(mapManager, physics) {
     }
 
     physics.update(this);
-}
+  }
 
 
   behavior(mapManager) {
@@ -54,19 +55,23 @@ update(mapManager, physics) {
        this.hearts -= amount;
     }
 
-    if (this.hearts <= 0) {
-    let enemies = entities.filter(e => e instanceof Enemy && !e.isDead);
-    let keysNeeded = 3 - uiManager.currentKeys;
+    if (this.hearts <= 0 && !this.keyDropped) {
+      this.keyDropped = true;
+      console.log('hearts <= 0, keyDropped:', this.keyDropped);
+      let aliveEnemies = entities.filter(e => e instanceof Enemy && !e.isDead && e !== this);
+      let keysNeeded = 3 - uiManager.currentKeys;
+      console.log('aliveEnemies:', aliveEnemies.length, 'keysNeeded:', keysNeeded);
     
-    if (enemies.length <= keysNeeded) {
-      uiManager.currentKeys = min(uiManager.currentKeys + 1, uiManager.maxKeys);
-    } else {
-      if (random() < 0.5) {
-        uiManager.currentKeys = min(uiManager.currentKeys + 1, uiManager.maxKeys);
+      if (aliveEnemies.length < keysNeeded) {
+        uiManager.addKey();
+        player.showKeyPopup();
+      } else if (random() < 0.5) {
+        uiManager.addKey();
+        player.showKeyPopup();
       }
     }
   }
-  }
+
 
   onCollide(player) {
 

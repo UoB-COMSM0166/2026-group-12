@@ -75,6 +75,7 @@ class Player extends Figure {
     this.facing = -1 // 1: Right, -1: Left
     this.isDead = false//Dead flag
     this.hearts = 3    // 3 Heart (chance)
+    this.keyPopups = [];
   }
   //get hurt operation
   takeDamage(enemyX){
@@ -144,6 +145,8 @@ else{
     this.updateTimers()
 
     this.updateState()
+
+    this.updateKeyPopups()
 
     this.applyMovement()
 
@@ -384,9 +387,37 @@ else{
       }
     }
   }
+
+  showKeyPopup() {
+    this.keyPopups.push({
+      x: this.pos.x + this.width / 2,
+      y: this.pos.y,
+      alpha: 255,
+      offsetY: 0
+    });
+  }
+
+  updateKeyPopups() {
+    for (let i = this.keyPopups.length - 1; i >= 0; i--) {
+      let k = this.keyPopups[i];
+      k.offsetY -= 1.5;
+      k.alpha -= 4;
+      if (k.alpha <= 0) {
+        this.keyPopups.splice(i, 1);
+      }
+    }
+  }
+
+  displayKeyPopups(keyImg) {
+  for (let k of this.keyPopups) {
+    tint(255, k.alpha);
+    image(keyImg, k.x - 20, k.y + k.offsetY, 40, 40);
+    noTint();
+  }
+}
+
   
   display(){
-    // === TO BE UPDATED
     
     push()
     // transform
@@ -409,6 +440,7 @@ else{
       image(this.img, this.pos.x, this.pos.y, this.width, this.height)
     }
     pop()
+    this.displayKeyPopups(keyImg)
 
     this.grapple.display()
   }

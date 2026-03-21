@@ -13,13 +13,14 @@ class LevelManager {
     this.doorLockedImg = doorLockedImg;
     this.doorOpenImg = doorOpenImg;
     this.goalPos = {
-      0: { x: 2500, y: 475 },
-      1: { x: 8800, y: 475 },
-      2: { x: 5830, y: 355 },
+      0: { x: 4620, y: 476 },
+      1: { x: 5750, y: 596 },
+      2: { x: 8800, y: 476 },
+      3: { x: 7050, y: 656 },
     };
     this.goalW = 150;
     this.goalH =
-      this.doorLockedImg.height * (this.goalW / this.doorLockedImg.width);
+    this.doorLockedImg.height * (this.goalW / this.doorLockedImg.width);
   }
 
   getLevelData(level) {
@@ -54,6 +55,21 @@ class LevelManager {
       },
       2: {
         mapData: this.mapsData[2],
+        enemies: [
+          { type: "Ant", x: 900, y: 800, size: 50 },
+          { type: "Ant", x: 1800, y: 500, size: 50 },
+          { type: "Ant", x: 2100, y: 500, size: 50 },
+          { type: "Ant", x: 3600, y: 400, size: 50 },
+          { type: "Ant", x: 4530, y: 200, size: 50 },
+          { type: "Ant", x: 5100, y: 300, size: 50 },
+        ],
+        items: [
+          { element: Transform.Fire, x: 300, y: 200, size: 80 },
+          { element: Transform.Frozen, x: 400, y: 200, size: 80 },
+        ],
+      },
+      3: {
+        mapData: this.mapsData[3],
         enemies: [
           { type: "Ant", x: 900, y: 800, size: 50 },
           { type: "Ant", x: 1800, y: 500, size: 50 },
