@@ -76,7 +76,7 @@ class UIManager {
       if (unlocked) {
         tint(255, 255);
       } else {
-        tint(100, 100);
+        tint(225, 150);
       }
 
       image(levelBtnImgs[i], x, levelBtnY, levelBtnW, levelBtnH);
@@ -151,7 +151,6 @@ class UIManager {
   }
 
   addHeart() {
-    
     if (this.currentHearts < 3) this.currentHearts++;
   }
 
@@ -163,21 +162,22 @@ class UIManager {
     for (let i = 0; i < this.maxHearts; i++){
       if (i < this.currentHearts){
         tint(255, 255); 
-      } else{
+      } else {
         tint(255, 50);
       }
       let xPos = this.x + (i * this.gap);
       image(heartImg, xPos, this.y, this.heartsSize, this.heartsSize);
     }
-
-    for (let i = 0; i < this.maxKeys; i++) {
-      if (i < this.currentKeys) {
-        tint(255, 255);
-      } else {
-        tint(255, 50);
+    if (levelManager.currentLevel !== 3) {
+      for (let i = 0; i < this.maxKeys; i++) {
+        if (i < this.currentKeys) {
+          tint(255, 255);
+        } else {
+          tint(255, 50);
+        }
+        let keyX = width - this.x - (i + 1) * this.gap;
+        image(keyImg, keyX, this.y, this.keySize, this.keySize);
       }
-      let keyX = width - this.x - (i + 1) * this.gap;
-      image(keyImg, keyX, this.y, this.keySize, this.keySize);
     }
     noTint();
   }

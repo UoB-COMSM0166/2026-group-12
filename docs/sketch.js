@@ -25,6 +25,9 @@ let saveManager;
 let beeImgs = [];
 let camX = 0;
 let camY = 0;
+let cutsceneImgs = [];
+let currentCutscene = [];
+let cutsceneIndex = 0;
 
 function preload() {
   map0Data = loadJSON("assets/map/level_0.json");
@@ -57,16 +60,21 @@ function preload() {
   tutorialTextImg.push(
     loadImage("assets/img/uiManager/text/tutorial_use_text.png"),
     loadImage("assets/img/uiManager/text/tutorial_key_text.png"),
-    loadImage("assets/img/uiManager/text/tutorial_fire_text.png"),
-    loadImage("assets/img/uiManager/text/tutorial_ice_text.png"),
     loadImage("assets/img/uiManager/text/tutorial_grapple_1_text.png"),
+    loadImage("assets/img/uiManager/text/tutorial_ice_text.png"),
     loadImage("assets/img/uiManager/text/tutorial_grapple_2_text.png"),
+    loadImage("assets/img/uiManager/text/tutorial_fire_text.png"),
+    
     loadImage("assets/img/uiManager/text/tutorial_goal_text.png")
   );
 
   gameOverTextImg = loadImage("assets/img/uiManager/text/game_over_text.png");
   gameWinTextImg = loadImage("assets/img/uiManager/text/game_win_text.png");
   levelTextImg = loadImage("assets/img/uiManager/text/level_text.png");
+  cutsceneImgs.push(loadImage("assets/img/uiManager/text/scene1_text.png"));
+  cutsceneImgs.push(loadImage("assets/img/uiManager/text/scene2_text.png"));
+  cutsceneImgs.push(loadImage("assets/img/uiManager/text/scene3_text.png"));
+  cutsceneImgs.push(loadImage("assets/img/uiManager/text/scene4_text.png"));
 
   startBtnImg = loadImage("assets/img/uiManager/button/startBtn.png");
   restartBtnImg = loadImage("assets/img/uiManager/button/restartBtn.png");
@@ -124,6 +132,9 @@ function draw() {
     uiManager.displayGameOver(gameOverTextImg, restartBtnImg, homeBtnImg);
   } else if (gameState === "GAMECLEAR") {
     uiManager.displayGameWin(gameWinTextImg, homeBtnImg);
+  } else if (gameState === "CUTSCENE") {
+    let img = currentCutscene[cutsceneIndex];
+    image(img, 0, 0, width, height);
   } else if (gameState === "PLAYING") {
     if (levelManager.currentLevel === 0) {
       let tutorialTexts = levelManager.getTutorialTexts(tutorialTextImg);
@@ -131,7 +142,7 @@ function draw() {
         if (player.pos.x >= text.triggerX && player.pos.x < text.endX) {
           let imgW = 1000;
           let imgH = uiManager.getScaledHeight(text.img, imgW);
-          image(text.img, width / 2 - imgW / 2, 200, imgW, imgH);
+          image(text.img, width / 2 - imgW / 2, 100, imgW, imgH);
         }
       }
       if (player.isDead) {
@@ -154,6 +165,11 @@ function draw() {
       saveManager.completeLevel(levelManager.currentLevel);
       if (levelManager.nextLevel()) {
         initGame();
+        if (currentCutscene.length > 0) {
+          gameState = 'CUTSCENE';
+        } else {
+          gameState = 'PLAYING';
+        }
       } else {
         gameState = "GAMECLEAR";
         return;
@@ -231,14 +247,18 @@ function mousePressed() {
     } else if (uiManager.isTutorialButtonClicked(mouseX, mouseY)) {
       levelManager.currentLevel = 0;
       initGame();
-      gameState = "PLAYING";
+      gameState = 'PLAYING';
     }
   } else if (gameState === "LEVEL_SELECT") {
     let level = uiManager.getLevelClicked(mouseX, mouseY);
     if (level !== -1) {
       levelManager.currentLevel = level;
       initGame();
-      gameState = "PLAYING";
+      if (currentCutscene.length > 0) {
+        gameState = "CUTSCENE";
+      } else {
+        gameState = "PLAYING";
+      }
     }
   } else if (gameState === "GAMEOVER") {
     if (uiManager.isRestartButtonClicked(mouseX, mouseY)) {
@@ -247,6 +267,11 @@ function mousePressed() {
       levelManager.currentLevel = 1;
       resetGame();
       gameState = "START";
+    }
+  } else if (gameState === "CUTSCENE") {
+    cutsceneIndex++;
+    if (cutsceneIndex >= currentCutscene.length) {
+      gameState = "PLAYING";
     }
   } else if (gameState === "GAMECLEAR") {
     if (uiManager.isHomeButtonClicked(mouseX, mouseY)) {
@@ -262,6 +287,9 @@ function initGame() {
   uiManager.currentHearts = uiManager.maxHearts;
   uiManager.currentKeys = 0;
   uiManager.hasEgg = false;
+  currentCutscene = levelManager.getCutscenes(levelManager.currentLevel, cutsceneImgs);
+  cutsceneIndex = 0;
+
   let data = levelManager.getLevelData(levelManager.currentLevel);
   mapManager = new MapManager(data.mapData);
   physics = new Physics(mapManager);

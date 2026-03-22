@@ -28,14 +28,14 @@ class LevelManager {
       0: {
         mapData: this.mapsData[0],
         enemies: [
-          { type: "Ant", x: 300, y: 400, size: 50 },
           { type: "Ant", x: 1000, y: 400, size: 50 },
-          { type: "Ant", x: 2200, y: 400, size: 50 },
+          { type: "Ant", x: 2480, y: 400, size: 50 },
+          { type: "Ant", x: 3640, y: 400, size: 50 },
         ],
         //items
         items: [
-          { element: Transform.Fire, x: 700, y: 450, size: 80 },
-          { element: Transform.Frozen, x: 1940, y: 550, size: 80 },
+          { element: Transform.Fire, x: 3430, y: 500, size: 80 },
+          { element: Transform.Frozen, x: 2210, y: 550, size: 80 },
         ],
       },
       1: {
@@ -56,12 +56,14 @@ class LevelManager {
       2: {
         mapData: this.mapsData[2],
         enemies: [
-          { type: "Ant", x: 900, y: 800, size: 50 },
+          { type: "Ant", x: 850, y: 400, size: 50 },
           { type: "Ant", x: 1800, y: 500, size: 50 },
           { type: "Ant", x: 2100, y: 500, size: 50 },
           { type: "Ant", x: 3600, y: 400, size: 50 },
           { type: "Ant", x: 4530, y: 200, size: 50 },
           { type: "Ant", x: 5100, y: 300, size: 50 },
+          { type: "Ant", x: 6600, y: 300, size: 50 },
+          { type: "Ant", x: 7000, y: 300, size: 50 },
         ],
         items: [
           { element: Transform.Fire, x: 300, y: 200, size: 80 },
@@ -90,11 +92,23 @@ class LevelManager {
   getTutorialTexts(tutorialTextImg) {
     return [
       { img: tutorialTextImg[0], triggerX: 0, endX: 400 },
-      { img: tutorialTextImg[1], triggerX: 500, endX: 800 },
-      { img: tutorialTextImg[2], triggerX: 1100, endX: 1500 },
-      { img: tutorialTextImg[3], triggerX: 2000, endX: 2300 },
-      { img: tutorialTextImg[4], triggerX: 2300, endX: 2800 },
+      { img: tutorialTextImg[1], triggerX: 500, endX: 1000 },
+      { img: tutorialTextImg[2], triggerX: 1150, endX: 1850 },
+      { img: tutorialTextImg[3], triggerX: 2040, endX: 2480 },
+      { img: tutorialTextImg[4], triggerX: 2500, endX: 3180 },
+      { img: tutorialTextImg[5], triggerX: 3320, endX: 3700 },
+      { img: tutorialTextImg[6], triggerX: 4300, endX: 4600 },
     ];
+  }
+
+  getCutscenes(level, cutsceneImgs) {
+    const cutscenes = {
+      0: [],
+      1: [cutsceneImgs[0], cutsceneImgs[1], cutsceneImgs[2]],
+      2: [],
+      3: [cutsceneImgs[3]],
+    };
+    return cutscenes[level] || [];
   }
 
   spawnEnemies(level, entities) {
@@ -161,7 +175,7 @@ class LevelManager {
   }
 
   isReachedGoal(player, uiManager) {
-    if (uiManager.currentKeys < 3) {
+    if (this.currentLevel !== 3 && uiManager.currentKeys < 3) {
       return false;
     }
 

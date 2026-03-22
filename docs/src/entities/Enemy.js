@@ -55,12 +55,10 @@ class Enemy extends Figure {
        this.hearts -= amount;
     }
 
-    if (this.hearts <= 0 && !this.keyDropped) {
+    if (this.hearts <= 0 && !this.keyDropped && levelManager.currentLevel !== 3) {
       this.keyDropped = true;
-      console.log('hearts <= 0, keyDropped:', this.keyDropped);
       let aliveEnemies = entities.filter(e => e instanceof Enemy && !e.isDead && e !== this);
       let keysNeeded = 3 - uiManager.currentKeys;
-      console.log('aliveEnemies:', aliveEnemies.length, 'keysNeeded:', keysNeeded);
     
       if (aliveEnemies.length < keysNeeded) {
         uiManager.addKey();
