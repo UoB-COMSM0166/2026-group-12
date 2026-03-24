@@ -250,7 +250,7 @@ Key characteristics:
   <p>
     The Player class acts as a controller that integrates input handling, state management, and movement logic.
     It uses a finite state machine (FSM) implemented via updateState() and state-specific handlers. Each state (e.g., grounded, jumping, falling) determines how movement is applied.
-    <img src="image/stateDiagram.png" width="1000">
+    <img src="image/stateDiagram.jpg" width="1000">
   </p>
   <p>Movement is abstracted into reusable methods such as applyGroundMovement(), allowing consistent integration with physics.</p>
   <h4>2.4 Grapple Ability</h4>
@@ -307,7 +307,7 @@ Key characteristics:
 
 ### Sequence diagram (behavioural diagram)
 <p>
-  <img src="image/sequence_diagram.jpg" width="1000">
+  <img src="image/sequence_diagram.png" width="1000">
 </p>
 
 ## Implementation
