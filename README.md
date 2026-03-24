@@ -223,7 +223,7 @@ Glide ends when landing or stamina (if used) runs out.
 
 ### System Architecture
 <div>
-  <h1>1. Overview</h1>
+  <h3>1. Overview</h3>
   <p>
 This project implements a 2D tile-based platformer using a modular architecture built on top of p5.js. The system follows a hybrid design combining entity-based modeling, a centralized physics system, and manager-driven resource control. The core principle is to separate behavior (Player FSM), physics (movement and collision), and world data (tile map) to ensure maintainability and extensibility.
   </p>
