@@ -54,7 +54,7 @@ class Player extends Figure {
     this.maxFallSpeed = 12
 
     // grapple
-    this.grapple = new GrappleSystem(this)
+    this.grapple = new GrappleAbility(this)
 
     /* glide
     this.isGliding = false
