@@ -267,8 +267,7 @@ Key characteristics:
     <li>Rendering of the tile map</li>
   </ul> 
   <p>The map is stored as a 1D array, and world coordinates are converted into tile indices for efficient lookup.</p>
-  <h4></h4>
-  <p>3.2 Level and Resource Management</p>
+  <h4>3.2 Level and Resource Management</h4>
   <ul>
     <li>LevelManager handles loading and switching between levels</li>
     <li>SaveManager ensures that progress will not be lost when the page was refreshed</li>
@@ -303,12 +302,12 @@ Key characteristics:
 
 ### Class diagram
 <p>
-  <img src="image/classDiagram.png" width="1000">
+  <img src="image/classDiagram.jpg" width="1000">
 </p>
 
 ### Sequence diagram (behavioural diagram)
 <p>
-  <img src="image/sequence_diagram.png" width="1000">
+  <img src="image/sequence_diagram.jpg" width="1000">
 </p>
 
 ## Implementation
