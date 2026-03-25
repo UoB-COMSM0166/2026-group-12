@@ -160,7 +160,7 @@ function draw() {
       gameState = "GAMEOVER";
       return;
     }
-
+    //
     if (levelManager.isReachedGoal(player, uiManager)) {
       saveManager.completeLevel(levelManager.currentLevel);
       if (levelManager.nextLevel()) {
@@ -178,7 +178,11 @@ function draw() {
 
     let targetCamX = -player.pos.x + width / 2;
     let targetCamY = levelManager.currentLevel === 3 ? -player.pos.y + height * 0.8 : 0;
-    let smoothCamY = levelManager.currentLevel === 3 ? constrain(targetCamY, -(mapManager.gridHeight - height), 0) : 0;
+    //Fix the camera by Chuck
+    let safeGridHeight = mapManager.gridHeight ? mapManager.gridHeight : 1500;
+    
+    let smoothCamY = levelManager.currentLevel === 3 ? constrain(targetCamY, -(safeGridHeight - height), 0) : 0;
+    //Chuck
     camX = constrain(targetCamX, -(mapManager.gridWidth - width), 0);
     // camY = levelManager.currentLevel === 3 ? constrain(targetCamY, -(mapManager.gridHeight - height), 0) : 0;
     camY = lerp(camY, smoothCamY, 0.1);
@@ -289,6 +293,7 @@ function initGame() {
   uiManager.currentHearts = uiManager.maxHearts;
   uiManager.currentKeys = 0;
   uiManager.hasEgg = false;
+  uiManager.eggCount = 0;
   currentCutscene = levelManager.getCutscenes(levelManager.currentLevel, cutsceneImgs);
   cutsceneIndex = 0;
 
