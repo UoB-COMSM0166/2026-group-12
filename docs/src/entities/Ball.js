@@ -11,7 +11,8 @@ class Ball extends Entity{
       this.vel = createVector(this.ballSpeed * -facing, 0) 
 
       this.mouthOffsetX = 20 
-      this.mouthOffsetY = 18  
+      this.mouthOffsetY = 18
+      sfx.shoot.play();
    }
 
    update(physics){

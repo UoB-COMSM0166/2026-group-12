@@ -12,6 +12,7 @@ class Heart extends Entity {
     if (uiManager.currentHearts < 3) {
       uiManager.addHeart();
       if(player.hearts !== undefined && player.hearts <3){
+        sfx.heal.play();
         player.hearts++;
       }
       this.isDead = true;

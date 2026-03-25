@@ -28,8 +28,23 @@ let camY = 0;
 let cutsceneImgs = [];
 let currentCutscene = [];
 let cutsceneIndex = 0;
+let sfx = {}
 
 function preload() {
+  sfx.bgm = loadSound('assets/sfx/bgm.mp3')
+  sfx.chose = loadSound('assets/sfx/chose.wav')
+  sfx.startGame = loadSound('assets/sfx/startGame.wav')
+  sfx.death = loadSound('assets/sfx/death.wav')
+  sfx.pass = loadSound('assets/sfx/pass.wav')
+  sfx.getKey = loadSound('assets/sfx/getKey.wav')
+  sfx.hurt = loadSound('assets/sfx/hurt.wav')
+  sfx.heal = loadSound('assets/sfx/heal.wav')
+  sfx.shoot = loadSound('assets/sfx/shoot.wav')
+  sfx.jump = loadSound('assets/sfx/jump.wav')
+  sfx.land = loadSound('assets/sfx/land.wav')
+  sfx.stick = loadSound('assets/sfx/stick.wav')
+  sfx.stomp = loadSound('assets/sfx/stomp.wav')
+
   map0Data = loadJSON("assets/map/level_0.json");
   map1Data = loadJSON("assets/map/level_1.json");
   map2Data = loadJSON("assets/map/level_2.json");
@@ -111,6 +126,10 @@ function setup() {
     doorOpenImg,
   );
   saveManager = new SaveManager();
+
+  sfx.bgm.setLoop(true);
+  sfx.bgm.play();
+  
   initGame();
 }
 
@@ -157,6 +176,7 @@ function draw() {
     }
 
     if (player.isDead) {
+      sfx.death.play();
       gameState = "GAMEOVER";
       return;
     }
@@ -164,6 +184,7 @@ function draw() {
     if (levelManager.isReachedGoal(player, uiManager)) {
       saveManager.completeLevel(levelManager.currentLevel);
       if (levelManager.nextLevel()) {
+        sfx.pass.play();
         initGame();
         if (currentCutscene.length > 0) {
           gameState = 'CUTSCENE';
@@ -245,10 +266,12 @@ function mousePressed() {
 
   if (gameState === "START") {
     if (uiManager.isStartButtonClicked(mouseX, mouseY)) {
+      sfx.chose.play();
       gameState = "LEVEL_SELECT";
     } else if (uiManager.isTutorialButtonClicked(mouseX, mouseY)) {
       levelManager.currentLevel = 0;
       initGame();
+      sfx.startGame.play();
       gameState = 'PLAYING';
     }
   } else if (gameState === "LEVEL_SELECT") {
@@ -257,27 +280,33 @@ function mousePressed() {
       levelManager.currentLevel = level;
       initGame();
       if (currentCutscene.length > 0) {
+        sfx.startGame.play();
         gameState = "CUTSCENE";
       } else {
+        sfx.startGame.play();
         gameState = "PLAYING";
       }
     }
   } else if (gameState === "GAMEOVER") {
     if (uiManager.isRestartButtonClicked(mouseX, mouseY)) {
+      sfx.chose.play();
       resetGame();
     } else if (uiManager.isHomeButtonClicked(mouseX, mouseY)) {
       levelManager.currentLevel = 1;
+      sfx.chose.play();
       resetGame();
       gameState = "START";
     }
   } else if (gameState === "CUTSCENE") {
     cutsceneIndex++;
     if (cutsceneIndex >= currentCutscene.length) {
+      sfx.startGame.play();
       gameState = "PLAYING";
     }
   } else if (gameState === "GAMECLEAR") {
     if (uiManager.isHomeButtonClicked(mouseX, mouseY)) {
       levelManager.currentLevel = 1;
+      sfx.chose.play();
       resetGame();
       gameState = "START";
     }

@@ -85,6 +85,7 @@ class Player extends Figure {
     //statement update
     //-heart
     this.hearts--
+    sfx.hurt.play();
     uiManager.currentHearts = this.hearts
     //life check
     if (this.hearts <= 0){
@@ -263,6 +264,7 @@ else{
     this.tryJump()
 
     if (this.onGround){
+      sfx.land.play();
       this.state = PlayerState.RUN
       return
     }
@@ -275,7 +277,10 @@ else{
     let worldY = mouseY - camY;
 
     let success = this.grapple.shoot(worldX, worldY)
-    if (success) this.state = PlayerState.GRAPPLE
+    if (success) {
+      sfx.stick.play();
+      this.state = PlayerState.GRAPPLE
+    }
   }
 
   updateStunState() {
@@ -348,6 +353,7 @@ else{
   tryJump(){
     if (this.jumpBufferTimer > 0 && this.coyoteTimer > 0){
       this.vel.y = this.jumpForce
+      sfx.jump.play();
       this.jumpBufferTimer = 0
       this.coyoteTimer = 0
       this.state = PlayerState.JUMP
@@ -442,6 +448,6 @@ else{
     pop()
     this.displayKeyPopups(keyImg)
 
-    this.grapple.display()
+    this.grapple.display();
   }
 }

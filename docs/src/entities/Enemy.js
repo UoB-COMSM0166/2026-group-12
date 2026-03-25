@@ -75,6 +75,7 @@ class Enemy extends Figure {
 
     if (player.isHooked) {
       this.takeDamage();
+      sfx.stomp.play();
       return;
     }
     
