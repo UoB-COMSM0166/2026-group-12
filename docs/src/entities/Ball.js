@@ -5,20 +5,10 @@ class Ball extends Entity{
       this.img = img
       this.facing = facing
       this.isDead = false
-<<<<<<< HEAD
-      this.maxDistance = 200
-      this.startX = x
-      this.ballSpeed = 8
-      this.vel = createVector(this.ballSpeed * -facing, 0) 
 
-      this.mouthOffsetX = 20 
-      this.mouthOffsetY = 18
-      sfx.shoot.play();
-=======
       this.ballTimer = 60
       this.ballSpeed = 8
       this.vel = createVector(this.ballSpeed * -facing, 0) 
->>>>>>> 801824c (update Ball and LevelManager)
    }
 
    update(physics){
