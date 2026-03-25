@@ -193,7 +193,8 @@ User Stories for Lizard Adventure
 | Player | Dynamic Level Environments | As a player, I want levels with environmental effects (arctic zones with health drain, tropical zones with rapid enemy spawns). (Cheng idea) |
 | Player | Tongue Mechanics | As a player, I want to use the lizard’s tongue to latch and swing across gaps, maintaining momentum. (Wei idea) |
 | Player | Gliding Mechanic | As a player, I want to glide while airborne to extend jumps, adjust landing, and chain movements. (Wei idea) |
-### Use Case Specifications (Lizard Adventure)
+### Use Case Specifications 
+Lizard Adventure
 
 <p>
   <img width="600" alt="Use_case" src="https://github.com/user-attachments/assets/7a1ebe7e-251c-403f-a9b8-df31ef993f2f" />
