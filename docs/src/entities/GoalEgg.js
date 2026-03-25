@@ -11,11 +11,16 @@ class GoalEgg extends Entity {
   }
   onCollide(player){
     if(typeof uiManager !=='undefined'){
-    uiManager.hasegg = true;
-    this.isDead = true;
-    console.log("Got the egg");
+      if (!uiManager.eggCount){
+        uiManager.eggCount = 0;
+      }
+      uiManager.eggCount += 1;
+
+      this.isDead = true;
+      console.log("Got the egg #"+ this.level +"! Total:" + uiManager.eggCount);  
     }
   }
+  
   display() {
     if (this.img) image(this.img, this.pos.x, this.pos.y, this.width, this.height);
     // The number label on the egg

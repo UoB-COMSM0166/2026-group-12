@@ -14,8 +14,8 @@ class Bees extends Enemy {
     
     // 垂直飛行 AI：使用正弦波讓 Y 座標平滑上下移動
     // 公式：$y = baseY + \sin(angle) \times amplitude$
-    this.floatAngle += 0.08;
-    this.pos.y = this.baseY + sin(this.floatAngle) * 60; 
+    this.floatAngle += 0.015;
+    this.pos.y = this.baseY + sin(this.floatAngle) * 150; 
     
     super.update(mapManager, physics);
   

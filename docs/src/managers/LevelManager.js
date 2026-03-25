@@ -130,7 +130,7 @@ class LevelManager {
     let data = this.getLevelData(level);
     if (!data) return;
     let items = data.items || [];
-
+  //Fire and Ice 
     for (let i of items) {
       let img = null;
       if (typeof Transform !== "undefined") {
@@ -146,26 +146,37 @@ class LevelManager {
         }
       }
     }
-    //Hearts appeared
+  //Heart (Only generate 1 heart per game)
     if (typeof heartImg !== "undefined" && heartImg) {
-      let heartCount = floor(random(1, 4));
-      for (let i = 0; i < heartCount; i++) {
-        entities.push(
-          new Heart(random(1500, 5000), random(300, 600), 40, 40, heartImg),
-        );
+      let heartSpawnX = 1250;
+      let heartSpawnY = 500;
+      
+      if (level === 1){
+        heartSpawnX = 3300;
+        heartSpawnY = 450;
       }
+      else if (level === 2){
+        heartSpawnX = 2500;
+        heartSpawnY = 450;
+      }
+      else if (level === 3){
+        heartSpawnX = 3800;
+        heartSpawnY = 350;
+      }
+      entities.push(new Heart(heartSpawnX, heartSpawnY, 40, 40, heartImg));
     }
 
-    //Egg for Win the stages
-    let door = this.goalPos[level];
-    if (door) {
-      let eggIndex = max(0, level - 1);
-      let eggImg =
-        levelEggImgs && levelEggImgs[eggIndex] ? levelEggImgs[eggIndex] : null;
-
-      if (eggImg) {
-        entities.push(new GoalEgg(400, 650, 60, 60, eggImg, level));
-        console.log("Goal Egg generated successfully!");
+    //Egg (Only appear in stage 3)
+    //Set the position of the eggs
+    if (level === 3){
+      let eggPosition = [{x:1600, y:460}, {x:6880, y:300}, {x:6930, y:300}]
+      
+      for (let i = 0;  i < eggPosition.length; i++) {
+        let eggImg = (levelEggImgs && levelEggImgs[i]) ? levelEggImgs[i] : null;
+              
+        if (eggImg){
+          entities.push(new GoalEgg(eggPosition[i].x, eggPosition[i].y, 60, 60, eggImg, i + 1));
+        }
       }
     }
   }
@@ -175,10 +186,18 @@ class LevelManager {
   }
 
   isReachedGoal(player, uiManager) {
-    if (this.currentLevel !== 3 && uiManager.currentKeys < 3) {
-      return false;
+    if (this.currentLevel === 3){
+      if(!uiManager.eggCount || uiManager.eggCount < 3){
+        return false;
+      }
+    else{
+      if(uiManager.currentKeys<3){
+        return false;
+      }
     }
 
+    }
+    //Gate(Goal)
     let goal = this.getGoalPos();
     if (!goal) {
       return false;

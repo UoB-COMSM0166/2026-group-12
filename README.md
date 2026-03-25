@@ -221,7 +221,91 @@ Glide ends when landing or stamina (if used) runs out.
 - 15% ~750 words 
 - System architecture. Class diagrams, behavioural diagrams.
 
-Sequence diagram (behavioural diagram)
+### System Architecture
+<div>
+  <h3>1. Overview</h3>
+  <p>
+This project implements a 2D tile-based platformer using a modular architecture built on top of p5.js. The system follows a hybrid design combining entity-based modeling, a centralized physics system, and manager-driven resource control. The core principle is to separate behavior (Player FSM), physics (movement and collision), and world data (tile map) to ensure maintainability and extensibility.
+  </p>
+</div>
+<div>
+  <h3>2. Core Components</h3>
+  <h4>2.1 Entity Hierarchy</h4>
+  <p>
+The base abstraction is defined in Entity.js, which provides fundamental properties such as position and size, also abstract methods update() and display(). Figure.js extends Entity by introducing velocity and collision state, making it the primary unit affected by physics.
+All dynamic game objects (e.g., Player, Enemy) inherit from Figure. This ensures that movement and collision handling remain consistent across all physical entities.
+  </p>
+  <h4>2.2 Physics System</h4>
+  <p>
+The Physics.js module is responsible for updating position and resolving collisions. It operates directly on Figure instances and uses data from MapManager for collision detection.
+Key characteristics:
+  </p>
+    <ul>
+      <li>Velocity-based movement (pos += vel)</li>
+      <li>Axis-separated movement and collision resolution (X and Y handled independently)</li>
+      <li>Tile-based collision using map queries</li>
+    </ul>
+  <p>This design ensures deterministic and stable platformer physics while preventing issues such as tunneling or inconsistent collision states.</p>
+  <h4>2.3 Player and State Machine</h4>
+  <p>
+    The Player class acts as a controller that integrates input handling, state management, and movement logic.
+    It uses a finite state machine (FSM) implemented via updateState() and state-specific handlers. Each state (e.g., grounded, jumping, falling) determines how movement is applied.
+    <img src="image/stateDiagram.jpg" width="1000">
+  </p>
+  <p>Movement is abstracted into reusable methods such as applyGroundMovement(), allowing consistent integration with physics.</p>
+  <h4>2.4 Grapple Ability</h4>
+  <p>The grappling feature is implemented as a module GrappleAbility, it functionally operates as a player-bound ability. It is invoked directly by the Player and modifies the player’s velocity based on anchor points and rope constraints. It does not directly control position or collision.
+    This design ensures that grappling integrates seamlessly with the existing physics system without violating separation of concerns.
+</div>
+<div>
+  <h3>3. World and Data Management</h3>
+  <h4>3.1 MapManager</h4>
+  <p> MapManager handles tile-based world representation using data exported from Tiled (JSON format). It provides:</p>
+  <ul>
+    <li>Tile lookup (getTileAt)</li>
+    <li>Collision queries (isSolid)</li>
+    <li>Rendering of the tile map</li>
+  </ul> 
+  <p>The map is stored as a 1D array, and world coordinates are converted into tile indices for efficient lookup.</p>
+  <h4>3.2 Level and Resource Management</h4>
+  <ul>
+    <li>LevelManager handles loading and switching between levels</li>
+    <li>SaveManager ensures that progress will not be lost when the page was refreshed</li>
+    <li>UIManager is responsible for rendering all UI elements</li>
+  </ul> 
+  <p>Assets (maps, images) are organized separately under the assets directory. </p>
+</div>
+<div>
+  <h3>4. Game Loop and Data Flow</h3>
+  <p>The main loop (in sketch.js) orchestrates the update sequence:</p>
+  <ul>
+    <li>1.Load data and initialize the game(user interface, player, enemies, collectibles)</li>
+    <li>2.Input is processed by the Player</li>
+    <li>3.Player updates its state via FSM</li>
+    <li>4.Movement logic modifies velocity</li>
+    <li>5.Grapple ability further adjusts and constrains velocity if active</li>
+    <li>6.Physics system updates position and resolves collisions</li>
+    <li>7.Rendering is performed (entities, map, UI)</li>
+  </ul> 
+  <p>This pipeline ensures a clear separation between decision-making, physical simulation, and rendering.</p>
+</div>
+<div>
+  <h3>5. Design Characteristics</h3>
+  <p>The architecture emphasizes:</p>
+  <ul>
+    <li>Separation of concerns (input, behavior, physics, world)</li>
+    <li>Reusability through inheritance (Entity → Figure)</li>
+    <li>Stability via centralized physics handling</li>
+    <li>Extensibility for future systems (e.g., new abilities, AI, weapons)</li>
+  </ul> 
+</div>
+
+### Class diagram
+<p>
+  <img src="image/classDiagram.jpg" width="1000">
+</p>
+
+### Sequence diagram (behavioural diagram)
 <p>
   <img src="image/sequence_diagram.png" width="1000">
 </p>

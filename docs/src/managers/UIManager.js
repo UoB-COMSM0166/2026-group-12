@@ -180,5 +180,17 @@ class UIManager {
       }
     }
     noTint();
+
+    //Goal Egg display
+    if(typeof levelManager !== 'undefined' && levelManager.currentLevel === 3){
+      push();
+      fill(30);
+      textStyle(BOLD);
+      textSize(28);
+      textAlign(LEFT, TOP);
+      let currentEggs = this.eggCount || 0;
+      text("Eggs:" + currentEggs + "/3", 40, 90);
+      pop();
+    }
   }
 }
