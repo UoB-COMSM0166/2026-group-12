@@ -178,27 +178,25 @@ The Second Tier consists of the target customers; this means our game is develop
 The Third Tier is the external environment, including anyone indirectly affected by the game, such as competitors in the same domain, other developers searching for inspiration, or viewers watching gameplay streams. Although they may not experience this game in person, they will still be affected by the game's content to varying degrees.
 
 ### Epics and User Stories
+User Stories for Lizard Adventure
 
-# User Stories for Lizard Adventure
-
-| Stakeholder | Epic | User Story | Acceptance Criteria |
-|-------------|------|------------|-------------------|
-| Player | Collision System | As a player, I want collisions to be handled consistently, so that interactions between me, enemies, and objects work correctly. (Peng idea) | Given the game is running, when a collision occurs, then it is processed correctly for all entities (player, enemies, items, grapple points). |
-| Player | Data Security | As a player, I want my personal information protected and my game data securely backed up. (Chiu idea) | Given I am playing, when data is saved, then my information is encrypted and securely stored. |
-| Developer | Data Analysis | As a developer, I want the game data properly stored and structured for easy analysis. (Chiu idea) | Given game events are logged, when analyzing data, then it can be retrieved in structured format without errors. |
-| Player | Reward System | As a player, I want to earn skills after completing levels, so I have motivation to keep improving. (Tsai idea) | Given I complete a level, when it ends, then I receive skill rewards usable in future levels. |
-| Player | Engagement | As a player, I want rewards that encourage me to keep playing and share the game with others. (Tsai idea) | Given rewards are provided, when completing challenges, then I am motivated to continue and share progress. |
-| Player | Tutorial Clarity | As a player, I want tutorials that explain game mechanics quickly. (Huang idea) | Given I start the game, when accessing the tutorial, then the text is ≤100 words and clearly explains mechanics. |
-| Player | Smooth Gameplay | As a player, I want fluent, responsive gameplay. (Huang idea) | Given I perform actions (run, jump, swing), then FPS is stable and input is responsive. |
-| Player | Combat Diversity | As a player, I want diverse combat modes against bosses and monsters, including tongue strikes and environmental triggers. (Cheng idea) | Given I encounter enemies, when attacking, then mechanics and environmental effects function correctly. |
-| Player | Dynamic Level Environments | As a player, I want levels with environmental effects (arctic zones with health drain, tropical zones with rapid enemy spawns). (Cheng idea) | Given I enter special zones, when playing, then environmental hazards and enemy spawns behave as designed. |
-| Player | Tongue Mechanics | As a player, I want to use the lizard’s tongue to latch and swing across gaps, maintaining momentum. (Wei idea) | Given I aim and shoot the tongue, when it attaches to a valid surface, then I can swing with physics-based motion, release preserves momentum, and input feels responsive. |
-| Player | Gliding Mechanic | As a player, I want to glide while airborne to extend jumps, adjust landing, and chain movements. (Wei idea) | Given I am airborne, when I activate glide, then falling speed is reduced, horizontal control is allowed, glide transitions smoothly, and ends correctly upon landing or stamina depletion. |
-
+| Stakeholder | Epic | User Story |
+|-------------|------|------------|
+| Player | Collision System | As a player, I want collisions to be handled consistently, so that interactions between me, enemies, and objects work correctly. (Peng idea) |
+| Player | Data Security | As a player, I want my personal information protected and my game data securely backed up. (Chiu idea) |
+| Developer | Data Analysis | As a developer, I want the game data properly stored and structured for easy analysis. (Chiu idea) |
+| Player | Reward System | As a player, I want to earn skills after completing levels, so I have motivation to keep improving. (Tsai idea) |
+| Player | Engagement | As a player, I want rewards that encourage me to keep playing and share the game with others. (Tsai idea) |
+| Player | Tutorial Clarity | As a player, I want tutorials that explain game mechanics quickly. (Huang idea) |
+| Player | Smooth Gameplay | As a player, I want fluent, responsive gameplay. (Huang idea) |
+| Player | Combat Diversity | As a player, I want diverse combat modes against bosses and monsters, including tongue strikes and environmental triggers. (Cheng idea) |
+| Player | Dynamic Level Environments | As a player, I want levels with environmental effects (arctic zones with health drain, tropical zones with rapid enemy spawns). (Cheng idea) |
+| Player | Tongue Mechanics | As a player, I want to use the lizard’s tongue to latch and swing across gaps, maintaining momentum. (Wei idea) |
+| Player | Gliding Mechanic | As a player, I want to glide while airborne to extend jumps, adjust landing, and chain movements. (Wei idea) |
 ### Use Case Specifications (Lizard Adventure)
 
 <p>
-  <img width="400" alt="Use_case" src="https://github.com/user-attachments/assets/7a1ebe7e-251c-403f-a9b8-df31ef993f2f" />
+  <img width="600" alt="Use_case" src="https://github.com/user-attachments/assets/7a1ebe7e-251c-403f-a9b8-df31ef993f2f" />
 </p>
 
 
