@@ -49,8 +49,9 @@ class LevelManager {
         ],
         //items
         items: [
-          { element: Transform.Fire, x: 700, y: 400, size: 80 },
-          { element: Transform.Frozen, x: 900, y: 400, size: 80 },
+          { element: Transform.Frozen, x: 820, y: 400, size: 80 },
+          { element: Transform.Frozen, x: 3360, y: 400, size: 80 },
+          { element: Transform.Frozen, x: 4500, y: 520, size: 80 }
         ],
       },
       2: {
