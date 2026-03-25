@@ -49,8 +49,9 @@ class LevelManager {
         ],
         //items
         items: [
-          { element: Transform.Fire, x: 700, y: 400, size: 80 },
-          { element: Transform.Frozen, x: 900, y: 400, size: 80 },
+          { element: Transform.Frozen, x: 820, y: 400, size: 80 },
+          { element: Transform.Frozen, x: 3360, y: 400, size: 80 },
+          { element: Transform.Frozen, x: 4500, y: 520, size: 80 }
         ],
       },
       2: {
@@ -66,8 +67,9 @@ class LevelManager {
           { type: "Ant", x: 7000, y: 300, size: 50 },
         ],
         items: [
-          { element: Transform.Fire, x: 300, y: 200, size: 80 },
-          { element: Transform.Frozen, x: 400, y: 200, size: 80 },
+          { element: Transform.Fire, x: 1270, y: 600, size: 80 },
+          { element: Transform.Frozen, x: 3000, y: 550, size: 80 },
+          { element: Transform.Fire, x: 5420, y:550, size: 80 },
         ],
       },
       3: {

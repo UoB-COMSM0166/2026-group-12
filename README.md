@@ -88,13 +88,16 @@ VIDEO. Include a demo video of your game here (you don't have to wait until the 
 - 15% ~750 words
 - Early stages design. Ideation process. How did you decide as a team what to develop? Use case diagrams, user stories.
 
-### Ideation process
+### Ideation process & Ideation process
 
-At the beginning, our team compiled the game references each of us was interested in into a [presentation](https://www.canva.com/design/DAHAFBXVeBs/qvce7yU9iheiYdaTl-wrqg/view?utm_content=DAHAFBXVeBs&utm_campaign=designshare&utm_medium=link2&utm_source=uniquelinks&utlId=hc3e06d4f69). During the meeting, we shared and discussed the genre, mechanics, and ideas behind each game. In the end, we selected two games that we were most interested in developing: Identity V and Grapple Dog.
+Early Stage Design & Ideation process At the beginning, our team initiated the design process by compiling a list of game references that each of the six team members was personally interested in. In total, we brought together 10 different games for consideration. presentation. During our initial meeting, we presented our selected games to the group, sharing not only the genre and mechanics of each game, but also the core ideas and unique aspects that made these games appealing to us. Through this collaborative discussion, we were able to explore different perspectives, identify common interests, and evaluate which game concepts might be the most feasible and engaging for development. To narrow down our options, we conducted two rounds of voting. In the first round, each member voted for their top three preferred games, which resulted in Identity V receiving the most votes and becoming the clear front-runner. In the second round, we focused on the remaining games and discussed their potential in terms of gameplay, creativity, and alignment with our team’s skills. After careful consideration, Grapple Dog emerged as the second top choice, complementing Identity V’s style and mechanics. By the end of this process, we reached a consensus and selected these two games as the projects we were most excited to develop. This method ensured that every team member’s preferences were considered and that our final decision was both democratic and well-informed.
 
-<p align="center">
-  <img src="image/Voting1.png" height="400">
-<img src="image/Voting2.png" height="400">
+<p>
+  <strong>First Voting Result</strong><br>
+  <img src="image/Voting1.png" height="400"><br><br>
+
+  <strong>Second Voting Result</strong><br>
+  <img src="image/Voting2.png" height="400">
 </p>
 
 
@@ -177,44 +180,43 @@ The First Tier is the development team, including all members of group 12. Durin
 The Second Tier consists of the target customers; this means our game is developed specifically to meet their needs. These stacker holders include teacher, TA, testers and players. Of course they will get gameplay experience, and the feedback provided by them will help us improve our game.
 The Third Tier is the external environment, including anyone indirectly affected by the game, such as competitors in the same domain, other developers searching for inspiration, or viewers watching gameplay streams. Although they may not experience this game in person, they will still be affected by the game's content to varying degrees.
 
-### User Story
+### Epics and User Stories
+User Stories for Lizard Adventure
 
-Peng：
+| Stakeholder | Epic | User Story |
+|-------------|------|------------|
+| Player | Collision System | As a player, I want collisions to be handled consistently, so that interactions between me, enemies, and objects work correctly. (Peng idea) |
+| Player | Data Security | As a player, I want my personal information protected and my game data securely backed up. (Chiu idea) |
+| Developer | Data Analysis | As a developer, I want the game data properly stored and structured for easy analysis. (Chiu idea) |
+| Player | Reward System | As a player, I want to earn skills after completing levels, so I have motivation to keep improving. (Tsai idea) |
+| Player | Engagement | As a player, I want rewards that encourage me to keep playing and share the game with others. (Tsai idea) |
+| Player | Tutorial Clarity | As a player, I want tutorials that explain game mechanics quickly. (Huang idea) |
+| Player | Smooth Gameplay | As a player, I want fluent, responsive gameplay. (Huang idea) |
+| Player | Combat Diversity | As a player, I want diverse combat modes against bosses and monsters, including tongue strikes and environmental triggers. (Cheng idea) |
+| Player | Dynamic Level Environments | As a player, I want levels with environmental effects (arctic zones with health drain, tropical zones with rapid enemy spawns). (Cheng idea) |
+| Player | Tongue Mechanics | As a player, I want to use the lizard’s tongue to latch and swing across gaps, maintaining momentum. (Wei idea) |
+| Player | Gliding Mechanic | As a player, I want to glide while airborne to extend jumps, adjust landing, and chain movements. (Wei idea) |
+### Use Case Specifications 
+Lizard Adventure
 
-- As a developer, I want to handle all collision logic through a common interface, so that the system can efficiently process interactions between diverse objects (like the player, enemies, and grapple points) without writing redundant code.
+<p>
+  <img width="600" alt="Use_case" src="https://github.com/user-attachments/assets/7a1ebe7e-251c-403f-a9b8-df31ef993f2f" />
+</p>
 
-Chiu:
 
-- As a player, I want my personal information protected and my game data securely backed up.
-- As a developer, I want the data to be properly stored and structured for easy analysis.
-
-Tsai:
-
-- As a gamer, I want the game to have a reward system, so that when I complete a small level, I can earn a skill. This gives me the motivation to keep improving.
-- As a developer, I want players to become engaged with my game and share it with others, so I need to provide rewards that keep them playing.
-
-Huang:
-
-- As a player,  I want to play a game  which don't need to spend too much time to understand  the game mechanism criteria: tutorial can't not more than 100 words.
-- As a player,  I want to play a game  which have fluence gameplay criteria: check fps of each movement
-
-Cheng:
-
-- As a game designer, I aim to significantly enhance the game's depth by introducing diversified combat modes against bosses and monsters. This includes mechanics such as tongue-based strikes to hit enemies and the use of special environmental triggers to deal damage.Furthermore, I plan to implement complex level environments with dynamic effects: for instance, arctic conditions that cause gradual health drain for the lizard, and tropical rainforests where environmental factors trigger the rapid spawning of minor enemies. These elements will create a more challenging and immersive gameplay experience.
-
-Wei:
-
-- As a player, I want to use the lizard’s tongue to latch onto surfaces and swing across gaps, so that I can move through levels quickly and maintain momentum. Implements: The player can aim and shoot the tongue at valid surfaces.
-The tongue attaches only to designated or logical surfaces.
-The player can swing with physics-based motion.
-Releasing at the right time preserves forward momentum.
-The system feels responsive with minimal input delay.
-
-- As a player, I want to glide while airborne, so that I can extend jumps, adjust my landing, and smoothly chain movement actions together. Implements:The player can activate glide while in the air.
-Glide reduces falling speed.
-The player can slightly control horizontal direction during glide.
-Glide can transition smoothly from a jump or swing.
-Glide ends when landing or stamina (if used) runs out.
+| Use Case ID | Use Case Name             | Primary Actor | Description                                     | Preconditions                        | Trigger                           | Main Flow (Summary)                                               | Postconditions                     | Alternatives / Exceptions                   |
+|-------------|--------------------------|---------------|-----------------------------------------------|-------------------------------------|----------------------------------|------------------------------------------------------------------|-----------------------------------|--------------------------------------------|
+| UC1         | Start Game               | Player        | Start a new gameplay run                       | Game launched; main menu visible    | Player selects Start Game         | System initializes run and enters gameplay loop                  | New run active                     | Loading failure returns to menu            |
+| UC2         | Configure Settings       | Player        | Adjust game preferences                        | Player in menu                      | Player opens settings             | System displays and saves updated preferences                   | Settings updated                   | Invalid input rejected                      |
+| UC3         | Play Game                | Player        | Progress through levels                        | Run has started                      | Gameplay begins                   | Move → Jump → Grapple → Shoot → Collect → Avoid enemies → Repeat | Player progresses or run ends      | Pause, Quit, or Game Over                  |
+| UC4         | Tongue Swing (Grapple)   | Player        | Swing tongue to reach platforms or enemies     | Play Game active                     | Player uses grapple               | Player attaches tongue → Swing → Release → Land                  | Player moved to target or enemy hit | Tongue misses → fall or reset              |
+| UC5         | Shoot Fire/Ice Ball      | Player        | Attack enemies using elemental powers          | Play Game active                     | Player presses attack             | Fire/Ice ball created → Travel → Hit enemy → Damage applied      | Enemy damaged or defeated          | Attack misses → ball disappears            |
+| UC6         | Collect Butterfly Items  | Player        | Gain elemental transformations                 | Item available                       | Player touches item               | Player picks up butterfly → Transformation applied               | Player transformed                 | Inventory full or item inaccessible        |
+| UC7         | Collect Keys             | Player        | Pick up keys to unlock doors                   | Key available in level               | Player touches key                | Player picks up key → Inventory updated                          | Key added to inventory             | None                                       |
+| UC8         | Grab Egg                 | Player        | Collect eggs for level progression            | Egg available in level               | Player touches egg                | Player grabs egg → Inventory updated                               | Egg collected                      | None                                       |
+| UC9         | Open Door                | Player        | Unlock doors using keys                         | Player has key                       | Player reaches door               | Player unlocks door → Level transition triggered                 | Door open → Next level accessible  | Missing key prevents unlocking              |
+| UC10        | Avoid/Defeat Enemies     | Player        | Survive or defeat enemies like ants, bees, rabbits | Enemies present                     | Enemies appear                     | Player attacks or dodges enemies → Clear area                     | Area cleared                        | Player damaged or killed                     |
+| UC11        | Reach Level Goal         | Player        | Reach the end point of the level               | Run has started                       | Player moves to goal              | Player reaches goal coordinates → Level completed                | Level completed                     | Player dies before reaching goal            |
 
 ## Design
 
