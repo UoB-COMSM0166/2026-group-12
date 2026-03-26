@@ -52,7 +52,7 @@ class GrappleAbility {
         this.tongueDir = dir
         
         let foundAnchor = false
-        let stepSize = 8 // size for reaching grapple points each frame
+        let stepSize = 5 // size for reaching grapple points each frame
         let steps = floor(this.maxLength / stepSize)
 
         for (let i = 1; i <= steps; i++) {
