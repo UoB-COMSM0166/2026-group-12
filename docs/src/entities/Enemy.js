@@ -42,6 +42,7 @@ class Enemy extends Figure {
   }
   
   takeDamage(amount = 1, attackElement) {
+    sfx.stomp.play();
     if (attackElement === Transform.Fire){
       this.hearts -= amount;
     }
@@ -63,9 +64,11 @@ class Enemy extends Figure {
       if (aliveEnemies.length < keysNeeded) {
         uiManager.addKey();
         player.showKeyPopup();
+        sfx.getKey.play();
       } else if (random() < 0.5) {
         uiManager.addKey();
         player.showKeyPopup();
+        sfx.getKey.play();
       }
     }
   }
@@ -75,7 +78,6 @@ class Enemy extends Figure {
 
     if (player.isHooked) {
       this.takeDamage();
-      sfx.stomp.play();
       return;
     }
     

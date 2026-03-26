@@ -51,6 +51,13 @@ class MapManager {
     return id === t.map_tileset + 14;
   }
 
+  notGrapplePoint(x, y) {
+    let id = this.getTileAt(x, y);
+    let t = this.tilesets;
+    // TO DO: isSolid but not grapple point (for tongue retreat)
+    // return id === t.map_tileset + 14;
+  }
+
   getWalls() {
     let walls = [];
     for (let i = 0; i < this.tileMap.length; i++) {

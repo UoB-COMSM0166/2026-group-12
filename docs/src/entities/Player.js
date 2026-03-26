@@ -55,6 +55,8 @@ class Player extends Figure {
 
     // grapple
     this.grapple = new GrappleAbility(this)
+    this.grapBufferTime = 6
+    this.grapBufferTimer = 0
 
     /* glide
     this.isGliding = false
@@ -77,6 +79,25 @@ class Player extends Figure {
     this.hearts = 3    // 3 Heart (chance)
     this.keyPopups = [];
   }
+
+  handleInput(){
+    this.inputX = 0
+
+    // A
+    if (keyIsDown(65)){
+      this.inputX -= 1
+      this.facing = 1
+    }
+
+    // D
+    if (keyIsDown(68)){
+      this.inputX += 1
+      this.facing = -1
+    }
+
+    this.jumpPressed = keyIsDown(87) // W
+  }
+  
   //get hurt operation
   takeDamage(enemyX){
     // when player hurt, not get hurt in short time
@@ -103,6 +124,7 @@ class Player extends Figure {
   }
   //transform apply
   applyTrans(formChange){
+    sfx.transform.play();
     this.trans = formChange
     this.transTimer = this.transTime
   }
@@ -112,13 +134,13 @@ class Player extends Figure {
 
     this.attackCooldown = 15
 
-let shootX
-if (this.facing === 1){
-  shootX = this.pos.x + this.width - 65 
-}
-else{
-  shootX = this.pos.x + 65 
-}
+      let shootX
+      if (this.facing === 1){
+        shootX = this.pos.x + this.width - 65 
+      }
+      else{
+        shootX = this.pos.x + 65 
+      }
 
     let shootY = this.pos.y + (this.height / 2) - 30
 
@@ -156,6 +178,7 @@ else{
     }
     if (this.attackPressed && (this.trans === Transform.Fire || this.trans === Transform.Frozen)){
        this.applyAttack()
+       this.attackPressed = false
     }
 
     physics.update(this)
@@ -179,28 +202,6 @@ else{
 
       this.grapple.update()
     }
-  }
-
-  handleInput(){
-    this.inputX = 0
-
-    // A
-    if (keyIsDown(65)){
-      this.inputX -= 1
-      this.facing = 1
-    }
-
-    // D
-    if (keyIsDown(68)){
-      this.inputX += 1
-      this.facing = -1
-    }
-
-    this.jumpPressed = keyIsDown(87) // W
-    this.grapplePressed = mouseIsPressed // LEFT_PRESSED
-    //Frozen & Fire Attack
-    this.attackPressed = keyIsDown(32) // Space
-
   }
 
   // STATE MACHINE
@@ -247,6 +248,7 @@ else{
 
     if (this.grapplePressed){
       this.startGrapple()
+      this.grapplePressed = false
     }
   }
 
@@ -257,6 +259,7 @@ else{
 
     if (this.grapplePressed){
       this.startGrapple()
+      this.grapplePressed = false
     }
   }
 
@@ -267,19 +270,6 @@ else{
       sfx.land.play();
       this.state = PlayerState.RUN
       return
-    }
-  }
-
-  startGrapple() {
-    if (!this.grapple) return;
-
-    let worldX = mouseX - camX;
-    let worldY = mouseY - camY;
-
-    let success = this.grapple.shoot(worldX, worldY)
-    if (success) {
-      sfx.stick.play();
-      this.state = PlayerState.GRAPPLE
     }
   }
 
@@ -296,6 +286,7 @@ else{
     
     if(this.grapplePressed){
       this.startGrapple()
+      this.grapplePressed = false
     }
   }
 
@@ -304,6 +295,42 @@ else{
       this.grapple.release()
       this.state = PlayerState.FALL
       return
+    }
+  }
+
+  onMousePressed(btn) {
+    if (btn === LEFT) {
+      this.grapplePressed = true
+    }
+    if (btn === RIGHT) {
+      this.attackPressed = true
+    }
+  }
+
+  onMouseReleased(btn) {
+    if (btn === LEFT) {
+      this.grapplePressed = false
+    }
+
+    if (btn === RIGHT) {
+      this.attackPressed = false
+    }
+  }
+
+
+  startGrapple() {
+    if (!this.grapple) return;
+    if (this.grapple.active || this.grapple.tongueFlying) return
+
+    this.vel.x = 0
+    this.vel.y = 0
+
+    let worldX = mouseX - camX;
+    let worldY = mouseY - camY;
+
+    let success = this.grapple.shoot(worldX, worldY)
+    if (success) {
+      this.state = PlayerState.GRAPPLE
     }
   }
 
@@ -360,21 +387,23 @@ else{
     }
   }
 
+  onJumpPressed() {
+    this.jumpBufferTimer = this.jumpBufferTime
+  }
+
   // Allow Player to jump for several frames after leaving the platform.
   updateTimers(){
     // coyote time
     if (this.onGround){
       this.coyoteTimer = this.coyoteTime
+      this.hasJumped = false
     }
     else if (this.coyoteTimer > 0){
       this.coyoteTimer--
     }
 
     // jump buffer
-    if (this.jumpPressed){
-      this.jumpBufferTimer = this.jumpBufferTime
-    }
-    else if (this.jumpBufferTimer > 0){
+    if (this.jumpBufferTimer > 0){
       this.jumpBufferTimer--
     }
 

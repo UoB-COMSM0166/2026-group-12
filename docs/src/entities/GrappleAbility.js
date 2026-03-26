@@ -9,9 +9,9 @@ class GrappleAbility {
         this.maxLength = 400                 // Maximum rope length
 
         // Swing mechanics
-        this.retractSpeed = 2                // Speed when shortening the rope (W key)
-        this.extendSpeed = 2                 // Speed when extending the rope (S key)
-        this.baseSwingForce = 0.25           // Force applied when swinging
+        this.retractSpeed = 8                // Speed when shortening the rope (W key)
+        this.extendSpeed = 8                 // Speed when extending the rope (S key)
+        this.baseSwingForce = 0.16           // Force applied when swinging
 
         // Tongue animation state
         this.tongueFlying = false            // Whether the tongue is animating
@@ -24,12 +24,15 @@ class GrappleAbility {
         this.tongueReturning = false         // Whether the tongue is returning
 
         // Animation speeds
-        this.tongueOutSpeed = 0.18           // Speed of tongue extending
+        this.tongueOutSpeed = 0.15           // Speed of tongue extending
         this.tongueReturnSpeed = 0.4         // Speed of tongue returning
 
         // Pause at extension
         this.tonguePauseTimer = 0
-        this.tonguePauseDuration = 15
+        this.tonguePauseDuration = 10
+
+        this.tongueDir = createVector(0, 0)
+        this.tongueTotalDist = 0
     }
 
     shoot(targetX, targetY) {
@@ -42,32 +45,64 @@ class GrappleAbility {
         p.x += this.player.width / 2
         p.y += this.player.height / 2
 
-        // Check if target is within max range
-        let d = dist(p.x, p.y, targetX, targetY)
-        if (d > this.maxLength) {
-            return false
-        }
-
+        let dir = createVector(targetX - p.x, targetY - p.y).normalize()
+    
         // Initialize tongue animation
         this.tongueStart.set(p.x, p.y)
-        this.tongueTarget.set(targetX, targetY)
+        this.tongueDir = dir
+        
+        let foundAnchor = false
+        let stepSize = 8 // size for reaching grapple points each frame
+        let steps = floor(this.maxLength / stepSize)
+
+        for (let i = 1; i <= steps; i++) {
+            let checkX = p.x + dir.x * stepSize * i
+            let checkY = p.y + dir.y * stepSize * i
+
+            if (mapManager.isGrapplePoint(checkX, checkY)) {
+                // find grapple point along the path and set as target
+                this.anchor.set(checkX, checkY)
+                this.ropeLength = dist(p.x, p.y, checkX, checkY)
+                foundAnchor = true
+                sfx.stick.play();
+                break
+            } else if (mapManager.getTileAt(checkX, checkY) !== 0) {
+                this.tongueTotalDist = stepSize * (i - 1)
+                this.tongueTarget.set(
+                    p.x + dir.x * stepSize * (i - 1),
+                    p.y + dir.y * stepSize * (i - 1)
+                )
+                this.tongueProgress = 0
+                this.tongueReturning = false
+                this.tonguePauseTimer = 0
+                this.tongueFlying = true
+                this.active = false
+                return false
+            }
+        }
+
+        this.tongueTotalDist = foundAnchor
+            ? dist(p.x, p.y, this.anchor.x, this.anchor.y)
+            : this.maxLength
+
+        if (foundAnchor) {
+            // set tongue target to the grapple point for animation
+            this.tongueTarget.set(this.anchor.x, this.anchor.y)
+        } else {
+            // retreat
+            this.tongueTarget.set(
+            p.x + dir.x * this.maxLength,
+            p.y + dir.y * this.maxLength
+            )
+        }
+
         this.tongueProgress = 0
         this.tongueReturning = false
         this.tonguePauseTimer = 0
         this.tongueFlying = true
-
-        // If target is a valid grapple point then attach rope
-        if (mapManager.isGrapplePoint(targetX, targetY)) {
-            this.anchor.set(targetX, targetY)
-            this.ropeLength = d
-            this.active = true
-            this.tongueFlying = false
-            return true
-        }
-
-        // Otherwise no grapple 
         this.active = false
-        return false
+
+        return foundAnchor
     }
 
     adjust() {
@@ -110,6 +145,7 @@ class GrappleAbility {
         if (!this.active) return
 
         this.active = false
+        this.anchor.set(0, 0)
 
         // Reset player state if needed
         if (this.player.state === PlayerState.GRAPPLE) {
@@ -120,7 +156,6 @@ class GrappleAbility {
     update() {
         // Tongue animation logic
         if (this.tongueFlying) {
-
             // Pause at full extension
             if (this.tonguePauseTimer > 0) {
                 this.tonguePauseTimer--
@@ -133,6 +168,11 @@ class GrappleAbility {
                         this.tongueProgress = 1
                         this.tonguePauseTimer = this.tonguePauseDuration
                         this.tongueReturning = true
+
+                        if (this.anchor.x !== 0 && this.anchor.y !== 0) {
+                            this.active = true
+                            this.player.state = PlayerState.GRAPPLE
+                        }
                     }
                 } else {
                     // Returning phase
@@ -152,7 +192,11 @@ class GrappleAbility {
             }
 
             // Interpolate tongue position
-            this.tonguePos = p5.Vector.lerp(this.tongueStart, this.tongueTarget, t)
+            let currentDist = t * this.tongueTotalDist
+            this.tonguePos = p5.Vector.add(
+            this.tongueStart,
+            p5.Vector.mult(this.tongueDir, currentDist)
+            )
         }
 
         // Rope physics
@@ -187,14 +231,14 @@ class GrappleAbility {
         // For tongue origin based on facing direction
         let px = (this.player.facing === -1)
             ? p.x + this.player.width * 0.85
-            : p.x + this.player.width * 0.15
+            : p.x + this.player.width * 0.2
 
         let py = p.y + this.player.height * 0.35
 
         // Draw tongue (during animation)
         if (this.tongueFlying) {
             stroke(255, 130, 130)
-            strokeWeight(4)
+            strokeWeight(6)
             line(px, py, this.tonguePos.x, this.tonguePos.y)
             noStroke()
         }
@@ -202,7 +246,7 @@ class GrappleAbility {
         // Draw rope (when attached)
         if (this.active) {
             stroke(255, 130, 130)
-            strokeWeight(4)
+            strokeWeight(6)
             line(px, py, this.anchor.x, this.anchor.y)
             noStroke()
         }

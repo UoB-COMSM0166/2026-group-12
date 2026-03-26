@@ -5,9 +5,9 @@ class Ball extends Entity{
       this.img = img
       this.facing = facing
       this.isDead = false
-      this.maxDistance = 200
+      this.maxDistance = 500
       this.startX = x
-      this.ballSpeed = 8
+      this.ballSpeed = 15
       this.vel = createVector(this.ballSpeed * -facing, 0) 
 
       this.mouthOffsetX = 20 

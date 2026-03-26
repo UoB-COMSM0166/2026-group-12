@@ -33,17 +33,24 @@ let sfx = {}
 function preload() {
   sfx.bgm = loadSound('assets/sfx/bgm.mp3')
   sfx.chose = loadSound('assets/sfx/chose.wav')
+  sfx.chose.setVolume(0.6);
   sfx.startGame = loadSound('assets/sfx/startGame.wav')
+  sfx.startGame.setVolume(0.6);
   sfx.death = loadSound('assets/sfx/death.wav')
   sfx.pass = loadSound('assets/sfx/pass.wav')
   sfx.getKey = loadSound('assets/sfx/getKey.wav')
   sfx.hurt = loadSound('assets/sfx/hurt.wav')
   sfx.heal = loadSound('assets/sfx/heal.wav')
+  sfx.heal.setVolume(0.8);
   sfx.shoot = loadSound('assets/sfx/shoot.wav')
   sfx.jump = loadSound('assets/sfx/jump.wav')
+  sfx.jump.setVolume(0.6);
   sfx.land = loadSound('assets/sfx/land.wav')
   sfx.stick = loadSound('assets/sfx/stick.wav')
+  sfx.stick.setVolume(1.2);
   sfx.stomp = loadSound('assets/sfx/stomp.wav')
+  sfx.stomp.setVolume(1.2);
+  sfx.transform = loadSound('assets/sfx/transform.wav')
 
   map0Data = loadJSON("assets/map/level_0.json");
   map1Data = loadJSON("assets/map/level_1.json");
@@ -268,14 +275,16 @@ function overlaps(a, b) {
 function mousePressed() {
   if (!uiManager) return;
 
+  player.onMousePressed(mouseButton)
+
   if (gameState === "START") {
     if (uiManager.isStartButtonClicked(mouseX, mouseY)) {
-      sfx.chose.play();
+      sfx.startGame.play();
       gameState = "LEVEL_SELECT";
     } else if (uiManager.isTutorialButtonClicked(mouseX, mouseY)) {
       levelManager.currentLevel = 0;
       initGame();
-      sfx.startGame.play();
+      sfx.chose.play();
       gameState = 'PLAYING';
     }
   } else if (gameState === "LEVEL_SELECT") {
@@ -284,38 +293,44 @@ function mousePressed() {
       levelManager.currentLevel = level;
       initGame();
       if (currentCutscene.length > 0) {
-        sfx.startGame.play();
+        sfx.chose.play();
         gameState = "CUTSCENE";
       } else {
-        sfx.startGame.play();
+        sfx.chose.play();
         gameState = "PLAYING";
       }
     }
   } else if (gameState === "GAMEOVER") {
     if (uiManager.isRestartButtonClicked(mouseX, mouseY)) {
-      sfx.chose.play();
+      sfx.startGame.play();
       resetGame();
     } else if (uiManager.isHomeButtonClicked(mouseX, mouseY)) {
       levelManager.currentLevel = 1;
-      sfx.chose.play();
+      sfx.startGame.play();
       resetGame();
       gameState = "START";
     }
   } else if (gameState === "CUTSCENE") {
     cutsceneIndex++;
     if (cutsceneIndex >= currentCutscene.length) {
-      sfx.startGame.play();
+      sfx.chose.play();
       gameState = "PLAYING";
     }
   } else if (gameState === "GAMECLEAR") {
     if (uiManager.isHomeButtonClicked(mouseX, mouseY)) {
       levelManager.currentLevel = 1;
-      sfx.chose.play();
+      sfx.startGame.play();
       resetGame();
       gameState = "START";
     }
   }
 }
+
+function mouseReleased() {
+  if (!uiManager) return;
+  player.onMouseReleased(mouseButton)
+}
+
 
 function initGame() {
   entities = [];
@@ -352,6 +367,10 @@ function resetGame() {
 
 // for testing
 function keyPressed() {
+  if (keyCode === 87) {
+    player.onJumpPressed()
+  }
+
   if (key === "p" || key === "P") {
     console.log("player pos:", player.pos.x, player.pos.y);
   }
