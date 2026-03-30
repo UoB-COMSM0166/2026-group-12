@@ -75,6 +75,7 @@ function preload() {
   doorOpenImg = loadImage("assets/img/uiManager/door/doorOpen.png");
   fireballImg = loadImage("assets/img/fireball.png");
   iceballImg = loadImage("assets/img/iceball.png");
+  carrotImg = loadImage('assets/img/carrot4.png');
   blueButterfly = loadImage("assets/img/item/blueButterfly.png");
   redButterfly = loadImage("assets/img/item/redButterfly.png");
 
@@ -352,7 +353,7 @@ function initGame() {
   if (levelManager.currentLevel === 0) {
     player = new Player(50, 200, 72, 48, playerImg);
   } else if (levelManager.currentLevel === 3) {
-    player = new Player(150, 800, 72, 48, playerImg);
+    player = new Player(6150, 800, 72, 48, playerImg);
   } else {
     player = new Player(150, 200, 72, 48, playerImg);
   }

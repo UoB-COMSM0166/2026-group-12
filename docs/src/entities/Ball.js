@@ -30,7 +30,7 @@ class Ball extends Entity{
       scale(this.facing, 1);
 
       let imgToDraw = (this.element === Transform.Fire) ? fireballImg : iceballImg;
-      image(imgToDraw, -this.width/2, -this.height/2, this.width * 1.3, this.height * 1.3);
+      image(imgToDraw, -this.width/2, -this.height/2, this.width*1.3, this.height*1.3);
 
       pop();
    }

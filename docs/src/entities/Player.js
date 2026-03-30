@@ -35,7 +35,7 @@ class Player extends Figure {
     this.friction = 0.6
 
     // jump
-    this.jumpForce = -16
+    this.jumpForce = -20//-16
     this.jumpCut = 0.5
 
     // jump system
