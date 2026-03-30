@@ -83,7 +83,7 @@ class Enemy extends Figure {
     
     const isStomping =
       player.vel.y > 0 &&
-      player.bottom < this.pos.y + this.height * 0.5;
+      player.bottom < this.pos.y + this.height * 0.5;//oppsite
     if (isStomping) {
       this.takeDamage();
       player.vel.y = -16;
@@ -136,5 +136,4 @@ class Enemy extends Figure {
     }
   }
 }
-
 
