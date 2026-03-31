@@ -44,7 +44,6 @@ class LevelManager {
           { type: "Ant", x: 1400, y: 400, size: 50 },
           { type: "Ant", x: 1750, y: 300, size: 50 },
           { type: "Ant", x: 2350, y: 200, size: 50 },
-          { type: "Ant", x: 4550, y: 200, size: 50 },
           { type: "Ant", x: 5500, y: 20, size: 50 },
         ],
         //items
@@ -65,6 +64,8 @@ class LevelManager {
           { type: "Ant", x: 5100, y: 300, size: 50 },
           { type: "Ant", x: 6600, y: 300, size: 50 },
           { type: "Ant", x: 7000, y: 300, size: 50 },
+          { type: "Bee", x: 3000, y: 450, size: 60 },
+          { type: "Bee", x: 4000, y: 350, size: 60 }
         ],
         items: [
           { element: Transform.Fire, x: 1270, y: 600, size: 80 },
@@ -75,13 +76,16 @@ class LevelManager {
       3: {
         mapData: this.mapsData[3],
         enemies: [
-          { type: "Ant", x: 900, y: 800, size: 50 },
+          { type: "Ant", x: 450, y: 800, size: 50 },
           { type: "Ant", x: 1800, y: 500, size: 50 },
           { type: "Ant", x: 2100, y: 500, size: 50 },
           { type: "Ant", x: 3600, y: 400, size: 50 },
           { type: "Ant", x: 4530, y: 200, size: 50 },
           { type: "Ant", x: 5100, y: 300, size: 50 },
-          { type: "Boss", x: 6300, y: 300, size: 100 }
+          { type: "Bee", x: 1100, y: 430, size: 60 },
+          { type: "Bee", x: 4300, y: 320, size: 60 },
+          { type: "Bee", x: 5400, y: 600, size: 60 },
+          { type: "Boss", x: 6300, y: 300, size: 120 }
         ],
         items: [
           { element: Transform.Fire, x: 300, y: 200, size: 80 },
@@ -119,16 +123,15 @@ class LevelManager {
     let enemies = data.enemies;
 
     for (let e of enemies) {
-      if (e.type === "Ant") entities.push(new Ant(e.x, e.y, e.size));
-      else if (e.type === "Boss") {
-        entities.push(new Boss(e.x, e.y, e.size, e.size, carrotImg, carrotImg));
+      if (e.type === "Ant") {
+        entities.push(new Ant(e.x, e.y, e.size));
       }
-    }
-
-    //Bees are coming~
-    if (level >= 2) {
-      entities.push(new Bees(2000, 350, 60, beeImgs));
-      entities.push(new Bees(4000, 350, 60, beeImgs));
+      else if (e.type === "Bee") { 
+        entities.push(new Bees(e.x, e.y, e.size, beeImgs));
+      }
+      else if (e.type === "Boss") {
+        entities.push(new Boss(e.x, e.y, e.size, e.size, badbunnyImgs, carrotImg));
+      }
     }
   }
 
@@ -192,22 +195,19 @@ class LevelManager {
   }
 
   isReachedGoal(player, uiManager) {
-    if (this.currentLevel === 3){
-      if(!uiManager.eggCount || uiManager.eggCount < 3){
-        return false;
-      }
-    else{
-      if(uiManager.currentKeys<3){
-        return false;
-      }
+    
+    if (this.currentLevel === 3) {
+      // Level 3
+      if (!uiManager.eggCount || uiManager.eggCount < 3) return false;
+    } 
+    else {
+      // Level 1 and 2 need 3 keys
+      if (uiManager.currentKeys < 3) return false;
     }
 
-    }
-    //Gate(Goal)
+    
     let goal = this.getGoalPos();
-    if (!goal) {
-      return false;
-    }
+    if (!goal) return false;
 
     return (
       player.left < goal.x + this.goalW &&
@@ -219,8 +219,10 @@ class LevelManager {
 
   displayGoal() {
     let goal = this.getGoalPos();
-    let img =
-      uiManager.currentKeys >= 3 ? this.doorOpenImg : this.doorLockedImg;
+    let isConditionMet = uiManager.currentKeys >= 3 || (this.currentLevel === 3 && uiManager.eggCount >= 3);
+
+    let img = isConditionMet ? this.doorOpenImg : this.doorLockedImg;
+  
     image(img, goal.x, goal.y, this.goalW, this.goalH);
   }
 
