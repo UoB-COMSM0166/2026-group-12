@@ -185,17 +185,17 @@ User Stories for Lizard Adventure
 
 | Stakeholder | Epic | User Story |
 |-------------|------|------------|
-| Player | Collision System | As a player, I want collisions to be handled consistently, so that interactions between me, enemies, and objects work correctly. (Peng idea) |
-| Player | Data Security | As a player, I want my personal information protected and my game data securely backed up. (Chiu idea) |
-| Developer | Data Analysis | As a developer, I want the game data properly stored and structured for easy analysis. (Chiu idea) |
-| Player | Reward System | As a player, I want to earn skills after completing levels, so I have motivation to keep improving. (Tsai idea) |
-| Player | Engagement | As a player, I want rewards that encourage me to keep playing and share the game with others. (Tsai idea) |
-| Player | Tutorial Clarity | As a player, I want tutorials that explain game mechanics quickly. (Huang idea) |
-| Player | Smooth Gameplay | As a player, I want fluent, responsive gameplay. (Huang idea) |
-| Player | Combat Diversity | As a player, I want diverse combat modes against bosses and monsters, including tongue strikes and environmental triggers. (Cheng idea) |
-| Player | Dynamic Level Environments | As a player, I want levels with environmental effects (arctic zones with health drain, tropical zones with rapid enemy spawns). (Cheng idea) |
-| Player | Tongue Mechanics | As a player, I want to use the lizard’s tongue to latch and swing across gaps, maintaining momentum. (Wei idea) |
-| Player | Gliding Mechanic | As a player, I want to glide while airborne to extend jumps, adjust landing, and chain movements. (Wei idea) |
+| Player | Collision System | As a player, I want collisions to be handled consistently, so that interactions between me, enemies, and objects work correctly. |
+| Player | Data Security | As a player, I want my personal information protected and my game data securely backed up.|
+| Developer | Data Analysis | As a developer, I want the game data properly stored and structured for easy analysis.|
+| Player | Reward System | As a player, I want to earn skills after completing levels, so I have motivation to keep improving.|
+| Player | Engagement | As a player, I want rewards that encourage me to keep playing and share the game with others.|
+| Player | Tutorial Clarity | As a player, I want tutorials that explain game mechanics quickly.|
+| Player | Smooth Gameplay | As a player, I want fluent, responsive gameplay.|
+| Player | Combat Diversity | As a player, I want diverse combat modes against bosses and monsters, including tongue strikes and environmental triggers.|
+| Player | Dynamic Level Environments | As a player, I want levels with environmental effects (arctic zones with health drain, tropical zones with rapid enemy spawns).|
+| Player | Tongue Mechanics | As a player, I want to use the lizard’s tongue to latch and swing across gaps, maintaining momentum.|
+| Player | Gliding Mechanic | As a player, I want to glide while airborne to extend jumps, adjust landing, and chain movements.|
 ### Use Case Specifications 
 Lizard Adventure
 
@@ -281,13 +281,13 @@ Key characteristics:
   <h3>4. Game Loop and Data Flow</h3>
   <p>The main loop (in sketch.js) orchestrates the update sequence:</p>
   <ul>
-    <li>1.Load data and initialize the game(user interface, player, enemies, collectibles)</li>
-    <li>2.Input is processed by the Player</li>
-    <li>3.Player updates its state via FSM</li>
-    <li>4.Movement logic modifies velocity</li>
-    <li>5.Grapple ability further adjusts and constrains velocity if active</li>
-    <li>6.Physics system updates position and resolves collisions</li>
-    <li>7.Rendering is performed (entities, map, UI)</li>
+    <li>Load data and initialize the game(user interface, player, enemies, collectibles)</li>
+    <li>Input is processed by the Player</li>
+    <li>Player updates its state via FSM</li>
+    <li>Movement logic modifies velocity</li>
+    <li>Grapple ability further adjusts and constrains velocity if active</li>
+    <li>Physics system updates position and resolves collisions</li>
+    <li>Rendering is performed (entities, map, UI)</li>
   </ul> 
   <p>This pipeline ensures a clear separation between decision-making, physical simulation, and rendering.</p>
 </div>
