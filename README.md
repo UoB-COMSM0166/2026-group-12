@@ -324,9 +324,182 @@ Key characteristics:
 
 - One qualitative evaluation (of your choice) 
 
-- One quantitative evaluation (of your choice) 
+### Quantitative Evaluation
+[Quantitative Raw Data](/Data/Quantitative_Raw_Data.xlsx)
+#### 1. Introduction
+This report uses NASA-TLX and SUS to evaluate the user experience, workload, and difficulty balance of the 2D platformer Skaarl. The results help identify areas for improvement and assess whether the game’s difficulty curve matches the intended design.
 
-- Description of how code was tested. 
+#### 2. Methodology
+
+**2.1 Method Overview**
+<ol>
+    <li>NASA Task Load Index, NASA-TLX
+        <p>NASA-TLX measures players’ perceived workload while playing Skaarl. It breaks workload into six dimensions (e.g., mental demand, frustration), helping identify whether the game causes excessive stress or fatigue.</p>
+    </li>
+    <li>System Usability Scale, SUS
+        <p>SUS is a widely used tool for evaluating usability and user satisfaction. Through 10 alternating statements, it assesses how intuitive the game’s menus, controls, and guidance are, ensuring technical issues do not affect the core gameplay experience.</p>
+    </li>
+</ol>
+
+**2.2 Experimental Design**
+<ol>
+    <li>Participants
+        <ul>
+            <li>Number: 10 participants</li>
+            <li>Background: All participants were students with no prior experience with Skaarl.</li>
+            <li>Sampling Method: Random sampling was adopted to minimise bias from specific player groups.</li>
+        </ul>
+    </li>
+    <li>Procedure
+        <ul>
+            <li>Pre-test Briefing: A brief introduction to the game controls was provided, without offering any level-specific strategies or hints.</li>
+            <li>Gameplay Session: Participants engaged in free play for up to 10 minutes per level, with the objective of attempting to complete the first two levels.</li>
+            <li>Data Collection: Immediately after completing or timing out on each level, participants filled out the NASA-TLX and SUS questionnaires to evaluate cognitive workload and system usability.</li>
+        </ul>
+    </li>
+</ol>
+
+**2.3 Data Analysis**
+
+**NASA-TLX**
+<p>Scoring Logic:</p>
+<ul>
+    <li>Item Score: Each dimension is measured on a 21-tick scale and converted to a 0-100 range.
+        <p>Score = (Tick − 1) × 5</p>
+    </li>
+    <li>Overall Workload:
+        <p>Total = ∑Scores ​/ 6</p>
+    </li>
+</ul>
+
+<p align="center">
+  <img src="image/NASA TLX - Mean Overall Workload Comparison.png" width="600">
+</p>
+  <p align="center">▲ NASA TLX - Mean Overall Workload Comparison</p>
+<p align="center">
+  <img src="image/NASA TLX - Multi-dimensional Workload Comparison.png" width="600">
+</p>
+  <p align="center">▲ NASA TLX - Multi-dimensional Workload Comparison</p>
+
+**SUS**
+<p>Scoring Logic:</p>
+<p>The SUS score is derived by transforming the 10-item questionnaire responses into a unified 0-100 scale.</p>
+
+<ul>
+    <li>Original Scale: 1 (Strongly Disagree) to 5 (Strongly Agree).</li>
+    <li>Item Conversion:
+        <ul>
+            <li>For Odd Items (1, 3, 5, 7, 9): Original Score − 1</li>
+            <li>For Even Items (2, 4, 6, 8, 10): 5 − Original Score</li>
+        </ul>
+    </li>
+    <li>Total Score:
+        <p>SUS = (∑Item Conversions) × 2.5</p>
+    </li>
+</ul>
+
+<p align="center">
+  <img src="image/SUS - Distribution of Scores across 10 Participants.png" width="600">
+</p>
+  <p align="center">▲ SUS - Distribution of Scores across 10 Participants</p>
+<p align="center">
+  <img src="image/SUS - Mean Score Compared to Industry Benchmark.png" width="600">
+</p>
+  <p align="center">▲ SUS - Mean Score Compared to Industry Benchmark</p>
+
+<table align="center">
+  <tr>
+    <th>Metrics</th>
+    <th>Level 1</th>
+    <th>Level 2</th>
+    <th>Trend</th>
+  </tr>
+  <tr>
+    <td>Average SUS Score</td>
+    <td>75.5</td>
+    <td>54.5</td>
+    <td>-21.0</td>
+  </tr>
+  <tr>
+    <td>Grade</td>
+    <td>Good - Grade B</td>
+    <td>Poor - Grade F</td>
+    <td>↓</td>
+  </tr>
+  <tr>
+    <td>Industry Benchmark(68.0)</td>
+    <td>Above</td>
+    <td>Below</td>
+    <td>↓</td>
+  </tr>
+</table>
+
+**Statistical Significance Testing (Wilcoxon Signed-Rank Test)**
+
+To verify whether the differences between Level 1 and Level 2 are statistically significant, a Wilcoxon Signed-Rank Test was conducted on data collected from the 10 participants.
+<ol>
+    <li>Test Parameters
+        <ul>
+            <li>Sample Size: n=10</li>
+            <li>Alpha Level: α=0.05</li>
+            <li>Critical Value: 8</li>
+        </ul>
+    </li>
+    <li>Results
+        <table align="center">
+          <tr>
+            <th>Method</th>
+            <th>W test statistic</th>
+            <th>Critical Value</th>
+            <th>Conclusion</th>
+          </tr>
+          <tr>
+            <td>NASA-TLX</td>
+            <td>0</td>
+            <td>8</td>
+            <td>Significant</td>
+          </tr>
+          <tr>
+            <td>SUS Score</td>
+            <td>0</td>
+            <td>8</td>
+            <td>Significant</td>
+          </tr>
+        </table>
+      </li>
+</ol>
+
+#### 3. Conclusion
+**3.1 Key Evaluation Findings**
+<p>Through a combined analysis of data from 10 participants (NASA-TLX and SUS) and the Wilcoxon Signed-Rank Test, the following key conclusions were drawn:</p>
+<ol>
+    <li>Statistically Significant Shift
+        <ul>
+            <li>Evidence: The test statistics for both evaluation tools are W = 0 (p < 0.05), far below the critical value of 8.</li>
+            <li>Insight: All participants consistently reported a significant increase in cognitive workload in Level 2, along with a consistent decline in usability ratings. This overwhelming consistency confirms that there is a substantial jump in difficulty between the two levels.</li>
+        </ul>
+    </li>
+    <li>Challenge vs. Frustration
+        <ul>
+            <li>Successful Difficulty Design: NASA-TLX data confirms that the increase in Mental demand and Effort in Level 2 achieves the intended level of challenge set during the initial design phase.</li>
+            <li>Usability Drop: The SUS score drops sharply from 75.5 to 54.5. This indicates that the increase in difficulty in Level 2 is not linear. When players fail frequently in Level 2, they subjectively perceive the system as less usable, even though the control logic remains consistent with Level 1.</li>
+            <li>Imbalance Between Skill and Frustration: Players’ perceived Own Performance declines in Level 2, directly contributing to the SUS score falling into the Unacceptable (Grade F) range.</li>
+        </ul>
+    </li>
+</ol>
+
+**3.2 Recommendations for Improvement**
+<ul>
+    <li>Reduce Frustration: Introduce level checkpoints to minimise the negative impact of repeated failures.</li>
+    <li>Enhance Intuitiveness: Add knockback on damage to give players more time to react.</li>
+    <li>Improve Onboarding: Include a tutorial level to help players build familiarity and improve proficiency.</li>
+</ul>
+
+**3.3 Conclusion**
+<p>This report confirms that the core framework of the game (Level 1) demonstrates a strong baseline of usability. The primary challenge lies in the overly steep difficulty curve of Level 2, which leads players to misinterpret game challenge as system failure. Future iterations will focus on maintaining cognitive challenge while optimising the experience to preserve a high level of playability.</p>
+
+
+- <p>Description of how code was tested.</p> 
 
 ## Process 
 
