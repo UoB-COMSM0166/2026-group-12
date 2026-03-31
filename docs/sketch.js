@@ -29,6 +29,7 @@ let cutsceneImgs = [];
 let currentCutscene = [];
 let cutsceneIndex = 0;
 let sfx = {}
+let badbunnyImgs = [];
 
 function preload() {
   sfx.bgm = loadSound('assets/sfx/bgm.mp3')
@@ -106,7 +107,12 @@ function preload() {
   levelEggImgs.push(loadImage("assets/img/uiManager/egg/level1_egg.png"));
   levelEggImgs.push(loadImage("assets/img/uiManager/egg/level2_egg.png"));
   levelEggImgs.push(loadImage("assets/img/uiManager/egg/level3_egg.png"));
-  //Enemies(Ant and Bee)
+  //Enemies(Bad Bunny, Ant and Bee)
+  for (let i = 1; i <= 3; i++) {
+    badbunnyImgs.push(loadImage(`assets/img/enemy/badbunny/bunny-${i}.png`));
+  }
+
+
   for (let i = 1; i <= 8; i++) {
     antImgs.push(loadImage(`assets/img/enemy/ant/ant-${i}.png`));
   }
