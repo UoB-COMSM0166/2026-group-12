@@ -325,6 +325,35 @@ Key characteristics:
 - One qualitative evaluation (of your choice) 
 
 - One quantitative evaluation (of your choice) 
+### Quantitative Evaluation
+#### 1. Introduction
+This evaluation report aims to quantitatively analyse the user experience, cognitive workload, and difficulty balance of the 2D platformer Skaarl through standardised scales, NASA-TLX and SUS. By using quantitative data, we can objectively identify areas for optimisation in the game design and verify whether the game’s difficulty curve aligns with the intended design expectations.
+
+#### 2. Methodology
+**2.1 Method Overview**
+1. NASA Task Load Index, NASA-TLX
+NASA-TLX is used to measure players’ subjective cognitive workload while playing levels in Skaarl. As platformer games rely heavily on precise control and quick reactions, this scale breaks workload down into six dimensions (e.g., mental demand, frustration level), helping us diagnose whether the game’s difficulty leads to excessive stress or fatigue.
+
+2. System Usability Scale, SUS
+SUS is one of the most widely used standardised rapid evaluation tools in the industry, designed to assess overall usability and user satisfaction in Skaarl. Through 10 alternating positive and negative statements, it quantifies how intuitive the game’s menus, control logic, and guidance systems are, ensuring that technical barriers do not interfere with the core gameplay experience.
+
+**2.2Experimental Design**
+1. Participants
+<ul>
+<li>Number: 10 participants</li>
+<li>Background: All participants were students with no prior experience with Skaarl.</li>
+<li>Sampling Method: Random sampling was adopted to minimise bias from specific player groups.</li>
+</ul>
+
+2. Procedure
+To ensure consistency in the quantitative evaluation, all participants followed the same procedure:
+<ul>
+<li>Pre-test Briefing: A brief introduction to the game controls was provided, without offering any level-specific strategies or hints.</li>
+<li>Gameplay Session: Participants engaged in free play for up to 10 minutes per level, with the objective of attempting to complete the first two levels.</li>
+<li>Data Collection: Immediately after completing or timing out on each level, participants filled out the NASA-TLX and SUS questionnaires to evaluate cognitive workload and system usability.</li>
+</ul>
+
+
 
 - Description of how code was tested. 
 
