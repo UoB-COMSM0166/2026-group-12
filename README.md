@@ -326,17 +326,17 @@ Key characteristics:
 
 ### Quantitative Evaluation
 #### 1. Introduction
-This evaluation report aims to quantitatively analyse the user experience, cognitive workload, and difficulty balance of the 2D platformer Skaarl through standardised scales, NASA-TLX and SUS. By using quantitative data, we can objectively identify areas for optimisation in the game design and verify whether the game’s difficulty curve aligns with the intended design expectations.
+This report uses NASA-TLX and SUS to evaluate the user experience, workload, and difficulty balance of the 2D platformer Skaarl. The results help identify areas for improvement and assess whether the game’s difficulty curve matches the intended design.
 
 #### 2. Methodology
 
 **2.1 Method Overview**
 <ol>
     <li>NASA Task Load Index, NASA-TLX
-        <p>NASA-TLX is used to measure players’ subjective cognitive workload while playing levels in Skaarl. As platformer games rely heavily on precise control and quick reactions, this scale breaks workload down into six dimensions (e.g., mental demand, frustration level), helping us diagnose whether the game’s difficulty leads to excessive stress or fatigue.</p>
+        <p>NASA-TLX measures players’ perceived workload while playing Skaarl. It breaks workload into six dimensions (e.g., mental demand, frustration), helping identify whether the game causes excessive stress or fatigue.</p>
     </li>
     <li>System Usability Scale, SUS
-        <p>SUS is one of the most widely used standardised rapid evaluation tools in the industry, designed to assess overall usability and user satisfaction in Skaarl. Through 10 alternating positive and negative statements, it quantifies how intuitive the game’s menus, control logic, and guidance systems are, ensuring that technical barriers do not interfere with the core gameplay experience.</p>
+        <p>SUS is a widely used tool for evaluating usability and user satisfaction. Through 10 alternating statements, it assesses how intuitive the game’s menus, controls, and guidance are, ensuring technical issues do not affect the core gameplay experience.</p>
     </li>
 </ol>
 
