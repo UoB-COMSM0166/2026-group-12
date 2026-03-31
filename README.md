@@ -325,6 +325,7 @@ Key characteristics:
 - One qualitative evaluation (of your choice) 
 
 ### Quantitative Evaluation
+[Quantitative Raw Data](/Data/Quantitative_Raw_Data.xlsx)
 #### 1. Introduction
 This report uses NASA-TLX and SUS to evaluate the user experience, workload, and difficulty balance of the 2D platformer Skaarl. The results help identify areas for improvement and assess whether the game’s difficulty curve matches the intended design.
 
