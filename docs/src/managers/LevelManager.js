@@ -19,8 +19,7 @@ class LevelManager {
       3: { x: 7050, y: 656 },
     };
     this.goalW = 150;
-    this.goalH =
-    this.doorLockedImg.height * (this.goalW / this.doorLockedImg.width);
+    this.goalH = this.doorLockedImg.height * (this.goalW / this.doorLockedImg.width);
   }
 
   getLevelData(level) {

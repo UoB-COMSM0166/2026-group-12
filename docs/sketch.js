@@ -2,7 +2,7 @@ let mapManager;
 let bgImg;
 let map0Data, map1Data, map2Data;
 let tileSetImg;
-let bushImg, pointerImg, fenceImg, treeImg, willowImg, ridgeImg, grassDecoImg;
+let bushImg, pointerImg,downPointerImg, fenceImg, treeImg, willowImg, ridgeImg, grassDecoImg;
 let levelManager;
 let doorLockedImg, doorOpenImg;
 let player;
@@ -28,31 +28,10 @@ let camY = 0;
 let cutsceneImgs = [];
 let currentCutscene = [];
 let cutsceneIndex = 0;
-let sfx = {}
+let sfx = {};
 let badbunnyImgs = [];
 
 function preload() {
-  sfx.bgm = loadSound('assets/sfx/bgm.mp3')
-  sfx.chose = loadSound('assets/sfx/chose.wav')
-  sfx.chose.setVolume(0.6);
-  sfx.startGame = loadSound('assets/sfx/startGame.wav')
-  sfx.startGame.setVolume(0.6);
-  sfx.death = loadSound('assets/sfx/death.wav')
-  sfx.pass = loadSound('assets/sfx/pass.wav')
-  sfx.getKey = loadSound('assets/sfx/getKey.wav')
-  sfx.hurt = loadSound('assets/sfx/hurt.wav')
-  sfx.heal = loadSound('assets/sfx/heal.wav')
-  sfx.heal.setVolume(0.8);
-  sfx.shoot = loadSound('assets/sfx/shoot.wav')
-  sfx.jump = loadSound('assets/sfx/jump.wav')
-  sfx.jump.setVolume(0.6);
-  sfx.land = loadSound('assets/sfx/land.wav')
-  sfx.stick = loadSound('assets/sfx/stick.wav')
-  sfx.stick.setVolume(1.2);
-  sfx.stomp = loadSound('assets/sfx/stomp.wav')
-  sfx.stomp.setVolume(1.2);
-  sfx.transform = loadSound('assets/sfx/transform.wav')
-
   map0Data = loadJSON("assets/map/level_0.json");
   map1Data = loadJSON("assets/map/level_1.json");
   map2Data = loadJSON("assets/map/level_2.json");
@@ -64,6 +43,7 @@ function preload() {
   tileSetImg = loadImage("assets/img/Tiles/1 Tiles/Tileset.png");
   bushImg = loadImage("assets/img/Tiles/1 Tiles/bush.png");
   pointerImg = loadImage("assets/img/Tiles/1 Tiles/pointer.png");
+  downPointerImg = loadImage("assets/img/Tiles/1 Tiles/down_pointer.png");
   fenceImg = loadImage("assets/img/Tiles/1 Tiles/fence.png");
   treeImg = loadImage("assets/img/Tiles/1 Tiles/tree.png");
   willowImg = loadImage("assets/img/Tiles/1 Tiles/willow.png");
@@ -121,8 +101,26 @@ function preload() {
     beeImgs.push(loadImage(`assets/img/enemy/bee/bee-${i}.png`));
   }
 
-  //Hearts
-  heartImg = loadImage("assets/img/uiManager/heart.png");
+  sfx.bgm = loadSound("assets/sfx/bgm.mp3");
+  sfx.chose = loadSound("assets/sfx/chose.wav");
+  sfx.chose.setVolume(0.6);
+  sfx.startGame = loadSound("assets/sfx/startGame.wav");
+  sfx.startGame.setVolume(0.6);
+  sfx.death = loadSound("assets/sfx/death.wav");
+  sfx.pass = loadSound("assets/sfx/pass.wav");
+  sfx.getKey = loadSound("assets/sfx/getKey.wav");
+  sfx.hurt = loadSound("assets/sfx/hurt.wav");
+  sfx.heal = loadSound("assets/sfx/heal.wav");
+  sfx.heal.setVolume(0.8);
+  sfx.shoot = loadSound("assets/sfx/shoot.wav");
+  sfx.jump = loadSound("assets/sfx/jump.wav");
+  sfx.jump.setVolume(0.6);
+  sfx.land = loadSound("assets/sfx/land.wav");
+  sfx.stick = loadSound("assets/sfx/stick.wav");
+  sfx.stick.setVolume(1.2);
+  sfx.stomp = loadSound("assets/sfx/stomp.wav");
+  sfx.stomp.setVolume(1.2);
+  sfx.transform = loadSound('assets/sfx/transform.wav');
 }
 
 function setup() {
@@ -194,7 +192,7 @@ function draw() {
       gameState = "GAMEOVER";
       return;
     }
-    //
+
     if (levelManager.isReachedGoal(player, uiManager)) {
       saveManager.completeLevel(levelManager.currentLevel);
       if (levelManager.nextLevel()) {
@@ -257,7 +255,7 @@ function draw() {
     translate(camX, camY);
     
 
-    mapManager.display(tileSetImg, bushImg, pointerImg, fenceImg, treeImg, willowImg, ridgeImg, grassDecoImg);
+    mapManager.display(tileSetImg, bushImg, pointerImg, downPointerImg, fenceImg, treeImg, willowImg, ridgeImg, grassDecoImg);
     levelManager.displayGoal();
 
     for (let e of entities) {
@@ -347,6 +345,8 @@ function initGame() {
   uiManager.eggCount = 0;
   currentCutscene = levelManager.getCutscenes(levelManager.currentLevel, cutsceneImgs);
   cutsceneIndex = 0;
+  camX = 0;
+  camY = 0;
 
   let data = levelManager.getLevelData(levelManager.currentLevel);
   mapManager = new MapManager(data.mapData);
@@ -359,7 +359,7 @@ function initGame() {
   if (levelManager.currentLevel === 0) {
     player = new Player(50, 200, 72, 48, playerImg);
   } else if (levelManager.currentLevel === 3) {
-    player = new Player(6150, 800, 72, 48, playerImg);
+    player = new Player(150, 800, 72, 48, playerImg);
   } else {
     player = new Player(150, 200, 72, 48, playerImg);
   }
@@ -372,12 +372,12 @@ function resetGame() {
   gameState = "PLAYING";
 }
 
-// for testing
 function keyPressed() {
   if (keyCode === 87) {
-    player.onJumpPressed()
+    player.onJumpPressed();
   }
 
+  // for testing
   if (key === "p" || key === "P") {
     console.log("player pos:", player.pos.x, player.pos.y);
   }
