@@ -359,7 +359,7 @@ function initGame() {
   if (levelManager.currentLevel === 0) {
     player = new Player(50, 200, 72, 48, playerImg);
   } else if (levelManager.currentLevel === 3) {
-    player = new Player(6150, 800, 72, 48, playerImg);
+    player = new Player(150, 800, 72, 48, playerImg);
   } else {
     player = new Player(150, 200, 72, 48, playerImg);
   }
