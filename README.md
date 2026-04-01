@@ -507,6 +507,73 @@ To verify whether the differences between Level 1 and Level 2 are statistically 
 
 - Teamwork. How did you work together, what tools and methods did you use? Did you define team roles? Reflection on how you worked together. Be honest, we want to hear about what didn't work as well as what did work, and importantly how your team adapted throughout the project.
 
+### 1. Collaboration Tools & Methods
+<p>Our team adopts Agile Development principles, breaking the development process into iterative cycles to respond quickly to technical challenges and adjust feature requirements.</.p>
+<ul>
+    <li>Version Control (GitHub):
+        <p>Each team member has their own development branch, which helps prevent code from being overwritten and reduces conflicts.</p>
+    </li>
+    <li>Task Management & Communication:
+        <ul>
+            <li>Trello: Used as a Kanban board, tasks are organised into “To Do”, “Doing”, and “Done” to visually track project progress and avoid duplication or delays.</li>
+            <li>WhatsApp: Used for real-time communication and quick documentation of key meeting points, ensuring flexible and efficient information sharing.</li>
+            <li>Weekly Meetings: We hold regular online meetings every Wednesday to review the progress of the previous sprint and assign upcoming development tasks.</li>
+        </ul>
+    </li>
+    <li>Development Environment:
+        <p>To minimise bugs caused by environmental differences, the team standardises on VS Code with the Live Server extension. This allows real-time preview of front-end changes, so everything can be checked before being pushed to GitHub, keeping the workflow efficient and consistent.</p>
+    </li>
+</ul>
+
+### 2. Team Roles
+<p>To ensure both technical depth and efficient project management, we adopted a modular system architecture. Each team member takes on two roles: a development role, responsible for building a subsystem, and an administrative role, responsible for project management.</p>
+
+<table align="center">
+  <tr>
+    <th>Member</th>
+    <th>Administrative Role</th>
+    <th>Development Role</th>
+    <th>Responsibilities</th>
+  </tr>
+  <tr>
+    <td>Ming Wei</td>
+    <td>Project Manager / Frontend Engineer</td>
+    <td>Entity Hierarchy & Physics System</td>
+    <td><b>Architecture & Physics Engine:</b> Designed the overall game architecture and object inheritance structure; implemented core collision detection and integrated audio resources.</td>
+  </tr>
+  <tr>
+    <td>Jay-Sin Chiu</td>
+    <td>Project Manager / Frontend Engineer</td>
+    <td>Game Flow & Scene Manager / Enemy & Entity</td>
+    <td><b>Progress Management & Gameflow:</b> Managed the development timeline and task allocation; handled UI logic, scene management, and front-end display.</td>
+  </tr>
+  <tr>
+    <td>Yi-Hsin Peng</td>
+    <td>Game Systems Architect</td>
+    <td>Tilemap & Level Loader</td>
+    <td><b>Map System & Camera Logic:</b> Designed level data for each stage; developed a level loader and implemented dynamic camera follow functionality.</td>
+  </tr>
+  <tr>
+    <td>Hsun-Han Huang</td>
+    <td>Game Systems Architect</td>
+    <td>Character Controller & FSM</td>
+    <td><b>Character Control & Game Logic:</b> Maintained system logic consistency; used a finite state machine (FSM) to implement player movement, attack detection, and control logic.</td>
+  </tr>
+  <tr>
+    <td>Yu-Cheng Cheng</td>
+    <td>Game Systems Architect</td>
+    <td>Enemy & Entity / Game Flow & Scene Manager</td>
+    <td><b>Game & Enemy Design:</b> Planned the game flow and progression; designed enemy behaviours such as patrolling, attacking, and object management.</td>
+  </tr>
+  <tr>
+    <td>Ming-Yen Tsai</td>
+    <td>QA & Optimization Engineer</td>
+    <td>Character Controller & FSM</td>
+    <td><b>Quality Assurance & Player Mechanics:</b> Implemented player grappling mechanics and attacks; handled bug fixing, testing, and performance optimisation.</td>
+  </tr>
+</table>
+
+
 ## Conclusion
 
 - 10% ~500 words
