@@ -84,7 +84,7 @@ class LevelManager {
           { type: "Bee", x: 1100, y: 430, size: 60 },
           { type: "Bee", x: 4300, y: 320, size: 60 },
           { type: "Bee", x: 5400, y: 600, size: 60 },
-          { type: "Boss", x: 6300, y: 300, size: 120 }
+          { type: "Boss", x: 6300, y: 300, size: 100 }
         ],
         items: [
           { element: Transform.Fire, x: 300, y: 200, size: 80 },

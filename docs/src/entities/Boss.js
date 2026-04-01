@@ -11,15 +11,15 @@ class Boss extends Enemy {
     this.width = w
     this.height = h
 
-    this.frames = imgArray;
-    this.frameIndex = 0;
-    this.frameTimer = 0;
-    this.frameSpeed = 8;
+    this.frames = imgArray
+    this.frameIndex = 0
+    this.frameTimer = 0
+    this.frameSpeed = 8
 
 
 
     //player detect
-    this.xGap = 1000
+    this.xGap = 800
     this.yGap = 60
     
     this.facing = -1 
@@ -27,9 +27,9 @@ class Boss extends Enemy {
     this.hearts = 10
     this.state = BossState.IDLE
     //attack
-    this.attackCount = 2
-    this.attackCoolTimer = 400 // minsec
-    this.attackCoolPeriod = 300
+    this.attackCount = 3
+    this.attackCoolTimer = 600 // minsec
+    this.attackCoolPeriod = 600
     this.shootGap = 0
     //move
     this.speed = 3
@@ -40,7 +40,7 @@ class Boss extends Enemy {
     //carrot
     this.carrotImg = carrotImg
 
-  }
+    }
 
     
     //MAIN
@@ -49,35 +49,23 @@ class Boss extends Enemy {
     behavior(mapManager) {
 
       this.playerDetect()
+
       this.blockAbove(mapManager)
+
       this.updateTimers()
 
-      if (Math.abs(this.dx) < 800) {
-        this.updateTimers();
-        if (this.attackCoolTimer <= 0) {
-          this.applyAttack();
-        } 
-        else {
-        this.applyMovement();
-        }
+      if (this.attackCoolTimer <= 0 && this.state !== BossState.IDLE) {
+        this.vel.x = 0
+        this.applyAttack()
       } 
-
-      else {    
-        this.vel.x = 0;
+      else {
+        this.applyMovement()
       }
 
-      //Border
-      if (this.pos.x < 0) {
-      this.pos.x = 0;
-      } 
-      else if (this.pos.x > mapManager.gridWidth - this.width) {
-      this.pos.x = mapManager.gridWidth - this.width;
+      if (this.pos.x > mapManager.gridWidth - this.width) {
+        this.pos.x = mapManager.gridWidth - this.width;
       }
-
-      //Bunny's death 
-      if (this.hearts > 0) {
-        this.isDead = false;
-      }
+      
     }
 
     
@@ -129,11 +117,7 @@ class Boss extends Enemy {
    applyMovement() {
     switch (this.state) {
       case BossState.IDLE:
-        this.vel.x = 0;
-        let idleDir = Math.sign(this.dx);
-        if (idleDir !== 0) {
-          this.facing = idleDir;
-        }
+        this.vel.x = 0
         break
       case BossState.CLIMBUP:
         this.climbUp()
@@ -144,6 +128,10 @@ class Boss extends Enemy {
       case BossState.CHASE:
         this.applyChase()
         break
+    }
+
+    if(this.pos.x < 0){
+      this.pos.x = 0
     }
   }
 
@@ -207,7 +195,7 @@ class Boss extends Enemy {
   }
   applyChase(){
     let playerDir = Math.sign(this.dx)
-      if (playerDir !== 0){
+      if (playerDir !== 0 && Math.abs(this.dx) > 20){
         this.facing = playerDir
       }
       else {
@@ -228,18 +216,17 @@ class Boss extends Enemy {
 
 
     applyAttack() {
-      
-      let playerDir = Math.sign(this.dx);
-      if (playerDir !== 0) {
-        this.facing = playerDir;
+      let playerDir = Math.sign(this.dx)
+      if (playerDir !== 0 && Math.abs(this.dx) > 20) {
+        this.facing = playerDir
       }
-
       if(this.attackCount <= 0){
         this.attackCoolTimer = this.attackCoolPeriod
         this.attackCount = 3
         return
       }
       if(this.shootGap <= 0){
+        
         this.shootCarrot()
         this.shootGap = 60
         this.attackCount--
@@ -248,7 +235,6 @@ class Boss extends Enemy {
         this.shootGap--
       }
     }
-
     shootCarrot() {
       //boss shoot
       let shootX = this.pos.x + this.width / 2 
@@ -266,35 +252,39 @@ class Boss extends Enemy {
       
     }
 
-  display() {
+    display(){
     if (this.hearts <= 0){
       return;
     }
 
-    // 
-    this.frameTimer++;
-    if (this.frameTimer >= this.frameSpeed) {
+    this.frameTimer++; 
+
+    if(this.frameTimer >= this.frameSpeed){
       this.frameTimer = 0;
       this.frameIndex = (this.frameIndex + 1) % this.frames.length;
     }
 
-    let currentImg = this.frames[this.frameIndex];
-
+    
+    let currentImg = this.frames[this.frameIndex]; 
+    
     push();
-    // Bunny face direction
+
     if (this.facing === -1) {
       translate(this.pos.x + this.width, this.pos.y);
-      scale(-1, 1);
+      scale(-1, 1); 
       image(currentImg, 0, 0, this.width, this.height);
     } else {
+      // Facing right (facing === 1) 
       image(currentImg, this.pos.x, this.pos.y, this.width, this.height);
     }
     
     // Bunny's HP
-    if (Math.abs(this.dx) < 1000) {
+    if (this.dist < 1000) {
       fill(255, 0, 0);
       rect(this.pos.x, this.pos.y - 20, (this.hearts / 10) * this.width, 10);
-    } 
+    }
+
     pop();
-  } 
+    }
+  
 }
