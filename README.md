@@ -333,10 +333,10 @@ This report uses NASA-TLX and SUS to evaluate the user experience, workload, and
 
 **2.1 Method Overview**
 <ol>
-    <li>NASA Task Load Index, NASA-TLX
+    <li><b>NASA Task Load Index, NASA-TLX</b>
         <p>NASA-TLX measures players’ perceived workload while playing Skaarl. It breaks workload into six dimensions (e.g., mental demand, frustration), helping identify whether the game causes excessive stress or fatigue.</p>
     </li>
-    <li>System Usability Scale, SUS
+    <li><b>System Usability Scale, SUS</b>
         <p>SUS is a widely used tool for evaluating usability and user satisfaction. Through 10 alternating statements, it assesses how intuitive the game’s menus, controls, and guidance are, ensuring technical issues do not affect the core gameplay experience.</p>
     </li>
 </ol>
@@ -473,13 +473,13 @@ To verify whether the differences between Level 1 and Level 2 are statistically 
 **3.1 Key Evaluation Findings**
 <p>Through a combined analysis of data from 10 participants (NASA-TLX and SUS) and the Wilcoxon Signed-Rank Test, the following key conclusions were drawn:</p>
 <ol>
-    <li>Statistically Significant Shift
+    <li><b>Statistically Significant Shift</b>
         <ul>
             <li>Evidence: The test statistics for both evaluation tools are W = 0 (p < 0.05), far below the critical value of 8.</li>
             <li>Insight: All participants consistently reported a significant increase in cognitive workload in Level 2, along with a consistent decline in usability ratings. This overwhelming consistency confirms that there is a substantial jump in difficulty between the two levels.</li>
         </ul>
     </li>
-    <li>Challenge vs. Frustration
+    <li><b>Challenge vs. Frustration</b>
         <ul>
             <li>Successful Difficulty Design: NASA-TLX data confirms that the increase in Mental demand and Effort in Level 2 achieves the intended level of challenge set during the initial design phase.</li>
             <li>Usability Drop: The SUS score drops sharply from 75.5 to 54.5. This indicates that the increase in difficulty in Level 2 is not linear. When players fail frequently in Level 2, they subjectively perceive the system as less usable, even though the control logic remains consistent with Level 1.</li>
@@ -490,9 +490,9 @@ To verify whether the differences between Level 1 and Level 2 are statistically 
 
 **3.2 Recommendations for Improvement**
 <ul>
-    <li>Reduce Frustration: Introduce level checkpoints to minimise the negative impact of repeated failures.</li>
-    <li>Enhance Intuitiveness: Add knockback on damage to give players more time to react.</li>
-    <li>Improve Onboarding: Include a tutorial level to help players build familiarity and improve proficiency.</li>
+    <li><b>Reduce Frustration:</b> Introduce level checkpoints to minimise the negative impact of repeated failures.</li>
+    <li><b>Enhance Intuitiveness:</b> Add knockback on damage to give players more time to react.</li>
+    <li><b>Improve Onboarding:</b> Include a tutorial level to help players build familiarity and improve proficiency.</li>
 </ul>
 
 **3.3 Conclusion**
