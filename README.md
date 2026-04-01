@@ -510,18 +510,16 @@ To verify whether the differences between Level 1 and Level 2 are statistically 
 ### 1. Collaboration Tools & Methods
 <p>Our team adopts Agile Development principles, breaking the development process into iterative cycles to respond quickly to technical challenges and adjust feature requirements.</.p>
 <ul>
-    <li>Version Control (GitHub):
-        <p>Each team member has their own development branch, which helps prevent code from being overwritten and reduces conflicts.</p>
+    <li><b>Version Control (GitHub):</b> Each team member has their own development branch, which helps prevent code from being overwritten and reduces conflicts.
     </li>
-    <li>Task Management & Communication:
+    <li><b>Task Management & Communication:</b>
         <ul>
             <li>Trello: Used as a Kanban board, tasks are organised into “To Do”, “Doing”, and “Done” to visually track project progress and avoid duplication or delays.</li>
             <li>WhatsApp: Used for real-time communication and quick documentation of key meeting points, ensuring flexible and efficient information sharing.</li>
             <li>Weekly Meetings: We hold regular online meetings every Wednesday to review the progress of the previous sprint and assign upcoming development tasks.</li>
         </ul>
     </li>
-    <li>Development Environment:
-        <p>To minimise bugs caused by environmental differences, the team standardises on VS Code with the Live Server extension. This allows real-time preview of front-end changes, so everything can be checked before being pushed to GitHub, keeping the workflow efficient and consistent.</p>
+    <li><b>Development Environment:</b> To minimise bugs caused by environmental differences, the team standardises on VS Code with the Live Server extension. This allows real-time preview of front-end changes, so everything can be checked before being pushed to GitHub, keeping the workflow efficient and consistent.
     </li>
 </ul>
 
