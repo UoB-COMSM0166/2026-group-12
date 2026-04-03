@@ -501,7 +501,10 @@ To verify whether the differences between Level 1 and Level 2 are statistically 
 #### 4. Code Testing
 Black-Box Testing
 
-<center>Freeze Attack</center>
+<div align="center">
+
+<h3>Freeze Attack</h3>
+
 <table>
 <tr>
 <th>Test Case</th>
@@ -529,7 +532,14 @@ Black-Box Testing
 </tr>
 </table>
 
-<center>Fire Attack</center>
+</div>
+
+<br>
+
+<div align="center">
+
+<h3>Fire Attack</h3>
+
 <table>
 <tr>
 <th>Test Case</th>
@@ -557,7 +567,14 @@ Black-Box Testing
 </tr>
 </table>
 
-<center>Heart Pickup</center>
+</div>
+
+<br>
+
+<div align="center">
+
+<h3>Heart Pickup</h3>
+
 <table>
 <tr>
 <th>Test Case</th>
@@ -585,7 +602,15 @@ Black-Box Testing
 </tr>
 </table>
 
-<center>Tongue Movement</center>
+</div>
+
+<br>
+
+<!-- Tongue Movement -->
+<div align="center">
+
+<h3>Tongue Movement</h3>
+
 <table>
 <tr>
 <th>Test Case</th>
@@ -643,8 +668,8 @@ Black-Box Testing
 </tr>
 </table>
 
+</div>
 
-- <p>Description of how code was tested.</p> 
 
 ## Process 
 
