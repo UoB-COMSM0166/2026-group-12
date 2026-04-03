@@ -527,9 +527,6 @@ To verify whether the differences between Level 1 and Level 2 are statistically 
 <td>Pass</td>
 </tr>
 </table>
-
-<br>
-
 <h3>Fire Attack</h3>
 <table>
 <tr>
@@ -557,9 +554,6 @@ To verify whether the differences between Level 1 and Level 2 are statistically 
 <td>Pass</td>
 </tr>
 </table>
-
-<br>
-
 <h3>Heart Pickup</h3>
 <table>
 <tr>
@@ -587,9 +581,6 @@ To verify whether the differences between Level 1 and Level 2 are statistically 
 <td>Pass</td>
 </tr>
 </table>
-
-<br>
-
 <h3>Tongue Movement</h3>
 <table>
 <tr>
