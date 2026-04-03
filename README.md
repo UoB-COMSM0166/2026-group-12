@@ -500,7 +500,8 @@ To verify whether the differences between Level 1 and Level 2 are statistically 
 
 #### 4. Code Testing
 Black-Box Testing
-Freeze Attack
+
+<center>Freeze Attack</center>
 <table>
 <tr>
 <th>Test Case</th>
@@ -528,7 +529,7 @@ Freeze Attack
 </tr>
 </table>
 
-Fire Attack
+<center>Fire Attack</center>
 <table>
 <tr>
 <th>Test Case</th>
@@ -556,7 +557,7 @@ Fire Attack
 </tr>
 </table>
 
-Heart Pickup
+<center>Heart Pickup</center>
 <table>
 <tr>
 <th>Test Case</th>
@@ -584,7 +585,7 @@ Heart Pickup
 </tr>
 </table>
 
-Tongue Movement / Grapple System
+<center>Tongue Movement</center>
 <table>
 <tr>
 <th>Test Case</th>
