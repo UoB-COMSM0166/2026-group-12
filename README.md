@@ -498,11 +498,9 @@ To verify whether the differences between Level 1 and Level 2 are statistically 
 **3.3 Conclusion**
 <p>This report confirms that the core framework of the game (Level 1) demonstrates a strong baseline of usability. The primary challenge lies in the overly steep difficulty curve of Level 2, which leads players to misinterpret game challenge as system failure. Future iterations will focus on maintaining cognitive challenge while optimising the experience to preserve a high level of playability.</p>
 
-#### 4. Code Testing
-Black-Box Testing
+<h2>Black-Box Testing</h2>
 
-<div align="center">
-
+<!-- Freeze Attack -->
 <h3>Freeze Attack</h3>
 
 <table>
@@ -532,12 +530,9 @@ Black-Box Testing
 </tr>
 </table>
 
-</div>
-
 <br>
 
-<div align="center">
-
+<!-- Fire Attack -->
 <h3>Fire Attack</h3>
 
 <table>
@@ -567,12 +562,9 @@ Black-Box Testing
 </tr>
 </table>
 
-</div>
-
 <br>
 
-<div align="center">
-
+<!-- Heart Pickup -->
 <h3>Heart Pickup</h3>
 
 <table>
@@ -602,13 +594,9 @@ Black-Box Testing
 </tr>
 </table>
 
-</div>
-
 <br>
 
 <!-- Tongue Movement -->
-<div align="center">
-
 <h3>Tongue Movement</h3>
 
 <table>
@@ -667,8 +655,6 @@ Black-Box Testing
 <td>Pass</td>
 </tr>
 </table>
-
-</div>
 
 
 ## Process 
