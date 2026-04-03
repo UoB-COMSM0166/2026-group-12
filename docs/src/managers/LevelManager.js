@@ -44,11 +44,14 @@ class LevelManager {
           { type: "Ant", x: 2350, y: 200, size: 50 },
           { type: "Ant", x: 5500, y: 20, size: 50 },
         ],
+<<<<<<< HEAD
         items: [
           { element: Transform.Frozen, x: 820, y: 400, size: 80 },
           { element: Transform.Frozen, x: 3360, y: 400, size: 80 },
           { element: Transform.Frozen, x: 4500, y: 520, size: 80 }
         ],
+=======
+>>>>>>> 62ade16 (Adjust tongue and put tools)
       },
       2: {
         mapData: this.mapsData[2],
@@ -65,9 +68,9 @@ class LevelManager {
           { type: "Bee", x: 4000, y: 350, size: 60 }
         ],
         items: [
-          { element: Transform.Fire, x: 1270, y: 600, size: 80 },
+          { element: Transform.Frozen, x: 1270, y: 600, size: 80 },
           { element: Transform.Frozen, x: 3000, y: 550, size: 80 },
-          { element: Transform.Fire, x: 5420, y:550, size: 80 },
+          { element: Transform.Frozen, x: 5420, y:550, size: 80 },
         ],
       },
       3: {
@@ -85,8 +88,9 @@ class LevelManager {
           { type: "Boss", x: 6300, y: 300, size: 100 }
         ],
         items: [
-          { element: Transform.Fire, x: 300, y: 200, size: 80 },
-          { element: Transform.Frozen, x: 400, y: 200, size: 80 },
+          { element: Transform.Fire, x: 980, y: 570, size: 80 },
+          { element: Transform.Fire, x: 2930, y: 670, size: 80 },
+          { element: Transform.Fire, x: 5510, y: 770, size: 80 }
         ],
       },
     };
