@@ -69,9 +69,9 @@ class Player extends Figure {
     // State Machine
     this.state = PlayerState.IDLE
     // Player Transform
-    this.trans = Transform.Fire
-    this.transTime = 60000
-    this.transTimer = 60000
+    this.trans = Transform.No
+    this.transTime = 600
+    this.transTimer = 600
     this.attackCooldown = 0
 
     this.facing = -1 // 1: Right, -1: Left
