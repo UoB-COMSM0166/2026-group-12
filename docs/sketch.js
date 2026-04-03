@@ -9,7 +9,7 @@ let player;
 let physics;
 let entities = [];
 let uiManager;
-let titleTextImg, gameOverTextImg, gameWinTextImg;
+let titleTextImg, mouseKbdTextImg, gameOverTextImg, gameWinTextImg;
 let tutorialTextImg = [];
 let startBtnImg, restartBtnImg, tutorialBtnImg, homeBtnImg;
 let heartImg, keyImg;
@@ -61,6 +61,7 @@ function preload() {
   redButterfly = loadImage("assets/img/item/redButterfly.png");
 
   titleTextImg = loadImage("assets/img/uiManager/text/title.png");
+  mouseKbdTextImg = loadImage("assets/img/uiManager/text/mouse_keyboard_text.png");
   tutorialTextImg.push(
     loadImage("assets/img/uiManager/text/tutorial_use_text.png"),
     loadImage("assets/img/uiManager/text/tutorial_key_text.png"),
@@ -102,6 +103,7 @@ function preload() {
   }
 
   sfx.bgm = loadSound("assets/sfx/bgm.mp3");
+  sfx.bgm.setVolume(0.6);
   sfx.chose = loadSound("assets/sfx/chose.wav");
   sfx.chose.setVolume(0.6);
   sfx.startGame = loadSound("assets/sfx/startGame.wav");
@@ -156,7 +158,7 @@ function draw() {
   rect(0, 0, width, height);
 
   if (gameState === "START") {
-    uiManager.displayStart(titleTextImg, startBtnImg, tutorialBtnImg);
+    uiManager.displayStart(titleTextImg, mouseKbdTextImg, startBtnImg, tutorialBtnImg);
   } else if (gameState === "LEVEL_SELECT") {
     uiManager.displayLevel(levelTextImg, levelEggImgs, saveManager);
   } else if (gameState === "GAMEOVER") {
@@ -211,13 +213,10 @@ function draw() {
 
     let targetCamX = -player.pos.x + width / 2;
     let targetCamY = levelManager.currentLevel === 3 ? -player.pos.y + height * 0.8 : 0;
-    //Fix the camera by Chuck
     let safeGridHeight = mapManager.gridHeight ? mapManager.gridHeight : 1500;
     
     let smoothCamY = levelManager.currentLevel === 3 ? constrain(targetCamY, -(safeGridHeight - height), 0) : 0;
-    //Chuck
     camX = constrain(targetCamX, -(mapManager.gridWidth - width), 0);
-    // camY = levelManager.currentLevel === 3 ? constrain(targetCamY, -(mapManager.gridHeight - height), 0) : 0;
     camY = lerp(camY, smoothCamY, 0.1);
 
     for (let e of entities) {
