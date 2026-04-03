@@ -24,13 +24,8 @@ class GrappleAbility {
         this.tongueReturning = false;        // Whether the tongue is returning
 
         // Animation speeds
-<<<<<<< HEAD
-        this.tongueOutSpeed = 0.2           // Speed of tongue extending
-        this.tongueReturnSpeed = 0.4         // Speed of tongue returning
-=======
         this.tongueOutSpeed = 0.15;          // Speed of tongue extending
         this.tongueReturnSpeed = 0.4;        // Speed of tongue returning
->>>>>>> 62ade16 (Adjust tongue and put tools)
 
         // Pause at extension
         this.tonguePauseTimer = 0;
@@ -177,13 +172,11 @@ class GrappleAbility {
                         this.tongueProgress = 1;
 
                         if (this.anchor.x !== 0 && this.anchor.y !== 0) {
-    this.active = true;
-    this.player.state = PlayerState.GRAPPLE;
-    this.tongueFlying = false;
-
-    // ⭐ 讓舌頭瞬間貼到 anchor，避免「突然伸長」
-    this.tonguePos.set(this.anchor.x, this.anchor.y);
-}
+                            this.active = true;
+                            this.player.state = PlayerState.GRAPPLE;
+                            this.tongueFlying = false;
+                            this.tonguePos.set(this.anchor.x, this.anchor.y);
+                        }
 
                         else {
                             this.tonguePauseTimer = this.tonguePauseDuration;
