@@ -102,6 +102,7 @@ function preload() {
   }
 
   sfx.bgm = loadSound("assets/sfx/bgm.mp3");
+  sfx.bgm.setVolume(0.6);
   sfx.chose = loadSound("assets/sfx/chose.wav");
   sfx.chose.setVolume(0.6);
   sfx.startGame = loadSound("assets/sfx/startGame.wav");

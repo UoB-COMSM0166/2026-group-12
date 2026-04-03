@@ -24,7 +24,7 @@ class GrappleAbility {
         this.tongueReturning = false         // Whether the tongue is returning
 
         // Animation speeds
-        this.tongueOutSpeed = 0.15           // Speed of tongue extending
+        this.tongueOutSpeed = 0.2           // Speed of tongue extending
         this.tongueReturnSpeed = 0.4         // Speed of tongue returning
 
         // Pause at extension
