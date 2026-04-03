@@ -500,9 +500,7 @@ To verify whether the differences between Level 1 and Level 2 are statistically 
 
 <h2>Black-Box Testing</h2>
 
-<!-- Freeze Attack -->
 <h3>Freeze Attack</h3>
-
 <table>
 <tr>
 <th>Test Case</th>
@@ -532,9 +530,7 @@ To verify whether the differences between Level 1 and Level 2 are statistically 
 
 <br>
 
-<!-- Fire Attack -->
 <h3>Fire Attack</h3>
-
 <table>
 <tr>
 <th>Test Case</th>
@@ -564,9 +560,7 @@ To verify whether the differences between Level 1 and Level 2 are statistically 
 
 <br>
 
-<!-- Heart Pickup -->
 <h3>Heart Pickup</h3>
-
 <table>
 <tr>
 <th>Test Case</th>
@@ -596,9 +590,7 @@ To verify whether the differences between Level 1 and Level 2 are statistically 
 
 <br>
 
-<!-- Tongue Movement -->
 <h3>Tongue Movement</h3>
-
 <table>
 <tr>
 <th>Test Case</th>
