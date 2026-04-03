@@ -31,7 +31,6 @@ class LevelManager {
           { type: "Ant", x: 2480, y: 400, size: 50 },
           { type: "Ant", x: 3640, y: 400, size: 50 },
         ],
-        //items
         items: [
           { element: Transform.Fire, x: 3430, y: 500, size: 80 },
           { element: Transform.Frozen, x: 2210, y: 550, size: 80 },
@@ -45,7 +44,6 @@ class LevelManager {
           { type: "Ant", x: 2350, y: 200, size: 50 },
           { type: "Ant", x: 5500, y: 20, size: 50 },
         ],
-        //items
         items: [
           { element: Transform.Frozen, x: 820, y: 400, size: 80 },
           { element: Transform.Frozen, x: 3360, y: 400, size: 80 },

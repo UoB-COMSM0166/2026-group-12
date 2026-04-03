@@ -20,7 +20,7 @@ class UIManager {
     return img.height * (targetW / img.width);
   }
 
-  displayStart(titleImg, startBtnImg, tutorialBtnImg) {
+  displayStart(titleImg, mouseKbdTextImg, startBtnImg, tutorialBtnImg) {
     this.titleY = lerp(this.titleY, this.titleTargetY, 0.05);
     let titleW = 800;
     let titleH = this.getScaledHeight(titleImg, titleW);
@@ -30,17 +30,21 @@ class UIManager {
     let gap = 80;
 
     this.startBtnW = btnW;
-    this.startBtnH = this.getScaledHeight(startBtnImg, btnW);
+    this.startBtnH = this.getScaledHeight(startBtnImg, this.startBtnW);
     this.startBtnX = width / 2 - btnW - gap / 2;
     this.startBtnY = height / 2 + 100;
     image(startBtnImg, this.startBtnX, this.startBtnY, this.startBtnW, this.startBtnH);
 
 
     this.tutorialBtnW = btnW;
-    this.tutorialBtnH = this.getScaledHeight(tutorialBtnImg, btnW);
+    this.tutorialBtnH = this.getScaledHeight(tutorialBtnImg, this.tutorialBtnW);
     this.tutorialBtnX = width / 2 + gap / 2;
     this.tutorialBtnY = height / 2 + 100;
     image(tutorialBtnImg, this.tutorialBtnX, this.tutorialBtnY, this.tutorialBtnW, this.tutorialBtnH);
+
+    this.mouseKbdW = 800;
+    this.mouseKbdH = this.getScaledHeight(mouseKbdTextImg, this.mouseKbdW);
+    image(mouseKbdTextImg, width / 2 - this.mouseKbdW / 2, 650, this.mouseKbdW, this.mouseKbdH);
   }
 
   isStartButtonClicked(mx, my) {
