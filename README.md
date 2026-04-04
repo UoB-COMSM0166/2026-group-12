@@ -702,9 +702,9 @@ To verify whether the differences between Level 1 and Level 2 are statistically 
 
 **3.2 Improvements**
 <ul>
-    <li>In order to diminish instances of frustration, we'll implement levels to check your progress so that repeated failures are less devastating.</li>
-    <li>In order to enhance intuitiveness, we'll add knockback when taking damage so that players have more time to react.</li>
-    <li>To improve onboarding procedures we will introduce a tutorial level that allows players to gain basic familiarization and a foundation of ability as they play the first levels of the game.</li>
+    <li>In order to diminish instances of frustration, we implement levels to check your progress so that repeated failures are less devastating.</li>
+    <li>In order to enhance intuitiveness, we add knockback when taking damage so that players have more time to react.</li>
+    <li>To improve onboarding procedures, we introduce a tutorial level that allows players to gain basic familiarization and a foundation of ability as they play the first levels of the game.</li>
 </ul>
 
 **3.3 Conclusion**
