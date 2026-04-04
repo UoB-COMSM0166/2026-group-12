@@ -311,6 +311,9 @@ Key characteristics:
 <p>
   <img src="image/sequence_diagram.png" width="1000">
 </p>
+This diagram shows how the core parts of the game work together during a grapple: the player throws a hook toward a target, the system checks with the map to see if it’s a valid point, and if it is, the grapple system takes over to handle swinging while the physics engine updates movement, gravity, and collisions; once the player releases, their position and velocity are adjusted accordingly, and everything from the player to the rope to the environment is updated in a continuous loop.
+
+The MapManager is basically what keeps track of the world. Whenever something moving, colliding, or trying to grapple. Everything just checks with it to see what’s actually there. It knows what’s solid, what isn’t, and what you can interact with, so instead of guessing, everything just follows what the MapManager says.
 
 ## Implementation
 
@@ -498,8 +501,147 @@ To verify whether the differences between Level 1 and Level 2 are statistically 
 **3.3 Conclusion**
 <p>This report confirms that the core framework of the game (Level 1) demonstrates a strong baseline of usability. The primary challenge lies in the overly steep difficulty curve of Level 2, which leads players to misinterpret game challenge as system failure. Future iterations will focus on maintaining cognitive challenge while optimising the experience to preserve a high level of playability.</p>
 
+<h2>Black-Box Testing</h2>
 
-- <p>Description of how code was tested.</p> 
+<h3>Freeze Attack</h3>
+<table>
+<tr>
+<th>Test Case</th>
+<th>Input</th>
+<th>Expected Output</th>
+<th>Result</th>
+</tr>
+<tr>
+<td>TC1</td>
+<td>Press freeze key + enemy within range</td>
+<td>Enemy is frozen for 3 seconds</td>
+<td>Pass</td>
+</tr>
+<tr>
+<td>TC2</td>
+<td>Press freeze key + enemy outside range</td>
+<td>Enemy is not frozen</td>
+<td>Pass</td>
+</tr>
+<tr>
+<td>TC3</td>
+<td>Freeze key not pressed</td>
+<td>No freeze attack triggered</td>
+<td>Pass</td>
+</tr>
+</table>
+<h3>Fire Attack</h3>
+<table>
+<tr>
+<th>Test Case</th>
+<th>Input</th>
+<th>Expected Output</th>
+<th>Result</th>
+</tr>
+<tr>
+<td>TC1</td>
+<td>Press fire key + enemy within range</td>
+<td>Enemy takes fire damage</td>
+<td>Pass</td>
+</tr>
+<tr>
+<td>TC2</td>
+<td>Press fire key + enemy outside range</td>
+<td>Enemy is not burned</td>
+<td>Pass</td>
+</tr>
+<tr>
+<td>TC3</td>
+<td>Fire key not pressed</td>
+<td>No fire attack triggered</td>
+<td>Pass</td>
+</tr>
+</table>
+<h3>Heart Pickup</h3>
+<table>
+<tr>
+<th>Test Case</th>
+<th>Input</th>
+<th>Expected Output</th>
+<th>Result</th>
+</tr>
+<tr>
+<td>TC1</td>
+<td>Player touches heart + health below max</td>
+<td>Health increases + heart disappears</td>
+<td>Pass</td>
+</tr>
+<tr>
+<td>TC2</td>
+<td>Player touches heart + health at max</td>
+<td>Health stays max + heart remains</td>
+<td>Pass</td>
+</tr>
+<tr>
+<td>TC3</td>
+<td>Player does not touch heart</td>
+<td>No health change</td>
+<td>Pass</td>
+</tr>
+</table>
+<h3>Tongue Movement</h3>
+<table>
+<tr>
+<th>Test Case</th>
+<th>Input</th>
+<th>Expected Output</th>
+<th>Result</th>
+</tr>
+<tr>
+<td>TC1</td>
+<td>Left-click on valid grapple point</td>
+<td>Tongue hits anchor → enter GRAPPLE state</td>
+<td>Pass</td>
+</tr>
+<tr>
+<td>TC2</td>
+<td>Left-click on wall (non-grapple surface)</td>
+<td>Tongue extends → pauses → retracts, no GRAPPLE</td>
+<td>Pass</td>
+</tr>
+<tr>
+<td>TC3</td>
+<td>Target distance &gt; maxLength</td>
+<td>Tongue reaches max distance then retracts</td>
+<td>Pass</td>
+</tr>
+<tr>
+<td>TC4</td>
+<td>Release left-click</td>
+<td>Grapple released → switch to FALL state</td>
+<td>Pass</td>
+</tr>
+<tr>
+<td>TC5</td>
+<td>Hold W to shorten rope</td>
+<td>Rope length stops at minimum (40)</td>
+<td>Pass</td>
+</tr>
+<tr>
+<td>TC6</td>
+<td>Hold S to extend rope</td>
+<td>Rope length stops at maximum (400)</td>
+<td>Pass</td>
+</tr>
+<tr>
+<td>TC7</td>
+<td>Press A/D while grappling</td>
+<td>Player swings along tangent direction</td>
+<td>Pass</td>
+</tr>
+<tr>
+<td>TC8</td>
+<td>Tongue misses all targets</td>
+<td>Tongue retracts back to mouth</td>
+<td>Pass</td>
+</tr>
+</table>
+
 
 ## Process 
 
