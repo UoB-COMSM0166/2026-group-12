@@ -313,7 +313,7 @@ Key characteristics:
 </p>
 This diagram shows how the core parts of the game work together during a grapple: the player throws a hook toward a target, the system checks with the map to see if it’s a valid point, and if it is, the grapple system takes over to handle swinging while the physics engine updates movement, gravity, and collisions; once the player releases, their position and velocity are adjusted accordingly, and everything from the player to the rope to the environment is updated in a continuous loop.
 
-The MapManager is kind of like the game’s “source of truth” for the world. Whenever anything happens — moving around, colliding, or trying to grapple — other parts of the game just check in with it to see what’s actually there. It keeps track of what’s solid, what’s not, and what you can interact with. So instead of everyone guessing, they all rely on the MapManager.
+The MapManager is basically what keeps track of the world. Whenever something moving, colliding, or trying to grapple. Everything just checks with it to see what’s actually there. It knows what’s solid, what isn’t, and what you can interact with, so instead of guessing, everything just follows what the MapManager says.
 
 ## Implementation
 
