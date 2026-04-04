@@ -684,33 +684,31 @@ To verify whether the differences between Level 1 and Level 2 are statistically 
 </ol>
 
 #### 3. Conclusion
-**3.1 Key Evaluation Findings**
-<p>Through a combined analysis of data from 10 participants (NASA-TLX and SUS) and the Wilcoxon Signed-Rank Test, the following key conclusions were drawn:</p>
+**3.1 Results Summary**
 <ol>
-    <li><b>Statistically Significant Shift</b>
+    <li><b>Significant Change</b>
         <ul>
-            <li>Evidence: The test statistics for both evaluation tools are W = 0 (p < 0.05), far below the critical value of 8.</li>
-            <li>Insight: All participants consistently reported a significant increase in cognitive workload in Level 2, along with a consistent decline in usability ratings. This overwhelming consistency confirms that there is a substantial jump in difficulty between the two levels.</li>
+            <li>The test statistics for both evaluation tools are W = 0 (p < 0.05), less than critical value of 8. This means that each participant reported a significant increase in cognitive workload when comparing Level 2 to Level 1, as well as a significant decrease in usability score. Therefore, there is a significant increase in challenge between Level 1 and Level 2 due to the strong relation between these results.</li>
         </ul>
     </li>
     <li><b>Challenge vs. Frustration</b>
         <ul>
-            <li>Successful Difficulty Design: NASA-TLX data confirms that the increase in Mental demand and Effort in Level 2 achieves the intended level of challenge set during the initial design phase.</li>
-            <li>Usability Drop: The SUS score drops sharply from 75.5 to 54.5. This indicates that the increase in difficulty in Level 2 is not linear. When players fail frequently in Level 2, they subjectively perceive the system as less usable, even though the control logic remains consistent with Level 1.</li>
-            <li>Imbalance Between Skill and Frustration: Players’ perceived Own Performance declines in Level 2, directly contributing to the SUS score falling into the Unacceptable (Grade F) range.</li>
+            <li>The NASA-TLX shows a sufficient increase in Mental Demand and Effort for the player to see the challenge was where it was intended to be for the design of Level 2.</li>
+            <li>There is a sharp decrease from 75.5 to 54.5 in SUS, indicating that the increase in difficulty for Level 2 does not correlate with the linear manner in which it occurs. Players will tend to think of the game as less usable when they repeatedly fail at Level 2, despite the control logic being the same as at Level 1.</li>
+            <li>Players see a decline in their Perceived Own Performance in Level 2 due specifically to that decline in the SUS score being placed in the Unacceptable range (Grade F).</li>
         </ul>
     </li>
 </ol>
 
-**3.2 Recommendations for Improvement**
+**3.2 Improvements**
 <ul>
-    <li><b>Reduce Frustration:</b> Introduce level checkpoints to minimise the negative impact of repeated failures.</li>
-    <li><b>Enhance Intuitiveness:</b> Add knockback on damage to give players more time to react.</li>
-    <li><b>Improve Onboarding:</b> Include a tutorial level to help players build familiarity and improve proficiency.</li>
+    <li>In order to diminish instances of frustration, we'll implement levels to check your progress so that repeated failures are less devastating.</li>
+    <li>In order to enhance intuitiveness, we'll add knockback when taking damage so that players have more time to react.</li>
+    <li>To improve onboarding procedures we will introduce a tutorial level that allows players to gain basic familiarization and a foundation of ability as they play the first levels of the game.</li>
 </ul>
 
 **3.3 Conclusion**
-<p>This report confirms that the core framework of the game (Level 1) demonstrates a strong baseline of usability. The primary challenge lies in the overly steep difficulty curve of Level 2, which leads players to misinterpret game challenge as system failure. Future iterations will focus on maintaining cognitive challenge while optimising the experience to preserve a high level of playability.</p>
+<p>This report confirms that the core framework of the game (Level 1) demonstrates a good level of usability. The primary challenge lies in the overly steep difficulty curve of Level 2, which leads players to misinterpret game challenge as system failure. Future iterations will focus on maintaining cognitive challenge while optimising the experience to preserve a high level of playability.</p>
 
 <h2>Black-Box Testing</h2>
 
@@ -903,23 +901,17 @@ Black‑box testing focuses on checking whether each feature in the game behaves
 - Teamwork. How did you work together, what tools and methods did you use? Did you define team roles? Reflection on how you worked together. Be honest, we want to hear about what didn't work as well as what did work, and importantly how your team adapted throughout the project.
 
 ### 1. Collaboration Tools & Methods
-<p>Our team adopts Agile Development principles, breaking the development process into iterative cycles to respond quickly to technical challenges and adjust feature requirements.</.p>
+<p>Our team follows Agile development principles, breaking the work into small parts so we can quickly respond to technical needs and changes.</.p>
 <ul>
-    <li><b>Version Control (GitHub):</b> Each team member has their own development branch, which helps prevent code from being overwritten and reduces conflicts.
-    </li>
-    <li><b>Task Management & Communication:</b>
-        <ul>
-            <li>Trello: Used as a Kanban board, tasks are organised into “To Do”, “Doing”, and “Done” to visually track project progress and avoid duplication or delays.</li>
-            <li>WhatsApp: Used for real-time communication and quick documentation of key meeting points, ensuring flexible and efficient information sharing.</li>
-            <li>Weekly Meetings: We hold regular online meetings every Wednesday to review the progress of the previous sprint and assign upcoming development tasks.</li>
-        </ul>
-    </li>
-    <li><b>Development Environment:</b> To minimise bugs caused by environmental differences, the team standardises on VS Code with the Live Server extension. This allows real-time preview of front-end changes, so everything can be checked before being pushed to GitHub, keeping the workflow efficient and consistent.
-    </li>
+    <li>Each Wednesday, we have a weekly online meeting to review the previous week development sprint and assign upcoming development tasks.</li>
+    <li>For version control, each member has a separate <b>GitHub</b> branch for development to avoid overwriting each other's code and avoid conflict.</li>
+    <li>For project management, we use <b>Trello</b> as a Kanban Board for task organisation. Tasks are organised into "To Do," "Doing," and "Done" columns to provide the team with a visual representation of work progress and decrease the chances of duplicating tasks or tasks not being completed promptly.</li>
+    <li>For communication, <b>WhatsApp</b> is our main tool. We use it for real-time discussions and to record key points from meetings. </li>
+    <li>For development, we use <b>Visual Studio Code</b> with the <b>Live Server</b> extension. This allows us to test changes before committing them to GitHub, helping keep the development process efficient and consistent.</li>
 </ul>
 
 ### 2. Team Roles
-<p>To ensure both technical depth and efficient project management, we adopted a modular system architecture. Each team member takes on two roles: a development role, responsible for building a subsystem, and an administrative role, responsible for project management.</p>
+<p>To provide both technical detail and efficient management of the project, our team has chosen to use the modular architecture for the system. Each member serves in two different roles: one technical role responsible for coding and building a subsystem and one administrative role responsible for the management of the project.</p>
 
 <table align="center">
   <tr>
