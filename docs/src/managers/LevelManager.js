@@ -20,6 +20,14 @@ class LevelManager {
     };
     this.goalW = 150;
     this.goalH = this.doorLockedImg.height * (this.goalW / this.doorLockedImg.width);
+
+    // Respawnable fire items for Level 3
+    this.respawnFires = [
+      { x: 6730, y: 590, size: 80, timer: 0, alive: false },
+      { x: 5770, y: 580, size: 80, timer: 0, alive: false },
+      { x: 6270, y: 340, size: 80, timer: 0, alive: false },
+    ];
+    this.fireRespawnDelay = 600; // frames
   }
 
   getLevelData(level) {
@@ -83,7 +91,10 @@ class LevelManager {
         items: [
           { element: Transform.Fire, x: 980, y: 570, size: 80 },
           { element: Transform.Fire, x: 2930, y: 670, size: 80 },
-          { element: Transform.Fire, x: 5510, y: 770, size: 80 }
+          { element: Transform.Fire, x: 5510, y: 770, size: 80 },
+          { element: Transform.Fire, x: 6730, y: 590, size: 80 },
+          { element: Transform.Fire, x: 5770, y: 580, size: 80 },
+          { element: Transform.Fire, x: 6270, y: 340, size: 80 },
         ],
       },
     };
@@ -133,7 +144,8 @@ class LevelManager {
     let data = this.getLevelData(level);
     if (!data) return;
     let items = data.items || [];
-  //Fire and Ice 
+
+    //Fire and Ice 
     for (let i of items) {
       let img = null;
       if (typeof Transform !== "undefined") {
@@ -149,7 +161,8 @@ class LevelManager {
         }
       }
     }
-  //Heart (Only generate 1 heart per game)
+
+    //Heart (Only generate 1 heart per game)
     if (typeof heartImg !== "undefined" && heartImg) {
       let heartSpawnX = 1250;
       let heartSpawnY = 500;
@@ -170,7 +183,6 @@ class LevelManager {
     }
 
     //Egg (Only appear in stage 3)
-    //Set the position of the eggs
     if (level === 3){
       let eggPosition = [{x:1600, y:460}, {x:6880, y:300}, {x:6930, y:300}]
       
@@ -179,6 +191,42 @@ class LevelManager {
               
         if (eggImg){
           entities.push(new GoalEgg(eggPosition[i].x, eggPosition[i].y, 60, 60, eggImg, i + 1));
+        }
+      }
+    }
+  }
+
+  // Respawn system for Level 3 fire items
+  updateRespawnFires(entities) {
+    if (this.currentLevel !== 3) return;
+
+    for (let fire of this.respawnFires) {
+
+      if (fire.alive) {
+        // Check if the fire item still exists in entities
+        let exists = entities.some(e =>
+          e instanceof Items &&
+          e.element === Transform.Fire &&
+          e.x === fire.x &&
+          e.y === fire.y
+        );
+
+        if (!exists) {
+          fire.alive = false;
+          fire.timer = 0;
+        }
+      }
+
+      else {
+        fire.timer++;
+
+        if (fire.timer >= this.fireRespawnDelay) {
+          let img = redButterfly;
+          let newFire = new Items(fire.x, fire.y, fire.size * 1.5, fire.size, img, Transform.Fire);
+
+          entities.push(newFire);
+          fire.alive = true;
+          fire.timer = 0;
         }
       }
     }
