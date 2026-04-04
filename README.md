@@ -503,6 +503,66 @@ To verify whether the differences between Level 1 and Level 2 are statistically 
 
 <h2>Black-Box Testing</h2>
 
+Black‑box testing focuses on checking whether each feature in the game behaves correctly from the player’s point of view. Since the game relies on tongue‑based grappling, elemental attacks, and item pickups to progress through each level, the goal is to make sure every action responds the way players expect. This includes confirming that the tongue attaches only to valid grapple points, swings smoothly, and retracts properly; that Freeze and Fire attacks trigger only when the player is in range; and that Hearts and Keys update the player’s status correctly, with the door unlocking only after all three keys are collected. The tables below summarize how each system should react under different inputs.
+<h3>Tongue Movement</h3>
+
+<table>
+<tr>
+<th>Test Case</th>
+<th>Input</th>
+<th>Expected Output</th>
+<th>Result</th>
+</tr>
+<tr>
+<td>TC1</td>
+<td>Left-click on valid grapple point</td>
+<td>Tongue hits anchor → enter GRAPPLE state</td>
+<td>Pass</td>
+</tr>
+<tr>
+<td>TC2</td>
+<td>Left-click on wall (non-grapple surface)</td>
+<td>Tongue extends → pauses → retracts, no GRAPPLE</td>
+<td>Pass</td>
+</tr>
+<tr>
+<td>TC3</td>
+<td>Target distance &gt; maxLength</td>
+<td>Tongue reaches max distance then retracts</td>
+<td>Pass</td>
+</tr>
+<tr>
+<td>TC4</td>
+<td>Release left-click</td>
+<td>Grapple released → switch to FALL state</td>
+<td>Pass</td>
+</tr>
+<tr>
+<td>TC5</td>
+<td>Hold W to shorten rope</td>
+<td>Rope length stops at minimum (40)</td>
+<td>Pass</td>
+</tr>
+<tr>
+<td>TC6</td>
+<td>Hold S to extend rope</td>
+<td>Rope length stops at maximum (400)</td>
+<td>Pass</td>
+</tr>
+<tr>
+<td>TC7</td>
+<td>Press A/D while grappling</td>
+<td>Player swings along tangent direction</td>
+<td>Pass</td>
+</tr>
+<tr>
+<td>TC8</td>
+<td>Tongue misses all targets</td>
+<td>Tongue retracts back to mouth</td>
+<td>Pass</td>
+</tr>
+</table>
+
 <h3>Freeze Attack</h3>
 <table>
 <tr>
@@ -584,7 +644,8 @@ To verify whether the differences between Level 1 and Level 2 are statistically 
 <td>Pass</td>
 </tr>
 </table>
-<h3>Tongue Movement</h3>
+
+<h3>Key Pickup</h3>
 <table>
 <tr>
 <th>Test Case</th>
@@ -592,54 +653,35 @@ To verify whether the differences between Level 1 and Level 2 are statistically 
 <th>Expected Output</th>
 <th>Result</th>
 </tr>
+
 <tr>
 <td>TC1</td>
-<td>Left-click on valid grapple point</td>
-<td>Tongue hits anchor → enter GRAPPLE state</td>
+<td>Player touches first key</td>
+<td>Key count increases to 1</td>
 <td>Pass</td>
 </tr>
+
 <tr>
 <td>TC2</td>
-<td>Left-click on wall (non-grapple surface)</td>
-<td>Tongue extends → pauses → retracts, no GRAPPLE</td>
+<td>Player touches second key</td>
+<td>Key count increases to 2</td>
 <td>Pass</td>
 </tr>
+
 <tr>
 <td>TC3</td>
-<td>Target distance &gt; maxLength</td>
-<td>Tongue reaches max distance then retracts</td>
+<td>Player touches third key</td>
+<td>Key count increases to 3 → Door switches to OPEN state</td>
 <td>Pass</td>
 </tr>
+
 <tr>
 <td>TC4</td>
-<td>Release left-click</td>
-<td>Grapple released → switch to FALL state</td>
+<td>Player does not touch any key</td>
+<td>Key count unchanged → Door stays LOCKED</td>
 <td>Pass</td>
 </tr>
-<tr>
-<td>TC5</td>
-<td>Hold W to shorten rope</td>
-<td>Rope length stops at minimum (40)</td>
-<td>Pass</td>
-</tr>
-<tr>
-<td>TC6</td>
-<td>Hold S to extend rope</td>
-<td>Rope length stops at maximum (400)</td>
-<td>Pass</td>
-</tr>
-<tr>
-<td>TC7</td>
-<td>Press A/D while grappling</td>
-<td>Player swings along tangent direction</td>
-<td>Pass</td>
-</tr>
-<tr>
-<td>TC8</td>
-<td>Tongue misses all targets</td>
-<td>Tongue retracts back to mouth</td>
-<td>Pass</td>
-</tr>
+
 </table>
 
 
