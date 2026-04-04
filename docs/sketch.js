@@ -230,6 +230,9 @@ function draw() {
     }
     entities = entities.filter((e) => !e.isDead);
     //ball move update
+
+    levelManager.updateRespawnFires(entities); // recreate fireball
+
     for (let i = ball.length - 1; i >= 0; i--) {
       let b = ball[i];
       b.update(physics);
