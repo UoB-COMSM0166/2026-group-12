@@ -85,43 +85,45 @@ VIDEO. Include a demo video of your game here (you don't have to wait until the 
 
 ## Requirements 
 
-- 15% ~750 words
-- Early stages design. Ideation process. How did you decide as a team what to develop? Use case diagrams, user stories.
 
 ### Ideation process & Ideation process
 
 At the beginning, our team initiated the design process by compiling a list of game references that each of the six team members was personally interested in. In total, we brought together 10 different games for consideration. presentation. During our initial meeting, we presented our selected games to the group, sharing not only the genre and mechanics of each game, but also the core ideas and unique aspects that made these games appealing to us. Through this collaborative discussion, we were able to explore different perspectives, identify common interests, and evaluate which game concepts might be the most feasible and engaging for development. To narrow down our options, we conducted two rounds of voting. In the first round, each member voted for their top three preferred games, which resulted in Identity V receiving the most votes and becoming the clear front-runner. In the second round, we focused on the remaining games and discussed their potential in terms of gameplay, creativity, and alignment with our team’s skills. After careful consideration, Grapple Dog emerged as the second top choice, complementing Identity V’s style and mechanics. By the end of this process, we reached a consensus and selected these two games as the projects we were most excited to develop. This method ensured that every team member’s preferences were considered and that our final decision was both democratic and well-informed.
 
-<p>
+<div align="center">
   <strong>First Voting Result</strong><br>
-  <img src="image/Voting1.png" height="400"><br><br>
+  <img src="image/Voting1.png" height="400">
+</div>
 
+<br>
+
+<div align="center">
   <strong>Second Voting Result</strong><br>
   <img src="image/Voting2.png" height="400">
-</p>
+</div>
 
+---
 
 ### Paper Prototypes
 
-To better understand the game mechanics in depth and to evaluate how well the two games align with our game philosophy, we created two paper prototypes during the third workshop.
+To better understand the mechanics of each concept and evaluate how well they aligned with our design goals, we created two paper prototypes during the third workshop.
 
-**First game - Survival Nightmare:**
+#### First Game – Survival Nightmare
 
-This game is a top-down 1v1 chase-and-escape game, similar to Brawl Stars, set in a dark horror-themed environment with eerie background music. One player takes the role of the Hunter (controlled either by a second player or AI), while the other plays the Survivor. The map is filled with walls and obstacles, and placing or removing an obstacle requires a one-second delay. Throughout the match, items spawn randomly: Survivors can pick up flashlights and use them for two seconds to stun the Hunter for five seconds if exposed, while Hunters can collect souls to gain a temporary movement speed boost. The Survivor wins by collecting three randomly spawned keys to unlock the exit door and escape, but loses immediately if caught by the Hunter.
+A top‑down 1v1 chase‑and‑escape game set in a dark, horror‑themed environment. One player controls the Hunter (or an AI), while the other plays the Survivor. The map contains walls and obstacles, and placing or removing an obstacle requires a one‑second delay. Items spawn randomly: Survivors can pick up flashlights to stun the Hunter for five seconds, while Hunters can collect souls for temporary speed boosts. The Survivor wins by collecting three keys to unlock the exit door but loses instantly if caught.
 
+**Prototype Video:**  
 
-https://github.com/user-attachments/assets/5ee5a315-3f47-4811-a6de-c31d1ba30ffb
+https://github.com/user-attachments/assets/5ee5a315-3f47-4811-a6de-c31d1ba30ffb  
 
 Full video: https://youtu.be/oWBqbGIQUwQ
 
-**Second game - Skaarl:**
+---
 
-Swing, glide, and flow through a fast-paced 2D platformer built around momentum.
-Use a lizard’s sticky tongue to grab walls, ceilings, or objects and swing across environments, also you can utilize natural membranes to glide through the air.
-Chain movement smoothly, discover multiple routes, avoid your enemies and master speed through fluid, expressive traversal.
-<p>
-  Click the image below to jump to the video.
-</p>
+#### Second Game – Skaarl
+
+A fast‑paced 2D platformer built around momentum.  
+Players use a lizard’s sticky tongue to grab walls, ceilings, or objects and swing across the environment. Natural membranes allow gliding, and movement can be chained smoothly to discover multiple routes, avoid enemies, and maintain speed through fluid traversal.
 
 <p align="left">
   <a href="https://youtu.be/wsnlXCv3-HA">
@@ -129,45 +131,56 @@ Chain movement smoothly, discover multiple routes, avoid your enemies and master
   </a>
 </p>
 
+<p><em>Click the image above to watch the full video.</em></p>
 
+---
 
-**Feedback:**
+#### Feedback
 
-1. The interface of game is very clear and comprehensive.
-2. It is suggested that the number of maps should be more than one. Additionally, adding different types of terrain is a good idea to increase variety.
-3. The win conditions still can be further expanded.
-4. The map could be extended, but the boundary still needs to be considered.
-5. After a character wins, the monster can gain new skills (e.g., breaking through walls or an increasing movement speed.)
-6. The tongue-flicking mechanic is an impressive idea, because it’s more special than typical 2D games which only can run and jump.
+1. The interface is clear and easy to understand.  
+2. More maps and varied terrain would improve gameplay variety.  
+3. Win conditions could be expanded further.  
+4. The map could be larger, but boundaries must be considered.  
+5. After a character wins, the monster could gain new abilities (e.g., breaking walls, increased speed).  
+6. The tongue‑flicking mechanic stands out as a unique idea compared to typical 2D platformers.
 
-**Conclusion:**
+#### Conclusion
 
-We decided to choose second game as the game we would ultimately develop. The reason was that although first game had interesting and diverse mechanics, it would likely be more difficult to develop. Second game, in comparison, was relatively simpler and offered more room for development.
+We ultimately chose the second game for development. While the first game offered interesting mechanics, it would have been more complex to build. The second game was more manageable and provided more room for creative expansion.
 
-### Twist ideas from members:
+---
 
-1. Core Transformation and Ability System
+### Twist ideas from members
+
+1. **Core Transformation and Ability System**  
 Create a diverse action system by combining the "consuming insects or elements" mechanic with "item-based transformations."
-> - Transformation Mechanism: Inspired by Kirby or Super Mario Odyssey, the protagonist can switch between different lizard forms by consuming specific insects or using special items.
 
-> - Form Functionalities:
-Draco (Flying Lizard): Extends gliding distance, allowing the player to cross large terrain gaps.
-Chameleon: Blends into the environment to become invisible, useful for evading powerful enemies.
-Frilled-neck Lizard: Scares off predators or utilizes its frill for specialized gliding.
-> - Elemental Infusion: By using its tongue to consume fire or ice elements, the lizard can imbue its standard attacks with additional elemental damage.
-> - Biological Survival and Escape Skills
-Enhance combat depth by utilizing the unique physiological traits of real-world lizards.
-Autotomy (Tail Shedding): An active skill that can be triggered when health is critically low. The shed tail remains on the ground to distract monsters, granting the player a brief window of invincibility and a speed boost to escape.
+> - Transformation Mechanism: Inspired by Kirby or Super Mario Odyssey, the protagonist can switch between different lizard forms by consuming specific insects or using special items.  
+>
+> - Form Functionalities:  
+>   Draco (Flying Lizard): Extends gliding distance, allowing the player to cross large terrain gaps.  
+>   Chameleon: Blends into the environment to become invisible, useful for evading powerful enemies.  
+>   Frilled-neck Lizard: Scares off predators or utilizes its frill for specialized gliding.  
+>
+> - Elemental Infusion: By using its tongue to consume fire or ice elements, the lizard can imbue its standard attacks with additional elemental damage.  
+>
+> - Biological Survival and Escape Skills  
+>   Enhance combat depth by utilizing the unique physiological traits of real-world lizards.  
+>   Autotomy (Tail Shedding): An active skill that can be triggered when health is critically low. The shed tail remains on the ground to distract monsters, granting the player a brief window of invincibility and a speed boost to escape.  
+>
 > - Resource Cost: This skill consumes a portion of energy, and there is a cooldown period while the tail regenerates before it can be used again.
 
-2. Environmental Interaction and Secret Paths
-Emphasize the lizard's agility and map exploration.Multi-dimensional Exploration: Level design includes not only flat ground but also vertical wall-climbing and underground digging.
+2. **Environmental Interaction and Secret Paths**  
+Emphasize the lizard's agility and map exploration.  
+Multi-dimensional Exploration: Level design includes not only flat ground but also vertical wall-climbing and underground digging.  
 Hidden Passageways: Secret paths—such as underground burrows or shortcuts inside tree trunks—that can only be discovered or accessed by specific forms (e.g., the Chameleon or a miniature lizard form).
 
-3. Narrative Goals and Arch-Nemesis
-Establish concrete motivation and a final challenge for the player.
-Story Background: Define the lizard's motivation for the journey (e.g., protecting the forest or rescuing companions).
+3. **Narrative Goals and Arch-Nemesis**  
+Establish concrete motivation and a final challenge for the player.  
+Story Background: Define the lizard's motivation for the journey (e.g., protecting the forest or rescuing companions).  
 Nemesis Design: Introduce the lizard's natural predator—the Snake—as the final boss. The final battle will require the player to master all previously learned transformation and camouflage skills to defeat this powerful predator.
+
+---
 
 ### Stakeholders
 
@@ -180,43 +193,241 @@ The First Tier is the development team, including all members of group 12. Durin
 The Second Tier consists of the target customers; this means our game is developed specifically to meet their needs. These stacker holders include teacher, TA, testers and players. Of course they will get gameplay experience, and the feedback provided by them will help us improve our game.
 The Third Tier is the external environment, including anyone indirectly affected by the game, such as competitors in the same domain, other developers searching for inspiration, or viewers watching gameplay streams. Although they may not experience this game in person, they will still be affected by the game's content to varying degrees.
 
-### Epics and User Stories
-User Stories for Lizard Adventure
+---
 
-| Stakeholder | Epic | User Story |
-|-------------|------|------------|
-| Player | Collision System | As a player, I want collisions to be handled consistently, so that interactions between me, enemies, and objects work correctly. |
-| Player | Data Security | As a player, I want my personal information protected and my game data securely backed up.|
-| Developer | Data Analysis | As a developer, I want the game data properly stored and structured for easy analysis.|
-| Player | Reward System | As a player, I want to earn skills after completing levels, so I have motivation to keep improving.|
-| Player | Engagement | As a player, I want rewards that encourage me to keep playing and share the game with others.|
-| Player | Tutorial Clarity | As a player, I want tutorials that explain game mechanics quickly.|
-| Player | Smooth Gameplay | As a player, I want fluent, responsive gameplay.|
-| Player | Combat Diversity | As a player, I want diverse combat modes against bosses and monsters, including tongue strikes and environmental triggers.|
-| Player | Dynamic Level Environments | As a player, I want levels with environmental effects (arctic zones with health drain, tropical zones with rapid enemy spawns).|
-| Player | Tongue Mechanics | As a player, I want to use the lizard’s tongue to latch and swing across gaps, maintaining momentum.|
-| Player | Gliding Mechanic | As a player, I want to glide while airborne to extend jumps, adjust landing, and chain movements.|
+### Epics and User Stories
+<h4>User Stories for Lizard Adventure</h4>
+
+<table>
+  <tr>
+    <th>Stakeholder</th>
+    <th>Epic</th>
+    <th>User Story</th>
+  </tr>
+
+  <tr>
+    <td>Player</td>
+    <td>Collision System</td>
+    <td>As a player, I want collisions to be handled consistently, so that interactions between me, enemies, and objects work correctly.</td>
+  </tr>
+
+  <tr>
+    <td>Player</td>
+    <td>Data Security</td>
+    <td>As a player, I want my personal information protected and my game data securely backed up.</td>
+  </tr>
+
+  <tr>
+    <td>Developer</td>
+    <td>Data Analysis</td>
+    <td>As a developer, I want the game data properly stored and structured for easy analysis.</td>
+  </tr>
+
+  <tr>
+    <td>Player</td>
+    <td>Reward System</td>
+    <td>As a player, I want to earn skills after completing levels, so I have motivation to keep improving.</td>
+  </tr>
+
+  <tr>
+    <td>Player</td>
+    <td>Engagement</td>
+    <td>As a player, I want rewards that encourage me to keep playing and share the game with others.</td>
+  </tr>
+
+  <tr>
+    <td>Player</td>
+    <td>Tutorial Clarity</td>
+    <td>As a player, I want tutorials that explain game mechanics quickly.</td>
+  </tr>
+
+  <tr>
+    <td>Player</td>
+    <td>Smooth Gameplay</td>
+    <td>As a player, I want fluent, responsive gameplay.</td>
+  </tr>
+
+  <tr>
+    <td>Player</td>
+    <td>Combat Diversity</td>
+    <td>As a player, I want diverse combat modes against bosses and monsters, including tongue strikes and environmental triggers.</td>
+  </tr>
+
+  <tr>
+    <td>Player</td>
+    <td>Dynamic Level Environments</td>
+    <td>As a player, I want levels with environmental effects (arctic zones with health drain, tropical zones with rapid enemy spawns).</td>
+  </tr>
+
+  <tr>
+    <td>Player</td>
+    <td>Tongue Mechanics</td>
+    <td>As a player, I want to use the lizard’s tongue to latch and swing across gaps, maintaining momentum.</td>
+  </tr>
+
+  <tr>
+    <td>Player</td>
+    <td>Gliding Mechanic</td>
+    <td>As a player, I want to glide while airborne to extend jumps, adjust landing, and chain movements.</td>
+  </tr>
+</table>
+
+--- 
+
 ### Use Case Specifications 
-Lizard Adventure
+<h4>Lizard Adventure</h4>
 
 <p>
   <img width="600" alt="Use_case" src="https://github.com/user-attachments/assets/7a1ebe7e-251c-403f-a9b8-df31ef993f2f" />
 </p>
 
+<table>
+  <tr>
+    <th>Use Case ID</th>
+    <th>Use Case Name</th>
+    <th>Primary Actor</th>
+    <th>Description</th>
+    <th>Preconditions</th>
+    <th>Trigger</th>
+    <th>Main Flow (Summary)</th>
+    <th>Postconditions</th>
+    <th>Alternatives / Exceptions</th>
+  </tr>
 
-| Use Case ID | Use Case Name             | Primary Actor | Description                                     | Preconditions                        | Trigger                           | Main Flow (Summary)                                               | Postconditions                     | Alternatives / Exceptions                   |
-|-------------|--------------------------|---------------|-----------------------------------------------|-------------------------------------|----------------------------------|------------------------------------------------------------------|-----------------------------------|--------------------------------------------|
-| UC1         | Start Game               | Player        | Start a new gameplay run                       | Game launched; main menu visible    | Player selects Start Game         | System initializes run and enters gameplay loop                  | New run active                     | Loading failure returns to menu            |
-| UC2         | Configure Settings       | Player        | Adjust game preferences                        | Player in menu                      | Player opens settings             | System displays and saves updated preferences                   | Settings updated                   | Invalid input rejected                      |
-| UC3         | Play Game                | Player        | Progress through levels                        | Run has started                      | Gameplay begins                   | Move → Jump → Grapple → Shoot → Collect → Avoid enemies → Repeat | Player progresses or run ends      | Pause, Quit, or Game Over                  |
-| UC4         | Tongue Swing (Grapple)   | Player        | Swing tongue to reach platforms or enemies     | Play Game active                     | Player uses grapple               | Player attaches tongue → Swing → Release → Land                  | Player moved to target or enemy hit | Tongue misses → fall or reset              |
-| UC5         | Shoot Fire/Ice Ball      | Player        | Attack enemies using elemental powers          | Play Game active                     | Player presses attack             | Fire/Ice ball created → Travel → Hit enemy → Damage applied      | Enemy damaged or defeated          | Attack misses → ball disappears            |
-| UC6         | Collect Butterfly Items  | Player        | Gain elemental transformations                 | Item available                       | Player touches item               | Player picks up butterfly → Transformation applied               | Player transformed                 | Inventory full or item inaccessible        |
-| UC7         | Collect Keys             | Player        | Pick up keys to unlock doors                   | Key available in level               | Player touches key                | Player picks up key → Inventory updated                          | Key added to inventory             | None                                       |
-| UC8         | Grab Egg                 | Player        | Collect eggs for level progression            | Egg available in level               | Player touches egg                | Player grabs egg → Inventory updated                               | Egg collected                      | None                                       |
-| UC9         | Open Door                | Player        | Unlock doors using keys                         | Player has key                       | Player reaches door               | Player unlocks door → Level transition triggered                 | Door open → Next level accessible  | Missing key prevents unlocking              |
-| UC10        | Avoid/Defeat Enemies     | Player        | Survive or defeat enemies like ants, bees, rabbits | Enemies present                     | Enemies appear                     | Player attacks or dodges enemies → Clear area                     | Area cleared                        | Player damaged or killed                     |
-| UC11        | Reach Level Goal         | Player        | Reach the end point of the level               | Run has started                       | Player moves to goal              | Player reaches goal coordinates → Level completed                | Level completed                     | Player dies before reaching goal            |
+  <tr>
+    <td>UC1</td>
+    <td>Start Game</td>
+    <td>Player</td>
+    <td>Start a new gameplay run</td>
+    <td>Game launched; main menu visible</td>
+    <td>Player selects Start Game</td>
+    <td>System initializes run and enters gameplay loop</td>
+    <td>New run active</td>
+    <td>Loading failure returns to menu</td>
+  </tr>
+
+  <tr>
+    <td>UC2</td>
+    <td>Configure Settings</td>
+    <td>Player</td>
+    <td>Adjust game preferences</td>
+    <td>Player in menu</td>
+    <td>Player opens settings</td>
+    <td>System displays and saves updated preferences</td>
+    <td>Settings updated</td>
+    <td>Invalid input rejected</td>
+  </tr>
+
+  <tr>
+    <td>UC3</td>
+    <td>Play Game</td>
+    <td>Player</td>
+    <td>Progress through levels</td>
+    <td>Run has started</td>
+    <td>Gameplay begins</td>
+    <td>Move → Jump → Grapple → Shoot → Collect → Avoid enemies → Repeat</td>
+    <td>Player progresses or run ends</td>
+    <td>Pause, Quit, or Game Over</td>
+  </tr>
+
+  <tr>
+    <td>UC4</td>
+    <td>Tongue Swing (Grapple)</td>
+    <td>Player</td>
+    <td>Swing tongue to reach platforms or enemies</td>
+    <td>Play Game active</td>
+    <td>Player uses grapple</td>
+    <td>Player attaches tongue → Swing → Release → Land</td>
+    <td>Player moved to target or enemy hit</td>
+    <td>Tongue misses → fall or reset</td>
+  </tr>
+
+  <tr>
+    <td>UC5</td>
+    <td>Shoot Fire/Ice Ball</td>
+    <td>Player</td>
+    <td>Attack enemies using elemental powers</td>
+    <td>Play Game active</td>
+    <td>Player presses attack</td>
+    <td>Fire/Ice ball created → Travel → Hit enemy → Damage applied</td>
+    <td>Enemy damaged or defeated</td>
+    <td>Attack misses → ball disappears</td>
+  </tr>
+
+  <tr>
+    <td>UC6</td>
+    <td>Collect Butterfly Items</td>
+    <td>Player</td>
+    <td>Gain elemental transformations</td>
+    <td>Item available</td>
+    <td>Player touches item</td>
+    <td>Player picks up butterfly → Transformation applied</td>
+    <td>Player transformed</td>
+    <td>Inventory full or item inaccessible</td>
+  </tr>
+
+  <tr>
+    <td>UC7</td>
+    <td>Collect Keys</td>
+    <td>Player</td>
+    <td>Pick up keys to unlock doors</td>
+    <td>Key available in level</td>
+    <td>Player touches key</td>
+    <td>Player picks up key → Inventory updated</td>
+    <td>Key added to inventory</td>
+    <td>None</td>
+  </tr>
+
+  <tr>
+    <td>UC8</td>
+    <td>Grab Egg</td>
+    <td>Player</td>
+    <td>Collect eggs for level progression</td>
+    <td>Egg available in level</td>
+    <td>Player touches egg</td>
+    <td>Player grabs egg → Inventory updated</td>
+    <td>Egg collected</td>
+    <td>None</td>
+  </tr>
+
+  <tr>
+    <td>UC9</td>
+    <td>Open Door</td>
+    <td>Player</td>
+    <td>Unlock doors using keys</td>
+    <td>Player has key</td>
+    <td>Player reaches door</td>
+    <td>Player unlocks door → Level transition triggered</td>
+    <td>Door open → Next level accessible</td>
+    <td>Missing key prevents unlocking</td>
+  </tr>
+
+  <tr>
+    <td>UC10</td>
+    <td>Avoid/Defeat Enemies</td>
+    <td>Player</td>
+    <td>Survive or defeat enemies like ants, bees, rabbits</td>
+    <td>Enemies present</td>
+    <td>Enemies appear</td>
+    <td>Player attacks or dodges enemies → Clear area</td>
+    <td>Area cleared</td>
+    <td>Player damaged or killed</td>
+  </tr>
+
+  <tr>
+    <td>UC11</td>
+    <td>Reach Level Goal</td>
+    <td>Player</td>
+    <td>Reach the end point of the level</td>
+    <td>Run has started</td>
+    <td>Player moves to goal</td>
+    <td>Player reaches goal coordinates → Level completed</td>
+    <td>Level completed</td>
+    <td>Player dies before reaching goal</td>
+  </tr>
+</table>
+
+---
 
 ## Design
 
