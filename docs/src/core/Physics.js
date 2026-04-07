@@ -11,18 +11,18 @@ class Physics {
   update(figure) {
     figure.resetCollisionState();
 
-    // === gravity ===
+    // apply gravity
     figure.vel.y += this.gravity;
 
     figure.vel.y = min(figure.vel.y, this.maxFallSpeed);
 
-    // === movement ===
+    // update position according to figure's velocity and state
     this.moveX(figure);
     this.moveY(figure);
 
   }
 
-
+  // resolve horizontal movement and collisions according to velocity
   moveX(e) {
     e.pos.x += e.vel.x;
 
@@ -57,7 +57,7 @@ class Physics {
 
   }
 
-
+  // resolve vertical movement and collisions according to velocity
   moveY(e) {
     e.pos.y += e.vel.y;
 
