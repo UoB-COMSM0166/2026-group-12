@@ -202,7 +202,7 @@ class GrappleAbility {
                 }
 
                 let mouth = createVector(
-                    this.player.pos.x + this.player.width * (this.player.facing === -1 ? 0.85 : 0.2),
+                    this.player.pos.x + this.player.width * (this.player.facing === 1 ? 0.8 : 0.2),
                     this.player.pos.y + this.player.height * 0.35
                 );
 
@@ -243,8 +243,8 @@ class GrappleAbility {
     display() {
         let p = this.player.pos;
 
-        let px = (this.player.facing === -1)
-            ? p.x + this.player.width * 0.85
+        let px = (this.player.facing === 1)
+            ? p.x + this.player.width * 0.80
             : p.x + this.player.width * 0.2;
 
         let py = p.y + this.player.height * 0.35;

@@ -14,6 +14,7 @@ let tutorialTextImg = [];
 let startBtnImg, restartBtnImg, tutorialBtnImg, homeBtnImg;
 let heartImg, keyImg;
 let gameState = "START"; // 'START', 'LEVEL_SELECT','PLAYING', 'GAMEOVER', 'GAMECLEAR'
+let playerImg = {};
 let antImgs = [];
 let ball = [];
 let fireballImg;
@@ -39,7 +40,11 @@ function preload() {
 
   bgImg = loadImage("assets/img/Tiles/2 Background/Background.png");
 
-  playerImg = loadImage("assets/img/player_idle.png");
+  playerImg.idle = loadImage('assets/img/player_idle.gif')
+  playerImg.run  = loadImage('assets/img/player_run.gif')
+  playerImg.jump = loadImage('assets/img/player_jump.gif')
+  playerImg.jumping = loadImage('assets/img/player_jumping.png')
+
   tileSetImg = loadImage("assets/img/Tiles/1 Tiles/Tileset.png");
   bushImg = loadImage("assets/img/Tiles/1 Tiles/bush.png");
   pointerImg = loadImage("assets/img/Tiles/1 Tiles/pointer.png");
@@ -103,26 +108,33 @@ function preload() {
   }
 
   sfx.bgm = loadSound("assets/sfx/bgm.mp3");
-  sfx.bgm.setVolume(0.4);
+  sfx.bgm.setVolume(0.15);
   sfx.chose = loadSound("assets/sfx/chose.wav");
-  sfx.chose.setVolume(0.6);
+  sfx.chose.setVolume(0.1);
   sfx.startGame = loadSound("assets/sfx/startGame.wav");
-  sfx.startGame.setVolume(0.6);
+  sfx.startGame.setVolume(0.4);
   sfx.death = loadSound("assets/sfx/death.wav");
+  sfx.death.setVolume(0.4);
   sfx.pass = loadSound("assets/sfx/pass.wav");
+  sfx.pass.setVolume(0.4);
   sfx.getKey = loadSound("assets/sfx/getKey.wav");
+  sfx.getKey.setVolume(0.2);
   sfx.hurt = loadSound("assets/sfx/hurt.wav");
+  sfx.hurt.setVolume(0.6);
   sfx.heal = loadSound("assets/sfx/heal.wav");
-  sfx.heal.setVolume(0.8);
+  sfx.heal.setVolume(0.4);
   sfx.shoot = loadSound("assets/sfx/shoot.wav");
+  sfx.shoot.setVolume(0.4);
   sfx.jump = loadSound("assets/sfx/jump.wav");
-  sfx.jump.setVolume(0.6);
+  sfx.jump.setVolume(0.2);
   sfx.land = loadSound("assets/sfx/land.wav");
+  sfx.land.setVolume(0.2);
   sfx.stick = loadSound("assets/sfx/stick.wav");
-  sfx.stick.setVolume(1.2);
+  sfx.stick.setVolume(0.8);
   sfx.stomp = loadSound("assets/sfx/stomp.wav");
-  sfx.stomp.setVolume(1.2);
+  sfx.stomp.setVolume(0.4);
   sfx.transform = loadSound('assets/sfx/transform.wav');
+  sfx.transform.setVolume(0.4);
 }
 
 function setup() {

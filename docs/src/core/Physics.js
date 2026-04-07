@@ -3,7 +3,7 @@ class Physics {
     this.MapManager = MapManager;
     this.tileSize = MapManager.tileSize;
 
-    this.gravity = 0.9;
+    this.gravity = 1;
     this.maxFallSpeed = 16;
   }
 

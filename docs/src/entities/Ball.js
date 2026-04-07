@@ -8,7 +8,7 @@ class Ball extends Entity{
 
       this.ballTimer = 5
       this.ballSpeed = 15
-      this.vel = createVector(this.ballSpeed * -facing, 0) 
+      this.vel = createVector(this.ballSpeed * facing, 0) 
    }
 
    update(physics){
@@ -27,7 +27,7 @@ class Ball extends Entity{
       push();
       
       translate(this.pos.x + this.width/2, this.pos.y + this.height/2);
-      scale(this.facing, 1);
+      scale(-this.facing, 1);
 
       let imgToDraw = (this.element === Transform.Fire) ? fireballImg : iceballImg;
       image(imgToDraw, -this.width/2, -this.height/2, this.width*1.3, this.height*1.3);

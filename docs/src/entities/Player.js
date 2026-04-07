@@ -13,9 +13,9 @@ const Transform = {
 }
 
 class Player extends Figure {
-  constructor(x, y, w, h, img){
+  constructor(x, y, w, h, imgs){
     super(x, y, w, h);
-    this.img = img;
+    this.imgs = imgs;
 
     this.width = w;
     this.height = h;
@@ -44,6 +44,8 @@ class Player extends Figure {
 
     this.jumpBufferTime = 6;
     this.jumpBufferTimer = 0;
+
+    this.jumpAnimDone = false;
 
     // air
     // Direction can still be adjusted in flight
@@ -74,8 +76,8 @@ class Player extends Figure {
     this.transTimer = 600
     this.attackCooldown = 0
 
-    this.facing = -1 // 1: Right, -1: Left
-    this.isDead = false//Dead flag
+    this.facing = 1
+    this.isDead = false // Dead flag
     this.hearts = 3    // 3 Heart (chance)
     this.keyPopups = [];
   }
@@ -86,13 +88,13 @@ class Player extends Figure {
     // A
     if (keyIsDown(65)){
       this.inputX -= 1;
-      this.facing = 1;
+      this.facing = -1;
     }
 
     // D
     if (keyIsDown(68)){
       this.inputX += 1;
-      this.facing = -1;
+      this.facing = 1;
     }
 
     this.jumpPressed = keyIsDown(87); // W
@@ -121,7 +123,7 @@ class Player extends Figure {
     this.stunTimer = this.stunMax;
 
     // knock back
-    this.vel.x = this.facing * 12;
+    this.vel.x = this.facing * -12;
     this.vel.y = -10;
   }
   // transform apply
@@ -140,10 +142,10 @@ class Player extends Figure {
 
       let shootX;
       if (this.facing === 1){
-        shootX = this.pos.x + this.width - 65;
+        shootX = this.pos.x + 65;
       }
       else{
-        shootX = this.pos.x + 65;
+        shootX = this.pos.x + this.width - 65;
       }
 
     let shootY = this.pos.y + (this.height / 2) - 30;
@@ -158,6 +160,7 @@ class Player extends Figure {
     }
 
     let newBall = new Ball(shootX, shootY, this.facing, this.trans, img);
+    sfx.shoot.play();
 
     ball.push(newBall);
   }
@@ -196,13 +199,13 @@ class Player extends Figure {
         let worldY = mouseY - camY;
 
         let success = this.grapple.shoot(worldX, worldY)
-        if (success) this.state = PlayerState.GRAPPLE;
+        if (success) this.setState(PlayerState.GRAPPLE);
       }
 
       if (!this.grapplePressed && this.grapple.active) {
         this.grapple.release();
         if (this.state === PlayerState.GRAPPLE) {
-          this.state = PlayerState.FALL;
+          this.setState(PlayerState.FALL);
         }
       }
 
@@ -212,6 +215,7 @@ class Player extends Figure {
 
   // STATE MACHINE
   updateState(){
+
     switch (this.state){
 
       case PlayerState.IDLE:
@@ -237,19 +241,27 @@ class Player extends Figure {
     }
   }
 
+
+  setState(newState){
+    if (this.state !== newState) {
+      this.imgs[newState]?.reset();
+      this.state = newState;
+    }
+  }
+
   updateGroundState(){
     this.tryJump();
 
     if (!this.onGround){
-      this.state = PlayerState.FALL;
+      this.setState(PlayerState.FALL);
       return;
     }
 
     if (this.inputX === 0){
-      this.state = PlayerState.IDLE;
+      this.setState(PlayerState.IDLE);
     }
     else{
-      this.state = PlayerState.RUN;
+      this.setState(PlayerState.RUN);
     }
 
     if (this.grapplePressed){
@@ -260,7 +272,7 @@ class Player extends Figure {
 
   updateJumpState(){
     if (this.vel.y > 0){
-      this.state = PlayerState.FALL;
+      this.setState(PlayerState.FALL);
     }
 
     if (this.grapplePressed){
@@ -274,7 +286,8 @@ class Player extends Figure {
 
     if (this.onGround){
       sfx.land.play();
-      this.state = PlayerState.RUN;
+      this.jumpAnimDone = false;
+      this.setState(this.inputX === 0 ? PlayerState.IDLE : PlayerState.RUN);
       return;
     }
   }
@@ -282,10 +295,10 @@ class Player extends Figure {
   updateStunState() {
     if(this.stunTimer <= 0){
       if (this.onGround) {
-        this.state = PlayerState.IDLE;
+        this.setState(PlayerState.IDLE);
       } 
       else{
-        this.state = PlayerState.FALL;
+        this.setState(PlayerState.FALL);
       }
     }
   
@@ -299,7 +312,7 @@ class Player extends Figure {
   updateGrappleState(){
     if (!this.grapplePressed){
       this.grapple.release();
-      this.state = PlayerState.FALL;
+      this.setState(PlayerState.FALL);
       return;
     }
   }
@@ -336,7 +349,7 @@ class Player extends Figure {
 
     let success = this.grapple.shoot(worldX, worldY);
     if (success) {
-      this.state = PlayerState.GRAPPLE;
+      this.setState(PlayerState.GRAPPLE);
     }
   }
 
@@ -389,7 +402,8 @@ class Player extends Figure {
       sfx.jump.play();
       this.jumpBufferTimer = 0;
       this.coyoteTimer = 0;
-      this.state = PlayerState.JUMP;
+      this.setState(PlayerState.JUMP);
+      this.jumpAnimDone = false;
     }
   }
 
@@ -459,7 +473,25 @@ class Player extends Figure {
 
   
   display(){
-    
+    let currentImg
+    switch (this.state) {
+      case PlayerState.IDLE: currentImg = this.imgs.idle; break;
+      case PlayerState.RUN: currentImg = this.imgs.run;  break;
+      case PlayerState.FALL: currentImg = this.imgs.jumping; break;
+      case PlayerState.GRAPPLE: currentImg = this.imgs.jumping; break;
+      case PlayerState.JUMP:
+        if (!this.jumpAnimDone) {
+          if (this.imgs.jump.getCurrentFrame() === this.imgs.jump.numFrames() - 1) {
+            this.jumpAnimDone = true
+          }
+          currentImg = this.imgs.jump
+        } else {
+          currentImg = this.imgs.jumpLoop  // 静态图
+        }
+        break;
+      default: currentImg = this.imgs.idle
+    }
+
     push()
     // transform
     if (this.trans === Transform.Fire){
@@ -475,14 +507,14 @@ class Player extends Figure {
     if (this.facing === -1){
       translate(this.pos.x + this.width, this.pos.y);
       scale(-1, 1);
-      image(this.img, 0, 0, this.width, this.height);
+      image(currentImg, 0, 0, this.width, this.height);
     } 
     else{
-      image(this.img, this.pos.x, this.pos.y, this.width, this.height);
+      image(currentImg, this.pos.x, this.pos.y, this.width, this.height);
     }
     pop();
-    this.displayKeyPopups(keyImg);
 
+    this.displayKeyPopups(keyImg);
     this.grapple.display();
   }
 }
