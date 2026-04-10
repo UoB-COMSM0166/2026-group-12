@@ -80,8 +80,11 @@ VIDEO. Include a demo video of your game here (you don't have to wait until the 
 [Kanban link](https://trello.com/invite/b/698ac34dda403c044906233f/ATTI4db26394399c57af543af31092c66765564157A4/my-trello-board)
 ## Introduction
 
-- 5% ~250 words 
-- Describe your game, what is based on, what makes it novel? (what's the "twist"?) 
+Our game, "Skaarl," was inspired by "Grapple Dog." It is a 2D side-scrolling platformer co-conceived by our team that cleverly transforms the core grappling hook mechanic into a lizard's tongue-swinging gameplay.
+
+The story is set during the Easter holidays. It begins when a mischievous rabbit sneaks into Mother Lizard's home while she is out hunting, stealing three lizard eggs to paint as Easter eggs. Upon returning home, Mother Lizard finds her eggs missing, with only a carrot left behind by the rabbit. Determined to recover her babies, she embarks on a challenging adventure.
+
+The game consists of one tutorial level to teach all the functions and three levels with increasing difficulty. Our team collaboratively designed the unique mechanical twists, such as the tongue-swinging and egg-collection victory mechanisms. Players control Mother Lizard, using her tongue to swing and agilely navigate through complex terrains. In addition to testing players' "parkour" skills, they can switch between limited-time "Fire" and "Ice" power-ups to damage and slow down the ant and bee minions along the way. Players must collect keys to clear the first two levels by taking down the ant and bee enemies. In the last stage, they confront the final boss: a rabbit who relentlessly throws carrot bombs to stop Mother Lizard. After a fierce fight, successfully reclaiming the three eggs and passing through the final exit secures the ultimate victory! 
 
 ## Requirements 
 
@@ -534,9 +537,14 @@ The MapManager is basically what keeps track of the world. Whenever something mo
 
 ## Evaluation
 
-- 15% ~750 words
+### Qualitative Evaluation
+During development, we designed an easy level with ants as enemies and a simpler terrain to clear the game, alongside a hard level featuring both ants and bees in the map, and the testing players needed to operate the tongue mechanic to finish the game. We invited more than ten players to playtest the game using the Think-Aloud protocol, allowing us to capture their real-time frustrations and suggestions regarding visuals, controls, and narrative.
 
-- One qualitative evaluation (of your choice) 
+While the majority found the interface clear and thought our animations vivid, our team conducted a subsequent Heuristic Evaluation based on their feedback to address key usability violations:
+
+1. **Visibility of System Status**: To better communicate game mechanics, we added visual feedback, such as floating keys when collected from the enemies.
+2. **User Control and Freedom**: Players expressed severe frustration upon dying and losing progress. To address this, we implemented respawn points across the three story levels.
+3. **Flexibility and Efficiency of Use**: We remapped the attack skill to the right mouse button for better ergonomics. Additionally, responding to feedback that the lizard's movement was too fast, we recalibrated physics variables—such as gravity and acceleration—and optimized collision logic to lower the learning curve for novices. 
 
 ### Quantitative Evaluation
 [Quantitative Raw Data](/Data/Quantitative_Raw_Data.xlsx)
