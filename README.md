@@ -966,6 +966,24 @@ Black‑box testing focuses on checking whether each feature in the game behaves
   </tr>
 </table>
 
+### 3. Reflection: What Worked and What Didn't
+
+**What Worked:**
+- The clear division of roles allowed each member to focus on their own subsystem without interfering with others' work.
+- The use of separate GitHub branches proved reliable for avoiding code overwrites and maintaining a stable main branch.
+- The pull request workflow allowed team members to review each other's code before merging, helping maintain code quality.
+- When technical issues arose, team members were able to support each other promptly through WhatsApp.
+
+**What Didn't Work:**
+- Initially, inconsistencies in how team members interpreted technical requirements led to repeated modifications in certain areas.
+- Establishing the game architecture in the early stages took longer than planned due to a lack of initial consensus, creating pressure during the integration phase.
+- The map system required more iterations than expected, as designing each level to incorporate the three core mechanics of running, jumping, and grappling proved more time-consuming than anticipated.
+- There were instances where a team member modified a shared function without notifying others, causing unexpected integration errors.
+- When team members held differing opinions, reaching a conclusion sometimes took longer than necessary, occasionally slowing down the overall pace.
+
+### 4. Adaptation
+<p>To address communication issues, the team established a clear protocol of announcing any changes to shared functions in the WhatsApp group, ensuring all members stayed informed and could adapt their code accordingly. When workloads became uneven, tasks were redistributed among members to maintain a balanced pace. To improve decision-making efficiency, we adopted a time-limited discussion approach, proceeding with the majority's opinion once a reasonable discussion period had passed. For example, during the map design process, differing opinions on difficulty level led to prolonged discussions. We ultimately held a focused meeting during the Easter break to align on a shared standard: a map is considered successful as long as players can complete it while experiencing all three core mechanics. This experience highlighted the importance of establishing clear evaluation criteria early in the design phase to avoid repeated revisions.<p>
+
 
 ## Conclusion
 
