@@ -74,7 +74,6 @@ function preload() {
     loadImage("assets/img/uiManager/text/tutorial_ice_text.png"),
     loadImage("assets/img/uiManager/text/tutorial_grapple_2_text.png"),
     loadImage("assets/img/uiManager/text/tutorial_fire_text.png"),
-    
     loadImage("assets/img/uiManager/text/tutorial_goal_text.png")
   );
 
@@ -190,11 +189,13 @@ function draw() {
           image(text.img, width / 2 - imgW / 2, 100, imgW, imgH);
         }
       }
+
       if (player.isDead) {
         player.isDead = false;
         initGame();
         return;
       }
+      
       if (levelManager.isReachedGoal(player, uiManager)) {
         gameState = "GAMECLEAR";
         return;
@@ -342,6 +343,12 @@ function mousePressed() {
       resetGame();
       gameState = "START";
     }
+  } else if (gameState === "PLAYING"){
+    if(uiManager.isHomeButtonClicked(mouseX, mouseY)){
+      sfx.startGame.play();
+      resetGame();
+      gameState = "START";
+    }
   }
 }
 
@@ -402,6 +409,12 @@ function keyPressed() {
       initGame();
     } else {
       gameState = "GAMECLEAR";
+    }
+  }
+
+  if (key === 'o' || key === 'O'){
+    if(levelManager.currentLevel === 3){
+      player.pos.set(4830, 500);
     }
   }
 
