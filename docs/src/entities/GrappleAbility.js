@@ -12,7 +12,7 @@ class GrappleAbility {
         this.retractSpeed = 1.5;             // Speed when shortening the rope (W key)
         this.extendSpeed = 1;                // Speed when extending the rope (S key)
         this.baseSwingForce = 0.16;          // Force applied when swinging
-
+        
         // Tongue animation state
         this.tongueFlying = false;           // Whether the tongue is animating
         this.tonguePos = createVector(0, 0); // Tongue tip position
@@ -37,6 +37,9 @@ class GrappleAbility {
         // Previous key states for edge detection
         this.prevW = false;
         this.prevS = false;
+
+        // Lift the lizard
+        this.autoRetracted = false;
     }
 
     shoot(targetX, targetY) {
@@ -67,11 +70,16 @@ class GrappleAbility {
             if (mapManager.isGrapplePoint(checkX, checkY)) {
                 this.anchor.set(checkX, checkY);
                 this.ropeLength = dist(p.x, p.y, checkX, checkY);
+
+                // Lift the Lizard
+                this.autoRetracted = false;
+
                 foundAnchor = true;
                 sfx.stick.play();
                 break;
             } 
             else if (mapManager.getTileAt(checkX, checkY) !== 0) {
+
                 this.tongueTotalDist = stepSize * (i - 1);
                 this.tongueTarget.set(
                     p.x + dir.x * stepSize * (i - 1),
@@ -202,7 +210,7 @@ class GrappleAbility {
                 }
 
                 let mouth = createVector(
-                    this.player.pos.x + this.player.width * (this.player.facing === 1 ? 0.85 : 0.15),
+                    this.player.pos.x + this.player.width * (this.player.facing === 1 ? 0.8 : 0.2),
                     this.player.pos.y + this.player.height * 0.35
                 );
 
@@ -221,6 +229,12 @@ class GrappleAbility {
 
         if (this.active) {
             let player = this.player;
+
+            if (!this.autoRetracted) {
+                this.ropeLength -= 50;      // Control the tongue you wanna shorten
+                this.ropeLength = max(this.ropeLength, 40);
+                this.autoRetracted = true;
+            }
 
             this.adjust();
             this.swing();
@@ -244,8 +258,8 @@ class GrappleAbility {
         let p = this.player.pos;
 
         let px = (this.player.facing === 1)
-            ? p.x + this.player.width * 0.85
-            : p.x + this.player.width * 0.15;
+            ? p.x + this.player.width * 0.80
+            : p.x + this.player.width * 0.2;
 
         let py = p.y + this.player.height * 0.35;
 

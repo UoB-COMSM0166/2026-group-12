@@ -270,7 +270,7 @@ class Player extends Figure {
 
     if (this.grapplePressed){
       this.startGrapple();
-      this.grapplePressed = false;
+  //    this.grapplePressed = false;
     }
   }
 
@@ -281,7 +281,7 @@ class Player extends Figure {
 
     if (this.grapplePressed){
       this.startGrapple();
-      this.grapplePressed = false;
+  //    this.grapplePressed = false;
     }
   }
 
@@ -309,7 +309,7 @@ class Player extends Figure {
     
     if(this.grapplePressed){
       this.startGrapple();
-      this.grapplePressed = false;
+    //  this.grapplePressed = false;
     }
   }
 
