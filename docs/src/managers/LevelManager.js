@@ -185,7 +185,7 @@ class LevelManager {
 
     //Egg (Only appear in stage 3)
     if (level === 3){
-      let eggPosition = [{x:1600, y:460}, {x:6880, y:300}, {x:6930, y:300}]
+      let eggPosition = [{x:6930, y:250}, {x:6910, y:300}, {x:6950, y:300}]
       
       for (let i = 0;  i < eggPosition.length; i++) {
         let eggImg = (levelEggImgs && levelEggImgs[i]) ? levelEggImgs[i] : null;
