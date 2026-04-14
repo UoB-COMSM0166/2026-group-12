@@ -38,17 +38,25 @@ class Bees extends Enemy {
       return; 
     }
     
-  
+    this.damageTimer--;
+
     this.handleMovement();
   }
 
   display() {
     if (this.hearts <= 0) return;
 
-    
     this.updateAnimation();
 
     push();
+    if (this.isFrozen){
+      tint(100, 200, 255);
+    } else if (this.damageTimer > 0){
+      tint(255, 100, 100);
+     }
+    else{
+      noTint();
+    }
     image(this.frames[this.frameIndex], this.pos.x, this.pos.y, this.width, this.height);
     pop();
   }

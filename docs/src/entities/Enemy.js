@@ -13,6 +13,9 @@ class Enemy extends Figure {
     this.isFrozen = false;
     this.frozenTimer = 0;
     this.keyDropped = false;
+
+    this.damageTimer = 0;
+    this.damageCooldown = 10;
   }
 
   update(mapManager, physics) {
@@ -43,6 +46,7 @@ class Enemy extends Figure {
   
   takeDamage(amount = 1, attackElement) {
     sfx.stomp.play();
+    this.damageTimer = this.damageCooldown;
     if (attackElement === Transform.Fire){
       this.hearts -= amount;
     }

@@ -80,6 +80,9 @@ class Player extends Figure {
     this.isDead = false // Dead flag
     this.hearts = 3    // 3 Heart (chance)
     this.keyPopups = [];
+
+    this.damageTimer = 0;
+    this.damageCooldown = 10;
   }
 
   handleInput(){
@@ -107,10 +110,10 @@ class Player extends Figure {
       return;
     }
 
-    // statement update
     // -heart
     this.hearts--;
     sfx.hurt.play();
+    this.damageTimer = this.damageCooldown;
     uiManager.currentHearts = this.hearts;
     //life check
     if (this.hearts <= 0){
@@ -441,6 +444,8 @@ class Player extends Figure {
         this.trans = Transform.No;
       }
     }
+
+    this.damageTimer--;
   }
 
   showKeyPopup() {
@@ -486,7 +491,7 @@ class Player extends Figure {
           }
           currentImg = this.imgs.jump
         } else {
-          currentImg = this.imgs.jumpLoop  // 静态图
+          currentImg = this.imgs.jumpLoop
         }
         break;
       default: currentImg = this.imgs.idle
@@ -498,11 +503,15 @@ class Player extends Figure {
       tint(255, 100, 100);
     } 
     else if (this.trans === Transform.Frozen){
-      tint(100, 200, 255);
+      tint(100, 180, 255);
     }
     else{
       noTint();
     }
+
+    if (this.damageTimer > 0){
+      tint(255, 0, 0);
+    } 
 
     if (this.facing === -1){
       translate(this.pos.x + this.width, this.pos.y);

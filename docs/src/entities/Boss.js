@@ -16,8 +16,6 @@ class Boss extends Enemy {
     this.frameTimer = 0
     this.frameSpeed = 8
 
-
-
     //player detect
     this.xGap = 800
     this.yGap = 60
@@ -26,6 +24,7 @@ class Boss extends Enemy {
     this.isDead = false
     this.hearts = 10
     this.state = BossState.IDLE
+
     //attack
     this.attackCount = 3
     this.attackCoolTimer = 600 // minsec
@@ -79,10 +78,8 @@ class Boss extends Enemy {
       }
     }
 
-    
     //player detect
    
-
     // find player y ==> x
     playerDetect(){
       this.dy = player.pos.y - this.pos.y
@@ -268,6 +265,14 @@ class Boss extends Enemy {
     let currentImg = this.frames[this.frameIndex]; 
     
     push();
+    if (this.isFrozen){
+      tint(100, 200, 255);
+    } else if (this.damageTimer > 0){
+      tint(255, 100, 100);
+     }
+    else{
+      noTint();
+    }
 
     if (this.facing === -1) {
       translate(this.pos.x + this.width, this.pos.y);
