@@ -344,10 +344,12 @@ function mousePressed() {
       gameState = "START";
     }
   } else if (gameState === "PLAYING"){
-    if(uiManager.isHomeButtonClicked(mouseX, mouseY)){
-      sfx.startGame.play();
-      resetGame();
-      gameState = "START";
+    if (levelManager.currentLevel === 0){
+      if(uiManager.isHomeButtonClicked(mouseX, mouseY)){
+        sfx.startGame.play();
+        resetGame();
+        gameState = "START";
+      }
     }
   }
 }
