@@ -35,7 +35,7 @@ class Player extends Figure {
     this.friction = 0.6;
 
     // jump
-    this.jumpForce = -20; //-16
+    this.jumpForce = -16; //-16
     this.jumpCut = 0.5;
 
     // jump system
@@ -65,7 +65,7 @@ class Player extends Figure {
     this.glideFallSpeed = 3
     */
     // stun system
-    this.stunMax = 30;
+    this.stunMax = 40;
     this.stunTimer = 0;
 
     // State Machine
@@ -156,6 +156,7 @@ class Player extends Figure {
     let img;
 
     if (this.trans === Transform.Fire){
+      this.jumpForce = -20;
       img = fireballImg;
     }
     else if (this.trans === Transform.Frozen){

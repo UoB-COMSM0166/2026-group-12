@@ -79,7 +79,6 @@ class Enemy extends Figure {
 
 
   onCollide(player) {
-
     if (player.isHooked) {
       this.takeDamage();
       return;
