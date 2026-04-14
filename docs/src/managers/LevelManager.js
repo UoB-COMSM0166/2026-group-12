@@ -77,7 +77,6 @@ class LevelManager {
       3: {
         mapData: this.mapsData[3],
         enemies: [
-          { type: "Ant", x: 450, y: 800, size: 50 },
           { type: "Ant", x: 1800, y: 500, size: 50 },
           { type: "Ant", x: 2100, y: 500, size: 50 },
           { type: "Ant", x: 3600, y: 400, size: 50 },
@@ -91,6 +90,8 @@ class LevelManager {
         items: [
           { element: Transform.Fire, x: 980, y: 570, size: 80 },
           { element: Transform.Fire, x: 2930, y: 670, size: 80 },
+          { element: Transform.Fire, x: 3330, y: 450, size: 80 },
+          { element: Transform.Fire, x: 4000, y: 400, size: 80 },
           { element: Transform.Fire, x: 5510, y: 770, size: 80 },
           { element: Transform.Fire, x: 6730, y: 590, size: 80 },
           { element: Transform.Fire, x: 5770, y: 580, size: 80 },
