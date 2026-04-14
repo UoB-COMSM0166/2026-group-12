@@ -12,7 +12,7 @@ class GrappleAbility {
         this.retractSpeed = 1.5;             // Speed when shortening the rope (W key)
         this.extendSpeed = 1;                // Speed when extending the rope (S key)
         this.baseSwingForce = 0.16;          // Force applied when swinging
-
+        
         // Tongue animation state
         this.tongueFlying = false;           // Whether the tongue is animating
         this.tonguePos = createVector(0, 0); // Tongue tip position
@@ -39,74 +39,89 @@ class GrappleAbility {
         this.prevS = false;
     }
 
-    shoot(targetX, targetY) {
-        // Prevent shooting if already grappling or animating
-        if (this.active || this.tongueFlying) {
+shoot(targetX, targetY) {
+    // Prevent shooting if already grappling or animating
+    if (this.active || this.tongueFlying) {
+        return false;
+    }
+
+    // ⭐ 射線從「嘴巴」開始，而不是角色中心
+    let mouth = createVector(
+        this.player.pos.x + this.player.width * (this.player.facing === 1 ? 0.8 : 0.2),
+        this.player.pos.y + this.player.height * 0.35
+    );
+
+    let p = mouth.copy();
+    let dir = createVector(targetX - p.x, targetY - p.y).normalize();
+
+    // Initialize tongue animation
+    this.tongueStart.set(p.x, p.y);
+    this.tongueDir = dir;
+
+    let foundAnchor = false;
+    let stepSize = 5;
+    let steps = floor(this.maxLength / stepSize);
+
+    // 給 getTileAt 用的是世界座標，這跟你 MapManager 設計是對的
+    for (let i = 1; i <= steps; i++) {
+        let checkX = p.x + dir.x * stepSize * i;
+        let checkY = p.y + dir.y * stepSize * i;
+
+        // ⭐ 先判 GrapplePoint（用世界座標）
+        if (mapManager.isGrapplePoint(checkX, checkY)) {
+            this.anchor.set(checkX, checkY);
+            this.ropeLength = dist(p.x, p.y, checkX, checkY);
+            foundAnchor = true;
+            sfx.stick.play();
+            break;
+        }
+
+        // 再判 tile 碰撞
+        let tileId = mapManager.getTileAt(checkX, checkY);
+
+        if (tileId !== 0) {
+            // ⭐ 如果這個 tile 本身就是 GrapplePoint，就不要當成障礙
+            if (mapManager.isGrapplePoint(checkX, checkY)) {
+                continue;
+            }
+
+            // 其他 tile → 正常縮回
+            this.tongueTotalDist = stepSize * (i - 1);
+            this.tongueTarget.set(
+                p.x + dir.x * stepSize * (i - 1),
+                p.y + dir.y * stepSize * (i - 1)
+            );
+            this.tongueProgress = 0;
+            this.tongueReturning = false;
+            this.tonguePauseTimer = 0;
+            this.tongueFlying = true;
+            this.active = false;
             return false;
         }
-
-        // Calculate player's center position
-        let p = this.player.pos.copy();
-        p.x += this.player.width / 2;
-        p.y += this.player.height / 2;
-
-        let dir = createVector(targetX - p.x, targetY - p.y).normalize();
-
-        // Initialize tongue animation
-        this.tongueStart.set(p.x, p.y);
-        this.tongueDir = dir;
-
-        let foundAnchor = false;
-        let stepSize = 5; 
-        let steps = floor(this.maxLength / stepSize);
-
-        for (let i = 1; i <= steps; i++) {
-            let checkX = p.x + dir.x * stepSize * i;
-            let checkY = p.y + dir.y * stepSize * i;
-
-            if (mapManager.isGrapplePoint(checkX, checkY)) {
-                this.anchor.set(checkX, checkY);
-                this.ropeLength = dist(p.x, p.y, checkX, checkY);
-                foundAnchor = true;
-                sfx.stick.play();
-                break;
-            } 
-            else if (mapManager.getTileAt(checkX, checkY) !== 0) {
-                this.tongueTotalDist = stepSize * (i - 1);
-                this.tongueTarget.set(
-                    p.x + dir.x * stepSize * (i - 1),
-                    p.y + dir.y * stepSize * (i - 1)
-                );
-                this.tongueProgress = 0;
-                this.tongueReturning = false;
-                this.tonguePauseTimer = 0;
-                this.tongueFlying = true;
-                this.active = false;
-                return false;
-            }
-        }
-
-        this.tongueTotalDist = foundAnchor
-            ? dist(p.x, p.y, this.anchor.x, this.anchor.y)
-            : this.maxLength;
-
-        if (foundAnchor) {
-            this.tongueTarget.set(this.anchor.x, this.anchor.y);
-        } else {
-            this.tongueTarget.set(
-                p.x + dir.x * this.maxLength,
-                p.y + dir.y * this.maxLength
-            );
-        }
-
-        this.tongueProgress = 0;
-        this.tongueReturning = false;
-        this.tonguePauseTimer = 0;
-        this.tongueFlying = true;
-        this.active = false;
-
-        return foundAnchor;
     }
+
+    this.tongueTotalDist = foundAnchor
+        ? dist(p.x, p.y, this.anchor.x, this.anchor.y)
+        : this.maxLength;
+
+    if (foundAnchor) {
+        this.tongueTarget.set(this.anchor.x, this.anchor.y);
+    } else {
+        this.tongueTarget.set(
+            p.x + dir.x * this.maxLength,
+            p.y + dir.y * this.maxLength
+        );
+    }
+
+    this.tongueProgress = 0;
+    this.tongueReturning = false;
+    this.tonguePauseTimer = 0;
+    this.tongueFlying = true;
+    this.active = false;
+
+    return foundAnchor;
+}
+
 
     adjust() {
         if (!this.active) {
