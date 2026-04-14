@@ -1,42 +1,79 @@
 class Bees extends Enemy {
   constructor(x, y, size, imgArray) {
+    
     super(x, y, size, size, imgArray[0]); 
+
+    
     this.frames = imgArray;
     this.frameIndex = 0;
     this.frameTimer = 0;
-    this.frameSpeed = 5; // 控制翅膀拍動快慢
-    this.baseY = y;      // 飛行基準線
-    this.floatAngle = random(TWO_PI);
+    this.frameSpeed = 5; // Speed of wing flapping
+
+    //Movement Properties
+    this.baseY = y;                   
+    this.floatAngle = random(TWO_PI); 
+    this.floatSpeed = 0.03;           
+    this.floatAmplitude = 120;        
+
+    
+    this.speed = 0;
+    this.vel.x = 0;
+
+    this.hearts = (size >= 100) ? 3 : 2;
   }
 
   update(mapManager, physics) {
-    if (this.hearts <= 0) { this.isDead = true; return; }
+    // Check death state
+    if (this.hearts <= 0) { 
+      this.isDead = true; 
+      return; 
+    }
+
+    // Check frozen state (stops movement if frozen by player)
+    if (this.isFrozen) {
+      this.frozenTimer--;
+      if (this.frozenTimer <= 0) {
+        this.isFrozen = false;
+      }
+      return; 
+    }
     
-    // 垂直飛行 AI：使用正弦波讓 Y 座標平滑上下移動
-    // 公式：$y = baseY + \sin(angle) \times amplitude$
-    this.floatAngle += 0.08;
-    this.pos.y = this.baseY + sin(this.floatAngle) * 60; 
-    
-    super.update(mapManager, physics);
-  
+    this.damageTimer--;
+
+    this.handleMovement();
   }
 
   display() {
+    if (this.hearts <= 0) return;
+
+    this.updateAnimation();
+
+    push();
+    if (this.isFrozen){
+      tint(100, 200, 255);
+    } else if (this.damageTimer > 0){
+      tint(255, 100, 100);
+     }
+    else{
+      noTint();
+    }
+    image(this.frames[this.frameIndex], this.pos.x, this.pos.y, this.width, this.height);
+    pop();
+  }
+
+
+  handleMovement() {
+    // Vertical floating
+    this.floatAngle += this.floatSpeed;
+    this.pos.y = this.baseY + sin(this.floatAngle) * this.floatAmplitude; 
+  }
+
+  updateAnimation() {
+
     this.frameTimer++;
     if (this.frameTimer >= this.frameSpeed) {
       this.frameTimer = 0;
       this.frameIndex = (this.frameIndex + 1) % this.frames.length;
     }
-
-    push();
-    // 根據速度方向水平翻轉圖片
-    if (this.vel && this.vel.x > 0) {
-      translate(this.pos.x + this.width, this.pos.y);
-      scale(-1, 1);
-      image(this.frames[this.frameIndex], 0, 0, this.width, this.height);
-    } else {
-      image(this.frames[this.frameIndex], this.pos.x, this.pos.y, this.width, this.height);
-    }
-    pop();
   }
 }

@@ -19,8 +19,15 @@ class LevelManager {
       3: { x: 7050, y: 656 },
     };
     this.goalW = 150;
-    this.goalH =
-    this.doorLockedImg.height * (this.goalW / this.doorLockedImg.width);
+    this.goalH = this.doorLockedImg.height * (this.goalW / this.doorLockedImg.width);
+
+    // Respawnable fire items for Level 3
+    this.respawnFires = [
+      { x: 6730, y: 590, size: 80, timer: 0, alive: false },
+      { x: 5770, y: 580, size: 80, timer: 0, alive: false },
+      { x: 6270, y: 340, size: 80, timer: 0, alive: false },
+    ];
+    this.fireRespawnDelay = 600; // frames
   }
 
   getLevelData(level) {
@@ -28,14 +35,14 @@ class LevelManager {
       0: {
         mapData: this.mapsData[0],
         enemies: [
-          { type: "Ant", x: 300, y: 400, size: 50 },
           { type: "Ant", x: 1000, y: 400, size: 50 },
-          { type: "Ant", x: 2200, y: 400, size: 50 },
+          { type: "Ant", x: 2480, y: 400, size: 50 },
+          { type: "Ant", x: 3640, y: 400, size: 50 },
         ],
         //items
         items: [
-          { element: Transform.Fire, x: 700, y: 450, size: 80 },
-          { element: Transform.Frozen, x: 1940, y: 550, size: 80 },
+          { element: Transform.Fire, x: 3430, y: 500, size: 80 },
+          { element: Transform.Frozen, x: 2210, y: 550, size: 80 },
         ],
       },
       1: {
@@ -44,43 +51,50 @@ class LevelManager {
           { type: "Ant", x: 1400, y: 400, size: 50 },
           { type: "Ant", x: 1750, y: 300, size: 50 },
           { type: "Ant", x: 2350, y: 200, size: 50 },
-          { type: "Ant", x: 4550, y: 200, size: 50 },
           { type: "Ant", x: 5500, y: 20, size: 50 },
-        ],
-        //items
-        items: [
-          { element: Transform.Fire, x: 700, y: 400, size: 80 },
-          { element: Transform.Frozen, x: 900, y: 400, size: 80 },
         ],
       },
       2: {
         mapData: this.mapsData[2],
         enemies: [
-          { type: "Ant", x: 900, y: 800, size: 50 },
+          { type: "Ant", x: 850, y: 400, size: 50 },
           { type: "Ant", x: 1800, y: 500, size: 50 },
           { type: "Ant", x: 2100, y: 500, size: 50 },
           { type: "Ant", x: 3600, y: 400, size: 50 },
           { type: "Ant", x: 4530, y: 200, size: 50 },
           { type: "Ant", x: 5100, y: 300, size: 50 },
+          { type: "Ant", x: 6600, y: 300, size: 50 },
+          { type: "Ant", x: 7000, y: 300, size: 50 },
+          { type: "Bee", x: 3000, y: 450, size: 60 },
+          { type: "Bee", x: 4000, y: 350, size: 60 }
         ],
         items: [
-          { element: Transform.Fire, x: 300, y: 200, size: 80 },
-          { element: Transform.Frozen, x: 400, y: 200, size: 80 },
+          { element: Transform.Frozen, x: 1270, y: 600, size: 80 },
+          { element: Transform.Frozen, x: 3000, y: 550, size: 80 },
+          { element: Transform.Frozen, x: 5420, y:550, size: 80 },
         ],
       },
       3: {
         mapData: this.mapsData[3],
         enemies: [
-          { type: "Ant", x: 900, y: 800, size: 50 },
+          { type: "Ant", x: 450, y: 800, size: 50 },
           { type: "Ant", x: 1800, y: 500, size: 50 },
           { type: "Ant", x: 2100, y: 500, size: 50 },
           { type: "Ant", x: 3600, y: 400, size: 50 },
           { type: "Ant", x: 4530, y: 200, size: 50 },
           { type: "Ant", x: 5100, y: 300, size: 50 },
+          { type: "Bee", x: 1100, y: 430, size: 60 },
+          { type: "Bee", x: 4300, y: 320, size: 60 },
+          { type: "Bee", x: 5400, y: 600, size: 60 },
+          { type: "Boss", x: 6300, y: 300, size: 100 }
         ],
         items: [
-          { element: Transform.Fire, x: 300, y: 200, size: 80 },
-          { element: Transform.Frozen, x: 400, y: 200, size: 80 },
+          { element: Transform.Fire, x: 980, y: 570, size: 80 },
+          { element: Transform.Fire, x: 2930, y: 670, size: 80 },
+          { element: Transform.Fire, x: 5510, y: 770, size: 80 },
+          { element: Transform.Fire, x: 6730, y: 590, size: 80 },
+          { element: Transform.Fire, x: 5770, y: 580, size: 80 },
+          { element: Transform.Fire, x: 6270, y: 340, size: 80 },
         ],
       },
     };
@@ -90,11 +104,23 @@ class LevelManager {
   getTutorialTexts(tutorialTextImg) {
     return [
       { img: tutorialTextImg[0], triggerX: 0, endX: 400 },
-      { img: tutorialTextImg[1], triggerX: 500, endX: 800 },
-      { img: tutorialTextImg[2], triggerX: 1100, endX: 1500 },
-      { img: tutorialTextImg[3], triggerX: 2000, endX: 2300 },
-      { img: tutorialTextImg[4], triggerX: 2300, endX: 2800 },
+      { img: tutorialTextImg[1], triggerX: 500, endX: 1000 },
+      { img: tutorialTextImg[2], triggerX: 1150, endX: 1850 },
+      { img: tutorialTextImg[3], triggerX: 2040, endX: 2480 },
+      { img: tutorialTextImg[4], triggerX: 2500, endX: 3180 },
+      { img: tutorialTextImg[5], triggerX: 3320, endX: 3700 },
+      { img: tutorialTextImg[6], triggerX: 4300, endX: 4600 },
     ];
+  }
+
+  getCutscenes(level, cutsceneImgs) {
+    const cutscenes = {
+      0: [],
+      1: [cutsceneImgs[0], cutsceneImgs[1], cutsceneImgs[2]],
+      2: [],
+      3: [cutsceneImgs[3]],
+    };
+    return cutscenes[level] || [];
   }
 
   spawnEnemies(level, entities) {
@@ -102,13 +128,15 @@ class LevelManager {
     let enemies = data.enemies;
 
     for (let e of enemies) {
-      if (e.type === "Ant") entities.push(new Ant(e.x, e.y, e.size));
-    }
-
-    //Bees are coming~
-    if (level >= 2) {
-      entities.push(new Bees(2000, 350, 60, beeImgs));
-      entities.push(new Bees(4000, 350, 60, beeImgs));
+      if (e.type === "Ant") {
+        entities.push(new Ant(e.x, e.y, e.size));
+      }
+      else if (e.type === "Bee") { 
+        entities.push(new Bees(e.x, e.y, e.size, beeImgs));
+      }
+      else if (e.type === "Boss") {
+        entities.push(new Boss(e.x, e.y, e.size, e.size, badbunnyImgs, carrotImg));
+      }
     }
   }
 
@@ -117,6 +145,7 @@ class LevelManager {
     if (!data) return;
     let items = data.items || [];
 
+    //Fire and Ice 
     for (let i of items) {
       let img = null;
       if (typeof Transform !== "undefined") {
@@ -132,26 +161,73 @@ class LevelManager {
         }
       }
     }
-    //Hearts appeared
+
+    //Heart (Only generate 1 heart per game)
     if (typeof heartImg !== "undefined" && heartImg) {
-      let heartCount = floor(random(1, 4));
-      for (let i = 0; i < heartCount; i++) {
-        entities.push(
-          new Heart(random(1500, 5000), random(300, 600), 40, 40, heartImg),
-        );
+      let heartSpawnX = 1250;
+      let heartSpawnY = 500;
+      
+      if (level === 1){
+        heartSpawnX = 3300;
+        heartSpawnY = 450;
       }
+      else if (level === 2){
+        heartSpawnX = 2500;
+        heartSpawnY = 450;
+      }
+      else if (level === 3){
+        heartSpawnX = 3800;
+        heartSpawnY = 350;
+      }
+      entities.push(new Heart(heartSpawnX, heartSpawnY, 40, 40, heartImg));
     }
 
-    //Egg for Win the stages
-    let door = this.goalPos[level];
-    if (door) {
-      let eggIndex = max(0, level - 1);
-      let eggImg =
-        levelEggImgs && levelEggImgs[eggIndex] ? levelEggImgs[eggIndex] : null;
+    //Egg (Only appear in stage 3)
+    if (level === 3){
+      let eggPosition = [{x:1600, y:460}, {x:6880, y:300}, {x:6930, y:300}]
+      
+      for (let i = 0;  i < eggPosition.length; i++) {
+        let eggImg = (levelEggImgs && levelEggImgs[i]) ? levelEggImgs[i] : null;
+              
+        if (eggImg){
+          entities.push(new GoalEgg(eggPosition[i].x, eggPosition[i].y, 60, 60, eggImg, i + 1));
+        }
+      }
+    }
+  }
 
-      if (eggImg) {
-        entities.push(new GoalEgg(400, 650, 60, 60, eggImg, level));
-        console.log("Goal Egg generated successfully!");
+  // Respawn system for Level 3 fire items
+  updateRespawnFires(entities) {
+    if (this.currentLevel !== 3) return;
+
+    for (let fire of this.respawnFires) {
+
+      if (fire.alive) {
+        // Check if the fire item still exists in entities
+        let exists = entities.some(e =>
+          e instanceof Items &&
+          e.element === Transform.Fire &&
+          e.x === fire.x &&
+          e.y === fire.y
+        );
+
+        if (!exists) {
+          fire.alive = false;
+          fire.timer = 0;
+        }
+      }
+
+      else {
+        fire.timer++;
+
+        if (fire.timer >= this.fireRespawnDelay) {
+          let img = redButterfly;
+          let newFire = new Items(fire.x, fire.y, fire.size * 1.5, fire.size, img, Transform.Fire);
+
+          entities.push(newFire);
+          fire.alive = true;
+          fire.timer = 0;
+        }
       }
     }
   }
@@ -161,14 +237,19 @@ class LevelManager {
   }
 
   isReachedGoal(player, uiManager) {
-    if (uiManager.currentKeys < 3) {
-      return false;
+    
+    if (this.currentLevel === 3) {
+      // Level 3
+      if (!uiManager.eggCount || uiManager.eggCount < 3) return false;
+    } 
+    else {
+      // Level 1 and 2 need 3 keys
+      if (uiManager.currentKeys < 3) return false;
     }
 
+    
     let goal = this.getGoalPos();
-    if (!goal) {
-      return false;
-    }
+    if (!goal) return false;
 
     return (
       player.left < goal.x + this.goalW &&
@@ -180,8 +261,10 @@ class LevelManager {
 
   displayGoal() {
     let goal = this.getGoalPos();
-    let img =
-      uiManager.currentKeys >= 3 ? this.doorOpenImg : this.doorLockedImg;
+    let isConditionMet = uiManager.currentKeys >= 3 || (this.currentLevel === 3 && uiManager.eggCount >= 3);
+
+    let img = isConditionMet ? this.doorOpenImg : this.doorLockedImg;
+  
     image(img, goal.x, goal.y, this.goalW, this.goalH);
   }
 

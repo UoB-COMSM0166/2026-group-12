@@ -13,6 +13,9 @@ class Enemy extends Figure {
     this.isFrozen = false;
     this.frozenTimer = 0;
     this.keyDropped = false;
+
+    this.damageTimer = 0;
+    this.damageCooldown = 10;
   }
 
   update(mapManager, physics) {
@@ -42,6 +45,8 @@ class Enemy extends Figure {
   }
   
   takeDamage(amount = 1, attackElement) {
+    sfx.stomp.play();
+    this.damageTimer = this.damageCooldown;
     if (attackElement === Transform.Fire){
       this.hearts -= amount;
     }
@@ -55,26 +60,25 @@ class Enemy extends Figure {
        this.hearts -= amount;
     }
 
-    if (this.hearts <= 0 && !this.keyDropped) {
+    if (this.hearts <= 0 && !this.keyDropped && levelManager.currentLevel !== 3) {
       this.keyDropped = true;
-      console.log('hearts <= 0, keyDropped:', this.keyDropped);
       let aliveEnemies = entities.filter(e => e instanceof Enemy && !e.isDead && e !== this);
       let keysNeeded = 3 - uiManager.currentKeys;
-      console.log('aliveEnemies:', aliveEnemies.length, 'keysNeeded:', keysNeeded);
     
       if (aliveEnemies.length < keysNeeded) {
         uiManager.addKey();
         player.showKeyPopup();
+        sfx.getKey.play();
       } else if (random() < 0.5) {
         uiManager.addKey();
         player.showKeyPopup();
+        sfx.getKey.play();
       }
     }
   }
 
 
   onCollide(player) {
-
     if (player.isHooked) {
       this.takeDamage();
       return;
@@ -82,7 +86,7 @@ class Enemy extends Figure {
     
     const isStomping =
       player.vel.y > 0 &&
-      player.bottom < this.pos.y + this.height * 0.5;
+      player.bottom < this.pos.y + this.height * 0.5;//oppsite
     if (isStomping) {
       this.takeDamage();
       player.vel.y = -16;
@@ -135,5 +139,4 @@ class Enemy extends Figure {
     }
   }
 }
-
 

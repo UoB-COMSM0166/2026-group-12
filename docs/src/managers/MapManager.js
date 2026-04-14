@@ -16,7 +16,12 @@ class MapManager {
 
     this.tilesets = {};
     for (let ts of data.tilesets) {
-      let name = ts.source.replace(/.*\//, "").replace(".tsx", "");
+      let name;
+      if (ts.source) {
+        name = ts.source.replace(/.*\//, "").replace(".tsx", "");
+      } else {
+        name = ts.name;
+      }
       this.tilesets[name] = ts.firstgid;
     }
   }
@@ -31,6 +36,7 @@ class MapManager {
     let decorRanges = [
       [t.bushes, t.bushes + 2],
       [t.pointers, t.pointers + 1],
+      [t.downPointer, t.downPointer + 1],
       [t.fences, t.fences + 1],
       [t.trees, t.trees + 12],
       [t.willows, t.willows + 12],
@@ -49,6 +55,13 @@ class MapManager {
     let id = this.getTileAt(x, y);
     let t = this.tilesets;
     return id === t.map_tileset + 14;
+  }
+
+  notGrapplePoint(x, y) {
+    let id = this.getTileAt(x, y);
+    let t = this.tilesets;
+    // TO DO: isSolid but not grapple point (for tongue retreat)
+    // return id === t.map_tileset + 14;
   }
 
   getWalls() {
@@ -79,6 +92,7 @@ class MapManager {
     tilesetImg,
     bushImg,
     pointerImg,
+    downPointerImg,
     fenceImg,
     treeImg,
     willowImg,
@@ -104,6 +118,8 @@ class MapManager {
         image(bushImg, x, y, 60, 60, srcX, 0, 32, 32);
       } else if (id === t.pointers) {
         image(pointerImg, x, y, 60, 60, 0, 0, 32, 32);
+      } else if (id === t.downPointer) {
+        image(downPointerImg, x, y, 60, 60, 0, 0, 32, 32);
       } else if (id === t.fences) {
         image(fenceImg, x, y, 60, 60, 0, 0, 32, 32);
       } else if (id >= t.trees && id < t.trees + 12) {

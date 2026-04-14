@@ -20,7 +20,7 @@ class UIManager {
     return img.height * (targetW / img.width);
   }
 
-  displayStart(titleImg, startBtnImg, tutorialBtnImg) {
+  displayStart(titleImg, mouseKbdTextImg, startBtnImg, tutorialBtnImg) {
     this.titleY = lerp(this.titleY, this.titleTargetY, 0.05);
     let titleW = 800;
     let titleH = this.getScaledHeight(titleImg, titleW);
@@ -30,17 +30,21 @@ class UIManager {
     let gap = 80;
 
     this.startBtnW = btnW;
-    this.startBtnH = this.getScaledHeight(startBtnImg, btnW);
+    this.startBtnH = this.getScaledHeight(startBtnImg, this.startBtnW);
     this.startBtnX = width / 2 - btnW - gap / 2;
     this.startBtnY = height / 2 + 100;
     image(startBtnImg, this.startBtnX, this.startBtnY, this.startBtnW, this.startBtnH);
 
 
     this.tutorialBtnW = btnW;
-    this.tutorialBtnH = this.getScaledHeight(tutorialBtnImg, btnW);
+    this.tutorialBtnH = this.getScaledHeight(tutorialBtnImg, this.tutorialBtnW);
     this.tutorialBtnX = width / 2 + gap / 2;
     this.tutorialBtnY = height / 2 + 100;
     image(tutorialBtnImg, this.tutorialBtnX, this.tutorialBtnY, this.tutorialBtnW, this.tutorialBtnH);
+
+    this.mouseKbdW = 800;
+    this.mouseKbdH = this.getScaledHeight(mouseKbdTextImg, this.mouseKbdW);
+    image(mouseKbdTextImg, width / 2 - this.mouseKbdW / 2, 650, this.mouseKbdW, this.mouseKbdH);
   }
 
   isStartButtonClicked(mx, my) {
@@ -76,7 +80,7 @@ class UIManager {
       if (unlocked) {
         tint(255, 255);
       } else {
-        tint(100, 100);
+        tint(225, 150);
       }
 
       image(levelBtnImgs[i], x, levelBtnY, levelBtnW, levelBtnH);
@@ -151,7 +155,6 @@ class UIManager {
   }
 
   addHeart() {
-    
     if (this.currentHearts < 3) this.currentHearts++;
   }
 
@@ -163,22 +166,35 @@ class UIManager {
     for (let i = 0; i < this.maxHearts; i++){
       if (i < this.currentHearts){
         tint(255, 255); 
-      } else{
+      } else {
         tint(255, 50);
       }
       let xPos = this.x + (i * this.gap);
       image(heartImg, xPos, this.y, this.heartsSize, this.heartsSize);
     }
-
-    for (let i = 0; i < this.maxKeys; i++) {
-      if (i < this.currentKeys) {
-        tint(255, 255);
-      } else {
-        tint(255, 50);
+    if (levelManager.currentLevel !== 3) {
+      for (let i = 0; i < this.maxKeys; i++) {
+        if (i < this.currentKeys) {
+          tint(255, 255);
+        } else {
+          tint(255, 50);
+        }
+        let keyX = width - this.x - (i + 1) * this.gap;
+        image(keyImg, keyX, this.y, this.keySize, this.keySize);
       }
-      let keyX = width - this.x - (i + 1) * this.gap;
-      image(keyImg, keyX, this.y, this.keySize, this.keySize);
     }
     noTint();
+
+    //Goal Egg display
+    if(typeof levelManager !== 'undefined' && levelManager.currentLevel === 3){
+      push();
+      fill(30);
+      textStyle(BOLD);
+      textSize(28);
+      textAlign(LEFT, TOP);
+      let currentEggs = this.eggCount || 0;
+      text("Eggs:" + currentEggs + "/3", 40, 90);
+      pop();
+    }
   }
 }

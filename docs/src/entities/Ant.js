@@ -25,6 +25,12 @@ class Ant extends Enemy {
     let currentImg = this.frames[this.frameIndex];
 
     push();
+    if (this.isFrozen){
+      tint(100, 200, 255);
+    }
+    else{
+      noTint();
+    }
     if (this.vel.x > 0) {
       translate(this.pos.x + this.width, this.pos.y);
       scale(-1, 1);

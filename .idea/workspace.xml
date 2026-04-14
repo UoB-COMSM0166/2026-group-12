@@ -5,15 +5,10 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="78194936-bcf7-4766-b9a6-8a4f43ece619" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/Game program/src/core/Figure.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Game program/src/entities/GrappleSystem.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Game program/sketch.js" beforeDir="false" afterPath="$PROJECT_DIR$/Game program/sketch.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Game program/src/core/Entity.js" beforeDir="false" afterPath="$PROJECT_DIR$/Game program/src/core/Entity.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Game program/src/core/GameObject.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Game program/src/core/Physics.js" beforeDir="false" afterPath="$PROJECT_DIR$/Game program/src/core/PhysicsSystem.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Game program/src/entities/Enemy.js" beforeDir="false" afterPath="$PROJECT_DIR$/Game program/src/entities/Enemy.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Game program/src/entities/Player_nofly.js" beforeDir="false" afterPath="$PROJECT_DIR$/Game program/src/entities/Player_nofly.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Game program/src/managers/MapManager.js" beforeDir="false" afterPath="$PROJECT_DIR$/Game program/src/managers/MapManager.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/docs/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/docs/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/docs/src/entities/GrappleSystem.js" beforeDir="false" afterPath="$PROJECT_DIR$/docs/src/entities/GrappleAbility.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/docs/src/entities/Player.js" beforeDir="false" afterPath="$PROJECT_DIR$/docs/src/entities/Player.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -43,7 +38,7 @@
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "RunOnceActivity.git.unshallow": "true",
     "RunOnceActivity.typescript.service.memoryLimit.init": "true",
-    "git-widget-placeholder": "Demo",
+    "git-widget-placeholder": "main",
     "kotlin-language-version-configured": "true",
     "last_opened_file_path": "C:/Users/Pig洋/Desktop/Software DP/2026-group-12",
     "node.js.detected.package.eslint": "true",
@@ -55,19 +50,6 @@
     "vue.rearranger.settings.migration": "true"
   }
 }]]></component>
-  <component name="RunManager">
-    <configuration default="true" type="JetRunConfigurationType">
-      <module name="2026-group-12" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration default="true" type="KotlinStandaloneScriptRunConfigurationType">
-      <module name="2026-group-12" />
-      <option name="filePath" />
-      <method v="2" />
-    </configuration>
-  </component>
   <component name="SharedIndexes">
     <attachedChunks>
       <set>
@@ -92,6 +74,7 @@
       <workItem from="1772805151388" duration="12642000" />
       <workItem from="1772833299739" duration="4232000" />
       <workItem from="1772888360863" duration="13347000" />
+      <workItem from="1774369363175" duration="2170000" />
     </task>
     <servers />
   </component>

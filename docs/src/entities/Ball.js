@@ -5,13 +5,10 @@ class Ball extends Entity{
       this.img = img
       this.facing = facing
       this.isDead = false
-      this.maxDistance = 200
-      this.startX = x
-      this.ballSpeed = 8
-      this.vel = createVector(this.ballSpeed * -facing, 0) 
 
-      this.mouthOffsetX = 20 
-      this.mouthOffsetY = 18  
+      this.ballTimer = 5
+      this.ballSpeed = 15
+      this.vel = createVector(this.ballSpeed * facing, 0) 
    }
 
    update(physics){
@@ -30,10 +27,10 @@ class Ball extends Entity{
       push();
       
       translate(this.pos.x + this.width/2, this.pos.y + this.height/2);
-      scale(this.facing, 1);
+      scale(-this.facing, 1);
 
       let imgToDraw = (this.element === Transform.Fire) ? fireballImg : iceballImg;
-      image(imgToDraw, -this.width/2, -this.height/2, this.width * 1.3, this.height * 1.3);
+      image(imgToDraw, -this.width/2, -this.height/2, this.width*1.3, this.height*1.3);
 
       pop();
    }
