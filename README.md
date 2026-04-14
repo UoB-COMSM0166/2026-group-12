@@ -552,6 +552,35 @@ One of the primary technical challenges was building a stable physics engine and
 - The rope constraint is enforced through position correction combined with velocity projection, removing the radial component of velocity to produce natural pendulum motion rather than abrupt position snapping.
 - The tongue animation flickered during movement because the origin point was not updating dynamically with the player's position. This was fixed by recalculating the tongue's starting point relative to the player's mouth on every frame.
 
+
+### Technical Challenge 2: Boss Battle & Smart Boss
+
+
+In developing the boss battle, our primary challenge was creating a boss that with intelligence—like artificial intelligence, which can take action base on "seeing the player" and "seeing the map" .
+
+**Idea of boss AI**
+
+Initially, we aimed to build a complex logical system to simulate artificial intelligence. However, considering the excessive complexity and computational loading, we adjusted our goal to "Demonstrating high intelligence within a constrained environment."
+
+**Boss Battle Map**
+
+To achieve this, we designed a closed cave with three platforms(two low platforms and one high platform). This allowed us to focus on boss’s intelligence in pathfinding and pursuit the player in two-dimensional space.
+
+**State Machine & Core Logic**
+
+The Boss inherits the enemy's damage and physical logic from Enemy class and using a player-like state machine. T Its core logic is driven by the behavior method, which uses a playerDetect function to change boss state based on the player's relative height.
+
+**Equal-height logic:** When on the same height as the player, we make the boss continuously face the player. We implemented simple wall-collision handling, allowing the boss to reverse direction if it hits a dead end.
+
+**Go down logic:** When the player is below, the boss can easily get trapped below the lower platform. It cannot find edge of platform to go down because of keep changing its direction, Therefore, we make the boss maintain its initial direction while descending the stairs unless it hits a wall.
+
+**Go up logic:** To prevent failed jumps, we gave boss "vision" though using the MapManager's isSolid function, allowing it to see the position of the square in front of it. This function allows the boss determine whether there are any floating blocks in front of it or behind.
+
+**Tunnel Escape:** If the boss is below a lower platform, we want the boss to be able to successfully leave the platform first. Therefore, When the boss knows there's a block above its head, it will stick to its initial direction and to move horizontally until it leaves the platform.
+
+**Conclusion:**
+ By combining all the logic rules, we successfully built an intelligent movement system, which is able to move logically and pursue the player within a limited map.
+
 ## Evaluation
 
 ### Qualitative Evaluation
