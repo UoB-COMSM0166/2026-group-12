@@ -38,7 +38,7 @@ class GrappleAbility {
         this.prevW = false;
         this.prevS = false;
 
-        // Let lizard lift
+        // Lift the lizard
         this.autoRetracted = false;
     }
 
@@ -71,7 +71,7 @@ class GrappleAbility {
                 this.anchor.set(checkX, checkY);
                 this.ropeLength = dist(p.x, p.y, checkX, checkY);
 
-                // Let lizard lift
+                // Lift the Lizard
                 this.autoRetracted = false;
 
                 foundAnchor = true;
@@ -205,17 +205,12 @@ class GrappleAbility {
             if (this.tongueFlying) {
                 let t = this.tongueProgress;
 
-<<<<<<< HEAD
-<<<<<<< HEAD
-=======
->>>>>>> cf0e987 (Update tongue)
                 if (!this.tongueReturning) {
                     t = 1 - pow(1 - t, 2);
                 }
 
-<<<<<<< HEAD
                 let mouth = createVector(
-                    this.player.pos.x + this.player.width * (this.player.facing === 1 ? 0.85 : 0.15),
+                    this.player.pos.x + this.player.width * (this.player.facing === 1 ? 0.8 : 0.2),
                     this.player.pos.y + this.player.height * 0.35
                 );
 
@@ -229,17 +224,6 @@ class GrappleAbility {
                 else {
                     this.tonguePos = p5.Vector.lerp(this.tonguePos, mouth, 0.35);
                 }
-=======
-            if (!this.tongueReturning) {
-                t = 1 - pow(1 - t, 2)
->>>>>>> 4d021fd (save current grapple changes)
-=======
-                let currentDist = t * this.tongueTotalDist;
-                this.tonguePos = p5.Vector.add(
-                    this.tongueStart,
-                    p5.Vector.mult(this.tongueDir, currentDist)
-                );
->>>>>>> cf0e987 (Update tongue)
             }
         }
 
@@ -247,7 +231,7 @@ class GrappleAbility {
             let player = this.player;
 
             if (!this.autoRetracted) {
-                this.ropeLength -= 50;      // Control the height that lizard lift
+                this.ropeLength -= 50;      // Control the tongue you wanna shorten
                 this.ropeLength = max(this.ropeLength, 40);
                 this.autoRetracted = true;
             }
@@ -273,22 +257,9 @@ class GrappleAbility {
     display() {
         let p = this.player.pos;
 
-<<<<<<< HEAD
-<<<<<<< HEAD
-        let px = (this.player.facing === 1)
-            ? p.x + this.player.width * 0.85
-            : p.x + this.player.width * 0.15;
-=======
-        // For tongue origin based on facing direction
-        let px = (this.player.facing === -1)
-            ? p.x + this.player.width * 0.85
-            : p.x + this.player.width * 0.15
->>>>>>> 4d021fd (save current grapple changes)
-=======
         let px = (this.player.facing === 1)
             ? p.x + this.player.width * 0.80
             : p.x + this.player.width * 0.2;
->>>>>>> cf0e987 (Update tongue)
 
         let py = p.y + this.player.height * 0.35;
 
