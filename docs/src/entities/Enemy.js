@@ -23,6 +23,9 @@ class Enemy extends Figure {
         this.isDead = true;
         return;
     }
+    if (this.damageTimer > 0) {
+    this.damageTimer--;
+  }
 
     if (this.isFrozen) {
         this.frozenTimer--;
@@ -107,6 +110,16 @@ class Enemy extends Figure {
   display() {
     if (this.hearts <= 0) return;
     push();
+
+    if (this.isFrozen){
+      tint(100, 200, 255);
+    } else if (this.damageTimer > 0){
+      tint(255, 100, 100);
+     }
+    else{
+      noTint();
+    }
+
     if (this.vel.x < 0) {
       translate(this.pos.x + this.width, this.pos.y);
       scale(-1, 1);
