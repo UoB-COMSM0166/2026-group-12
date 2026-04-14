@@ -1,6 +1,6 @@
 class UIManager {
   constructor() {
-    this.maxHearts = 3;
+    this.maxHearts = 5;
     this.currentHearts = this.maxHearts;
     this.heartsSize = 40;
     this.maxKeys = 3;
@@ -155,7 +155,7 @@ class UIManager {
   }
 
   addHeart() {
-    if (this.currentHearts < 3) this.currentHearts++;
+    if (this.currentHearts < 5) this.currentHearts++;
   }
 
   addKey() {
