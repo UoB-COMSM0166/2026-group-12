@@ -15,8 +15,9 @@ class Heart extends Entity {
         sfx.heal.play();
         player.hearts++;
       }
-      this.isDead = true;
+            
     }
+    this.isDead = true;
   }
   display() {
     if (this.img) image(this.img, this.pos.x, this.pos.y, this.width, this.height);

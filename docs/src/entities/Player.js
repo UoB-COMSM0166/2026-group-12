@@ -78,7 +78,7 @@ class Player extends Figure {
 
     this.facing = 1
     this.isDead = false // Dead flag
-    this.hearts = 5    // 3 Heart (chance)
+    this.hearts = 5    // 5 Heart (chance)
     this.keyPopups = [];
 
     this.damageTimer = 0;
