@@ -26,6 +26,17 @@ class MapManager {
     }
   }
 
+isGrapplePointTile(tx, ty) {
+    // 邊界檢查
+    if (tx < 0 || tx >= this.cols || ty < 0 || ty >= this.rows) return false;
+
+    let index = tx + ty * this.cols;
+    let id = this.tileMap[index];
+
+    // 這裡的 +14 要跟你原本 isGrapplePoint 用的 Grapple tile ID 一樣
+    return id === this.tilesets.map_tileset + 14;
+}
+
   isSolid(tileX, tileY) {
     if (tileX < 0 || tileX >= this.cols || tileY < 0 || tileY >= this.rows)
       return false;
