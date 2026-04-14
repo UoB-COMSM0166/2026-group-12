@@ -9,9 +9,9 @@ class Heart extends Entity {
   }
   onCollide(player) {
     // Only consume when the HP is below 3
-    if (uiManager.currentHearts < 3) {
+    if (uiManager.currentHearts < 5) {
       uiManager.addHeart();
-      if(player.hearts !== undefined && player.hearts <3){
+      if(player.hearts !== undefined && player.hearts <5){
         sfx.heal.play();
         player.hearts++;
       }
