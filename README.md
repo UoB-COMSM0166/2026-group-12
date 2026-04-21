@@ -945,6 +945,49 @@ Black‑box testing focuses on checking whether each feature in the game behaves
 <td>Pass</td>
 </tr>
 
+<h3>Boss test</h3>
+<table>
+<tr>
+<th>Test Case</th>
+<th>Input</th>
+<th>Expected Output</th>
+<th>Result</th>
+</tr>
+
+<tr>
+<td>TC1</td>
+<td>Boss is below the low platform.</td>
+<td>Boss escape from the lower platform but did not jump.</td>
+<td>Pass</td>
+</tr>
+
+<tr>
+<td>TC2</td>
+<td>Player stand on low platform that in front of boss</td>
+<td>Boss jump on the low platform</td>
+<td>Pass</td>
+</tr>
+
+<tr>
+<td>TC3</td>
+<td>Player stand on low platform that above the boss</td>
+<td>Boss escape from the lower platform and jump on it</td>
+<td>Pass</td>
+</tr>
+
+<tr>
+<td>TC4</td>
+<td>Player has not yet reached the boss cave</td>
+<td>Boss maintain state "IDLE"</td>
+<td>Pass</td>
+</tr>
+
+<tr>
+<td>TC4</td>
+<td>The boss throws carrots at the player</td>
+<td>Player takes damage</td>
+<td>Pass</td>
+</tr>
 </table>
 
 

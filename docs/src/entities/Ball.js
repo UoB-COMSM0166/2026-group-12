@@ -6,8 +6,9 @@ class Ball extends Entity{
       this.facing = facing
       this.isDead = false
 
-      this.ballTimer = 5
       this.ballSpeed = 15
+      this.startX = x;
+      this.maxDistance = 300;
       this.vel = createVector(this.ballSpeed * facing, 0) 
    }
 

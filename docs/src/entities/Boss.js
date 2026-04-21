@@ -17,7 +17,7 @@ class Boss extends Enemy {
     this.frameSpeed = 8
 
     //player detect
-    this.xGap = 800
+    this.xGap = 2000
     this.yGap = 60
     
     this.facing = -1 
@@ -38,6 +38,9 @@ class Boss extends Enemy {
     this.HighTimerTh = 45
     //carrot
     this.carrotImg = carrotImg
+    //boss wake uo
+    this.isAwake = false;
+    this.wakeUpX = 5800;
 
     }
 
@@ -46,6 +49,17 @@ class Boss extends Enemy {
    
 
     behavior(mapManager) {
+
+      //wake up boss
+      if (!this.isAwake) {
+      if (player.pos.x >= this.wakeUpX) {
+        this.isAwake = true; 
+      } else {
+        this.state = BossState.IDLE; 
+        this.vel.x = 0;              
+        return;                      
+      }
+    }
 
       this.playerDetect()
 

@@ -6,7 +6,7 @@ class GrappleAbility {
         this.active = false;                 // Whether the rope is currently attached
         this.anchor = createVector(0, 0);    // Anchor point
         this.ropeLength = 0;                 // Current rope length
-        this.maxLength = 400;                // Maximum rope length
+        this.maxLength = 450;   //origin 400             // Maximum rope length
 
         // Swing mechanics
         this.retractSpeed = 1.5;             // Speed when shortening the rope (W key)
