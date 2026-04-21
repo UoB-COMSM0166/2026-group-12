@@ -23,11 +23,18 @@ class LevelManager {
 
     // Respawnable fire items for Level 3
     this.respawnFires = [
-      { x: 6730, y: 590, size: 80, timer: 0, alive: false },
-      { x: 5770, y: 580, size: 80, timer: 0, alive: false },
-      { x: 6270, y: 340, size: 80, timer: 0, alive: false },
+      { x: 6730, y: 590, size: 80, timer: 0, alive: true },
+      { x: 5770, y: 580, size: 80, timer: 0, alive: true },
+
     ];
     this.fireRespawnDelay = 600; // frames
+
+    this.respawnHearts = [
+      { x: 6300, y: 380, size: 40, timer: 0, alive: true },
+    ];
+    this.heartRespawnDelay = 600; //
+
+
   }
 
   getLevelData(level) {
@@ -71,7 +78,7 @@ class LevelManager {
         items: [
           { element: Transform.Frozen, x: 1270, y: 600, size: 80 },
           { element: Transform.Frozen, x: 3000, y: 550, size: 80 },
-          { element: Transform.Frozen, x: 5420, y:550, size: 80 },
+          { element: Transform.Frozen, x: 5420, y: 550, size: 80 },
         ],
       },
       3: {
@@ -95,7 +102,6 @@ class LevelManager {
           { element: Transform.Fire, x: 5510, y: 770, size: 80 },
           { element: Transform.Fire, x: 6730, y: 590, size: 80 },
           { element: Transform.Fire, x: 5770, y: 580, size: 80 },
-          { element: Transform.Fire, x: 6270, y: 340, size: 80 },
         ],
       },
     };
@@ -132,7 +138,7 @@ class LevelManager {
       if (e.type === "Ant") {
         entities.push(new Ant(e.x, e.y, e.size));
       }
-      else if (e.type === "Bee") { 
+      else if (e.type === "Bee") {
         entities.push(new Bees(e.x, e.y, e.size, beeImgs));
       }
       else if (e.type === "Boss") {
@@ -163,38 +169,55 @@ class LevelManager {
       }
     }
 
-    //Heart (Only generate 1 heart per game)
+    //Heart (Only generate 1 heart for first 2 levels)
+
     if (typeof heartImg !== "undefined" && heartImg) {
-      let heartSpawnX = 1250;
-      let heartSpawnY = 500;
-      
-      if (level === 1){
-        heartSpawnX = 3300;
-        heartSpawnY = 450;
+
+      let spawnPoints = [{ x: 1250, y: 500 }];
+
+      if (level === 1) {
+        spawnPoints = [{ x: 3300, y: 450 }];
       }
-      else if (level === 2){
-        heartSpawnX = 2500;
-        heartSpawnY = 450;
+      else if (level === 2) {
+        spawnPoints = [{ x: 2500, y: 450 }];
       }
-      else if (level === 3){
-        heartSpawnX = 3800;
-        heartSpawnY = 350;
+      else if (level === 3) {
+
+        spawnPoints = [
+          { x: 3800, y: 350 },
+          { x: 6300, y: 380 }
+        ];
       }
-      entities.push(new Heart(heartSpawnX, heartSpawnY, 40, 40, heartImg));
+
+      spawnPoints.forEach(pos => {
+        entities.push(new Heart(pos.x, pos.y, 40, 40, heartImg));
+      });
+
+      if (level === 3){
+        this.respawnHearts.forEach(h => {
+          h.alive = true;
+          h.timer = 0;
+        });
+        this.respawnFires.forEach(f => {
+          f.alive = true;
+          f.timer = 0;
+        });
+      }
     }
 
     //Egg (Only appear in stage 3)
-    if (level === 3){
-      let eggPosition = [{x:6930, y:250}, {x:6910, y:300}, {x:6950, y:300}]
-      
-      for (let i = 0;  i < eggPosition.length; i++) {
+    if (level === 3) {
+      let eggPosition = [{ x: 6930, y: 250 }, { x: 6910, y: 300 }, { x: 6950, y: 300 }]
+
+      for (let i = 0; i < eggPosition.length; i++) {
         let eggImg = (levelEggImgs && levelEggImgs[i]) ? levelEggImgs[i] : null;
-              
-        if (eggImg){
+
+        if (eggImg) {
           entities.push(new GoalEgg(eggPosition[i].x, eggPosition[i].y, 60, 60, eggImg, i + 1));
         }
       }
     }
+
   }
 
   // Respawn system for Level 3 fire items
@@ -233,22 +256,53 @@ class LevelManager {
     }
   }
 
+  updateRespawnHearts(entities) {
+    if (this.currentLevel !== 3) {
+      return;
+    }
+    for (let heart of this.respawnHearts) {
+      if (heart.alive) {
+
+        let exists = entities.some(e =>{
+          if(e instanceof Heart){
+            let currentX = e.pos ? e.pos.x : e.x;
+            return Math.abs(currentX - heart.x) < 50;
+          }
+          return false; 
+        });
+
+        if (!exists) {
+          heart.alive = false;
+          heart.timer = 0;
+        }
+      } else {
+        heart.timer++;
+        if (heart.timer >= this.heartRespawnDelay) {
+          let newHeart = new Heart(heart.x, heart.y, heart.size, heart.size, heartImg);
+          entities.push(newHeart);
+          heart.alive = true;
+          heart.timer = 0;
+        }
+      }
+    }
+  }
+
   getGoalPos() {
     return this.goalPos[this.currentLevel];
   }
 
   isReachedGoal(player, uiManager) {
-    
+
     if (this.currentLevel === 3) {
       // Level 3
       if (!uiManager.eggCount || uiManager.eggCount < 3) return false;
-    } 
+    }
     else {
       // Level 1 and 2 need 3 keys
       if (uiManager.currentKeys < 3) return false;
     }
 
-    
+
     let goal = this.getGoalPos();
     if (!goal) return false;
 
@@ -265,7 +319,7 @@ class LevelManager {
     let isConditionMet = uiManager.currentKeys >= 3 || (this.currentLevel === 3 && uiManager.eggCount >= 3);
 
     let img = isConditionMet ? this.doorOpenImg : this.doorLockedImg;
-  
+
     image(img, goal.x, goal.y, this.goalW, this.goalH);
   }
 
