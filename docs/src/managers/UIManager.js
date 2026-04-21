@@ -174,14 +174,6 @@ class UIManager {
     }
     noTint();
 
-    if (levelManager.currentLevel === 0){
-      this.homeBtnW = 150;
-      this.homeBtnH = this.getScaledHeight(homeBtnImg, this.homeBtnW);
-      this.homeBtnX = width / 2 - this.homeBtnW / 2;
-      this.homeBtnY = 20;
-      image(homeBtnImg, this.homeBtnX, this.homeBtnY, this.homeBtnW, this.homeBtnH);
-    }
-
     if (levelManager.currentLevel !== 3) {
       for (let i = 0; i < this.maxKeys; i++) {
         if (i < this.currentKeys) {

@@ -343,14 +343,6 @@ function mousePressed() {
       resetGame();
       gameState = "START";
     }
-  } else if (gameState === "PLAYING"){
-    if (levelManager.currentLevel === 0){
-      if(uiManager.isHomeButtonClicked(mouseX, mouseY)){
-        sfx.startGame.play();
-        resetGame();
-        gameState = "START";
-      }
-    }
   }
 }
 
@@ -400,17 +392,25 @@ function keyPressed() {
     player.onJumpPressed();
   }
 
+  if (key === "Escape"){
+    sfx.startGame.play();
+    resetGame();
+    gameState = "START";
+  }
+
   // for testing
   if (key === "p" || key === "P") {
     console.log("player pos:", player.pos.x, player.pos.y);
   }
 
   if (key === "l" || key === "L") {
-    saveManager.completeLevel(levelManager.currentLevel);
-    if (levelManager.nextLevel()) {
-      initGame();
-    } else {
-      gameState = "GAMECLEAR";
+    if (gameState === "PLAYING"){
+      saveManager.completeLevel(levelManager.currentLevel);
+      if (levelManager.nextLevel()) {
+        initGame();
+      } else {
+        gameState = "GAMECLEAR";
+      }
     }
   }
 
