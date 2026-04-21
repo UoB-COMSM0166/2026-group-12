@@ -82,7 +82,7 @@ class Player extends Figure {
     this.keyPopups = [];
 
     this.damageTimer = 0;
-    this.damageCooldown = 10;
+    this.damageCooldown = 40;
   }
 
   handleInput(){
@@ -511,7 +511,7 @@ class Player extends Figure {
     }
 
     if (this.damageTimer > 0){
-      tint(255, 0, 0);
+      tint(255, 160);
     } 
 
     if (this.facing === -1){
