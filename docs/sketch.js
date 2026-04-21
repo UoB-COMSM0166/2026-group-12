@@ -414,7 +414,7 @@ function keyPressed() {
     }
   }
 
-  if (key === 'o' || key === 'O'){
+  if (key === 'b' || key === 'B'){
     if(levelManager.currentLevel === 3){
       player.pos.set(4830, 500);
     }
@@ -422,5 +422,16 @@ function keyPressed() {
 
   if (key === "c" || key === "C") {
     saveManager.clear();
+  }
+  if (key === 't' || key === 'T') {
+    for (let e of entities) {
+      if (e instanceof Boss) {
+        e.onCollide = function(player) {
+
+        }
+        e.attackCoolTimer = 4000;
+        e.attackCoolPeriod = 4000;
+      }
+    }
   }
 }
