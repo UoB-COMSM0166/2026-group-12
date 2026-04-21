@@ -406,11 +406,15 @@ function keyPressed() {
   if (key === "l" || key === "L") {
     if (gameState === "PLAYING"){
       saveManager.completeLevel(levelManager.currentLevel);
-      if (levelManager.nextLevel()) {
-        initGame();
-      } else {
-        gameState = "GAMECLEAR";
-      }
+        if (levelManager.nextLevel()) {
+          initGame();
+          if (currentCutscene.length > 0){
+            sfx.chose.play();
+            gameState = "CUTSCENE";
+          }
+        } else {
+          gameState = "GAMECLEAR";
+        }
     }
   }
 
