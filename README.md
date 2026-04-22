@@ -87,7 +87,7 @@ VIDEO. Include a demo video of your game here (you don't have to wait until the 
 [Kanban link](https://trello.com/invite/b/698ac34dda403c044906233f/ATTI4db26394399c57af543af31092c66765564157A4/my-trello-board)
 ## Introduction
 
-Our game, "Skaarl," was inspired by "Grapple Dog." It is a 2D side-scrolling platformer co-conceived by our team that cleverly transforms the core grappling hook mechanic into a lizard's tongue-swinging gameplay.
+Our game, "Skaarl," was inspired by ["Grapple Dog"](https://theboar.org/2023/03/grapple-dog-a-platformer-that-comes-out-swinging/). It is a 2D side-scrolling platformer co-conceived by our team that cleverly transforms the core grappling hook mechanic into a lizard's tongue-swinging gameplay.
 
 The story is set during the Easter holidays. It begins when a mischievous rabbit sneaks into Mother Lizard's home while she is out hunting, stealing three lizard eggs to paint as Easter eggs. Upon returning home, Mother Lizard finds her eggs missing, with only a carrot left behind by the rabbit. Determined to recover her babies, she embarks on a challenging adventure.
 
