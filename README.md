@@ -1075,10 +1075,31 @@ Black‑box testing focuses on checking whether each feature in the game behaves
 
 
 ## Conclusion
+<p>
+  This game development project was a highly rewarding practical experience. By following the weekly course content, we carried out development based on the corresponding knowledge, ensuring clear and steady project progress and enabling team members to complete tasks under well-defined goals.
+</p>
+<p>
+  We adopted an <strong>Agile development</strong> approach, using a <strong>Kanban board</strong> to track task status. Weekly meetings were held for members to present progress and align work granularity, based on which tasks were planned. This allowed continuous monitoring of progress and timely adjustment of design directions.
+</p>
+<p>
+  By writing <strong>user stories</strong> to derive <strong>use cases</strong> and producing <strong>Class Diagram</strong> and <strong>Sequence Diagram</strong>, we clearly defined object properties, functionalities, and interactions. This supported <strong>object-oriented programming</strong> and facilitated task allocation across different modules (e.g., physics engine, player and enemy, items, maps, and UI), improving coordination and workflow efficiency.
+</p>
+<p>
+  We also conducted quantitative evaluation using <strong>NASA-TLX</strong> and <strong>SUS</strong>, and applied <strong>Black-Box Testing</strong>. Through frequent iterations and player feedback, we identified and resolved design issues, such as introducing attack mechanics and refining level completion conditions. A major <strong>refactor</strong> was undertaken due to excessive coupling between character states and the physics system, which caused unstable collision detection, conflicts during feature expansion, and fragmented input handling. We refactored the architecture by introducing a state machine, decoupling character data from motion resolution, implementing axis-based motion processing, and centralizing input handling, significantly improving system stability and gameplay responsiveness.
+</p>
+<p>
+  Challenges were encountered, particularly in implementing the <strong>grapple ability</strong> and <strong>boss AI</strong>. We recognized the importance of encouraging team members to actively express their ideas during meetings, and of resolving differences through discussion, enabling more thorough and well-considered design decisions.
+</p>
+<p>
+  In the short term, the focus is on polishing and stabilizing the core gameplay. This includes refining movement and collision to improve responsiveness and eliminate inconsistencies, as well as cleaning up the architecture to reduce coupling and improve maintainability. At the same time, more effort should go into level design, using varied terrain and obstacles to fully test and showcase the mechanics.
+</p>
+<p>
+  For a potential sequel, this could involve introducing new abilities like glide by opening the lizard’s frill and more complex interactions to enrich gameplay, as well as more dynamic environments. On the technical side, the architecture could evolve into a more scalable system to support larger levels and more entities. Additionally, incorporating narrative elements, and player-facing features such as accessibility options or leaderboards would help transform the project into a more polished and fully developed game.
+</p>
+<p>
+  In summary, this project resulted in the successful development of a stable, complete, and playable game. It not only enhanced our capabilities in project planning and programming, but also provided a collaborative experience closely resembling real-industry development. We learned how to effectively address challenges encountered during development and how to maximize team synergy to solve problems systematically. Moving forward, we aim to further refine this project into a more mature and polished product with the potential for market release.
+</p>
 
-- 10% ~500 words
-
-- Reflect on the project as a whole. Lessons learnt. Reflect on challenges. Future work, describe both immediate next steps for your current game and also what you would potentially do if you had chance to develop a sequel.
 
 ## Contribution Statement
 
