@@ -75,6 +75,13 @@ VIDEO. Include a demo video of your game here (you don't have to wait until the 
   </tr>
 </table>
 
+## Table of Contents
+* [Ideation Process](#ideation-process--ideation-process)
+* [Paper Prototypes](#paper-prototypes)
+    * [First Game – Survival Nightmare](#first-game--survival-nightmare)
+    * [Second Game – Skaarl](#second-game--skaarl)
+
+---
 
 ## Project Report
 [Kanban link](https://trello.com/invite/b/698ac34dda403c044906233f/ATTI4db26394399c57af543af31092c66765564157A4/my-trello-board)
