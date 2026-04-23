@@ -122,7 +122,7 @@ To better understand the mechanics of each concept and evaluate how well they al
 
 A top‑down 1v1 chase‑and‑escape game set in a dark, horror‑themed environment. One player controls the Hunter (or an AI), while the other plays the Survivor. The map contains walls and obstacles, and placing or removing an obstacle requires a one‑second delay. Items spawn randomly: Survivors can pick up flashlights to stun the Hunter for five seconds, while Hunters can collect souls for temporary speed boosts. The Survivor wins by collecting three keys to unlock the exit door but loses instantly if caught.
 
-**Demonstration of Survival Nightmare:**  
+**Figure 3 - Demonstration of Survival Nightmare:**  
 
 https://github.com/user-attachments/assets/5ee5a315-3f47-4811-a6de-c31d1ba30ffb  
 
@@ -134,7 +134,7 @@ Full video: https://youtu.be/oWBqbGIQUwQ
 A fast‑paced 2D platformer built around momentum.  
 Players use a lizard’s sticky tongue to grab walls, ceilings, or objects and swing across the environment. Natural membranes allow gliding, and movement can be chained smoothly to discover multiple routes, avoid enemies, and maintain speed through fluid traversal.
 
-**Demonstration of Skaarl: (Click the image below to watch the full video.)** 
+**Figure 4 - Demonstration of Skaarl: (Click the image below to watch the full video.)** 
 
 <p align="left">
   <a href="https://youtu.be/wsnlXCv3-HA">
@@ -194,6 +194,8 @@ Nemesis Design: Introduce the lizard's natural predator—the Snake—as the fin
 ### Stakeholders
 
 <p align="center">
+  <strong>Figure 5 - Onion Model</strong><br>
+  <br>
   <img src="image/Stakeholders.png" height="400">
 </p>
 
@@ -284,10 +286,10 @@ The Third Tier is the external environment, including anyone indirectly affected
 --- 
 
 ### Use Case Specifications 
-<h4>Lizard Adventure</h4>
 
-<p>
-  <img width="600" alt="Use_case" src="https://github.com/user-attachments/assets/7a1ebe7e-251c-403f-a9b8-df31ef993f2f" />
+<p align = 'center'>
+  <strong>Figure 6 - Use Case Diagram</strong><br>
+  <img width="700" alt="Use_case" src="https://github.com/user-attachments/assets/7a1ebe7e-251c-403f-a9b8-df31ef993f2f" />
 </p>
 
 <table>
@@ -471,7 +473,9 @@ Key characteristics:
   <h4>2.3 Player and State Machine</h4>
   <p>
     The Player class acts as a controller that integrates input handling, state management, and movement logic.
-    It uses a finite state machine (FSM) implemented via updateState() and state-specific handlers. Each state (e.g., grounded, jumping, falling) determines how movement is applied.
+    It uses a finite state machine (FSM) implemented via updateState() and state-specific handlers. Each state (e.g., grounded, jumping, falling) determines how movement is applied.<br>
+    <br>
+    <p align="center"><strong>Figure 7 - State Diagram</strong></p>
     <img src="image/stateDiagram.jpg" width="1000">
   </p>
   <p>Movement is abstracted into reusable methods such as applyGroundMovement(), allowing consistent integration with physics.</p>
@@ -522,13 +526,14 @@ Key characteristics:
   </ul> 
 </div>
 
-### Class diagram
-<p>
+<p align = 'center'>
+  <strong>Figure 8 - Class Diagram</strong>
   <img src="image/classDiagram.jpg" width="1000">
 </p>
 
 ### Sequence diagram (behavioural diagram)
-<p>
+<p align = 'center'>
+  <strong>Figure 9 - Sequence Diagram</strong>
   <img src="image/sequence_diagram.png" width="1000">
 </p>
 This diagram shows how the core parts of the game work together during a grapple: the player throws a hook toward a target, the system checks with the map to see if it’s a valid point, and if it is, the grapple system takes over to handle swinging while the physics engine updates movement, gravity, and collisions; once the player releases, their position and velocity are adjusted accordingly, and everything from the player to the rope to the environment is updated in a continuous loop.
@@ -647,13 +652,14 @@ This report uses NASA-TLX and SUS to evaluate the user experience, workload, and
 </ul>
 
 <p align="center">
-  <img src="image/NASA TLX - Mean Overall Workload Comparison.png" width="600">
+  <img src="image/NASA TLX - Mean Overall Workload Comparison.png" width="600"><br>
+  <strong>Figure 10 - ▲ NASA TLX - Mean Overall Workload Comparison</strong>
 </p>
-  <p align="center">▲ NASA TLX - Mean Overall Workload Comparison</p>
+
 <p align="center">
-  <img src="image/NASA TLX - Multi-dimensional Workload Comparison.png" width="600">
+  <img src="image/NASA TLX - Multi-dimensional Workload Comparison.png" width="600"><br>
+  <strong>Figure 11 - ▲ NASA TLX - Multi-dimensional Workload Comparison</strong>
 </p>
-  <p align="center">▲ NASA TLX - Multi-dimensional Workload Comparison</p>
 
 **SUS**
 <p>Scoring Logic:</p>
@@ -673,13 +679,14 @@ This report uses NASA-TLX and SUS to evaluate the user experience, workload, and
 </ul>
 
 <p align="center">
-  <img src="image/SUS - Distribution of Scores across 10 Participants.png" width="600">
+  <img src="image/SUS - Distribution of Scores across 10 Participants.png" width="600"><br>
+  <strong>Figure 12 - ▲ SUS - Distribution of Scores across 10 Participants</strong>
 </p>
-  <p align="center">▲ SUS - Distribution of Scores across 10 Participants</p>
+ 
 <p align="center">
-  <img src="image/SUS - Mean Score Compared to Industry Benchmark.png" width="600">
+  <img src="image/SUS - Mean Score Compared to Industry Benchmark.png" width="600"><br>
+  <strong>Figure 13 - ▲ SUS - Mean Score Compared to Industry Benchmark</strong>
 </p>
-  <p align="center">▲ SUS - Mean Score Compared to Industry Benchmark</p>
 
 <table align="center">
   <tr>
