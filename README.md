@@ -14,7 +14,7 @@ You will be developing your game using [P5.js](https://p5js.org) a javascript li
 - [P5.js tutorials](https://p5js.org/tutorials/) 
 - [Coding Train P5.js](https://thecodingtrain.com/tracks/code-programming-with-p5-js) course - go here for enthusiastic video tutorials from Dan Shiffman (recommended!)
 
-## Your Game (change to title of your game)
+## SKAARL
 
 STRAPLINE. Add an exciting one sentence description of your game here.
 
@@ -101,14 +101,14 @@ The game consists of one tutorial level to teach all the functions and three lev
 At the beginning, our team initiated the design process by compiling a list of game references that each of the six team members was personally interested in. In total, we brought together 10 different games for consideration. presentation. During our initial meeting, we presented our selected games to the group, sharing not only the genre and mechanics of each game, but also the core ideas and unique aspects that made these games appealing to us. Through this collaborative discussion, we were able to explore different perspectives, identify common interests, and evaluate which game concepts might be the most feasible and engaging for development. To narrow down our options, we conducted two rounds of voting. In the first round, each member voted for their top three preferred games, which resulted in Identity V receiving the most votes and becoming the clear front-runner. In the second round, we focused on the remaining games and discussed their potential in terms of gameplay, creativity, and alignment with our team’s skills. After careful consideration, Grapple Dog emerged as the second top choice, complementing Identity V’s style and mechanics. By the end of this process, we reached a consensus and selected these two games as the projects we were most excited to develop. This method ensured that every team member’s preferences were considered and that our final decision was both democratic and well-informed.
 
 <div align="center">
-  <strong>First Voting Result</strong><br>
+  <strong>Figure 1 - First Voting Result</strong><br>
   <img src="image/Voting1.png" height="400">
 </div>
 
 <br>
 
 <div align="center">
-  <strong>Second Voting Result</strong><br>
+  <strong>Figure 2 - Second Voting Result</strong><br>
   <img src="image/Voting2.png" height="400">
 </div>
 
@@ -122,7 +122,7 @@ To better understand the mechanics of each concept and evaluate how well they al
 
 A top‑down 1v1 chase‑and‑escape game set in a dark, horror‑themed environment. One player controls the Hunter (or an AI), while the other plays the Survivor. The map contains walls and obstacles, and placing or removing an obstacle requires a one‑second delay. Items spawn randomly: Survivors can pick up flashlights to stun the Hunter for five seconds, while Hunters can collect souls for temporary speed boosts. The Survivor wins by collecting three keys to unlock the exit door but loses instantly if caught.
 
-**Prototype Video:**  
+**Demonstration of Survival Nightmare:**  
 
 https://github.com/user-attachments/assets/5ee5a315-3f47-4811-a6de-c31d1ba30ffb  
 
@@ -130,18 +130,18 @@ Full video: https://youtu.be/oWBqbGIQUwQ
 
 ---
 
-#### Second Game – Skaarl
+#### Second Game – Skaarl (Click the image below to watch the full video.)
 
 A fast‑paced 2D platformer built around momentum.  
 Players use a lizard’s sticky tongue to grab walls, ceilings, or objects and swing across the environment. Natural membranes allow gliding, and movement can be chained smoothly to discover multiple routes, avoid enemies, and maintain speed through fluid traversal.
+
+**Demonstration of Skaarl:**
 
 <p align="left">
   <a href="https://youtu.be/wsnlXCv3-HA">
     <img src="https://img.youtube.com/vi/wsnlXCv3-HA/0.jpg" width="600" alt="Demo Video">
   </a>
 </p>
-
-<p><em>Click the image above to watch the full video.</em></p>
 
 ---
 
