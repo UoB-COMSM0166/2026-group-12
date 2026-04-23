@@ -130,12 +130,11 @@ Full video: https://youtu.be/oWBqbGIQUwQ
 
 ---
 
-#### Second Game – Skaarl (Click the image below to watch the full video.)
-
+#### Second Game – Skaarl 
 A fast‑paced 2D platformer built around momentum.  
 Players use a lizard’s sticky tongue to grab walls, ceilings, or objects and swing across the environment. Natural membranes allow gliding, and movement can be chained smoothly to discover multiple routes, avoid enemies, and maintain speed through fluid traversal.
 
-**Demonstration of Skaarl:**
+**Demonstration of Skaarl: (Click the image below to watch the full video.)** 
 
 <p align="left">
   <a href="https://youtu.be/wsnlXCv3-HA">
