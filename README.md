@@ -177,6 +177,15 @@ Establish concrete motivation and a final challenge for the player.
 Story Background: Define the lizard's motivation for the journey (e.g., protecting the forest or rescuing companions).  
 Nemesis Design: Introduce the lizard's natural predator—the Snake—as the final boss. The final battle will require the player to master all previously learned transformation and camouflage skills to defeat this powerful predator.
 
+#### Final Gameplay Twist & Mechanics
+To add a unique layer of strategy and some surprising features, the final game design incorporates the following mechanics:
+
+* **Dynamic Traversal & Elemental Attacks:** The lizard’s primary movement is built around a **tongue-swinging** mechanic, allowing players to grapple and swing through complex terrain. For combat, players can catch **Fire Butterflies** or **Ice Butterflies** with their tongue to instantly gain flame-throwing or freezing abilities to take down foes.
+
+* **Objective-Based Progression:** Clearing a stage isn't just about reaching the end. Players must hunt down enemies to collect **three hidden keys**. These keys are essential to unlocking the Great Gate that leads to the next environment.
+
+* **The "Easter Surprise" Final Encounter:** In a major twist, the ultimate threat is revealed to be the **Easter Bunny**. Unlike previous stages, victory isn't achieved through pure combat alone; players must navigate the boss arena to track down and collect **three mysterious Eggs** to finally clear the game.
+
 ---
 
 ### Stakeholders
