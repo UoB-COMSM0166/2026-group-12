@@ -990,9 +990,17 @@ Black‑box testing focuses on checking whether each feature in the game behaves
 ### 1. Collaboration Tools & Methods
 <p>Our team follows Agile development principles, breaking the work into small parts so we can quickly respond to technical needs and changes.</.p>
 <ul>
-    <li>Each Wednesday, we have a weekly online meeting to review the previous week development sprint and assign upcoming development tasks.</li>
+    <li>Each Wednesday, we have a weekly meeting to review the previous week development sprint and assign upcoming development tasks.</li>
+    <p align="center">
+      <img src="image/Meeting.jpg" width="600"><br>
+      <strong>Figure 14 - ▲ Meeting</strong>
+    </p>
     <li>For version control, each member has a separate <b>GitHub</b> branch for development to avoid overwriting each other's code and avoid conflict.</li>
     <li>For project management, we use <a href = "https://trello.com/invite/b/698ac34dda403c044906233f/ATTI4db26394399c57af543af31092c66765564157A4/my-trello-board">Trello</a> as a Kanban Board for task organisation. Tasks are organised into "To Do," "Doing," and "Done" columns to provide the team with a visual representation of work progress and decrease the chances of duplicating tasks or tasks not being completed promptly.</li>
+    <p align="center">
+      <img src="image/Kanban.png" width="600"><br>
+      <strong>Figure 15 - ▲ Kanban Board</strong>
+    </p>
     <li>For communication, <b>WhatsApp</b> is our main tool. We use it for real-time discussions and to record key points from meetings. </li>
     <li>For development, we use <b>Visual Studio Code</b> with the <b>Live Server</b> extension. This allows us to test changes before committing them to GitHub, helping keep the development process efficient and consistent.</li>
 </ul>
