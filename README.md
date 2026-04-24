@@ -2,18 +2,6 @@
 # 2026-group-12
 2026 COMSM0166 group 12
 
-# COMSM0166 Project Template
-A project template for the Software Engineering Discipline and Practice module (COMSM0166).
-
-## Info
-
-This is the template for your group project repo/report. We'll be setting up your repo and assigning you to it after the group forming activity. You can delete this info section, but please keep the rest of the repo structure intact.
-
-You will be developing your game using [P5.js](https://p5js.org) a javascript library that provides you will all the tools you need to make your game. However, we won't be teaching you javascript, this is a chance for you and your team to learn a (friendly) new language and framework quickly, something you will almost certainly have to do with your summer project and in future. There is a lot of documentation online, you can start with:
-
-- [P5.js tutorials](https://p5js.org/tutorials/) 
-- [Coding Train P5.js](https://thecodingtrain.com/tracks/code-programming-with-p5-js) course - go here for enthusiastic video tutorials from Dan Shiffman (recommended!)
-
 ## SKAARL
 
 STRAPLINE. Add an exciting one sentence description of your game here.
@@ -84,7 +72,7 @@ VIDEO. Include a demo video of your game here (you don't have to wait until the 
 ---
 
 ## Project Report
-[Kanban link](https://trello.com/invite/b/698ac34dda403c044906233f/ATTI4db26394399c57af543af31092c66765564157A4/my-trello-board)
+
 ## Introduction
 
 Our game, "Skaarl," was inspired by ["Grapple Dog"](https://theboar.org/2023/03/grapple-dog-a-platformer-that-comes-out-swinging/). It is a 2D side-scrolling platformer co-conceived by our team that cleverly transforms the core grappling hook mechanic into a lizard's tongue-swinging gameplay.
@@ -442,9 +430,6 @@ The Third Tier is the external environment, including anyone indirectly affected
 
 ## Design
 
-- 15% ~750 words 
-- System architecture. Class diagrams, behavioural diagrams.
-
 ### System Architecture
 <div>
   <h3>1. Overview</h3>
@@ -541,10 +526,6 @@ This diagram shows how the core parts of the game work together during a grapple
 The MapManager is basically what keeps track of the world. Whenever something moving, colliding, or trying to grapple. Everything just checks with it to see what’s actually there. It knows what’s solid, what isn’t, and what you can interact with, so instead of guessing, everything just follows what the MapManager says.
 
 ## Implementation
-
-- 15% ~750 words
-
-- Describe implementation of your game, in particular highlighting the TWO areas of *technical challenge* in developing your game. 
 
 ### Technical Challenge 1: Physics System & Grapple System
 
@@ -1006,16 +987,12 @@ Black‑box testing focuses on checking whether each feature in the game behaves
 
 ## Process 
 
-- 15% ~750 words
-
-- Teamwork. How did you work together, what tools and methods did you use? Did you define team roles? Reflection on how you worked together. Be honest, we want to hear about what didn't work as well as what did work, and importantly how your team adapted throughout the project.
-
 ### 1. Collaboration Tools & Methods
 <p>Our team follows Agile development principles, breaking the work into small parts so we can quickly respond to technical needs and changes.</.p>
 <ul>
     <li>Each Wednesday, we have a weekly online meeting to review the previous week development sprint and assign upcoming development tasks.</li>
     <li>For version control, each member has a separate <b>GitHub</b> branch for development to avoid overwriting each other's code and avoid conflict.</li>
-    <li>For project management, we use <b>Trello</b> as a Kanban Board for task organisation. Tasks are organised into "To Do," "Doing," and "Done" columns to provide the team with a visual representation of work progress and decrease the chances of duplicating tasks or tasks not being completed promptly.</li>
+    <li>For project management, we use <a href = "https://trello.com/invite/b/698ac34dda403c044906233f/ATTI4db26394399c57af543af31092c66765564157A4/my-trello-board">Trello</a> as a Kanban Board for task organisation. Tasks are organised into "To Do," "Doing," and "Done" columns to provide the team with a visual representation of work progress and decrease the chances of duplicating tasks or tasks not being completed promptly.</li>
     <li>For communication, <b>WhatsApp</b> is our main tool. We use it for real-time discussions and to record key points from meetings. </li>
     <li>For development, we use <b>Visual Studio Code</b> with the <b>Live Server</b> extension. This allows us to test changes before committing them to GitHub, helping keep the development process efficient and consistent.</li>
 </ul>
@@ -1086,6 +1063,7 @@ Black‑box testing focuses on checking whether each feature in the game behaves
 ### 4. Adaptation
 <p>To address communication issues, the team established a clear protocol of announcing any changes to shared functions in the WhatsApp group, ensuring all members stayed informed and could adapt their code accordingly. When workloads became uneven, tasks were redistributed among members to maintain a balanced pace. To improve decision-making efficiency, we adopted a time-limited discussion approach, proceeding with the majority's opinion once a reasonable discussion period had passed. For example, during the map design process, differing opinions on difficulty level led to prolonged discussions. We ultimately held a focused meeting during the Easter break to align on a shared standard: a map is considered successful as long as players can complete it while experiencing all three core mechanics. This experience highlighted the importance of establishing clear evaluation criteria early in the design phase to avoid repeated revisions.<p>
 
+## Sustainability, ethics and accessibility
 
 ## Conclusion
 <p>
@@ -1113,20 +1091,41 @@ Black‑box testing focuses on checking whether each feature in the game behaves
   In summary, this project resulted in the successful development of a stable, complete, and playable game. It not only enhanced our capabilities in project planning and programming, but also provided a collaborative experience closely resembling real-industry development. We learned how to effectively address challenges encountered during development and how to maximize team synergy to solve problems systematically. Moving forward, we aim to further refine this project into a more mature and polished product with the potential for market release.
 </p>
 
-
 ## Contribution Statement
 
-- Provide a table of everyone's contribution, which *may* be used to weight individual grades. We expect that the contribution will be split evenly across team-members in most cases. Please let us know as soon as possible if there are any issues with teamwork as soon as they are apparent and we will do our best to help your team work harmoniously together.
+<table align="center">
+  <tr>
+    <th>Member</th>
+    <th>Contribution</th>
+  </tr>
+  <tr>
+    <td>Ming Wei</td>
+    <td>1.0</td>
+  </tr>
+  <tr>
+    <td>Jay-Sin Chiu</td>
+    <td>1.0</td>
+  </tr>
+  <tr>
+    <td>Yi-Hsin Peng</td>
+    <td>1.0</td>
+  </tr>
+  <tr>
+    <td>Hsun-Han Huang</td>
+    <td>1.0</td>
+  </tr>
+  <tr>
+    <td>Yu-Cheng Cheng</td>
+    <td>1.0</td>
+  </tr>
+  <tr>
+    <td>Ming-Yen Tsai</td>
+    <td>1.0</td>
+  </tr>
+</table>
 
-## Additional Marks
+## AI Statement
 
-You can delete this section in your own repo, it's just here for information. in addition to the marks above, we will be marking you on the following two points:
-
-- **Quality** of report writing, presentation, use of figures and visual material (5% of report grade) 
-  - Please write in a clear concise manner suitable for an interested layperson. Write as if this repo was publicly available.
-- **Documentation** of code (5% of report grade)
-  - Organise your code so that it could easily be picked up by another team in the future and developed further.
-  - Is your repo clearly organised? Is code well commented throughout?
 
 
 
