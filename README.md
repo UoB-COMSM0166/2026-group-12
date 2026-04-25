@@ -7,10 +7,10 @@
 STRAPLINE. Add an exciting one sentence description of your game here.
 
 <p align="center">
-  <a href = "https://uob-comsm0166.github.io/2026-group-12/" target="_blank"><img src="image/gameImage.png" width="600"></a>
+  <a href = "https://uob-comsm0166.github.io/2026-group-12/"><img src="image/gameImage.png" width="600"></a>
 </p>
 <p align="center">
-  <a href = "https://uob-comsm0166.github.io/2026-group-12/" target="_blank"><b>👉Click here to play👈</b></a>
+  <a href = "https://uob-comsm0166.github.io/2026-group-12/"><b>👉Click here to play👈</b></a>
 </p>
 
 VIDEO. Include a demo video of your game here (you don't have to wait until the end, you can insert a work in progress video)
@@ -1020,7 +1020,7 @@ Black‑box testing focuses on checking whether each feature in the game behaves
       <strong>Figure 14 - ▲ Meeting</strong>
     </p>
     <li>For version control, each member has a separate <b>GitHub</b> branch for development to avoid overwriting each other's code and avoid conflict.</li>
-    <li>For project management, we use <a href = "https://trello.com/invite/b/698ac34dda403c044906233f/ATTI4db26394399c57af543af31092c66765564157A4/my-trello-board" target="_blank">Trello</a> as a Kanban Board for task organisation. Tasks are organised into "To Do," "Doing," and "Done" columns to provide the team with a visual representation of work progress and decrease the chances of duplicating tasks or tasks not being completed promptly.</li>
+    <li>For project management, we use <a href = "https://trello.com/invite/b/698ac34dda403c044906233f/ATTI4db26394399c57af543af31092c66765564157A4/my-trello-board">Trello</a> as a Kanban Board for task organisation. Tasks are organised into "To Do," "Doing," and "Done" columns to provide the team with a visual representation of work progress and decrease the chances of duplicating tasks or tasks not being completed promptly.</li>
     <p align="center">
       <img src="image/Kanban.png" width="600"><br>
       <strong>Figure 15 - ▲ Kanban Board</strong>
