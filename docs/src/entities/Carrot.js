@@ -11,9 +11,18 @@ class Carrot extends Entity {
    // Rotation
     this.rotationAngle = 0;
     this.rotationSpeed = 0.3;
+    //carrot life time
+    this.lifeTime = 120;
   }
 
   update(mapManager) {
+
+    this.lifeTime--;
+    if (this.lifeTime <= 0) {
+      this.isDead = true;
+      return; 
+    }
+    
     this.rotationAngle += this.rotationSpeed;
 
     this.pos.x += this.vel.x;
