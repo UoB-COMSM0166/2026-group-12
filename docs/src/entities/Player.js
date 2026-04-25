@@ -122,11 +122,14 @@ class Player extends Figure {
       this.vel.y = -10;
     }
 
+
     this.state = PlayerState.STUN;
     this.stunTimer = this.stunMax;
 
+    //knock back
+    let knockbackDir = (this.pos.x + this.width / 2 < enemyX) ? -1 : 1;
     // knock back
-    this.vel.x = this.facing * -12;
+    this.vel.x = knockbackDir * 12;
     this.vel.y = -10;
   }
   // transform apply

@@ -27,8 +27,8 @@ class Boss extends Enemy {
 
     //attack
     this.attackCount = 3
-    this.attackCoolTimer = 400 // minsec
-    this.attackCoolPeriod = 400
+    this.attackCoolTimer = 200 // minsec
+    this.attackCoolPeriod = 200
     this.shootGap = 0
     //move
     this.speed = 3
@@ -41,6 +41,9 @@ class Boss extends Enemy {
     //boss wake uo
     this.isAwake = false;
     this.wakeUpX = 5800;
+    //
+    this.damageTimer = 0;
+    this.damageCooldown = 10;
 
     }
 
@@ -87,7 +90,6 @@ class Boss extends Enemy {
 
     updateTimers() {
       if (this.attackCoolTimer >0){
-        this.damageTimer--;
         this.attackCoolTimer--;
       }
     }
@@ -257,6 +259,29 @@ class Boss extends Enemy {
       entities.push(new Carrot(shootX, shootY, angle, this.carrotImg));
 
     }
+    takeDamage(amount = 1, attackElement) {
+
+      //avoid boss get kill so quick 
+    if (this.damageTimer > 0) {
+    return;
+    }
+    sfx.stomp.play();
+    this.damageTimer = this.damageCooldown;
+    if (attackElement === Transform.Fire){
+      this.hearts -= amount;
+    }
+    else if (attackElement === Transform.Frozen){
+      this.isFrozen = true;
+      this.frozenTimer = 60 * 3;
+      this.vel.x = 0;
+      this.frozenDirection = Math.sign(this.vel.x) || 1;
+    }
+    else {
+       this.hearts -= amount;
+    }
+
+    
+  }
 
     display(){
     if (this.hearts <= 0){

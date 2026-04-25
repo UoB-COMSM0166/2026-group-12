@@ -97,13 +97,15 @@ class Enemy extends Figure {
       return;
     }
 
+    /*
     if (player.pos.x + player.width / 2 < this.pos.x + this.width / 2) {
       player.pos.x = this.left - player.width;
     } else {
       player.pos.x = this.right;
     }
-
+  */
     player.takeDamage(this.pos.x + this.width / 2);
+    
   }
 
 
