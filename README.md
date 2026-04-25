@@ -572,25 +572,25 @@ To achieve this, we designed a closed cave with three platforms(two low platform
 The Boss inherits the enemy's damage and physical logic from Enemy class and using a player-like state machine. T Its core logic is driven by the behavior method, which uses a playerDetect function to change boss state based on the player's relative height.
 
 **Equal-height logic:** When on the same height as the player, we make the boss continuously face the player. We implemented simple wall-collision handling, allowing the boss to reverse direction if it hits a dead end.
-<p align="center">
+<p align="center"><br>
 <strong>Equal-height Demo</strong>
 <img src="GIF/same_High.gif" width="600" alt="Equal-height Demo">
 </p>
 
 **Go down logic:** When the player is below, the boss can easily get trapped below the lower platform. It cannot find edge of platform to go down because of keep changing its direction, Therefore, we make the boss maintain its initial direction while descending the stairs unless it hits a wall.
-<p align="center">
+<p align="center"><br>
 <strong>Go down Demo</strong>
 <img src="GIF/go_down.gif" width="600" alt="Go down Demo">
 </p>
 
 **Go up logic:** To prevent failed jumps, we gave boss "vision" though using the MapManager's isSolid function, allowing it to see the position of the square in front of it. This function allows the boss determine whether there are any floating blocks in front of it or behind.
-<p align="center">
+<p align="center"><br>
 <strong>Go up Demo</strong>
 <img src="GIF/go_up.gif" width="600" alt="Go up Demo">
 </p>
 
 **Tunnel Escape:** If the boss is below a lower platform, we want the boss to be able to successfully leave the platform first. Therefore, When the boss knows there's a block above its head, it will stick to its initial direction and to move horizontally until it leaves the platform.
-<p align="center">
+<p align="center"><br>
 <strong>Tunnel Escape Demo</strong>
 <img src="GIF/Tunnel_Escape.gif" width="600" alt="Tunnel Escape Demo">
 </p>
