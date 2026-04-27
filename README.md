@@ -473,7 +473,7 @@ Key characteristics:
     It uses a finite state machine (FSM) implemented via updateState() and state-specific handlers. Each state (e.g., grounded, jumping, falling) determines how movement is applied.<br>
     <br>
     <p align="center"><strong>Figure 7 - State Diagram</strong></p>
-    <img src="image/stateDiagram.png" width="1000">
+    <img src="image/stateDiagram.jpg" width="1000">
   </p>
   <p>Movement is abstracted into reusable methods such as applyGroundMovement(), allowing consistent integration with physics.</p>
   <h4>2.4 Grapple Ability</h4>
@@ -525,7 +525,7 @@ Key characteristics:
 
 <p align = 'center'>
   <strong>Figure 8 - Class Diagram</strong>
-  <img src="image/classDiagram.jpg" width="1000">
+  <img src="image/classDiagram.png" width="1000">
 </p>
 
 ### Sequence diagram (behavioural diagram)
@@ -1043,7 +1043,7 @@ Black‑box testing focuses on checking whether each feature in the game behaves
     <td>Ming Wei</td>
     <td>Project Manager / Frontend Engineer</td>
     <td>Entity Hierarchy & Physics System</td>
-    <td><b>Architecture & Physics Engine:</b> Designed the overall game architecture and object inheritance structure; implemented core collision detection and integrated audio resources.</td>
+    <td><b>Architecture & Physics Engine:</b> Designed the overall game architecture and object inheritance structure; implemented core motion system and collision detection; sound effects, character, and animation design.</td>
   </tr>
   <tr>
     <td>Jay-Sin Chiu</td>
