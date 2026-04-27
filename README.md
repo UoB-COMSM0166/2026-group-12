@@ -473,7 +473,7 @@ Key characteristics:
     It uses a finite state machine (FSM) implemented via updateState() and state-specific handlers. Each state (e.g., grounded, jumping, falling) determines how movement is applied.<br>
     <br>
     <p align="center"><strong>Figure 7 - State Diagram</strong></p>
-    <img src="image/stateDiagram.jpg" width="1000">
+    <img src="image/stateDiagram.png" width="1000">
   </p>
   <p>Movement is abstracted into reusable methods such as applyGroundMovement(), allowing consistent integration with physics.</p>
   <h4>2.4 Grapple Ability</h4>
