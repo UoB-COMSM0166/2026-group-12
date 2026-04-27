@@ -7,7 +7,7 @@
 STRAPLINE. Add an exciting one sentence description of your game here.
 
 <p align="center">
-  <a href = "https://uob-comsm0166.github.io/2026-group-12/"><img src="image/gameImage.png" width="600"></a>
+  <a href = "https://uob-comsm0166.github.io/2026-group-12/"><img src="image/gameImage.png" width="1000"></a>
 </p>
 <p align="center">
   <a href = "https://uob-comsm0166.github.io/2026-group-12/"><b>👉Click here to play👈</b></a>
