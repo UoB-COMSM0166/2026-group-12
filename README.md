@@ -4,7 +4,7 @@
 
 ## SKAARL
 
-<p><strong>GET EGGS BACK with SKAARL...</strong></p>
+<p align="center"><strong>GET EGGS BACK with SKAARL...</strong></p>
 
 <p align="center">
   <a href = "https://uob-comsm0166.github.io/2026-group-12/"><img src="image/banner.png" width="1000"></a>
