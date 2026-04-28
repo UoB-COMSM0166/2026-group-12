@@ -15,9 +15,11 @@
 
 <p align="center">
   <a href="https://youtu.be/bJ63pzVpHWQ">
-    <img src="image/SKAARL Video.png" width="600" alt="SKAARL Video">
-    <b>👉Click here to watch video👈</b>
+    <img src="image/SKAARL Video.png" width="1000" alt="SKAARL Video">
   </a>
+</p>
+<p align="center">
+  <a href = "https://youtu.be/bJ63pzVpHWQ"><b>👉Click here to watch video👈</b></a>
 </p>
 
 ## Your Group
@@ -123,9 +125,12 @@ A top‑down 1v1 chase‑and‑escape game set in a dark, horror‑themed enviro
 <p align="center">
   <a href="https://youtu.be/oWBqbGIQUwQ">
     <img src="image/Demonstration of Survival Nightmare.png" width="600" alt="Demo Video">
-    <b>👉Click here to watch video👈</b>
   </a>
 </p>
+<p align="center">
+  <a href = "https://youtu.be/oWBqbGIQUwQ"><b>👉Click here to watch video👈</b></a>
+</p>
+
 
 ---
 
@@ -138,8 +143,10 @@ Players use a lizard’s sticky tongue to grab walls, ceilings, or objects and s
 <p align="center">
   <a href="https://youtu.be/wsnlXCv3-HA">
     <img src="https://img.youtube.com/vi/wsnlXCv3-HA/0.jpg" width="600" alt="Demo Video">
-    <b>👉Click here to watch video👈</b>
   </a>
+</p>
+<p align="center">
+  <a href = "https://youtu.be/wsnlXCv3-HA"><b>👉Click here to watch video👈</b></a>
 </p>
 
 ---
