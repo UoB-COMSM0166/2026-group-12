@@ -155,21 +155,6 @@ We ultimately chose the second game for development. While the first game offere
 1. **Core Transformation and Ability System**  
 Create a diverse action system by combining the "consuming insects or elements" mechanic with "item-based transformations."
 
-> - Transformation Mechanism: Inspired by Kirby or Super Mario Odyssey, the protagonist can switch between different lizard forms by consuming specific insects or using special items.  
->
-> - Form Functionalities:  
->   Draco (Flying Lizard): Extends gliding distance, allowing the player to cross large terrain gaps.  
->   Chameleon: Blends into the environment to become invisible, useful for evading powerful enemies.  
->   Frilled-neck Lizard: Scares off predators or utilizes its frill for specialized gliding.  
->
-> - Elemental Infusion: By using its tongue to consume fire or ice elements, the lizard can imbue its standard attacks with additional elemental damage.  
->
-> - Biological Survival and Escape Skills  
->   Enhance combat depth by utilizing the unique physiological traits of real-world lizards.  
->   Autotomy (Tail Shedding): An active skill that can be triggered when health is critically low. The shed tail remains on the ground to distract monsters, granting the player a brief window of invincibility and a speed boost to escape.  
->
-> - Resource Cost: This skill consumes a portion of energy, and there is a cooldown period while the tail regenerates before it can be used again.
-
 2. **Environmental Interaction and Secret Paths**  
 Emphasize the lizard's agility and map exploration.  
 Multi-dimensional Exploration: Level design includes not only flat ground but also vertical wall-climbing and underground digging.  
