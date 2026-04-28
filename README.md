@@ -13,7 +13,12 @@
   <a href = "https://uob-comsm0166.github.io/2026-group-12/"><b>👉Click here to play👈</b></a>
 </p>
 
-VIDEO. Include a demo video of your game here (you don't have to wait until the end, you can insert a work in progress video)
+<p align="center">
+  <a href="https://youtu.be/bJ63pzVpHWQ">
+    <img src="image/SKAARL Video.png" width="600" alt="SKAARL Video">
+    <b>👉Click here to watch video👈</b>
+  </a>
+</p>
 
 ## Your Group
 
@@ -115,9 +120,12 @@ A top‑down 1v1 chase‑and‑escape game set in a dark, horror‑themed enviro
 
 **Figure 3 - Demonstration of Survival Nightmare:**  
 
-https://github.com/user-attachments/assets/5ee5a315-3f47-4811-a6de-c31d1ba30ffb  
-
-Full video: https://youtu.be/oWBqbGIQUwQ
+<p align="center">
+  <a href="https://youtu.be/oWBqbGIQUwQ">
+    <img src="image/Demonstration of Survival Nightmare.png" width="600" alt="Demo Video">
+    <b>👉Click here to watch video👈</b>
+  </a>
+</p>
 
 ---
 
@@ -125,11 +133,12 @@ Full video: https://youtu.be/oWBqbGIQUwQ
 A fast‑paced 2D platformer built around momentum.  
 Players use a lizard’s sticky tongue to grab walls, ceilings, or objects and swing across the environment. Natural membranes allow gliding, and movement can be chained smoothly to discover multiple routes, avoid enemies, and maintain speed through fluid traversal.
 
-**Figure 4 - Demonstration of Skaarl: (Click the image below to watch the full video.)** 
+**Figure 4 - Demonstration of Skaarl:** 
 
-<p align="left">
+<p align="center">
   <a href="https://youtu.be/wsnlXCv3-HA">
     <img src="https://img.youtube.com/vi/wsnlXCv3-HA/0.jpg" width="600" alt="Demo Video">
+    <b>👉Click here to watch video👈</b>
   </a>
 </p>
 
