@@ -1170,7 +1170,7 @@ Through these carefully crafted narrative metaphors and the engaging adventure, 
 ## Additional
 <p align="center">
   <a href="https://youtu.be/-riqcxFdLk8">
-    <img src="image/SKAARL_Demo_Video.png" width="1000" alt="SKAARL Demo Video">
+    <img src="image/SKAARLDemoVideo.png" width="1000" alt="SKAARL Demo Video">
   </a>
 </p>
 <p align="center">
