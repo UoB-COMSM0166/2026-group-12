@@ -13,7 +13,10 @@
   <a href = "https://uob-comsm0166.github.io/2026-group-12/"><b>👉Click here to play👈</b></a>
 </p>
 <p align="center">
-  <a href = "https://youtu.be/cevhJABPUxk"><b>👉Click here to watch video👈</b></a>
+  <a href = "https://youtu.be/cevhJABPUxk"><img src="image/SKAARL_Video.png" width="1000"></a>
+</p>
+<p align="center">
+  <a href = "https://youtu.be/cevhJABPUxk"><b>👉Click here to watch SKAARL video👈</b></a>
 </p>
 
 ## Your Group
