@@ -114,11 +114,12 @@ To better understand the mechanics of each concept and evaluate how well they al
 
 A top‑down 1v1 chase‑and‑escape game set in a dark, horror‑themed environment. One player controls the Hunter (or an AI), while the other plays the Survivor. The map contains walls and obstacles, and placing or removing an obstacle requires a one‑second delay. Items spawn randomly: Survivors can pick up flashlights to stun the Hunter for five seconds, while Hunters can collect souls for temporary speed boosts. The Survivor wins by collecting three keys to unlock the exit door but loses instantly if caught.
 
-**Figure 3 - Demonstration of Survival Nightmare:**  
-
+<p align="center">
+  <strong>Figure 3 - Demonstration of Survival Nightmare</strong>
+</p>
 <p align="center">
   <a href="https://youtu.be/oWBqbGIQUwQ">
-    <img src="image/Demonstration of Survival Nightmare.png" width="600" alt="Demo Video">
+    <img src="image/Demonstration of Survival Nightmare.png" width="600" alt="Prototype Video">
   </a>
 </p>
 <p align="center">
@@ -132,11 +133,12 @@ A top‑down 1v1 chase‑and‑escape game set in a dark, horror‑themed enviro
 A fast‑paced 2D platformer built around momentum.  
 Players use a lizard’s sticky tongue to grab walls, ceilings, or objects and swing across the environment. Natural membranes allow gliding, and movement can be chained smoothly to discover multiple routes, avoid enemies, and maintain speed through fluid traversal.
 
-**Figure 4 - Demonstration of Skaarl:** 
-
+<p align="center">
+  <strong>Figure 4 - Demonstration of Skaarl</strong>
+</p>
 <p align="center">
   <a href="https://youtu.be/wsnlXCv3-HA">
-    <img src="https://img.youtube.com/vi/wsnlXCv3-HA/0.jpg" width="600" alt="Demo Video">
+    <img src="https://img.youtube.com/vi/wsnlXCv3-HA/0.jpg" width="600" alt="Prototype Video">
   </a>
 </p>
 <p align="center">
@@ -203,7 +205,9 @@ The Third Tier is the external environment, including anyone indirectly affected
 
 ### Epics and User Stories
 <h4>User Stories for Lizard Adventure</h4>
-
+<p align="center">
+  <strong>Table 1 - User Story</strong>
+</p>
 <table>
   <tr>
     <th>Stakeholder</th>
@@ -286,7 +290,9 @@ The Third Tier is the external environment, including anyone indirectly affected
   <strong>Figure 6 - Use Case Diagram</strong><br>
   <img width="700" alt="Use_case" src="https://github.com/user-attachments/assets/7a1ebe7e-251c-403f-a9b8-df31ef993f2f" />
 </p>
-
+<p align="center">
+  <strong>Table 2 - Use Case</strong>
+</p>
 <table>
   <tr>
     <th>Use Case ID</th>
@@ -570,24 +576,28 @@ To achieve this, we designed a closed cave with three platforms(two low platform
 The Boss inherits the enemy's damage and physical logic from Enemy class and using a player-like state machine. T Its core logic is driven by the behavior method, which uses a playerDetect function to change boss state based on the player's relative height.
 
 **Equal-height logic:** When on the same height as the player, we make the boss continuously face the player. We implemented simple wall-collision handling, allowing the boss to reverse direction if it hits a dead end.
-<p align="center">
-<img src="GIF/same_High.gif" width="600" alt="Equal-height Demo">
-</p>
-
+<div align="center">
+  <strong>Figure 10 - Equal-height Demo</strong><br>
+  <img src="GIF/same_High.gif" height="600" alt="Equal-height Demo">
+</div>
 **Go down logic:** When the player is below, the boss can easily get trapped below the lower platform. It cannot find edge of platform to go down because of keep changing its direction, Therefore, we make the boss maintain its initial direction while descending the stairs unless it hits a wall.
-<p align="center">
-<img src="GIF/go_down.gif" width="600" alt="Go down Demo">
-</p>
+<div align="center">
+  <strong>Figure 11 - Go down Demo</strong><br>
+  <img src="GIF/go_down.gif" height="600" alt="Go down Demo">
+</div>
 
 **Go up logic:** To prevent failed jumps, we gave boss "vision" though using the MapManager's isSolid function, allowing it to see the position of the square in front of it. This function allows the boss determine whether there are any floating blocks in front of it or behind.
-<p align="center">
-<img src="GIF/go_up.gif" width="600" alt="Go up Demo">
-</p>
+<div align="center">
+  <strong>Figure 12 - Go up Demo</strong><br>
+  <img src="GIF/go_up.gif" height="600" alt="Go up Demo">
+</div>
+
 
 **Tunnel Escape:** If the boss is below a lower platform, we want the boss to be able to successfully leave the platform first. Therefore, When the boss knows there's a block above its head, it will stick to its initial direction and to move horizontally until it leaves the platform.
-<p align="center">
-<img src="GIF/Tunnel_Escape.gif" width="600" alt="Tunnel Escape Demo">
-</p>
+<div align="center">
+  <strong>Figure 13 - Tunnel Escape Demo</strong><br>
+  <img src="GIF/Tunnel_Escape.gif" height="600" alt="Tunnel Escape Demo">
+</div>
 
 **Conclusion:**
  By combining all the logic rules, we successfully built an intelligent movement system, which is able to move logically and pursue the player within a limited map.
@@ -652,13 +662,13 @@ This report uses NASA-TLX and SUS to evaluate the user experience, workload, and
 </ul>
 
 <p align="center">
-  <img src="image/NASA TLX - Mean Overall Workload Comparison.png" width="600"><br>
-  <strong>Figure 10 - ▲ NASA TLX - Mean Overall Workload Comparison</strong>
+  <strong>Figure 10 - NASA TLX - Mean Overall Workload Comparison</strong><br>
+  <img src="image/NASA TLX - Mean Overall Workload Comparison.png" width="600">
 </p>
 
 <p align="center">
-  <img src="image/NASA TLX - Multi-dimensional Workload Comparison.png" width="600"><br>
-  <strong>Figure 11 - ▲ NASA TLX - Multi-dimensional Workload Comparison</strong>
+  <strong>Figure 11 - NASA TLX - Multi-dimensional Workload Comparison</strong><br>
+  <img src="image/NASA TLX - Multi-dimensional Workload Comparison.png" width="600">
 </p>
 
 **SUS**
@@ -679,15 +689,18 @@ This report uses NASA-TLX and SUS to evaluate the user experience, workload, and
 </ul>
 
 <p align="center">
-  <img src="image/SUS - Distribution of Scores across 10 Participants.png" width="600"><br>
-  <strong>Figure 12 - ▲ SUS - Distribution of Scores across 10 Participants</strong>
+  <strong>Figure 12 - SUS - Distribution of Scores across 10 Participants</strong><br>
+  <img src="image/SUS - Distribution of Scores across 10 Participants.png" width="600">
+  
 </p>
  
 <p align="center">
-  <img src="image/SUS - Mean Score Compared to Industry Benchmark.png" width="600"><br>
-  <strong>Figure 13 - ▲ SUS - Mean Score Compared to Industry Benchmark</strong>
+  <strong>Figure 13 - SUS - Mean Score Compared to Industry Benchmark</strong><br>
+  <img src="image/SUS - Mean Score Compared to Industry Benchmark.png" width="600">
 </p>
-
+<p align="center">
+  <strong>Table 3 - Average SUS Score Compared to Industry Benchmark</strong>
+</p>
 <table align="center">
   <tr>
     <th>Metrics</th>
@@ -727,6 +740,9 @@ To verify whether the differences between Level 1 and Level 2 are statistically 
         </ul>
     </li>
     <li>Results
+        <p align="center">
+          <strong>Table 4 - Wilcoxon Signed-Rank Test results</strong>
+        </p>
         <table align="center">
           <tr>
             <th>Method</th>
@@ -780,9 +796,12 @@ To verify whether the differences between Level 1 and Level 2 are statistically 
 <h2>Black-Box Testing</h2>
 
 Black‑box testing focuses on checking whether each feature in the game behaves correctly from the player’s point of view. Since the game relies on tongue‑based grappling, elemental attacks, and item pickups to progress through each level, the goal is to make sure every action responds the way players expect. This includes confirming that the tongue attaches only to valid grapple points, swings smoothly, and retracts properly; that Freeze and Fire attacks trigger only when the player is in range; and that Hearts and Keys update the player’s status correctly, with the door unlocking only after all three keys are collected. The tables below summarize how each system should react under different inputs.
-<h3>Tongue Movement</h3>
 
-<table>
+<h3>Tongue Movement</h3>
+<p align="center">
+  <strong>Table 5 - Tongue Movement Black-Box Testing</strong>
+</p>
+<table align="center">
 <tr>
 <th>Test Case</th>
 <th>Input</th>
@@ -840,7 +859,10 @@ Black‑box testing focuses on checking whether each feature in the game behaves
 </table>
 
 <h3>Freeze Attack</h3>
-<table>
+<p align="center">
+  <strong>Table 6 - Freeze Attack Black-Box Testing</strong>
+</p>
+<table align="center">
 <tr>
 <th>Test Case</th>
 <th>Input</th>
@@ -866,8 +888,12 @@ Black‑box testing focuses on checking whether each feature in the game behaves
 <td>Pass</td>
 </tr>
 </table>
+
 <h3>Fire Attack</h3>
-<table>
+<p align="center">
+  <strong>Table 7 - Fire Attack Black-Box Testing</strong>
+</p>
+<table align="center">
 <tr>
 <th>Test Case</th>
 <th>Input</th>
@@ -893,8 +919,12 @@ Black‑box testing focuses on checking whether each feature in the game behaves
 <td>Pass</td>
 </tr>
 </table>
+
 <h3>Heart Pickup</h3>
-<table>
+<p align="center">
+  <strong>Table 8 - Heart Pickup Black-Box Testing</strong>
+</p>
+<table align="center">
 <tr>
 <th>Test Case</th>
 <th>Input</th>
@@ -922,7 +952,10 @@ Black‑box testing focuses on checking whether each feature in the game behaves
 </table>
 
 <h3>Key Pickup</h3>
-<table>
+<p align="center">
+  <strong>Table 9 - Key Pickup Black-Box Testing</strong>
+</p>
+<table align="center">
 <tr>
 <th>Test Case</th>
 <th>Input</th>
@@ -957,9 +990,13 @@ Black‑box testing focuses on checking whether each feature in the game behaves
 <td>Key count unchanged → Door stays LOCKED</td>
 <td>Pass</td>
 </tr>
+</table>
 
 <h3>Boss test</h3>
-<table>
+<p align="center">
+  <strong>Table 10 - Boss test Black-Box Testing</strong>
+</p>
+<table align="center">
 <tr>
 <th>Test Case</th>
 <th>Input</th>
@@ -1011,14 +1048,14 @@ Black‑box testing focuses on checking whether each feature in the game behaves
 <ul>
     <li>Each Wednesday, we have a weekly meeting to review the previous week development sprint and assign upcoming development tasks.</li>
     <p align="center">
-      <img src="image/Meeting.jpg" width="600"><br>
-      <strong>Figure 14 - ▲ Meeting</strong>
+      <strong>Figure 14 - Meeting</strong><br>
+      <img src="image/Meeting.jpg" width="600">
     </p>
     <li>For version control, each member has a separate <b>GitHub</b> branch for development to avoid overwriting each other's code and avoid conflict.</li>
     <li>For project management, we use <a href = "https://trello.com/invite/b/698ac34dda403c044906233f/ATTI4db26394399c57af543af31092c66765564157A4/my-trello-board">Trello</a> as a Kanban Board for task organisation. Tasks are organised into "To Do," "Doing," and "Done" columns to provide the team with a visual representation of work progress and decrease the chances of duplicating tasks or tasks not being completed promptly.</li>
     <p align="center">
-      <img src="image/Kanban.png" width="600"><br>
-      <strong>Figure 15 - ▲ Kanban Board</strong>
+      <strong>Figure 15 - Kanban Board</strong><br>
+      <img src="image/Kanban.png" width="600">
     </p>
     <li>For communication, <b>WhatsApp</b> is our main tool. We use it for real-time discussions and to record key points from meetings. </li>
     <li>For development, we use <b>Visual Studio Code</b> with the <b>Live Server</b> extension. This allows us to test changes before committing them to GitHub, helping keep the development process efficient and consistent.</li>
@@ -1027,6 +1064,9 @@ Black‑box testing focuses on checking whether each feature in the game behaves
 ### 2. Team Roles
 <p>To provide both technical detail and efficient management of the project, our team has chosen to use the modular architecture for the system. Each member serves in two different roles: one technical role responsible for coding and building a subsystem and one administrative role responsible for the management of the project.</p>
 
+<p align="center">
+  <strong>Table 11 - Team Roles</strong>
+</p>
 <table align="center">
   <tr>
     <th>Member</th>
