@@ -68,10 +68,37 @@
 </table>
 
 ## Table of Contents
-* [Ideation Process](#ideation-process--ideation-process)
-* [Paper Prototypes](#paper-prototypes)
-    * [First Game – Survival Nightmare](#first-game--survival-nightmare)
-    * [Second Game – Skaarl](#second-game--skaarl)
+## Table of Contents
+
+1. [Introduction](#introduction)
+2. [Requirements](#requirements)
+    - [Ideation Process](#ideation-process)
+    - [Paper Prototypes](#paper-prototypes)
+    - [Twist Ideas](#twist-ideas)
+    - [Stakeholders](#stakeholders)
+    - [Epics and User Stories](#epics-and-user-stories)
+    - [Use Case Specifications](#use-case-specifications)
+3. [Design](#design)
+    - [System Architecture](#system-architecture)
+    - [Sequence Diagram](#sequence-diagram)
+4. [Implementation](#implementation)
+    - [Technical Challenge 1: Physics System & Grapple System](#technical-challenge-1-physics-system--grapple-system)
+    - [Technical Challenge 2: Boss Battle & Smart Boss](#technical-challenge-2-boss-battle--smart-boss)
+5. [Evaluation](#evaluation)
+    - [Qualitative Evaluation](#qualitative-evaluation)
+    - [Quantitative Evaluation](#quantitative-evaluation)
+    - [Black-Box Testing](#black-box-testing)
+6. [Process](#process)
+    - [Collaboration Tools & Methods](#collaboration-tools--methods)
+    - [Team Roles](#team-roles)
+    - [Reflection](#reflection)
+    - [Adaptation](#adaptation)
+7. [Sustainability, Ethics and Accessibility](#sustainability-ethics-and-accessibility)
+    - [Environmental Dimension](#environmental-dimension)
+8. [Conclusion](#conclusion)
+9. [Contribution Statement](#contribution-statement)
+10. [AI Statement](#ai-statement)
+11. [Additional Video](#additional-video)
 
 ---
 
@@ -88,7 +115,7 @@ The game consists of one tutorial level to teach all the functions and three lev
 ## Requirements 
 
 
-### Ideation process & Ideation process
+### Ideation process
 
 At the beginning, our team initiated the design process by compiling a list of game references that each of the six team members was personally interested in. In total, we brought together 10 different games for consideration. presentation. During our initial meeting, we presented our selected games to the group, sharing not only the genre and mechanics of each game, but also the core ideas and unique aspects that made these games appealing to us. Through this collaborative discussion, we were able to explore different perspectives, identify common interests, and evaluate which game concepts might be the most feasible and engaging for development. To narrow down our options, we conducted two rounds of voting. In the first round, each member voted for their top three preferred games, which resulted in Identity V receiving the most votes and becoming the clear front-runner. In the second round, we focused on the remaining games and discussed their potential in terms of gameplay, creativity, and alignment with our team’s skills. After careful consideration, Grapple Dog emerged as the second top choice, complementing Identity V’s style and mechanics. By the end of this process, we reached a consensus and selected these two games as the projects we were most excited to develop. This method ensured that every team member’s preferences were considered and that our final decision was both democratic and well-informed.
 
@@ -162,7 +189,7 @@ We ultimately chose the second game for development. While the first game offere
 
 ---
 
-### Twist ideas from members
+### Twist ideas
 
 1. **Core Transformation and Ability System**  
 Create a diverse action system by combining the "consuming insects or elements" mechanic with "item-based transformations."
@@ -529,7 +556,7 @@ Key characteristics:
   <img src="image/classDiagram.png" width="1000">
 </p>
 
-### Sequence diagram (behavioural diagram)
+### Sequence diagram
 <p align = 'center'>
   <strong>Figure 9 - Sequence Diagram</strong>
   <img src="image/sequence_diagram.png" width="1000">
@@ -1043,7 +1070,7 @@ Black‑box testing focuses on checking whether each feature in the game behaves
 
 ## Process 
 
-### 1. Collaboration Tools & Methods
+### Collaboration Tools & Methods
 <p>Our team follows Agile development principles, breaking the work into small parts so we can quickly respond to technical needs and changes.</.p>
 <ul>
     <li>Each Wednesday, we have a weekly meeting to review the previous week development sprint and assign upcoming development tasks.</li>
@@ -1061,7 +1088,7 @@ Black‑box testing focuses on checking whether each feature in the game behaves
     <li>For development, we use <b>Visual Studio Code</b> with the <b>Live Server</b> extension. This allows us to test changes before committing them to GitHub, helping keep the development process efficient and consistent.</li>
 </ul>
 
-### 2. Team Roles
+### Team Roles
 <p>To provide both technical detail and efficient management of the project, our team has chosen to use the modular architecture for the system. Each member serves in two different roles: one technical role responsible for coding and building a subsystem and one administrative role responsible for the management of the project.</p>
 
 <p align="center">
@@ -1112,7 +1139,7 @@ Black‑box testing focuses on checking whether each feature in the game behaves
   </tr>
 </table>
 
-### 3. Reflection: What Worked and What Didn't
+### Reflection
 
 **What Worked:**
 - The clear division of roles allowed each member to focus on their own subsystem without interfering with others' work.
@@ -1127,11 +1154,11 @@ Black‑box testing focuses on checking whether each feature in the game behaves
 - There were instances where a team member modified a shared function without notifying others, causing unexpected integration errors.
 - When team members held differing opinions, reaching a conclusion sometimes took longer than necessary, occasionally slowing down the overall pace.
 
-### 4. Adaptation
+### Adaptation
 <p>To address communication issues, the team established a clear protocol of announcing any changes to shared functions in the WhatsApp group, ensuring all members stayed informed and could adapt their code accordingly. When workloads became uneven, tasks were redistributed among members to maintain a balanced pace. To improve decision-making efficiency, we adopted a time-limited discussion approach, proceeding with the majority's opinion once a reasonable discussion period had passed. For example, during the map design process, differing opinions on difficulty level led to prolonged discussions. We ultimately held a focused meeting during the Easter break to align on a shared standard: a map is considered successful as long as players can complete it while experiencing all three core mechanics. This experience highlighted the importance of establishing clear evaluation criteria early in the design phase to avoid repeated revisions.<p>
 
 ## Sustainability, ethics and accessibility
-### 1. Environmental Dimension
+### Environmental Dimension
 <p>
 Compared to the mainstream 3D titles that relentlessly pursue hyper-realistic graphics, our game, SKAARL, adopts a retro 2D pixel art style. This choice is built upon a lightweight core computational logic. This deliberate architectural decision significantly reduces CPU load and device power consumption during gameplay, effectively lowering the overall hardware threshold. By doing so, we extend the operational lifespan of our players' devices, translating our environmental sustainability goals into concrete actions that actively reduce electronic waste and unnecessary energy consumption.
 </p>
@@ -1207,7 +1234,7 @@ Through these carefully crafted narrative metaphors and the engaging adventure, 
 <p>In addition to supporting team collaboration and knowledge transfer, AI provided on-demand technical consulting for team members. AI helped to interpret and clarify code logic among team members and quickly obtain knowledge about the p5.js framework. AI also provided suggestions for debugging complex bugs, which improved our overall development efficiency.</p>
 <p>All outputs generated by the AI were thoroughly evaluated and further refined by the team to ensure the final results met the project’s requirements.</p>
 
-## Additional
+## Additional Video
 <p align="center">
   <a href="https://youtu.be/-riqcxFdLk8">
     <img src="image/SKAARLDemoVideo.png" width="1000" alt="SKAARL Demo Video">
