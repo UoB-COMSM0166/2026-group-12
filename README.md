@@ -1168,6 +1168,23 @@ Beyond these technical efficiencies, SKAARL seamlessly weaves ecological conserv
 Through these carefully crafted narrative metaphors and the engaging adventure, we hope that players will not only enjoy a highly entertaining experience but also subtly learn the critical importance of environmental protection and native biodiversity conservation.
 </p>
 
+### 2. Individual Dimension
+<p>
+From an individual sustainability perspective, SKAARL affects players in terms of health, safety, and personal agency. 
+</p>
+<p>
+In terms of health, the game provides a relaxing and engaging experience through its simple 2D platformer design. Players must constantly respond to terrain by choosing appropriate actions such as running, jumping, or using the tongue-swinging mechanic, which helps improve reaction speed and focus. The progression system, including collecting keys, advancing through levels, and ultimately rescuing the eggs, also creates a strong sense of achievement and satisfaction. However, the boss stage introduces a higher level of tension, as the rabbit continuously chases the player, which may lead to stress or pressure during gameplay.
+</p>
+<p>
+Regarding safety, the game maintains a generally safe and appropriate environment, as it does not contain violent or disturbing content and does not involve competitive player interactions. However, some players may experience frustration due to the relatively fast movement speed of the character, which can make precise control more difficult. In addition, the presence of enemies that reduce health upon contact may create mild tension, although this effect remains limited.
+</p>
+<p>
+In terms of agency, SKAARL provides players with a strong sense of control and autonomy. Players actively decide how to navigate levels using different mechanics, including movement, jumping, and tongue-swinging. The availability of fire and ice power-ups further enhances strategic choice, allowing players to approach challenges in different ways. This design supports a sense of competence and engagement, as players feel directly responsible for their success in the game.
+</p>
+<p>
+Overall, the game demonstrates how gameplay mechanics can shape individual experiences, particularly in terms of well-being, emotional response, and player control.
+</p>
+
 
 ## Conclusion
 <p>
