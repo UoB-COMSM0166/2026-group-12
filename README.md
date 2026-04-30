@@ -1180,15 +1180,25 @@ Black‑box testing focuses on checking whether each feature in the game behaves
 <p>To address communication issues, the team established a clear protocol of announcing any changes to shared functions in the WhatsApp group, ensuring all members stayed informed and could adapt their code accordingly. When workloads became uneven, tasks were redistributed among members to maintain a balanced pace. To improve decision-making efficiency, we adopted a time-limited discussion approach, proceeding with the majority's opinion once a reasonable discussion period had passed. For example, during the map design process, differing opinions on difficulty level led to prolonged discussions. We ultimately held a focused meeting during the Easter break to align on a shared standard: a map is considered successful as long as players can complete it while experiencing all three core mechanics. This experience highlighted the importance of establishing clear evaluation criteria early in the design phase to avoid repeated revisions.<p>
 
 ## Sustainability, ethics and accessibility
-### Environmental Dimension
+
+### Social Dimension
 <p>
-Compared to the mainstream 3D titles that relentlessly pursue hyper-realistic graphics, our game, SKAARL, adopts a retro 2D pixel art style. This choice is built upon a lightweight core computational logic. This deliberate architectural decision significantly reduces CPU load and device power consumption during gameplay, effectively lowering the overall hardware threshold. By doing so, we extend the operational lifespan of our players' devices, translating our environmental sustainability goals into concrete actions that actively reduce electronic waste and unnecessary energy consumption.
+The social sustainability of SKAARL is primarily reflected in fostering a community of enthusiasts through accessible educational content about animals, enhancing inclusiveness through a low-threshold design, and promoting engagement and interaction via sharing mechanisms.
 </p>
 <p>
-Beyond these technical efficiencies, SKAARL seamlessly weaves ecological conservation awareness directly into its narrative and world-building. Players experience the entire game through the unique perspective of the protagonist, 'Mother Lizard,' allowing them to deeply empathize with the harsh survival struggles that native species endure when confronted with external environmental threats. Furthermore, the design of the enemy characters is directly inspired by pressing, real-world ecological threats. For instance, players will face off against foes resembling invasive red imported fire ants and hornets that aggressively endanger local people, ultimately culminating in a final boss battle against a wild rabbit—a notorious destroyer of agricultural crops.
+The game fosters a sense of belonging by building an interest-driven community centred around the “frilled lizard”, a relatively unpopular species. By incorporating brief ecological facts, a collection guide, and challenge missions, it attracts players interested in animals, nature, or science, thereby forming a light-learning community. This connection based on shared interests (wildlife/ecology) is more likely to foster long-term engagement and belonging than purely competitive gameplay.
 </p>
 <p>
-Through these carefully crafted narrative metaphors and the engaging adventure, we hope that players will not only enjoy a highly entertaining experience but also subtly learn the critical importance of environmental protection and native biodiversity conservation.
+When presenting knowledge about animals, SKAARL ensures content is sourced reliably and presented accurately, while avoiding misleading information or excessive adaptation. The game clearly distinguishes between real-world ecological knowledge and exaggerated depictions for gameplay purposes, reducing cognitive confusion and enhancing user trust.
+</p>
+<p>
+In terms of design, the game features simple controls and a low entry threshold, allowing players of all ages and experience levels to participate, thereby increasing inclusiveness. In terms of content, it incorporates elements from diverse ecosystems, animal species, and cultural contexts, helping players engage with a broader worldview.
+</p>
+<p>
+The game is designed as a non-competitive experience, avoiding pay-to-win and ensuring all players experience content under the same rules. Also, we will introduce statistics and achievement system to establish transparent scoring mechanisms. Furthermore, the game is easy to run and play, with virtually no hidden unfairness arising from players’ backgrounds (such as their devices or experience), thereby ensuring that the system treats all users consistently.
+</p>
+<p>
+Future expansion of sharing features, such as level scores and animal encyclopaedia collections, will encourage communication, discussion, light collaboration; and community features will further enhance participation in content creation and interaction.
 </p>
 
 ### Individual Dimension
@@ -1206,6 +1216,17 @@ In terms of agency, SKAARL provides players with a strong sense of control and a
 </p>
 <p>
 Overall, the game demonstrates how gameplay mechanics can shape individual experiences, particularly in terms of well-being, emotional response, and player control.
+</p>
+
+### Environmental Dimension
+<p>
+Compared to the mainstream 3D titles that relentlessly pursue hyper-realistic graphics, our game, SKAARL, adopts a retro 2D pixel art style. This choice is built upon a lightweight core computational logic. This deliberate architectural decision significantly reduces CPU load and device power consumption during gameplay, effectively lowering the overall hardware threshold. By doing so, we extend the operational lifespan of our players' devices, translating our environmental sustainability goals into concrete actions that actively reduce electronic waste and unnecessary energy consumption.
+</p>
+<p>
+Beyond these technical efficiencies, SKAARL seamlessly weaves ecological conservation awareness directly into its narrative and world-building. Players experience the entire game through the unique perspective of the protagonist, 'Mother Lizard,' allowing them to deeply empathize with the harsh survival struggles that native species endure when confronted with external environmental threats. Furthermore, the design of the enemy characters is directly inspired by pressing, real-world ecological threats. For instance, players will face off against foes resembling invasive red imported fire ants and hornets that aggressively endanger local people, ultimately culminating in a final boss battle against a wild rabbit—a notorious destroyer of agricultural crops.
+</p>
+<p>
+Through these carefully crafted narrative metaphors and the engaging adventure, we hope that players will not only enjoy a highly entertaining experience but also subtly learn the critical importance of environmental protection and native biodiversity conservation.
 </p>
 
 
