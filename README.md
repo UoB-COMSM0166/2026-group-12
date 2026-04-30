@@ -550,7 +550,7 @@ Key characteristics:
   </ul> 
 </div>
 
-<p align = 'center'>
+<p align='center' id="class-diagram">
   <strong>Figure 8 - Class Diagram</strong>
   <img src="image/classDiagram.png" width="1000">
 </p>
@@ -566,23 +566,41 @@ The MapManager is basically what keeps track of the world. Whenever something mo
 
 ## Implementation
 
-### Technical Challenge 1: Physics System & Grapple System
+### Technical Challenge 1: Physics & Grappling Mechanics
 
-One of the primary technical challenges was building a stable physics engine and grapple system from scratch. Since the two systems are deeply interconnected, instability in the physics layer directly affected the feel and reliability of the grapple mechanic.
+One of the primary technical challenges was engineering a stable physics engine and grappling system from scratch. As these systems are deeply interconnected, any instability in the physics layer directly compromised the responsiveness and reliability of the grapple mechanic.
 
-**Physics System**
-- In the early prototype, movement and collision resolution were scattered across multiple modules, causing clipping and tunneling issues that were especially noticeable during high-speed swinging. A dedicated Physics class was introduced to centralise all position updates and collision resolution, ensuring consistent behaviour across all entities including the player and enemies.
-- Movement is decomposed into separate X and Y axes, allowing each direction to be resolved independently. This prevents corner-catching and produces stable, predictable collision behaviour.
-- A maximum fall speed was enforced to prevent high-velocity tunneling through thin floor tiles, a common issue in tile-based platformers.
-- A finite state machine (FSM) was introduced to manage player behaviour, separating state transition logic from movement logic and making it easier to add new mechanics without breaking existing systems.
+**Physics System: Architecture & Stability**
 
-**Grapple System**
-- To prevent the tongue from passing through walls, the shoot function uses step-based raycasting, scanning every 5 pixels along the trajectory until hitting a valid grapple tile or a solid surface, ensuring the tongue always stops at the correct position.
-- Swing angle instability caused erratic movement and sudden reversals due to small positional differences relative to the anchor point. This was resolved by smoothing angle changes and temporarily disabling swing direction calculation when the player was too close to the anchor.
-- Releasing the grapple caused the player to burst forward uncontrollably due to accumulated swing velocity. This was fixed by capping the maximum swing speed during grappling.
-- The rope constraint is enforced through position correction combined with velocity projection, removing the radial component of velocity to produce natural pendulum motion rather than abrupt position snapping.
-- The tongue animation flickered during movement because the origin point was not updating dynamically with the player's position. This was fixed by recalculating the tongue's starting point relative to the player's mouth on every frame.
+* **Centralized Physics Logic**: We introduced a dedicated `Physics` class to centralize all position updates and collision resolution. This replaced scattered logic, ensuring synchronized and consistent behavior across all game entities. (Refer to the [Class Diagram](#class-diagram))
 
+* **Axis-Independent Collision**: To resolve "corner-catching" issues, we decoupled movement into independent X and Y axis calculations. This sequential processing ensures predictable collision handling and smoother movement against surfaces.
+<p align="center">
+  <img src="image/collision.png" width="600" alt="Axis-Independent Collision Resolution">
+</p>
+
+* **Tunneling Prevention**: We implemented a maximum terminal velocity and step-based proximity checks. This ensures that high-speed entities are correctly intercepted by thin tiles, preventing them from "tunneling" through geometry.
+
+<br>
+
+**Grappling System: Precision & Feel**
+
+* **Accurate Raycasting**: To prevent the grapple tongue from clipping through walls, we implemented step-based raycasting (scanning at 5-pixel intervals). This guarantees precise anchor point detection even on narrow platforms.
+<p align="center">
+  <img src="image/raycasting.png" width="600" alt="Step-based Raycasting Demonstration">
+</p>
+
+* **Pendulum Motion via Velocity Projection**: Rather than using abrupt position snapping, we utilized **Velocity Projection** to filter out the radial component of the player's movement. This preserves only the tangential velocity, creating a fluid and natural swinging sensation.
+<p align="center">
+  <img src="image/Velocity Projection.png" width="600" alt="Velocity Projection Demonstration">
+</p>
+
+* **Dynamic Animation Correction**: The tongue’s origin point is recalculated every frame relative to the player’s real-time position. This eliminates visual flickering and ensures the grapple line remains perfectly attached during high-speed swings.
+<p align="center">
+  <img src="GIF/swing.gif" width="600" alt="Grapple Animation & Physics Demo">
+</p>
+
+---
 
 ### Technical Challenge 2: Boss Battle & Smart Boss
 
