@@ -81,7 +81,7 @@
     - [System Architecture](#system-architecture)
     - [Sequence Diagram](#sequence-diagram)
 4. [Implementation](#implementation)
-    - [Technical Challenge 1: Physics System & Grapple System](#technical-challenge-1-physics-system--grapple-system)
+    - [Technical Challenge 1: Physics & Grappling Mechanics](#technical-challenge-1-physics--grappling-mechanics)
     - [Technical Challenge 2: Boss Battle & Smart Boss](#technical-challenge-2-boss-battle--smart-boss)
 5. [Evaluation](#evaluation)
     - [Qualitative Evaluation](#qualitative-evaluation)
@@ -94,6 +94,7 @@
     - [Adaptation](#adaptation)
 7. [Sustainability, Ethics and Accessibility](#sustainability-ethics-and-accessibility)
     - [Environmental Dimension](#environmental-dimension)
+    - [Individual Dimension](#individual-dimension)
 8. [Conclusion](#conclusion)
 9. [Contribution Statement](#contribution-statement)
 10. [AI Statement](#ai-statement)
@@ -576,6 +577,7 @@ One of the primary technical challenges was engineering a stable physics engine 
 
 * **Axis-Independent Collision**: To resolve "corner-catching" issues, we decoupled movement into independent X and Y axis calculations. This sequential processing ensures predictable collision handling and smoother movement against surfaces.
 <p align="center">
+  <strong>Figure 10 - Axis-Independent Collision Resolution</strong><br>
   <img src="image/collision.png" width="600" alt="Axis-Independent Collision Resolution">
 </p>
 
@@ -587,16 +589,19 @@ One of the primary technical challenges was engineering a stable physics engine 
 
 * **Accurate Raycasting**: To prevent the grapple tongue from clipping through walls, we implemented step-based raycasting (scanning at 5-pixel intervals). This guarantees precise anchor point detection even on narrow platforms.
 <p align="center">
+  <strong>Figure 11 - Step-based Raycasting Demonstration</strong><br>
   <img src="image/raycasting.png" width="600" alt="Step-based Raycasting Demonstration">
 </p>
 
 * **Pendulum Motion via Velocity Projection**: Rather than using abrupt position snapping, we utilized **Velocity Projection** to filter out the radial component of the player's movement. This preserves only the tangential velocity, creating a fluid and natural swinging sensation.
 <p align="center">
+  <strong>Figure 12 - Velocity Projection Demonstration</strong><br>
   <img src="image/Velocity Projection.png" width="600" alt="Velocity Projection Demonstration">
 </p>
 
 * **Dynamic Animation Correction**: The tongue’s origin point is recalculated every frame relative to the player’s real-time position. This eliminates visual flickering and ensures the grapple line remains perfectly attached during high-speed swings.
 <p align="center">
+  <strong>Figure 13 - Grapple Animation & Physics Demo</strong><br>
   <img src="GIF/swing.gif" width="600" alt="Grapple Animation & Physics Demo">
 </p>
 
@@ -621,25 +626,25 @@ The Boss inherits the enemy's damage and physical logic from Enemy class and usi
 
 **Equal-height logic:** When on the same height as the player, we make the boss continuously face the player. We implemented simple wall-collision handling, allowing the boss to reverse direction if it hits a dead end.
 <div align="center">
-  <strong>Figure 10 - Equal-height Demo</strong><br>
+  <strong>Figure 14 - Equal-height Demo</strong><br>
   <img src="GIF/same_High.gif" height="600" alt="Equal-height Demo">
 </div>
 **Go down logic:** When the player is below, the boss can easily get trapped below the lower platform. It cannot find edge of platform to go down because of keep changing its direction, Therefore, we make the boss maintain its initial direction while descending the stairs unless it hits a wall.
 <div align="center">
-  <strong>Figure 11 - Go down Demo</strong><br>
+  <strong>Figure 15 - Go down Demo</strong><br>
   <img src="GIF/go_down.gif" height="600" alt="Go down Demo">
 </div>
 
 **Go up logic:** To prevent failed jumps, we gave boss "vision" though using the MapManager's isSolid function, allowing it to see the position of the square in front of it. This function allows the boss determine whether there are any floating blocks in front of it or behind.
 <div align="center">
-  <strong>Figure 12 - Go up Demo</strong><br>
+  <strong>Figure 16 - Go up Demo</strong><br>
   <img src="GIF/go_up.gif" height="600" alt="Go up Demo">
 </div>
 
 
 **Tunnel Escape:** If the boss is below a lower platform, we want the boss to be able to successfully leave the platform first. Therefore, When the boss knows there's a block above its head, it will stick to its initial direction and to move horizontally until it leaves the platform.
 <div align="center">
-  <strong>Figure 13 - Tunnel Escape Demo</strong><br>
+  <strong>Figure 17 - Tunnel Escape Demo</strong><br>
   <img src="GIF/Tunnel_Escape.gif" height="600" alt="Tunnel Escape Demo">
 </div>
 
@@ -706,12 +711,12 @@ This report uses NASA-TLX and SUS to evaluate the user experience, workload, and
 </ul>
 
 <p align="center">
-  <strong>Figure 10 - NASA TLX - Mean Overall Workload Comparison</strong><br>
+  <strong>Figure 18 - NASA TLX - Mean Overall Workload Comparison</strong><br>
   <img src="image/NASA TLX - Mean Overall Workload Comparison.png" width="600">
 </p>
 
 <p align="center">
-  <strong>Figure 11 - NASA TLX - Multi-dimensional Workload Comparison</strong><br>
+  <strong>Figure 19 - NASA TLX - Multi-dimensional Workload Comparison</strong><br>
   <img src="image/NASA TLX - Multi-dimensional Workload Comparison.png" width="600">
 </p>
 
@@ -733,13 +738,13 @@ This report uses NASA-TLX and SUS to evaluate the user experience, workload, and
 </ul>
 
 <p align="center">
-  <strong>Figure 12 - SUS - Distribution of Scores across 10 Participants</strong><br>
+  <strong>Figure 20 - SUS - Distribution of Scores across 10 Participants</strong><br>
   <img src="image/SUS - Distribution of Scores across 10 Participants.png" width="600">
   
 </p>
  
 <p align="center">
-  <strong>Figure 13 - SUS - Mean Score Compared to Industry Benchmark</strong><br>
+  <strong>Figure 21 - SUS - Mean Score Compared to Industry Benchmark</strong><br>
   <img src="image/SUS - Mean Score Compared to Industry Benchmark.png" width="600">
 </p>
 <p align="center">
@@ -1092,13 +1097,13 @@ Black‑box testing focuses on checking whether each feature in the game behaves
 <ul>
     <li>Each Wednesday, we have a weekly meeting to review the previous week development sprint and assign upcoming development tasks.</li>
     <p align="center">
-      <strong>Figure 14 - Meeting</strong><br>
+      <strong>Figure 22 - Meeting</strong><br>
       <img src="image/Meeting.jpg" width="600">
     </p>
     <li>For version control, each member has a separate <b>GitHub</b> branch for development to avoid overwriting each other's code and avoid conflict.</li>
     <li>For project management, we use <a href = "https://trello.com/invite/b/698ac34dda403c044906233f/ATTI4db26394399c57af543af31092c66765564157A4/my-trello-board">Trello</a> as a Kanban Board for task organisation. Tasks are organised into "To Do," "Doing," and "Done" columns to provide the team with a visual representation of work progress and decrease the chances of duplicating tasks or tasks not being completed promptly.</li>
     <p align="center">
-      <strong>Figure 15 - Kanban Board</strong><br>
+      <strong>Figure 23 - Kanban Board</strong><br>
       <img src="image/Kanban.png" width="600">
     </p>
     <li>For communication, <b>WhatsApp</b> is our main tool. We use it for real-time discussions and to record key points from meetings. </li>
@@ -1186,7 +1191,7 @@ Beyond these technical efficiencies, SKAARL seamlessly weaves ecological conserv
 Through these carefully crafted narrative metaphors and the engaging adventure, we hope that players will not only enjoy a highly entertaining experience but also subtly learn the critical importance of environmental protection and native biodiversity conservation.
 </p>
 
-### 2. Individual Dimension
+### Individual Dimension
 <p>
 From an individual sustainability perspective, SKAARL affects players in terms of health, safety, and personal agency. 
 </p>
@@ -1266,10 +1271,10 @@ Overall, the game demonstrates how gameplay mechanics can shape individual exper
 ## AI Statement
 <p>This project used AI-assisted development to create the best quality product possible within a limited development cycle. With regard to producing visual components of the game, AI created user interface elements and assets (e.g., doors and buttons) that allowed team members to spend more time implementing core game mechanics instead of building UI components and static assets.</p>
 <p>In addition to supporting team collaboration and knowledge transfer, AI provided on-demand technical consulting for team members. AI helped to interpret and clarify code logic among team members and quickly obtain knowledge about the p5.js framework. AI also provided suggestions for debugging complex bugs, which improved our overall development efficiency.</p>
-<p>All outputs generated by the AI were thoroughly evaluated and further refined by the team to ensure the final results met the project’s requirements.</p>
 <p>
 A specific example of this technical support occurred during the development of the game map. When working with multiple maps in the same file, tile images appeared incorrectly due to tileset mapping inconsistencies. Rather than resolving this within the Tiled application, AI provided guidance on how to handle tile ID mapping and rendering logic directly in the code. By reviewing and implementing the suggested solution for tile index calculations, we ensured consistent rendering across all maps. This process not only resolved the technical hurdle but also deepened our understanding of tile-based rendering systems.
 </p>
+<p>All outputs generated by the AI were thoroughly evaluated and further refined by the team to ensure the final results met the project’s requirements.</p>
 
 
 ## Additional Video
